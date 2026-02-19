@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import { Sparkles, RotateCcw, Scroll, Mountain, Wind } from 'lucide-react'
+import { Sparkles, RotateCcw, Scroll, Mountain, Wind, ChevronDown } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { 
   castHexagram, 
@@ -51,6 +51,7 @@ function App() {
   const [result, setResult] = useState<HexagramCastResult | null>(null)
   const [isCasting, setIsCasting] = useState(false)
   const [dataKey, setDataKey] = useState(0) // Used to force re-render when language changes
+  const [showInterpretation, setShowInterpretation] = useState(false) // 展开/隐藏通俗解读
   const { t, language } = useLanguage()
 
   // Sync iching language with UI language and force data refresh
@@ -68,6 +69,64 @@ function App() {
     result?.changedHexagramId ? getHexagramById(result.changedHexagramId) : null, 
     [result, dataKey]
   )
+
+  // 根据变爻数量确定重点解读规则
+  const getKeyInterpretationInfo = useMemo(() => {
+    if (!result) return null
+    const count = result.changingLines.length
+    
+    switch (count) {
+      case 0:
+        return { type: 'mainGuaText', message: t.keyInterpretationNote }
+      case 1:
+        return { type: 'singleLine', line: result.changingLines[0], message: t.keyInterpretationNote }
+      case 2:
+        return { type: 'twoLines', lines: result.changingLines, primaryLine: Math.max(...result.changingLines), message: t.keyInterpretationNote }
+      case 3:
+        return { type: 'bothGuaText', message: t.keyInterpretationNote }
+      case 4:
+        // 变卦的下爻（1、2、3位）中不变的爻
+        const unchangedPositions = [1, 2, 3, 4, 5, 6].filter(pos => !result.changingLines.includes(pos))
+        // 先找下爻（1、2、3）中不变的
+        const unchangedInLower = unchangedPositions.filter(pos => pos <= 3)[0]
+        // 如果下爻中没有不变的（都在上爻），则取所有不变爻的第一个（这种情况理论上不会发生，因为4变=2不变）
+        const targetLine = unchangedInLower || unchangedPositions[0]
+        return { type: 'changedLine', line: targetLine, message: t.keyInterpretationNote }
+      case 5:
+        // 变卦中唯一不变的爻
+        const unchanged = [1, 2, 3, 4, 5, 6].filter(pos => !result.changingLines.includes(pos))[0]
+        return { type: 'changedLine', line: unchanged, message: t.keyInterpretationNote }
+      case 6:
+        if (result.hexagramId === 1 || result.hexagramId === 2) {
+          return { type: 'specialUse', hexagramId: result.hexagramId, message: t.keyInterpretationNote }
+        }
+        return { type: 'changedGuaText', message: t.keyInterpretationNote }
+      default:
+        return null
+    }
+  }, [result, t])
+
+  // 判断某爻是否为重点解读爻
+  const isKeyLine = useCallback((position: number) => {
+    if (!getKeyInterpretationInfo) return false
+    const info = getKeyInterpretationInfo
+    if (info.type === 'singleLine' && info.line === position) return true
+    if (info.type === 'twoLines' && info.lines?.includes(position)) return true
+    if (info.type === 'changedLine' && info.line === position) return true
+    return false
+  }, [getKeyInterpretationInfo])
+
+  // 判断是否为重点解读本卦卦辞
+  const isKeyMainGua = useMemo(() => {
+    if (!getKeyInterpretationInfo) return false
+    return ['mainGuaText', 'bothGuaText'].includes(getKeyInterpretationInfo.type)
+  }, [getKeyInterpretationInfo])
+
+  // 判断是否为重点解读变卦卦辞
+  const isKeyChangedGua = useMemo(() => {
+    if (!getKeyInterpretationInfo) return false
+    return ['changedGuaText', 'bothGuaText', 'specialUse'].includes(getKeyInterpretationInfo.type)
+  }, [getKeyInterpretationInfo])
 
   const handleCast = useCallback(() => {
     if (!question.trim()) return
@@ -194,12 +253,20 @@ function App() {
 
                 {/* 卦辞 */}
                 {currentHexagram && (
-                  <div className="mt-6 pt-6 border-t border-stone-200">
+                  <div className={cn(
+                    "mt-6 pt-6 border-t",
+                    isKeyMainGua ? "border-amber-400 bg-amber-50/30 rounded-xl p-4 -mx-4" : "border-stone-200"
+                  )}>
                     <div className="flex items-center gap-2 mb-3">
-                      <Scroll className="w-4 h-4 text-stone-600" />
-                      <span className="text-sm text-stone-700 font-semibold">{t.guaText}</span>
+                      <Scroll className={cn("w-4 h-4", isKeyMainGua ? "text-amber-600" : "text-stone-600")} />
+                      <span className={cn("text-sm font-semibold", isKeyMainGua ? "text-amber-800" : "text-stone-700")}>{t.guaText}</span>
+                      {isKeyMainGua && (
+                        <span className="ml-auto text-xs font-medium text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
+                          {t.keyInterpretation}
+                        </span>
+                      )}
                     </div>
-                    <p className="text-stone-800 leading-relaxed text-base">
+                    <p className={cn("leading-relaxed text-base", isKeyMainGua ? "text-amber-900 font-medium" : "text-stone-800")}>
                       {currentHexagram.text}
                     </p>
                   </div>
@@ -218,6 +285,62 @@ function App() {
                   </div>
                 )}
 
+                {/* 通俗解读（可展开） */}
+                {currentHexagram?.interpretation && (
+                  <div className="mt-4 pt-4 border-t border-stone-200">
+                    <button
+                      onClick={() => setShowInterpretation(!showInterpretation)}
+                      className="flex items-center gap-2 w-full text-left group"
+                    >
+                      <Mountain className="w-4 h-4 text-stone-600" />
+                      <span className="text-sm text-stone-700 font-semibold">{t.interpretation}</span>
+                      <ChevronDown 
+                        className={cn(
+                          "w-4 h-4 text-stone-500 ml-auto transition-transform duration-300",
+                          showInterpretation && "rotate-180"
+                        )} 
+                      />
+                    </button>
+                    
+                    {showInterpretation && (
+                      <div className="mt-4 space-y-4 bg-stone-50 rounded-xl p-5">
+                        {/* 白话翻译 */}
+                        <div>
+                          <h4 className="text-sm font-semibold text-stone-800 mb-2 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                            {t.plainTranslation}
+                          </h4>
+                          <p className="text-sm text-stone-700 leading-relaxed pl-3.5">
+                            {currentHexagram.interpretation.plainTranslation}
+                          </p>
+                        </div>
+                        
+                        {/* 人生启示 */}
+                        <div>
+                          <h4 className="text-sm font-semibold text-stone-800 mb-2 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                            {t.lifeInspiration}
+                          </h4>
+                          <p className="text-sm text-stone-700 leading-relaxed pl-3.5">
+                            {currentHexagram.interpretation.lifeInspiration}
+                          </p>
+                        </div>
+                        
+                        {/* 决策建议 */}
+                        <div>
+                          <h4 className="text-sm font-semibold text-stone-800 mb-2 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                            {t.decisionAdvice}
+                          </h4>
+                          <p className="text-sm text-stone-700 leading-relaxed pl-3.5">
+                            {currentHexagram.interpretation.decisionAdvice}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* 动爻详细解读（如果有变爻） */}
                 {result && result.changingLines.length > 0 && currentHexagram && (
                   <div className="mt-6 pt-6 border-t border-stone-200">
@@ -227,31 +350,73 @@ function App() {
                     </div>
                     <div className="space-y-4">
                       {(() => {
+                        // 判断是否需要显示变卦的爻（4个或5个变爻时）
+                        const showChangedGuaLines = result.changingLines.length === 4 || result.changingLines.length === 5;
+                        const targetHexagram = showChangedGuaLines && changedHexagram ? changedHexagram : currentHexagram;
+                        
+                        // 4个变爻时，只显示变卦中下爻中不变的那一个（重点解读）
+                        // 5个变爻时，只显示变卦中唯一不变的那一个（重点解读）
+                        // 其他情况显示本卦的所有变爻
+                        let targetLines: number[];
+                        if (result.changingLines.length === 4) {
+                          // 4变爻：只取下爻（1、2、3位）中不变的
+                          const unchangedPositions = [1, 2, 3, 4, 5, 6].filter(pos => !result.changingLines.includes(pos));
+                          const unchangedInLower = unchangedPositions.filter(pos => pos <= 3)[0];
+                          targetLines = unchangedInLower ? [unchangedInLower] : [unchangedPositions[0]];
+                        } else if (result.changingLines.length === 5) {
+                          // 5变爻：只取唯一不变的
+                          const unchanged = [1, 2, 3, 4, 5, 6].filter(pos => !result.changingLines.includes(pos))[0];
+                          targetLines = [unchanged];
+                        } else {
+                          targetLines = result.changingLines;
+                        }
+                        
                         const interpretations = getChangingLineInterpretations(
-                          currentHexagram.id, 
-                          result.changingLines
+                          targetHexagram.id, 
+                          targetLines
                         );
-                        return interpretations.map((interp: LineInterpretation) => (
-                          <div 
-                            key={interp.position} 
-                            className="bg-amber-50/50 rounded-lg p-4 border border-amber-100"
-                          >
-                            <div className="flex items-center gap-2 mb-2">
-                              <span className="text-xs font-medium text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
-                                {t.changingLines} {interp.position}
-                              </span>
-                              <span className="text-sm font-semibold text-stone-800">
-                                {interp.yao}
-                              </span>
+                        return interpretations.map((interp: LineInterpretation) => {
+                          const isKey = isKeyLine(interp.position)
+                          return (
+                            <div 
+                              key={interp.position} 
+                              className={cn(
+                                "rounded-lg p-4 border",
+                                isKey 
+                                  ? "bg-amber-100 border-amber-400 shadow-sm" 
+                                  : "bg-amber-50/50 border-amber-100"
+                              )}
+                            >
+                              <div className="flex items-center gap-2 mb-2">
+                                <span className={cn(
+                                  "text-xs font-medium px-2 py-0.5 rounded",
+                                  isKey ? "text-amber-800 bg-amber-200" : "text-amber-700 bg-amber-100"
+                                )}>
+                                  {showChangedGuaLines ? t.changedHexagram : t.changingLines} {interp.position}
+                                </span>
+                                <span className="text-sm font-semibold text-stone-800">
+                                  {interp.yao}
+                                </span>
+                                {isKey && (
+                                  <span className="ml-auto text-xs font-medium text-amber-800 bg-amber-200 px-2 py-0.5 rounded">
+                                    {t.keyInterpretation}
+                                  </span>
+                                )}
+                              </div>
+                              <p className={cn("text-sm leading-relaxed mb-2", isKey ? "text-amber-900 font-medium" : "text-stone-800")}>
+                                <span className="font-medium">{t.yaoText}：</span>{interp.text}
+                              </p>
+                              <p className="text-stone-600 text-xs leading-relaxed mb-2">
+                                <span className="font-medium">{t.xiang}：</span>{interp.xiang}
+                              </p>
+                              {interp.interpretation && (
+                                <p className={cn("text-sm leading-relaxed mt-3 pt-3 border-t", isKey ? "text-amber-800 border-amber-300" : "text-stone-700 border-amber-200/50")}>
+                                  <span className={cn("font-medium", isKey ? "text-amber-800" : "text-amber-700")}>{t.lineInterpretation}：</span>{interp.interpretation}
+                                </p>
+                              )}
                             </div>
-                            <p className="text-stone-800 text-sm leading-relaxed mb-2">
-                              <span className="font-medium">{t.yaoText}：</span>{interp.text}
-                            </p>
-                            <p className="text-stone-600 text-xs leading-relaxed">
-                              <span className="font-medium">{t.xiang}：</span>{interp.xiang}
-                            </p>
-                          </div>
-                        ));
+                          )
+                        });
                       })()}
                     </div>
                   </div>
@@ -260,10 +425,20 @@ function App() {
 
               {/* 变卦（如果有） */}
               {changedHexagram && result.changingLines.length > 0 && (
-                <div className="bg-amber-50 rounded-3xl p-8 shadow-md border border-amber-200">
+                <div className={cn(
+                  "rounded-3xl p-8 shadow-md border",
+                  isKeyChangedGua 
+                    ? "bg-amber-100 border-amber-400" 
+                    : "bg-amber-50 border-amber-200"
+                )}>
                   <div className="flex items-center gap-2 mb-6">
-                    <Wind className="w-5 h-5 text-amber-800" />
-                    <h2 className="text-lg font-semibold text-amber-900 tracking-wider">{t.changedHexagram}</h2>
+                    <Wind className={cn("w-5 h-5", isKeyChangedGua ? "text-amber-900" : "text-amber-800")} />
+                    <h2 className={cn("text-lg font-semibold tracking-wider", isKeyChangedGua ? "text-amber-950" : "text-amber-900")}>{t.changedHexagram}</h2>
+                    {isKeyChangedGua && (
+                      <span className="ml-2 text-xs font-medium text-amber-800 bg-amber-200 px-2 py-0.5 rounded">
+                        {t.keyInterpretation}
+                      </span>
+                    )}
                     <span className="ml-auto text-xs text-amber-800 font-medium">
                       {t.changingLines}：{result.changingLines.join('、')}
                     </span>
@@ -298,9 +473,12 @@ function App() {
                   </div>
 
                   {/* 变卦卦辞 */}
-                  <div className="mt-6 pt-6 border-t border-amber-300">
-                    <p className="text-amber-950 text-base leading-relaxed">
-                      <span className="text-amber-800 font-semibold">{t.guaText}：</span>
+                  <div className={cn(
+                    "mt-6 pt-6 border-t",
+                    isKeyChangedGua ? "border-amber-400" : "border-amber-300"
+                  )}>
+                    <p className={cn("text-base leading-relaxed", isKeyChangedGua ? "text-amber-950 font-medium" : "text-amber-950")}>
+                      <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.guaText}：</span>
                       {changedHexagram.text}
                     </p>
                   </div>

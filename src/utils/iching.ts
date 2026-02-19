@@ -16,6 +16,7 @@ export interface LineInterpretation {
   yao: string;       // 爻名，如"初九"、"六二"等
   text: string;      // 爻辞
   xiang: string;     // 象曰
+  interpretation?: string; // 通俗解释
 }
 
 /**
@@ -82,11 +83,11 @@ const hexagramsDataMap: Record<Language, HexagramData[]> = {
   'es': hexagramsDataEs as HexagramData[],
 };
 
-const linesDataMap: Record<Language, typeof linesData> = {
-  'zh-CN': linesData,
-  'zh-TW': linesData,
-  'en': linesDataEn,
-  'es': linesDataEs,
+const linesDataMap: Record<Language, Record<string, { name: string; lines: LineInterpretation[] }>> = {
+  'zh-CN': linesData as Record<string, { name: string; lines: LineInterpretation[] }>,
+  'zh-TW': linesData as Record<string, { name: string; lines: LineInterpretation[] }>,
+  'en': linesDataEn as Record<string, { name: string; lines: LineInterpretation[] }>,
+  'es': linesDataEs as Record<string, { name: string; lines: LineInterpretation[] }>,
 };
 
 let currentLanguage: Language = 'zh-CN';
@@ -119,8 +120,8 @@ export function getHexagrams(): HexagramData[] {
  * 获取当前语言的爻辞数据
  * @returns 爻辞数据对象
  */
-export function getLinesData(): typeof linesData {
-  return linesDataMap[currentLanguage] || linesData;
+export function getLinesData(): Record<string, { name: string; lines: LineInterpretation[] }> {
+  return linesDataMap[currentLanguage] || linesData as Record<string, { name: string; lines: LineInterpretation[] }>;
 }
 
 // ==================== 三钱法核心逻辑 ====================
@@ -237,6 +238,11 @@ export interface HexagramData {
   text: string;
   tuan: string;
   daxiang: string;
+  interpretation?: {
+    plainTranslation: string;
+    lifeInspiration: string;
+    decisionAdvice: string;
+  };
 }
 
 /**

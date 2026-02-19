@@ -24,6 +24,7 @@ export interface Translation {
   changedHexagram: string;
   changingLines: string;
   changingLinesCount: string;
+  keyInterpretationNote: string; // 解读提示说明
 
   // Interpretation labels
   guaText: string;
@@ -32,6 +33,11 @@ export interface Translation {
   lineInterpretation: string;
   yaoText: string;
   xiang: string;
+  interpretation: string;
+  plainTranslation: string;
+  lifeInspiration: string;
+  decisionAdvice: string;
+  keyInterpretation: string; // 重点解读
 
   // Footer
   footer: string;
@@ -62,12 +68,18 @@ export const translations: Record<Language, Translation> = {
     changedHexagram: 'Changed Hexagram',
     changingLines: 'Changing Lines',
     changingLinesCount: 'changing lines',
+    keyInterpretationNote: 'Key interpretation based on changing lines',
     guaText: 'Text',
     tuan: 'Tuan',
     daXiang: 'Great Image',
     lineInterpretation: 'Changing Line Interpretation',
     yaoText: 'Line Text',
     xiang: 'Image',
+    interpretation: 'Popular Interpretation',
+    plainTranslation: 'Plain Translation',
+    lifeInspiration: 'Life Inspiration',
+    decisionAdvice: 'Decision Advice',
+    keyInterpretation: 'Key Interpretation',
     footer: 'Sincerity brings clarity · Follow the natural way',
     selectLanguage: 'Language',
     languages: {
@@ -93,13 +105,19 @@ export const translations: Record<Language, Translation> = {
     changedHexagram: '变卦',
     changingLines: '变爻',
     changingLinesCount: '个变爻',
+    keyInterpretationNote: '根据变爻数量的重点解读',
     guaText: '卦辞',
     tuan: '彖曰',
     daXiang: '大象',
     lineInterpretation: '动爻解读',
     yaoText: '爻辞',
     xiang: '象曰',
-    footer: '心诚则灵 · 顺应自然',
+    interpretation: '通俗解读',
+    plainTranslation: '白话翻译',
+    lifeInspiration: '人生启示',
+    decisionAdvice: '决策建议',
+    keyInterpretation: '重点解读',
+    footer: '心诚则灵 · 道法自然',
     selectLanguage: '语言',
     languages: {
       en: 'English',
@@ -124,13 +142,19 @@ export const translations: Record<Language, Translation> = {
     changedHexagram: '變卦',
     changingLines: '變爻',
     changingLinesCount: '個變爻',
+    keyInterpretationNote: '根據變爻數量的重點解讀',
     guaText: '卦辭',
     tuan: '彖曰',
     daXiang: '大象',
     lineInterpretation: '動爻解讀',
     yaoText: '爻辭',
     xiang: '象曰',
-    footer: '心誠則靈 · 順應自然',
+    interpretation: '通俗解讀',
+    plainTranslation: '白話翻譯',
+    lifeInspiration: '人生啟示',
+    decisionAdvice: '決策建議',
+    keyInterpretation: '重點解讀',
+    footer: '心誠則靈 · 道法自然',
     selectLanguage: '語言',
     languages: {
       en: 'English',
@@ -155,12 +179,18 @@ export const translations: Record<Language, Translation> = {
     changedHexagram: 'Hexagrama Cambiado',
     changingLines: 'Líneas Cambiantes',
     changingLinesCount: 'líneas cambiantes',
+    keyInterpretationNote: 'Interpretación clave basada en líneas cambiantes',
     guaText: 'Texto',
     tuan: 'Tuan',
     daXiang: 'Gran Imagen',
     lineInterpretation: 'Interpretación de Líneas Cambiantes',
     yaoText: 'Texto de Línea',
     xiang: 'Imagen',
+    interpretation: 'Interpretación Popular',
+    plainTranslation: 'Traducción Simple',
+    lifeInspiration: 'Inspiración para la Vida',
+    decisionAdvice: 'Consejo de Decisión',
+    keyInterpretation: 'Interpretación Clave',
     footer: 'La sinceridad trae claridad · Sigue el camino natural',
     selectLanguage: 'Idioma',
     languages: {
