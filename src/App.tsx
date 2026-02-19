@@ -9,10 +9,12 @@ import {
   type LineResult,
   getChangingLineInterpretations,
   type LineInterpretation,
-  setLanguage as setIchingLanguage
+  setLanguage as setIchingLanguage,
+  getDaXiangImage
 } from './utils/iching'
 import { useLanguage } from './contexts/LanguageContext'
 import { LanguageSelector } from './components/LanguageSelector'
+import { HexagramDaxiangSVG } from './components/HexagramDaxiangSVG'
 
 function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -339,6 +341,20 @@ function App() {
                   </div>
                 )}
 
+                {/* 大象图 */}
+                {currentHexagram && (
+                  <div className="mt-4 pt-4 border-t border-stone-200">
+                    <div className="flex justify-center">
+                      <HexagramDaxiangSVG 
+                        symbol={currentHexagram.symbol} 
+                        name={currentHexagram.name}
+                        width={300}
+                        height={180}
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {/* 通俗解读（可展开） */}
                 {currentHexagram?.interpretation && (
                   <div className="mt-4 pt-4 border-t border-stone-200">
@@ -573,6 +589,18 @@ function App() {
                     <p className={cn("text-sm text-stone-700 leading-relaxed font-medium", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>
                       {changedHexagram.daxiang}
                     </p>
+                  </div>
+
+                  {/* 变卦大象图 */}
+                  <div className="mt-4 pt-4 border-t border-amber-300">
+                    <div className="flex justify-center">
+                      <HexagramDaxiangSVG 
+                        symbol={changedHexagram.symbol} 
+                        name={changedHexagram.name}
+                        width={300}
+                        height={180}
+                      />
+                    </div>
                   </div>
 
                   {/* 变卦通俗解读（可展开） */}

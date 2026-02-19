@@ -126,6 +126,45 @@ export function getLinesData(): Record<string, { name: string; lines: LineInterp
   return linesDataMap[currentLanguage] || linesData as Record<string, { name: string; lines: LineInterpretation[] }>;
 }
 
+// ==================== 大象图相关功能 ====================
+
+/**
+ * 八卦意象映射
+ */
+const trigramSymbols: Record<string, { name: string; symbol: string; emoji: string }> = {
+  '111': { name: '乾', symbol: '天', emoji: '☀️' },
+  '000': { name: '坤', symbol: '地', emoji: '🌍' },
+  '001': { name: '震', symbol: '雷', emoji: '⚡' },
+  '010': { name: '坎', symbol: '水', emoji: '💧' },
+  '011': { name: '艮', symbol: '山', emoji: '⛰️' },
+  '100': { name: '巽', symbol: '风', emoji: '🌪️' },
+  '101': { name: '离', symbol: '火', emoji: '🔥' },
+  '110': { name: '兑', symbol: '泽', emoji: '🌊' }
+};
+
+/**
+ * 根据卦象二进制字符串获取大象图意象描述
+ * @param binary 6位二进制字符串，从下到上
+ * @returns 大象图意象描述
+ */
+export function getDaXiangImage(binary: string): { upper: string; lower: string; description: string } {
+  // 分离上下卦（各3位）
+  const upperTrigram = binary.slice(0, 3); // 上卦（上三爻）
+  const lowerTrigram = binary.slice(3);    // 下卦（下三爻）
+  
+  const upperInfo = trigramSymbols[upperTrigram] || { name: '未知', symbol: '象', emoji: '❓' };
+  const lowerInfo = trigramSymbols[lowerTrigram] || { name: '未知', symbol: '象', emoji: '❓' };
+  
+  // 生成意象描述：上卦在下卦之上
+  const description = `${upperInfo.emoji} ${upperInfo.symbol}在${lowerInfo.symbol}上`;
+  
+  return {
+    upper: upperInfo.symbol,
+    lower: lowerInfo.symbol,
+    description
+  };
+}
+
 // ==================== 三钱法核心逻辑 ====================
 
 /**
