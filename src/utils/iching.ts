@@ -1,6 +1,17 @@
 import hexagramsData from '../data/hexagrams.json';
+import linesData from '../data/lines.json';
 
 // ==================== 类型定义 ====================
+
+/**
+ * 单爻解读数据
+ */
+export interface LineInterpretation {
+  position: number;  // 1-6，从下到上
+  yao: string;       // 爻名，如"初九"、"六二"等
+  text: string;      // 爻辞
+  xiang: string;     // 象曰
+}
 
 /**
  * 单爻结果
@@ -270,6 +281,68 @@ export function linesToBinary(lines: number[]): string {
   return lines.join('');
 }
 
+// ==================== 爻辞解读函数 ====================
+
+/**
+ * 获取指定卦的六爻解读
+ * @param hexagramId 卦序 (1-64)
+ * @returns 六爻解读数组，从初爻到上爻
+ */
+export function getLineInterpretations(hexagramId: number): LineInterpretation[] | null {
+  if (hexagramId < 1 || hexagramId > 64) {
+    console.warn(`Invalid hexagram id: ${hexagramId}`);
+    return null;
+  }
+  
+  const key = hexagramId.toString() as keyof typeof linesData;
+  const hexagramLines = linesData[key];
+  
+  if (!hexagramLines) {
+    console.warn(`No line data found for hexagram ${hexagramId}`);
+    return null;
+  }
+  
+  return hexagramLines.lines;
+}
+
+/**
+ * 获取指定卦中特定位置的爻解读
+ * @param hexagramId 卦序 (1-64)
+ * @param position 爻位置 (1-6)，从下到上
+ * @returns 该位置的爻解读
+ */
+export function getLineInterpretation(hexagramId: number, position: number): LineInterpretation | null {
+  if (position < 1 || position > 6) {
+    console.warn(`Invalid line position: ${position}`);
+    return null;
+  }
+  
+  const lines = getLineInterpretations(hexagramId);
+  if (!lines) return null;
+  
+  return lines.find(l => l.position === position) || null;
+}
+
+/**
+ * 获取变爻的详细解读
+ * @param hexagramId 卦序 (1-64)
+ * @param changingLines 变爻位置数组 (1-6)
+ * @returns 变爻解读数组
+ */
+export function getChangingLineInterpretations(
+  hexagramId: number, 
+  changingLines: number[]
+): LineInterpretation[] {
+  if (changingLines.length === 0) return [];
+  
+  const allLines = getLineInterpretations(hexagramId);
+  if (!allLines) return [];
+  
+  return changingLines
+    .map(position => allLines.find(l => l.position === position))
+    .filter((l): l is LineInterpretation => l !== undefined);
+}
+
 // ==================== 导出默认 ====================
 
 export default {
@@ -287,5 +360,8 @@ export default {
   getChangedLines,
   binaryToLines,
   linesToBinary,
+  getLineInterpretations,
+  getLineInterpretation,
+  getChangingLineInterpretations,
   hexagrams,
 };

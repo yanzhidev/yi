@@ -6,7 +6,9 @@ import {
   getHexagramById, 
   type HexagramCastResult, 
   getChangedLines,
-  type LineResult
+  type LineResult,
+  getChangingLineInterpretations,
+  type LineInterpretation
 } from './utils/iching'
 
 function cn(...inputs: ClassValue[]) {
@@ -195,13 +197,42 @@ function App() {
                   </div>
                 )}
 
-                {/* 大象 */}
-                {currentHexagram && (
-                  <div className="mt-4 pt-4 border-t border-stone-200">
-                    <p className="text-sm text-stone-800 leading-relaxed">
-                      <span className="text-stone-600 font-semibold">大象：</span>
-                      {currentHexagram.daxiang}
-                    </p>
+                {/* 动爻详细解读（如果有变爻） */}
+                {result && result.changingLines.length > 0 && currentHexagram && (
+                  <div className="mt-6 pt-6 border-t border-stone-200">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Sparkles className="w-4 h-4 text-amber-600" />
+                      <span className="text-sm text-stone-700 font-semibold">动爻解读</span>
+                    </div>
+                    <div className="space-y-4">
+                      {(() => {
+                        const interpretations = getChangingLineInterpretations(
+                          currentHexagram.id, 
+                          result.changingLines
+                        );
+                        return interpretations.map((interp: LineInterpretation) => (
+                          <div 
+                            key={interp.position} 
+                            className="bg-amber-50/50 rounded-lg p-4 border border-amber-100"
+                          >
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="text-xs font-medium text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
+                                第 {interp.position} 爻
+                              </span>
+                              <span className="text-sm font-semibold text-stone-800">
+                                {interp.yao}
+                              </span>
+                            </div>
+                            <p className="text-stone-800 text-sm leading-relaxed mb-2">
+                              <span className="font-medium">爻辞：</span>{interp.text}
+                            </p>
+                            <p className="text-stone-600 text-xs leading-relaxed">
+                              <span className="font-medium">象曰：</span>{interp.xiang}
+                            </p>
+                          </div>
+                        ));
+                      })()}
+                    </div>
                   </div>
                 )}
               </div>
