@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import { Sparkles, RotateCcw, Scroll, Mountain, Wind, ChevronDown } from 'lucide-react'
+import { Sparkles, RotateCcw, Scroll, Mountain, Wind, ChevronDown, Cloud } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { 
   castHexagram, 
@@ -52,6 +52,7 @@ function App() {
   const [isCasting, setIsCasting] = useState(false)
   const [dataKey, setDataKey] = useState(0) // Used to force re-render when language changes
   const [showInterpretation, setShowInterpretation] = useState(false) // 展开/隐藏通俗解读
+  const [showChangedInterpretation, setShowChangedInterpretation] = useState(false) // 展开/隐藏变卦通俗解读
   const { t, language } = useLanguage()
 
   // Sync iching language with UI language and force data refresh
@@ -325,6 +326,19 @@ function App() {
                   </div>
                 )}
 
+                {/* 大象 */}
+                {currentHexagram && (
+                  <div className="mt-4 pt-4 border-t border-stone-200">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Cloud className="w-4 h-4 text-stone-600" />
+                      <span className="text-sm text-stone-700 font-semibold">{t.daXiang}</span>
+                    </div>
+                    <p className="text-sm text-stone-700 leading-relaxed">
+                      {currentHexagram.daxiang}
+                    </p>
+                  </div>
+                )}
+
                 {/* 通俗解读（可展开） */}
                 {currentHexagram?.interpretation && (
                   <div className="mt-4 pt-4 border-t border-stone-200">
@@ -517,11 +531,105 @@ function App() {
                     "mt-6 pt-6 border-t",
                     isKeyChangedGua ? "border-amber-400" : "border-amber-300"
                   )}>
-                    <p className={cn("text-base leading-relaxed", isKeyChangedGua ? "text-amber-950 font-medium" : "text-amber-950")}>
-                      <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.guaText}：</span>
-                      {changedHexagram.text}
+                    {getKeyInterpretationInfo?.type === 'specialUse' && getKeyInterpretationInfo.hexagramId === 1 ? (
+                      <div>
+                        <p className={cn("text-base leading-relaxed font-medium", isKeyChangedGua ? "text-amber-950" : "text-amber-950")}>
+                          <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>用九：</span>
+                          {currentHexagram?.yongjiu}
+                        </p>
+                      </div>
+                    ) : getKeyInterpretationInfo?.type === 'specialUse' && getKeyInterpretationInfo.hexagramId === 2 ? (
+                      <div>
+                        <p className={cn("text-base leading-relaxed font-medium", isKeyChangedGua ? "text-amber-950" : "text-amber-950")}>
+                          <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>用六：</span>
+                          {currentHexagram?.yongliu}
+                        </p>
+                      </div>
+                    ) : (
+                      <p className={cn("text-base leading-relaxed", isKeyChangedGua ? "text-amber-950 font-medium" : "text-amber-950")}>
+                        <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.guaText}：</span>
+                        {changedHexagram.text}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* 变卦彖曰 */}
+                  <div className="mt-4 pt-4 border-t border-amber-300">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Wind className={cn("w-4 h-4", isKeyChangedGua ? "text-amber-900" : "text-amber-800")} />
+                      <span className={cn("text-sm text-stone-700 font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.tuan}</span>
+                    </div>
+                    <p className={cn("text-sm text-stone-700 leading-relaxed font-medium", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>
+                      {changedHexagram.tuan}
                     </p>
                   </div>
+
+                  {/* 变卦大象 */}
+                  <div className="mt-4 pt-4 border-t border-amber-300">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Cloud className={cn("w-4 h-4", isKeyChangedGua ? "text-amber-900" : "text-amber-800")} />
+                      <span className={cn("text-sm text-stone-700 font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.daXiang}</span>
+                    </div>
+                    <p className={cn("text-sm text-stone-700 leading-relaxed font-medium", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>
+                      {changedHexagram.daxiang}
+                    </p>
+                  </div>
+
+                  {/* 变卦通俗解读（可展开） */}
+                  {changedHexagram?.interpretation && (
+                    <div className="mt-4 pt-4 border-t border-amber-300">
+                      <button
+                        onClick={() => setShowChangedInterpretation(!showChangedInterpretation)}
+                        className="flex items-center gap-2 w-full text-left group"
+                      >
+                        <Mountain className={cn("w-4 h-4", isKeyChangedGua ? "text-amber-900" : "text-amber-800")} />
+                        <span className={cn("text-sm text-stone-700 font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.interpretation}</span>
+                        <ChevronDown 
+                          className={cn(
+                            "w-4 h-4 text-stone-500 ml-auto transition-transform duration-300",
+                            showChangedInterpretation && "rotate-180"
+                          )} 
+                        />
+                      </button>
+                      
+                      {showChangedInterpretation && (
+                        <div className="mt-4 space-y-4 bg-amber-50 rounded-xl p-5">
+                          {/* 白话翻译 */}
+                          <div>
+                            <h4 className="text-sm font-semibold text-amber-900 mb-2 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                              {t.plainTranslation}
+                            </h4>
+                            <p className="text-sm text-amber-800 leading-relaxed pl-3.5 font-medium">
+                              {changedHexagram.interpretation.plainTranslation}
+                            </p>
+                          </div>
+                          
+                          {/* 人生启示 */}
+                          <div>
+                            <h4 className="text-sm font-semibold text-amber-900 mb-2 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                              {t.lifeInspiration}
+                            </h4>
+                            <p className="text-sm text-amber-800 leading-relaxed pl-3.5 font-medium">
+                              {changedHexagram.interpretation.lifeInspiration}
+                            </p>
+                          </div>
+                          
+                          {/* 决策建议 */}
+                          <div>
+                            <h4 className="text-sm font-semibold text-amber-900 mb-2 flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                              {t.decisionAdvice}
+                            </h4>
+                            <p className="text-sm text-amber-800 leading-relaxed pl-3.5 font-medium">
+                              {changedHexagram.interpretation.decisionAdvice}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </>

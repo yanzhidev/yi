@@ -25,6 +25,7 @@ export interface Translation {
   changingLines: string;
   changingLinesCount: string;
   keyInterpretationNote: string; // 解读提示说明
+  interpretationRules: string; // 重点解读规则说明
 
   // Interpretation labels
   guaText: string;
@@ -69,6 +70,7 @@ export const translations: Record<Language, Translation> = {
     changingLines: 'Changing Lines',
     changingLinesCount: 'changing lines',
     keyInterpretationNote: 'Key interpretation based on changing lines',
+    interpretationRules: '0变爻:看本卦卦辞 | 1变爻:看该爻爻辞 | 2变爻:看两爻，以上爻为主 | 3变爻:看本卦+变卦卦辞 | 4变爻:看变卦下爻 | 5变爻:看变卦不变爻 | 6变爻:乾坤看用九/用六，其余看变卦卦辞',
     guaText: 'Text',
     tuan: 'Tuan',
     daXiang: 'Great Image',
@@ -106,6 +108,7 @@ export const translations: Record<Language, Translation> = {
     changingLines: '变爻',
     changingLinesCount: '个变爻',
     keyInterpretationNote: '根据变爻数量的重点解读',
+    interpretationRules: '0变爻:看本卦卦辞 | 1变爻:看该爻爻辞 | 2变爻:看两爻，以上爻为主 | 3变爻:看本卦+变卦卦辞 | 4变爻:看变卦下爻 | 5变爻:看变卦不变爻 | 6变爻:乾坤看用九/用六，其余看变卦卦辞',
     guaText: '卦辞',
     tuan: '彖曰',
     daXiang: '大象',
@@ -143,6 +146,7 @@ export const translations: Record<Language, Translation> = {
     changingLines: '變爻',
     changingLinesCount: '個變爻',
     keyInterpretationNote: '根據變爻數量的重點解讀',
+    interpretationRules: '0變爻:看本卦卦辭 | 1變爻:看該爻爻辭 | 2變爻:看兩爻，以上爻為主 | 3變爻:看本卦+變卦卦辭 | 4變爻:看變卦下爻 | 5變爻:看變卦不變爻 | 6變爻:乾坤看用九/用六，其餘看變卦卦辭',
     guaText: '卦辭',
     tuan: '彖曰',
     daXiang: '大象',
@@ -180,6 +184,7 @@ export const translations: Record<Language, Translation> = {
     changingLines: 'Líneas Cambiantes',
     changingLinesCount: 'líneas cambiantes',
     keyInterpretationNote: 'Interpretación clave basada en líneas cambiantes',
+    interpretationRules: '0变爻:看本卦卦辞 | 1变爻:看该爻爻辞 | 2变爻:看两爻，以上爻为主 | 3变爻:看本卦+变卦卦辞 | 4变爻:看变卦下爻 | 5变爻:看变卦不变爻 | 6变爻:乾坤看用九/用六，其余看变卦卦辞',
     guaText: 'Texto',
     tuan: 'Tuan',
     daXiang: 'Gran Imagen',

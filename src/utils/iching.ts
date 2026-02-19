@@ -32,6 +32,8 @@ export interface HexagramData {
   text: string;
   tuan: string;
   daxiang: string;
+  yongjiu?: string; // 用九（乾卦六爻全变时使用）
+  yongliu?: string; // 用六（坤卦六爻全变时使用）
 }
 
 /**
@@ -238,6 +240,8 @@ export interface HexagramData {
   text: string;
   tuan: string;
   daxiang: string;
+  yongjiu?: string; // 用九（乾卦六爻全变时使用）
+  yongliu?: string; // 用六（坤卦六爻全变时使用）
   interpretation?: {
     plainTranslation: string;
     lifeInspiration: string;
