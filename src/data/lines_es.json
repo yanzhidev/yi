@@ -1,0 +1,332 @@
+{
+  "1": {
+    "name": "El Creativo",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Dragón oculto. No actuar.", "xiang": "El yang está abajo." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Dragón apareciendo en el campo. Favorece ver a la gran persona.", "xiang": "La virtud se extiende ampliamente." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Todo el día la persona superior está creativamente activa. Por la tarde está quieta como un cadáver. Sin culpa.", "xiang": "Siguiendo el camino de ida y vuelta." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Vuelo vacilante sobre las profundidades. Sin culpa.", "xiang": "Avanzar sin culpa." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Dragón volando en los cielos. Favorece ver a la gran persona.", "xiang": "La gran persona crea." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Dragón arrogante tendrá motivo para arrepentirse.", "xiang": "La plenitud no puede durar mucho." }
+    ]
+  },
+  "2": {
+    "name": "El Receptivo",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Cuando hay escarcha bajo los pies, el hielo sólido no está lejos.", "xiang": "Por la gentileza el camino se sigue, llevando al hielo sólido." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Recto, cuadrado, grande. Sin propósito, sin embargo nada permanece sin fomentar.", "xiang": "El camino de la tierra es brillante." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Líneas ocultas. Uno es capaz de permanecer perseverante. Si por casualidad estás al servicio de un rey, busca obras, pero lleva a la culminación.", "xiang": "El conocimiento es amplio y brillante." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Un saco atado. Sin culpa, sin alabanza.", "xiang": "La precaución no trae daño." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Una prenda amarilla trae suprema buena fortuna.", "xiang": "La cultura está dentro." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Dragones luchan en el prado. Su sangre es negra y amarilla.", "xiang": "El camino está agotado." }
+    ]
+  },
+  "3": {
+    "name": "Dificultad al Comienzo",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Hesitación e impedimento. Favorece permanecer en la perseverancia y nombrar ayudantes.", "xiang": "Aunque hay hesitación e impedimento, la voluntad es correcta." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Las dificultades se acumulan. Caballo y carro se separan. Él no es un ladrón; quiere cortejar cuando llegue el momento. La joven doncella es casta, no se compromete. Diez años, entonces se compromete.", "xiang": "La dificultad del seis en el segundo lugar viene de cabalgar sobre lo firme." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Quien caza ciervos sin el guardabosque solo pierde su camino en el bosque. La persona superior entiende las señales del tiempo y prefiere desistir. Seguir adelante trae humillación.", "xiang": "Uno prefiere desistir, no persiguiendo la presa huidiza." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Caballo y carro se separan; buscan unión. Ir trae buena fortuna. Nada que no favorezca.", "xiang": "Buscar e ir trae luz." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Dificultades en la bendición. Un poco de perseverancia trae buena fortuna. Gran perseverancia trae desgracia.", "xiang": "La bendición aún no ha sido otorgada." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Caballo y carro se separan; llorando lágrimas de sangre.", "xiang": "¿Cómo puede esto durar mucho?" }
+    ]
+  },
+  "4": {
+    "name": "Locura Juvenil",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Para hacer desarrollar al tonto favorece aplicar disciplina. Las cadenas deben ser removidas. Seguir así trae humillación.", "xiang": "Favorece aplicar disciplina, corrigiendo así la ley." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Soportar con los tontos en bondad trae buena fortuna. Saber cuidar a las mujeres trae buena fortuna. El joven es manejable.", "xiang": "El joven es manejable; lo firme y lo suave se unen." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "No busques a una persona en el mercado matrimonial. Si ves a una persona de bronce, pierdes a la persona de oro. Nada que favorezca.", "xiang": "No buscar a una persona en el mercado matrimonial, porque la conducta no es correcta." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Locura enredada trae humillación.", "xiang": "La humillación de la locura enredada viene de estar lejos de la realidad." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Locura infantil trae buena fortuna.", "xiang": "La buena fortuna de la locura infantil viene de la gentileza sumisa." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Al castigar la locura no favorece cometer transgresiones. Lo único que favorece es prevenir transgresiones.", "xiang": "Prevenir transgresiones trae buena fortuna; arriba y abajo están en armonía." }
+    ]
+  },
+  "5": {
+    "name": "Espera",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Esperando en el prado. Favorece permanecer en lo que perdura. Sin culpa.", "xiang": "Esperar en el prado significa no correr hacia el peligro." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Esperando en la arena. Hay algo de chisme. El final trae buena fortuna.", "xiang": "Esperar en la arena significa permanecer en el centro." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Esperando en el barro trae la llegada de enemigos.", "xiang": "La llegada de enemigos viene de invitarlos por la propia culpa. Si uno es cauteloso, no sigue la derrota." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Esperando en sangre. Sal de la cueva.", "xiang": "Uno sigue la obediencia sumisa." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Esperando en carne y bebida. La perseverancia trae buena fortuna.", "xiang": "La carne y la bebida traen buena fortuna por la posición central y correcta." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Uno cae en la cueva. Tres huéspedes no invitados llegan. Honrarlos, y al final habrá buena fortuna.", "xiang": "Aunque el lugar no es correcto, no hay gran error." }
+    ]
+  },
+  "6": {
+    "name": "Conflicto",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Si no perpetúas el asunto, hay un poco de chisme. Al final, viene buena fortuna.", "xiang": "No perpetuar el asunto significa que una disputa no puede prolongarse." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Uno no puede participar en el conflicto; uno vuelve, cede, y retrocede. Con la gente de su pueblo, trescientos hogares, evita la calamidad.", "xiang": "No participar en el conflicto sino volver a ceder, uno se esconde en el pueblo." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Nutrirse de la antigua virtud induce a la perseverancia. Peligro. Al final, viene buena fortuna. Si por casualidad estás al servicio de un rey, busca obras.", "xiang": "Nutrirse de la antigua virtud significa seguir lo que está arriba trae buena fortuna." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Uno no puede participar en el conflicto. Uno se vuelve, se somete al destino, cambia su actitud, y encuentra paz en la perseverancia. Buena fortuna.", "xiang": "Volver, someterse al destino, cambiar la actitud, y encontrar paz en la perseverancia significa no perder nada." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Contender ante él trae suprema buena fortuna.", "xiang": "Contender ante él trae suprema buena fortuna por la posición central y correcta." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Incluso si por casualidad se le otorga una correa de cuero, al final de la mañana se le quitará tres veces.", "xiang": "Recibir la correa a través de contienda no es digno de respeto." }
+    ]
+  },
+  "7": {
+    "name": "El Ejército",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Un ejército debe partir en el orden apropiado. Si el orden no es bueno, la desgracia amenaza.", "xiang": "Un ejército que parte en orden apropiado significa que uno pierde el orden para traer desgracia." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "En medio del ejército. Buena fortuna. Sin culpa. El rey otorga una triple decoración.", "xiang": "En medio del ejército trae buena fortuna por recibir favor del cielo." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Quizás el ejército lleve cadáveres en el carro. Desgracia.", "xiang": "El ejército que lleva cadáveres en el carro significa gran falta de éxito." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "El ejército retrocede. Sin culpa.", "xiang": "El ejército retrocede sin culpa porque no se ha desviado de lo normal." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Hay caza en el campo. Favorece atraparla. Sin culpa. Que el mayor lidere el ejército. El menor transporta cadáveres; entonces la perseverancia trae desgracia.", "xiang": "Dejar que el mayor lidere el ejército significa actuar correctamente en el centro." },
+      { "position": 6, "yao": "Seis en la cima", "text": "El gran príncipe emite órdenes, funda estados, invierte a las familias con feudos. Los inferiores no deben ser empleados.", "xiang": "El gran prírcipe emite órdenes para rectificar los logros." }
+    ]
+  },
+  "8": {
+    "name": "Unión",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Aferrarse a él en verdad y lealtad; sin culpa. La verdad, como una olla de tierra llena: así al final viene buena fortuna de fuera.", "xiang": "Al principio de la Unión, el otro trae buena fortuna." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Aferrarse a él interiormente. La perseverancia trae buena fortuna.", "xiang": "Aferrarse a él interiormente significa no perderse a sí mismo." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Te unes con las personas equivocadas.", "xiang": "Unirse con las personas equivocadas es de hecho perjudicial." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Aferrarse a él exteriormente también. La perseverancia trae buena fortuna.", "xiang": "Aferrarse exteriormente al digno significa seguir al superior." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Manifestación de unión. En la caza, el rey usa batidores solo en tres lados y prescinde de la presa que huye por delante. La gente no necesita advertencia. Buena fortuna.", "xiang": "La buena fortuna de la manifestación de unión viene de la posición central y correcta." },
+      { "position": 6, "yao": "Seis en la cima", "text": "No encuentra cabeza para la unión. Desgracia.", "xiang": "No encuentra cabeza para la unión; no hay fin." }
+    ]
+  },
+  "9": {
+    "name": "El Poder de lo Pequeño",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Volver al camino. ¿Cómo podría haber culpa en esto? Buena fortuna.", "xiang": "Volver al camino, el significado es buena fortuna." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Se permite que uno sea atraído a volver. Buena fortuna.", "xiang": "Ser atraído a volver en el centro significa no perderse a sí mismo." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Los radios estallan fuera del carro. Marido y mujer ruedan sus ojos.", "xiang": "Marido y mujer ruedan sus ojos porque no pueden ordenar su casa." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Si eres sincero, la sangre desaparece y el miedo cede. Sin culpa.", "xiang": "Si eres sincero, el miedo cede porque del acuerdo en la voluntad arriba." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Si eres sincero y lealmente apegado, eres rico en tu vecino.", "xiang": "Si eres sincero y lealmente apegado, no estás solo en tus riquezas." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Viene la lluvia, hay descanso. Esto se debe al efecto duradero del carácter. Perseverancia de la mujer trae peligro. La luna está casi llena. Si la persona superior continúa, viene desgracia.", "xiang": "Viene la lluvia y hay descanso, así la virtud se acumula." }
+    ]
+  },
+  "10": {
+    "name": "Pisar",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Conducta simple. Progreso sin culpa.", "xiang": "El progreso de la conducta simple significa actuar según la propia voluntad sola." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Pisar un curso liso y nivel. La perseverancia de una persona oscura trae buena fortuna.", "xiang": "La perseverancia de una persona oscura trae buena fortuna porque no se confunde a sí misma." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Una persona tuerta es capaz de ver; una persona coja es capaz de pisar. Pisando la cola del tigre, muerde. Desgracia. Un soldado valiente actúa la parte de un gran señor.", "xiang": "Una persona tuerta es capaz de ver, pero no lo suficiente para ver claramente." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Pisando la cola del tigre. Cauteloso y aprensivo, al final uno será afortunado.", "xiang": "Cauteloso y aprensivo, al final uno será afortunado, porque la voluntad se lleva a cabo." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Conducta resuelta. Perseverancia con conciencia del peligro.", "xiang": "Conducta resuelta con conciencia del peligro significa que el lugar es correcto." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Mira tu conducta y pesa las señales favorables. Cuando es plena y buena, entonces volver trae suprema buena fortuna. Sin culpa.", "xiang": "Suprema buena fortuna arriba trae gran celebración." }
+    ]
+  },
+  "11": {
+    "name": "Paz",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Cuando se arranca la hierba de la cinta, viene la grama con ella. Cada uno según su clase. Las empresas traen buena fortuna.", "xiang": "Las empresas traen buena fortuna porque la voluntad se dirige hacia fuera." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Soportar lo inculto, vadear el río sin barco, no olvidar lo abandonado, no perder a los nómadas. Favorece tomar acción en el centro.", "xiang": "Soportar lo inculto y tomar acción en el centro significa iluminar y extender." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Ninguna llanura no seguida por una pendiente. Ningún ir no seguido por un retorno. Quien permanece perseverante en el peligro está sin culpa. No te quejes de esta verdad; disfruta de la buena fortuna que aún posees.", "xiang": "Ningún ir no seguido por un retorno significa el límite del cielo y la tierra." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Aleteando, aleteando, sin embargo nunca cayendo. Por causa de los vecinos, uno es generoso con sus posesiones.", "xiang": "Aleteando, aleteando, sin embargo nunca cayendo significa que todos pierden la realidad." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "El emperador Yi dio su hija en matrimonio. Suprema buena fortuna viene.", "xiang": "Suprema buena fortuna viene porque la acción central se lleva a cabo según la voluntad." },
+      { "position": 6, "yao": "Seis en la cima", "text": "El muro cae de vuelta en la zanja. No uses el ejército ahora. Haz conocidos tus mandatos dentro de tu propia ciudad. La perseverancia trae humillación.", "xiang": "El muro cayendo de vuelta en la zanja significa que el orden está confundido." }
+    ]
+  },
+  "12": {
+    "name": "Estancamiento",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Cuando se arranca la hierba de la cinta, viene la grama con ella. La perseverancia trae buena fortuna y éxito.", "xiang": "La perseverancia con la hierba de la cinta trae buena fortuna porque la voluntad está en el gobernante." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Ellos soportan y aguantan; esto significa buena fortuna para los inferiores. El estancamiento sirve para ayudar a la gran persona a avanzar.", "xiang": "El estancamiento sirve para ayudar a la gran persona a avanzar porque no confunde a la multitud." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Ellos soportan vergüenza.", "xiang": "Soportar vergüenza significa que el lugar no es correcto." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Hay mandato. Sin culpa. Los que trabajan con él son de su misma clase.", "xiang": "Hay mandato y sin culpa porque la voluntad se lleva a cabo." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "El estancamiento se disuelve. Buena fortuna para la gran persona. ¿Qué si fallara, qué si fallara? De esta manera lo ata a un manojo de brotes de morera.", "xiang": "La buena fortuna de la gran persona viene del lugar correcto." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "El estancamiento llega a su fin. Primero estancamiento, luego buena fortuna.", "xiang": "El estancamiento llegando a su fin significa cómo podría durar mucho?" }
+    ]
+  },
+  "13": {
+    "name": "Comunión con Hombres",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Comunión con hombres en la puerta. Sin culpa.", "xiang": "Saliendo de la puerta para comunión con hombres, ¿quién podría culparlo?" },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Comunión con hombres en el clan. Humillación.", "xiang": "Comunión con hombres en el clan es el camino de la humillación." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Esconde armas en la espesura; sube la colina alta delante. Por tres años no se levanta.", "xiang": "Esconder armas en la espesura significa que el enemigo es firme." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Sube sobre su muro; no puede atacar. Buena fortuna.", "xiang": "Subiendo sobre su muro, encuentra correcto no atacar." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Hombres atados en comunión primero lloran y lamentan, pero después ríen. Después de grandes luchas tienen éxito en encontrarse.", "xiang": "Comunión de hombres primero llorando y lamentando significa que lo firme está en el medio." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Comunión con hombres en el prado. Sin arrepentimiento.", "xiang": "Comunión con hombres en el prado significa que la voluntad aún no ha sido alcanzada." }
+    ]
+  },
+  "14": {
+    "name": "Posesión en Gran Medida",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Ninguna relación con cosas dañinas. Fuerte en la propia integridad. Sin culpa.", "xiang": "Ninguna relación con cosas dañinas al principio de la Posesión en Gran Medida significa ningún contacto dañino." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Un gran carro para cargar. Uno puede emprender algo. Sin culpa.", "xiang": "Un gran carro para cargar significa acumulando en el centro sin derrota." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Un príncipe lo ofrece al Hijo del Cielo. Una persona mezquina no puede hacer esto.", "xiang": "Un príncipe ofreciéndolo al Hijo del Cielo significa que la persona mezquina trae daño." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Hace una diferencia entre sí mismo y su vecino. Sin culpa.", "xiang": "Hacer una diferencia entre sí mismo y su vecino trae sin culpa por la clara discriminación." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Su sinceridad le da el poder para inspirar confianza. Amabilidad sin culpa.", "xiang": "Su sinceridad inspirando confianza significa que la confianza extiende la voluntad." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Es bendecido por el cielo. Buena fortuna. Nada que no favorezca.", "xiang": "Suprema buena fortuna arriba viene de la protección del cielo." }
+    ]
+  },
+  "15": {
+    "name": "Modestia",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Una persona modesta que se dispone a cruzar la gran agua trae buena fortuna.", "xiang": "Una persona modesta trae buena fortuna porque es humilde y cultiva a sí misma." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Modestia que viene a expresión. La perseverancia trae buena fortuna.", "xiang": "Modestia que viene a expresión y trae buena fortuna significa que el corazón encuentra el centro." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Una persona modesta que cumple obras de mérito trae buena fortuna.", "xiang": "Una persona modesta que cumple obras de mérito trae buena fortuna porque la miríada de personas se somete." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Nada que no favorezca la modestia en el movimiento.", "xiang": "Nada que no favorezca la modestia en el movimiento significa no violar la ley." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "No incrementar lo que uno tiene. Con los vecinos es beneficioso ir a la guerra. Nada que no favorezca.", "xiang": "Es beneficioso ir a la guerra para castigar a los que no se someten." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Modestia que viene a expresión. Es favorable poner a los ejércitos en marcha para castigar a la propia ciudad y al propio país.", "xiang": "Modestia que viene a expresión significa que la voluntad aún no ha sido alcanzada." }
+    ]
+  },
+  "16": {
+    "name": "Entusiasmo",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Entusiasmo que se expresa trae desgracia.", "xiang": "Entusiasmo que se expresa trae desgracia porque la voluntad está agotada." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Firme como una roca. No un día entero. La perseverancia trae buena fortuna.", "xiang": "No un día entero; la perseverancia trae buena fortuna por la posición central y correcta." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Entusiasmo que mira hacia arriba trae arrepentimiento. La vacilación trae arrepentimiento.", "xiang": "Entusiasmo que mira hacia arriba trae arrepentimiento porque el lugar no es correcto." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "La fuente del entusiasmo. Logra grandes cosas. No dudes. Los amigos se reúnen alrededor de él como en un broche de pelo.", "xiang": "La fuente del entusiasmo trayendo grandes logros significa que la voluntad se lleva a cabo grandemente." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Con perseverancia constante hay enfermedad, pero no muere.", "xiang": "Enfermedad a través de la perseverancia constante significa que lo suave cabalga sobre lo firme." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Entusiasmo que se ha vuelto oscuro. La perseverancia trae inquietud, pero sin culpa.", "xiang": "Entusiasmo que se ha vuelto oscuro arriba significa cómo puede durar mucho?" }
+    ]
+  },
+  "17": {
+    "name": "Seguimiento",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "El estándar está cambiando. La perseverancia trae buena fortuna. Salir de la puerta en compañía produce obras.", "xiang": "El estándar cambiando significa seguir lo que trae buena fortuna." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Si te aferras al niño pequeño, pierdes al hombre fuerte.", "xiang": "Si te aferras al niño pequeño, no puedes tener ambos." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Si te aferras al hombre fuerte, pierdes al niño pequeño. El seguir conduce a encontrar lo que se busca, pero favorece permanecer perseverante.", "xiang": "Si te aferras al hombre fuerte, la voluntad está puesta en lo inferior." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "El seguir conduce a obtener. ¿Pero debería continuar? Si sigue el camino, no hay culpa.", "xiang": "El seguir conduce a obtener, pero el significado es ominoso." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Sincero en lo bueno. Buena fortuna.", "xiang": "Sincero en lo bueno trae buena fortuna por la posición central y correcta." },
+      { "position": 6, "yao": "Seis en la cima", "text": "El rey ofrece su sacrificio en la Montaña del Oeste. Buena fortuna. Sin culpa.", "xiang": "Está atado y obligado en el seguimiento, y es propio ofrecer sacrificio." }
+    ]
+  },
+  "18": {
+    "name": "Trabajo en lo Corrompido",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Corrigiendo lo corrompido por el propio padre. Si hay un hijo, no hay culpa que recaiga sobre el padre fallecido. Peligro. Al final, buena fortuna.", "xiang": "Corrigiendo lo corrompido por el propio padre significa que la voluntad se dirige hacia el padre." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Corrigiendo lo corrompido por la propia madre. Uno no debe ser demasiado perseverante.", "xiang": "Corrigiendo lo corrompido por la propia madre significa encontrar el camino medio." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Corrigiendo lo corrompido por el propio padre. Hay un poco de arrepentimiento pero no gran culpa.", "xiang": "Corrigiendo lo corrompido por el propio padre significa finalmente sin culpa." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Tolerando lo corrompido por el propio padre. Al continuar se ve humillación.", "xiang": "Tolerando lo corrompido por el propio padre significa salir y no obtener." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Corrigiendo lo corrompido por el propio padre. Uno encuentra alabanza.", "xiang": "Corrigiendo lo corrompido por el propio padre significa recibir alabanza a través de la virtud." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "No sirve al rey y al estado; sobresale en enaltecer su propio llamado.", "xiang": "No servir al rey y al estado significa que la voluntad puede ser un modelo." }
+    ]
+  },
+  "19": {
+    "name": "Acercamiento",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Acercamiento conjunto. La perseverancia trae buena fortuna.", "xiang": "Acercamiento conjunto con perseverancia trae buena fortuna porque la voluntad es correcta." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Acercamiento conjunto. Buena fortuna. Todo favorece.", "xiang": "Acercamiento conjunto trayendo buena fortuna y todo favoreciendo significa que aún no obedece el mandato." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Acercamiento cómodo. Nada que favorezca. Si se estimula, no hay culpa.", "xiang": "Acercamiento cómodo significa que el lugar no es correcto." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Acercamiento completo. Sin culpa.", "xiang": "Acercamiento completo sin culpa significa que el lugar es correcto." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Acercamiento sabio. Esto es grande para un príncipe. Buena fortuna.", "xiang": "Lo que es grande para un príncipe significa actuar correctamente en el centro." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Acercamiento de gran corazón. Buena fortuna. Sin culpa.", "xiang": "Acercamiento de gran corazón trae buena fortuna porque la voluntad está dentro." }
+    ]
+  },
+  "20": {
+    "name": "Contemplación",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Contemplación infantil. Para una persona inferior, sin culpa. Para una persona superior, humillación.", "xiang": "Contemplación infantil de la persona inferior significa el camino de la persona inferior." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Contemplación a través de la grieta de la puerta. Fomenta la perseverancia de una mujer.", "xiang": "Contemplación a través de la grieta de la puerta para la perseverancia de una mujer significa que es también una desgracia." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Contemplación de mi vida decide la elección entre avance y retroceso.", "xiang": "Contemplación de mi vida decidiendo avance y retroceso significa no perder el camino." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Contemplación de la luz del reino. Favorece ejercer influencia como huésped del rey.", "xiang": "Contemplación de la luz del reino significa estimar al huésped." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Contemplación de mi vida. La persona superior está sin culpa.", "xiang": "Contemplación de mi vida significa observar al pueblo." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Contemplación de su vida. La persona superior está sin culpa.", "xiang": "Contemplación de su vida significa que la voluntad aún no está tranquila." }
+    ]
+  },
+  "21": {
+    "name": "Morder a Través",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Sus pies están encadenados en el cepo, y sus dedos de los pies desaparecen. Sin culpa.", "xiang": "Pies encadenados en el cepo significa que no puede caminar." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Muerde carne seca y se quema la nariz. Sin culpa.", "xiang": "Morder carne seca y quemar la nariz significa cabalgar sobre lo firme." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Muerde carne seca vieja y golpea algo venenoso. Pequeña humillación. Sin culpa.", "xiang": "Golpear algo venenoso significa que el lugar no es correcto." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Muerde carne cartilaginosa seca. Recibe flechas de metal. Favorece ser consciente de las dificultades. Buena fortuna.", "xiang": "Favorece ser consciente de las dificultades porque la luz aún no brilla." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Muerde carne seca magra. Recibe oro amarillo. La perseverancia trae peligro. Sin culpa.", "xiang": "La perseverancia trayendo sin culpa significa obtener lo apropiado." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Su cuello está encadenado en el cangue de madera, y sus orejas desaparecen. Desgracia.", "xiang": "El cuello encadenado en el cangue de madera significa que las orejas no están claras." }
+    ]
+  },
+  "22": {
+    "name": "Gracia",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Presta gracia a sus dedos de los pies, deja el carruaje, y camina.", "xiang": "Dejar el carruaje para caminar significa correctamente que no cabalga." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Presta gracia a su barba.", "xiang": "Presta gracia a su barba porque se eleva con lo que está arriba." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Gracioso y húmedo. Constancia perseverante trae buena fortuna.", "xiang": "La buena fortuna de la constancia perseverante significa que no hay nadie que lo humille." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "¿Gracia o simplicidad? Un caballo blanco viene como si con alas. Él no es un ladrón; cortejará en el momento adecuado.", "xiang": "El seis en el cuarto lugar está en duda." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Gracia en jardines y colinas. El rollo de seda es escaso y pequeño. Humillación, pero al final buena fortuna.", "xiang": "La buena fortuna del seis en el quinto lugar trae alegría." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Gracia simple. Sin culpa.", "xiang": "Gracia simple sin culpa significa arriba uno alcanza su voluntad." }
+    ]
+  },
+  "23": {
+    "name": "Desmoronamiento",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "La pata del sofá está rota. Los que perseveran son destruidos. Desgracia.", "xiang": "La pata del sofá rota significa destruir lo que está abajo." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "El sofá está roto hasta el marco. Los que perseveran son destruidos. Desgracia.", "xiang": "El sofá roto hasta el marco significa que no hay correspondencia." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Se separa de ellos. Sin culpa.", "xiang": "Separarse de ellos sin culpa significa que pierde a los de arriba y abajo." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "El sofá está roto hasta la piel. Desgracia.", "xiang": "El sofá roto hasta la piel significa que la desgracia está cerca." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Una cadena de peces. Las damas del palacio gobiernan. Hay ventaja en todas las cosas.", "xiang": "Las damas del palacio gobernando significa finalmente sin falta." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "La gran fruta no se come. La persona superior recibe un carruaje. La persona inferior es destruida debajo del palacio.", "xiang": "La persona superior recibiendo un carruaje significa que es llevado por la gente." }
+    ]
+  },
+  "24": {
+    "name": "Retorno",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Retorno de una corta distancia. No hay necesidad de arrepentimiento. Gran buena fortuna.", "xiang": "Retorno de una corta distancia significa cultivar a sí mismo." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Retorno tranquilo. Buena fortuna.", "xiang": "La buena fortuna del retorno tranquilo viene de lo suave abajo." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Retorno repetido. Peligro. Sin culpa.", "xiang": "Retorno repetido trayendo peligro significa que el significado es sin culpa." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Caminando en medio de otros, uno retorna solo.", "xiang": "Caminando en medio de otros y retornando solo significa seguir el camino." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Retorno de noble corazón. Sin arrepentimiento.", "xiang": "Retorno de noble corazón sin arrepentimiento significa autoexamen en el centro." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Retorno perdido. Desgracia. Hay calamidad y aflicción. Si uno pusiera a los ejércitos en marcha, al final sufriría una gran derrota; y para el rey, desgracia. Por diez años no podría atacar de nuevo.", "xiang": "La desgracia del retorno perdido significa que uno se vuelve contra el camino del gobernante." }
+    ]
+  },
+  "25": {
+    "name": "Inocencia",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Acción inocente trae buena fortuna.", "xiang": "Acción inocente trayendo buena fortuna significa que la voluntad se lleva a cabo." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Quien ara ni siembra cosecha una cosecha, aunque no sea de su propio campo. Favorece tener adónde ir.", "xiang": "Quien ara ni siembra no está aún rico." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Desgracia inmerecida. Una vaca está atada a un árbol. La vaca del viajero es tomada; la calamidad del ciudadano.", "xiang": "La vaca del viajero siendo tomada trae calamidad al ciudadano." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Quien puede ser perseverante permanece sin culpa.", "xiang": "Permanecer sin culpa significa aferrarse a lo propio." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "No uses medicina en una enfermedad contraída por ninguna culpa tuya. Pasará por sí misma.", "xiang": "No usar medicina para una enfermedad contraída por ninguna culpa; no puede ser probada." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Acción inocente trae desgracia. Nada que favorezca.", "xiang": "Acción inocente trayendo desgracia significa desastre del agotamiento." }
+    ]
+  },
+  "26": {
+    "name": "El Poder de lo Grande",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Peligro está a la mano. Favorece desistir.", "xiang": "Peligro a la mano y desistir significa no correr hacia el desastre." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "El eje del carro está partido.", "xiang": "El eje del carro partido significa que no hay culpa en el centro." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "Un buen caballo que sigue a otros. Conciencia del peligro, con perseverancia, favorece. Practicar conducción de carro y defensa armada diariamente. Favorece tener adónde ir.", "xiang": "Favorece tener adónde ir porque la voluntad arriba está unida." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "La testera de un becerro joven. Gran buena fortuna.", "xiang": "Gran buena fortuna del seis en el cuarto lugar significa que hay alegría." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Los colmillos de un jabalí castrado. Buena fortuna.", "xiang": "La buena fortuna del seis en el quinto lugar trae celebración." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "Puertas celestiales. Buena fortuna.", "xiang": "Puertas celestiales trayendo buena fortuna significa que el camino es grandemente llevado a cabo." }
+    ]
+  },
+  "27": {
+    "name": "Las Esquinas de la Boca",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Dejas ir tu tortuga mágica, y me miras con las esquinas de tu boca cayendo. Desgracia.", "xiang": "Mirarme con las esquinas de tu boca cayendo significa que no vale la pena estimar." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Volviendo a la cima para nutrición, desviándose del camino para buscar nutrición de la colina. El avance trae desgracia.", "xiang": "El avance del seis en el segundo lugar trae desgracia porque la conducta pierde su clase." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Volviendo lejos de la nutrición. La perseverancia trae desgracia. Diez años pasarán antes de que haya algún uso para ello. Nada que favorezca.", "xiang": "Diez años de inutilidad significan ir grandemente contra el camino." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Volviendo a la cima para nutrición trae buena fortuna. Quien mira con la vigilancia de un tigre sin parpadear. Sin culpa.", "xiang": "Volviendo a la cima para nutrición trayendo buena fortuna significa que lo de arriba otorga brillo." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Volviendo lejos del camino. La perseverancia en casa trae buena fortuna. No debe cruzar la gran agua.", "xiang": "La perseverancia en casa trayendo buena fortuna significa seguir y someterse a lo que está arriba." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "La fuente de nutrición. Conciencia del peligro trae buena fortuna. Favorece cruzar la gran agua.", "xiang": "La fuente de nutrición trayendo buena fortuna significa que hay gran celebración." }
+    ]
+  },
+  "28": {
+    "name": "Preponderancia de lo Grande",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Colocar una estera de hierba blanca debajo. Sin culpa.", "xiang": "Colocar una estera de hierba blanca debajo significa que lo suave está abajo." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "Un álamo marchito brota flores. Un hombre mayor toma una joven esposa. Nada que no favorezca.", "xiang": "Un hombre mayor tomando una joven esposa significa pasar sobre y unir." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "La viga del techo se hunde hasta el punto de ruptura. Desgracia.", "xiang": "La viga del techo hundiéndose hasta el punto de ruptura significa que no hay nada que ayude." },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "La viga del techo está apuntalada. Buena fortuna. Si hay motivos ocultos, es humillante.", "xiang": "La viga del techo siendo apuntalada trayendo buena fortuna significa que no se hunde abajo." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "Un sauce marchito brota hojas. Una mujer mayor toma un joven esposo. Sin culpa, sin alabanza.", "xiang": "Un sauce marchito brotando hojas significa cómo puede durar mucho?" },
+      { "position": 6, "yao": "Seis en la cima", "text": "Uno debe atravesar el agua. Pasa sobre la cabeza. Desgracia. Sin culpa.", "xiang": "La desgracia de atravesar el agua que pasa sobre la cabeza no puede ser culpa de nadie." }
+    ]
+  },
+  "29": {
+    "name": "El Abismal",
+    "lines": [
+      { "position": 1, "yao": "Seis al principio", "text": "Repetición del Abismal. En el abismo uno cae en un pozo. Desgracia.", "xiang": "Repetición del Abismal y caer en un pozo significa que perder el camino trae desgracia." },
+      { "position": 2, "yao": "Nueve en el segundo lugar", "text": "El abismo es peligroso. Uno logra pequeñas cosas.", "xiang": "Lograr pequeñas cosas significa no emerger aún del centro." },
+      { "position": 3, "yao": "Seis en el tercer lugar", "text": "Encontrando el abismo, adelante un abismo, detrás una altura peligrosa. Cuando uno entra en una cueva en un pozo, hay desgracia.", "xiang": "Encontrando el abismo significa finalmente sin éxito." },
+      { "position": 4, "yao": "Seis en el cuarto lugar", "text": "Una jarra de vino, una canasta de comida, con estas vasijas de tierra una ofrenda simple. Aceptando esto a través de la ventana. Sin culpa al final.", "xiang": "Una jarra de vino y una canasta de comida significan que lo firme y lo suave se encuentran." },
+      { "position": 5, "yao": "Nueve en el quinto lugar", "text": "El abismo no desborda. Está lleno solo hasta el nivel de la cresta. Sin culpa.", "xiang": "El abismo no desbordándose significa que el centro aún no es grande." },
+      { "position": 6, "yao": "Seis en la cima", "text": "Atado con cuerdas y sogas, encerrado entre paredes de espino de prisión. Por tres años no encuentra el camino. Desgracia.", "xiang": "El seis en la cima perdiendo el camino significa desgracia por tres años." }
+    ]
+  },
+  "30": {
+    "name": "El Adherente",
+    "lines": [
+      { "position": 1, "yao": "Nueve al principio", "text": "Los pasos están enredados. Uno crea desorden pero no hay culpa.", "xiang": "Pasos enredados significa que uno evita la culpa." },
+      { "position": 2, "yao": "Seis en el segundo lugar", "text": "Luz amarilla. Suprema buena fortuna.", "xiang": "Luz amarilla trayendo suprema buena fortuna significa encontrar el camino medio." },
+      { "position": 3, "yao": "Nueve en el tercer lugar", "text": "En la luz del sol poniente, los hombres golpean sus ollas y cantan. Los grandes hombres lamentan. Desgracia.", "xiang": "La luz del sol poniente significa cómo puede durar mucho?" },
+      { "position": 4, "yao": "Nueve en el cuarto lugar", "text": "Su venida es repentina; se enciende, se apaga, es arrojada.", "xiang": "Su venida repentina significa que no hay lugar para ello." },
+      { "position": 5, "yao": "Seis en el quinto lugar", "text": "Lágrimas en inundaciones, suspirando y lamentando. Buena fortuna.", "xiang": "La buena fortuna del seis en el quinto lugar significa aferrarse al gobernante." },
+      { "position": 6, "yao": "Nueve en la cima", "text": "El rey lo usa para marchar y castigar. Entonces es mejor cortar las cabezas y no mantener a los prisioneros. Sin culpa.", "xiang": "El rey usándolo para marchar significa corregir el país." }
+    ]
+  }
+}

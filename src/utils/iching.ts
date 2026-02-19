@@ -2,6 +2,8 @@ import hexagramsData from '../data/hexagrams.json';
 import linesData from '../data/lines.json';
 import hexagramsDataEn from '../data/hexagrams_en.json';
 import linesDataEn from '../data/lines_en.json';
+import hexagramsDataEs from '../data/hexagrams_es.json';
+import linesDataEs from '../data/lines_es.json';
 import type { Language } from './i18n';
 
 // ==================== 类型定义 ====================
@@ -77,14 +79,14 @@ const hexagramsDataMap: Record<Language, HexagramData[]> = {
   'zh-CN': hexagramsData as HexagramData[],
   'zh-TW': hexagramsData as HexagramData[],
   'en': hexagramsDataEn as HexagramData[],
-  'es': hexagramsData as HexagramData[], // Spanish uses Chinese data for now
+  'es': hexagramsDataEs as HexagramData[],
 };
 
 const linesDataMap: Record<Language, typeof linesData> = {
   'zh-CN': linesData,
   'zh-TW': linesData,
   'en': linesDataEn,
-  'es': linesData, // Spanish uses Chinese data for now
+  'es': linesDataEs,
 };
 
 let currentLanguage: Language = 'zh-CN';
