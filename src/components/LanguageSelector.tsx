@@ -55,13 +55,13 @@ export function LanguageSelector() {
             "py-2 z-50"
           )}
         >
-          {(Object.keys(languages) as Language[]).map((lang) => (
+          {languages.map((lang) => (
             <button
               key={lang}
               onClick={() => handleSelect(lang)}
               className={cn(
                 "w-full flex items-center justify-between px-4 py-2",
-                "text-sm text-left",
+                "text-sm text-left text-stone-800",
                 "hover:bg-stone-50 transition-colors",
                 language === lang && "bg-stone-50 text-stone-900 font-medium"
               )}
