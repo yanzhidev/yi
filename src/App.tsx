@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Sparkles, RotateCcw, Scroll, Mountain, Wind } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { 
@@ -8,7 +8,8 @@ import {
   getChangedLines,
   type LineResult,
   getChangingLineInterpretations,
-  type LineInterpretation
+  type LineInterpretation,
+  setLanguage as setIchingLanguage
 } from './utils/iching'
 import { useLanguage } from './contexts/LanguageContext'
 import { LanguageSelector } from './components/LanguageSelector'
@@ -49,7 +50,12 @@ function App() {
   const [question, setQuestion] = useState('')
   const [result, setResult] = useState<HexagramCastResult | null>(null)
   const [isCasting, setIsCasting] = useState(false)
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  // Sync iching language with UI language
+  useEffect(() => {
+    setIchingLanguage(language)
+  }, [language])
 
   const currentHexagram = result ? getHexagramById(result.hexagramId) : null
   const changedHexagram = result?.changedHexagramId ? getHexagramById(result.changedHexagramId) : null

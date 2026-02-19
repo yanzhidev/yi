@@ -1,0 +1,706 @@
+{
+  "1": {
+    "name": "The Creative",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Hidden dragon. Do not act.", "xiang": "The yang is below." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Dragon appearing in the field. It furthers one to see the great person.", "xiang": "Virtue extends widely." },
+      { "position": 3, "yao": "Nine in the third place", "text": "All day long the superior person is creatively active. In the evening he is still like a corpse. No blame.", "xiang": "Following the way back and forth." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Wavering flight over the depths. No blame.", "xiang": "Advancing without blame." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Flying dragon in the heavens. It furthers one to see the great person.", "xiang": "The great person creates." },
+      { "position": 6, "yao": "Nine at the top", "text": "Arrogant dragon will have cause to repent.", "xiang": "Fullness cannot last long." }
+    ]
+  },
+  "2": {
+    "name": "The Receptive",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "When there is hoarfrost underfoot, solid ice is not far off.", "xiang": "By gentleness the way is followed, leading to solid ice." },
+      { "position": 2, "yao": "Six in the second place", "text": "Straight, square, great. Without purpose, yet nothing remains unfurthered.", "xiang": "The way of the earth is bright." },
+      { "position": 3, "yao": "Six in the third place", "text": "Hidden lines. One is able to remain persevering. If by chance you are in the service of a king, seek not works, but bring to completion.", "xiang": "Knowledge is broad and bright." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "A tied sack. No blame, no praise.", "xiang": "Caution brings no harm." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "A yellow lower garment brings supreme good fortune.", "xiang": "Culture is within." },
+      { "position": 6, "yao": "Six at the top", "text": "Dragons fight in the meadow. Their blood is black and yellow.", "xiang": "The way is exhausted." }
+    ]
+  },
+  "3": {
+    "name": "Difficulty at the Beginning",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Hesitation and hindrance. It furthers one to abide in perseverance and to appoint helpers.", "xiang": "Although there is hesitation and hindrance, the will is correct." },
+      { "position": 2, "yao": "Six in the second place", "text": "Difficulties pile up. Horse and wagon part. He is not a robber; he wants to woo when the time comes. The young girl is chaste, she does not pledge herself. Ten years, then she pledges herself.", "xiang": "The difficulty of the six in the second place comes from riding on the firm." },
+      { "position": 3, "yao": "Six in the third place", "text": "Whoever hunts deer without the forester only loses his way in the forest. The superior person understands the signs of the time and prefers to desist. To go on brings humiliation.", "xiang": "One prefers to desist, not pursuing the fleeing game." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Horse and wagon part; they seek union. Going brings good fortune. Nothing that would not further.", "xiang": "Seeking and going brings light." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Difficulties in blessing. A little perseverance brings good fortune. Great perseverance brings misfortune.", "xiang": "Blessing has not yet been bestowed." },
+      { "position": 6, "yao": "Six at the top", "text": "Horse and wagon part; weeping tears of blood.", "xiang": "How can this last long?" }
+    ]
+  },
+  "4": {
+    "name": "Youthful Folly",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "To make a fool develop it furthers one to apply discipline. The fetters should be removed. To go on in this way brings humiliation.", "xiang": "It furthers one to apply discipline, thereby correcting the law." },
+      { "position": 2, "yao": "Nine in the second place", "text": "To bear with fools in kindliness brings good fortune. To know how to take care of women brings good fortune. The young person is manageable.", "xiang": "The young person is manageable; firm and yielding unite." },
+      { "position": 3, "yao": "Six in the third place", "text": "Do not seek a person in the marriage market. If one sees a person of bronze, one loses the person of gold. Nothing that would further.", "xiang": "Do not seek a person in the marriage market, for the conduct is not correct." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Entangled folly brings humiliation.", "xiang": "The humiliation of entangled folly comes from being far from reality." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Childlike folly brings good fortune.", "xiang": "The good fortune of childlike folly comes from yielding gentleness." },
+      { "position": 6, "yao": "Nine at the top", "text": "In punishing folly it does not further one to commit transgressions. The only thing that furthers is to prevent transgressions.", "xiang": "To prevent transgressions brings good fortune; above and below are in harmony." }
+    ]
+  },
+  "5": {
+    "name": "Waiting",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Waiting in the meadow. It furthers one to abide in what endures. No blame.", "xiang": "Waiting in the meadow means not running into danger." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Waiting on the sand. There is some gossip. The end brings good fortune.", "xiang": "Waiting on the sand means remaining in the center." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Waiting in the mud brings about the arrival of enemies.", "xiang": "The arrival of enemies comes from inviting them by one's own fault. If one is cautious, no defeat follows." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Waiting in blood. Get out of the cave.", "xiang": "One follows yielding obedience." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Waiting at meat and drink. Perseverance brings good fortune.", "xiang": "Meat and drink bring good fortune because of the central and correct position." },
+      { "position": 6, "yao": "Six at the top", "text": "One falls into the cave. Three uninvited guests arrive. Honor them, and in the end there will be good fortune.", "xiang": "Although the place is not correct, there is no great mistake." }
+    ]
+  },
+  "6": {
+    "name": "Conflict",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "If one does not perpetuate the affair, there is a little gossip. In the end, good fortune comes.", "xiang": "Not perpetuating the affair means that a dispute cannot be drawn out." },
+      { "position": 2, "yao": "Nine in the second place", "text": "One cannot engage in conflict; one comes back, gives way, and retreats. With the people of his town, three hundred households, one avoids calamity.", "xiang": "Not engaging in conflict but returning to give way, one hides in the town." },
+      { "position": 3, "yao": "Six in the third place", "text": "To nourish oneself on ancient virtue induces perseverance. Danger. In the end, good fortune comes. If by chance you are in the service of a king, seek not works.", "xiang": "Nourishing oneself on ancient virtue means following that which is above brings good fortune." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "One cannot engage in conflict. One turns back, submits to fate, changes one's attitude, and finds peace in perseverance. Good fortune.", "xiang": "Turning back, submitting to fate, changing one's attitude, and finding peace in perseverance means not losing anything." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "To contend before him brings supreme good fortune.", "xiang": "To contend before him brings supreme good fortune because of the central and correct position." },
+      { "position": 6, "yao": "Nine at the top", "text": "Even if by chance a leather belt is bestowed on one, by the end of the morning it will be taken away three times.", "xiang": "Receiving the belt through contention is not worthy of respect." }
+    ]
+  },
+  "7": {
+    "name": "The Army",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "An army must set forth in the proper order. If the order is not good, misfortune threatens.", "xiang": "An army setting forth in proper order means that one loses the order to bring misfortune." },
+      { "position": 2, "yao": "Nine in the second place", "text": "In the midst of the army. Good fortune. No blame. The king bestows a triple decoration.", "xiang": "In the midst of the army brings good fortune because of receiving favor from heaven." },
+      { "position": 3, "yao": "Six in the third place", "text": "Perchance the army carries corpses in the wagon. Misfortune.", "xiang": "The army carrying corpses in the wagon means great lack of success." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The army retreats. No blame.", "xiang": "The army retreats without blame because it has not deviated from the normal." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "There is game in the field. It furthers one to catch it. Without blame. Let the eldest lead the army. The younger transports corpses; then perseverance brings misfortune.", "xiang": "Letting the eldest lead the army means acting correctly in the center." },
+      { "position": 6, "yao": "Six at the top", "text": "The great prince issues commands, founds states, vests families with fiefs. Inferior people should not be employed.", "xiang": "The great prince issues commands in order to rectify achievements." }
+    ]
+  },
+  "8": {
+    "name": "Holding Together",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Hold to him in truth and loyalty; no blame. Truth, like a full earthen bowl: thus in the end good fortune comes from without.", "xiang": "In the beginning of Holding Together, the other brings good fortune." },
+      { "position": 2, "yao": "Six in the second place", "text": "Hold to him inwardly. Perseverance brings good fortune.", "xiang": "Holding to him inwardly means not losing oneself." },
+      { "position": 3, "yao": "Six in the third place", "text": "You hold together with the wrong people.", "xiang": "Holding together with the wrong people is indeed hurtful." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Hold to him outwardly also. Perseverance brings good fortune.", "xiang": "Holding outwardly to the worthy means following the superior." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Manifestation of holding together. In the hunt the king uses beaters on three sides only and forgoes game that runs off in front. The people need no warning. Good fortune.", "xiang": "The good fortune of the manifestation of holding together comes from the central and correct position." },
+      { "position": 6, "yao": "Six at the top", "text": "He finds no head for holding together. Misfortune.", "xiang": "He finds no head for holding together; there is no end." }
+    ]
+  },
+  "9": {
+    "name": "The Taming Power of the Small",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Return to the way. How could there be blame in this? Good fortune.", "xiang": "Returning to the way, the meaning is good fortune." },
+      { "position": 2, "yao": "Nine in the second place", "text": "He allows himself to be drawn into returning. Good fortune.", "xiang": "Being drawn into returning in the center means not losing oneself." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The spokes burst out of the wagon. Man and wife roll their eyes.", "xiang": "Man and wife roll their eyes because they cannot set their house in order." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "If you are sincere, blood vanishes and fear gives way. No blame.", "xiang": "If you are sincere, fear gives way because of agreement in will above." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "If you are sincere and loyally attached, you are rich in your neighbor.", "xiang": "If you are sincere and loyally attached, you are not alone in your riches." },
+      { "position": 6, "yao": "Nine at the top", "text": "The rain comes, there is rest. This is due to the lasting effect of character. Perseverance of the woman brings danger. The moon is nearly full. If the superior person continues on, misfortune comes.", "xiang": "The rain comes and there is rest, thus virtue is accumulated." }
+    ]
+  },
+  "10": {
+    "name": "Treading",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Simple conduct. Progress without blame.", "xiang": "Progress of simple conduct means acting according to one's own will alone." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Treading a smooth, level course. The perseverance of a dark person brings good fortune.", "xiang": "The perseverance of a dark person brings good fortune because he does not confuse himself." },
+      { "position": 3, "yao": "Six in the third place", "text": "A one-eyed person is able to see; a lame person is able to tread. Treading on the tail of the tiger, it bites. Misfortune. A brave soldier acts the part of a great lord.", "xiang": "A one-eyed person is able to see, but not enough to see clearly." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Treading on the tail of the tiger. Cautious and apprehensive, in the end one will be lucky.", "xiang": "Cautious and apprehensive, in the end one will be lucky, for the will is carried out." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Resolute conduct. Perseverance with awareness of danger.", "xiang": "Resolute conduct with awareness of danger means the place is correct." },
+      { "position": 6, "yao": "Nine at the top", "text": "Look to your conduct and weigh the favorable signs. When it is full and good, then turning back brings supreme good fortune. No blame.", "xiang": "Supreme good fortune above brings great celebration." }
+    ]
+  },
+  "11": {
+    "name": "Peace",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "When ribbon grass is pulled up, the sod comes with it. Each according to his kind. Undertakings bring good fortune.", "xiang": "Undertakings bring good fortune because the will is directed outward." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Bearing with the uncultivated, fording the river without a boat, not forgetting the deserted, not losing the nomads. It furthers one to take action in the center.", "xiang": "Bearing with the uncultivated and taking action in the center means brightening and extending." },
+      { "position": 3, "yao": "Nine in the third place", "text": "No plain not followed by a slope. No going not followed by a return. He who remains persevering in danger is without blame. Do not complain about this truth; enjoy the good fortune you still possess.", "xiang": "No going not followed by a return means the boundary of heaven and earth." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Fluttering, fluttering, yet never falling down. Because of the neighbors, one is lavish with one's possessions.", "xiang": "Fluttering, fluttering, yet never falling down means all lose reality." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Emperor Yi gave his daughter in marriage. Supreme good fortune comes.", "xiang": "Supreme good fortune comes because the central action is carried out according to the will." },
+      { "position": 6, "yao": "Six at the top", "text": "The wall falls back into the moat. Use no army now. Make your commands known within your own town. Perseverance brings humiliation.", "xiang": "The wall falling back into the moat means that the order is confused." }
+    ]
+  },
+  "12": {
+    "name": "Standstill",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "When ribbon grass is pulled up, the sod comes with it. Perseverance brings good fortune and success.", "xiang": "Perseverance with ribbon grass brings good fortune because the will is on the ruler." },
+      { "position": 2, "yao": "Six in the second place", "text": "They bear and endure; this means good fortune for inferior people. The standstill serves to help the great person to advance.", "xiang": "The standstill serves to help the great person to advance because he does not confuse the multitude." },
+      { "position": 3, "yao": "Six in the third place", "text": "They bear shame.", "xiang": "Bearing shame means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "There is command. No blame. Those who work with him are of like kind.", "xiang": "There is command and no blame because the will is carried out." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Standstill is giving way. Good fortune for the great person. What if it should fail, what if it should fail? In this way he ties it to a cluster of mulberry shoots.", "xiang": "The good fortune of the great person comes from the correct place." },
+      { "position": 6, "yao": "Nine at the top", "text": "The standstill comes to an end. First standstill, then good fortune.", "xiang": "Standstill coming to an end means how could it last long?" }
+    ]
+  },
+  "13": {
+    "name": "Fellowship with Men",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Fellowship with men at the gate. No blame.", "xiang": "Going out of the gate for fellowship with men, who could blame him?" },
+      { "position": 2, "yao": "Six in the second place", "text": "Fellowship with men in the clan. Humiliation.", "xiang": "Fellowship with men in the clan is the way of humiliation." },
+      { "position": 3, "yao": "Nine in the third place", "text": "He hides weapons in the thicket; he climbs the high hill in front. For three years he does not rise up.", "xiang": "Hiding weapons in the thicket means the enemy is firm." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "He climbs up on his wall; he cannot attack. Good fortune.", "xiang": "Climbing up on the wall, he finds it right not to attack." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Men bound in fellowship first weep and lament, but afterward they laugh. After great struggles they succeed in meeting.", "xiang": "Fellowship of men first weeping and lamenting means the firm is in the middle." },
+      { "position": 6, "yao": "Nine at the top", "text": "Fellowship with men in the meadow. No regret.", "xiang": "Fellowship with men in the meadow means the will has not yet been attained." }
+    ]
+  },
+  "14": {
+    "name": "Possession in Great Measure",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "No relationship with harmful things. Strong in one's integrity. No blame.", "xiang": "No relationship with harmful things in the beginning of Possession in Great Measure means no harmful contact." },
+      { "position": 2, "yao": "Nine in the second place", "text": "A big wagon for loading. One may undertake something. No blame.", "xiang": "A big wagon for loading means accumulating in the center without defeat." },
+      { "position": 3, "yao": "Nine in the third place", "text": "A prince offers it to the Son of Heaven. A petty person cannot do this.", "xiang": "A prince offering it to the Son of Heaven means the petty person brings harm." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "He makes a difference between himself and his neighbor. No blame.", "xiang": "Making a difference between himself and his neighbor brings no blame because of clear discrimination." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "His sincerity gives him the power to inspire confidence. Kindness without blame.", "xiang": "His sincerity inspiring confidence means trust extends the will." },
+      { "position": 6, "yao": "Nine at the top", "text": "He is blessed by heaven. Good fortune. Nothing that does not further.", "xiang": "Supreme good fortune above comes from the protection of heaven." }
+    ]
+  },
+  "15": {
+    "name": "Modesty",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "A modest person who sets out to cross the great water brings good fortune.", "xiang": "A modest person brings good fortune because he is humble and cultivates himself." },
+      { "position": 2, "yao": "Six in the second place", "text": "Modesty that comes to expression. Perseverance brings good fortune.", "xiang": "Modesty that comes to expression and brings good fortune means the heart finds the center." },
+      { "position": 3, "yao": "Nine in the third place", "text": "A modest person who accomplishes works of merit brings good fortune.", "xiang": "A modest person who accomplishes works of merit brings good fortune because the myriad people submit." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Nothing that would not further modesty in movement.", "xiang": "Nothing that would not further modesty in movement means not violating the law." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Not increasing whatever one has. With one's neighbors it is beneficial to go to war. Nothing that would not further.", "xiang": "It is beneficial to go to war in order to punish those who do not submit." },
+      { "position": 6, "yao": "Six at the top", "text": "Modesty that comes to expression. It is favorable to set armies marching to chastise one's own city and one's own country.", "xiang": "Modesty that comes to expression means the will has not yet been attained." }
+    ]
+  },
+  "16": {
+    "name": "Enthusiasm",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Enthusiasm that expresses itself brings misfortune.", "xiang": "Enthusiasm that expresses itself brings misfortune because the will is exhausted." },
+      { "position": 2, "yao": "Six in the second place", "text": "Firm as a rock. Not a whole day. Perseverance brings good fortune.", "xiang": "Not a whole day; perseverance brings good fortune because of the central and correct position." },
+      { "position": 3, "yao": "Six in the third place", "text": "Enthusiasm that looks upward brings repentance. Hesitation brings repentance.", "xiang": "Enthusiasm that looks upward brings repentance because the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "The source of enthusiasm. He achieves great things. Do not doubt. Friends gather around him as in a hair clasp.", "xiang": "The source of enthusiasm bringing great achievements means the will is carried out greatly." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "With constant perseverance there is illness, but it does not die.", "xiang": "Illness through constant perseverance means yielding rides on the firm." },
+      { "position": 6, "yao": "Six at the top", "text": "Enthusiasm that has become dark. Perseverance brings uneasiness, but there is no blame.", "xiang": "Enthusiasm that has become dark above means how can it last long?" }
+    ]
+  },
+  "17": {
+    "name": "Following",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "The standard is changing. Perseverance brings good fortune. To go out of the door in company produces deeds.", "xiang": "The standard changing means following what brings good fortune." },
+      { "position": 2, "yao": "Six in the second place", "text": "If one clings to the little boy, one loses the strong man.", "xiang": "If one clings to the little boy, one cannot have both." },
+      { "position": 3, "yao": "Six in the third place", "text": "If one clings to the strong man, one loses the little boy. Following leads to finding what one seeks, but it furthers one to remain persevering.", "xiang": "If one clings to the strong man, the will is set on the lower." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Following leads to obtaining. But should it continue? If one follows the way, there is no blame.", "xiang": "Following leads to obtaining, but the meaning is ominous." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Sincere in the good. Good fortune.", "xiang": "Sincere in the good brings good fortune because of the central and correct position." },
+      { "position": 6, "yao": "Six at the top", "text": "The king offers his sacrifice on the Western Mountain. Good fortune. No blame.", "xiang": "He is tied and bound in following, and it is proper to offer sacrifice." }
+    ]
+  },
+  "18": {
+    "name": "Work on What Has Been Spoiled",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Setting right what has been spoiled by one's father. If there is a son, no blame rests on the departed father. Danger. In the end, good fortune.", "xiang": "Setting right what has been spoiled by one's father means the will is directed toward the father." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Setting right what has been spoiled by one's mother. One must not be too persevering.", "xiang": "Setting right what has been spoiled by one's mother means finding the middle way." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Setting right what has been spoiled by one's father. There is a little regret but no great blame.", "xiang": "Setting right what has been spoiled by one's father means finally there is no blame." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Tolerating what has been spoiled by one's father. In continuing one sees humiliation.", "xiang": "Tolerating what has been spoiled by one's father means going forth and not obtaining." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Setting right what has been spoiled by one's father. One meets with praise.", "xiang": "Setting right what has been spoiled by one's father means receiving praise through virtue." },
+      { "position": 6, "yao": "Nine at the top", "text": "He serves not king and state; he excels in exalting his own calling.", "xiang": "Not serving king and state means the will can be a model." }
+    ]
+  },
+  "19": {
+    "name": "Approach",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Joint approach. Perseverance brings good fortune.", "xiang": "Joint approach with perseverance brings good fortune because the will is correct." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Joint approach. Good fortune. Everything furthers.", "xiang": "Joint approach bringing good fortune and everything furthering means not yet obeying the command." },
+      { "position": 3, "yao": "Six in the third place", "text": "Comfortable approach. Nothing that would further. If one is stimulated, there is no blame.", "xiang": "Comfortable approach means the place is not correct." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Complete approach. No blame.", "xiang": "Complete approach without blame means the place is correct." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Wise approach. This is great for a prince. Good fortune.", "xiang": "What is great for a prince means acting correctly in the center." },
+      { "position": 6, "yao": "Six at the top", "text": "Greathearted approach. Good fortune. No blame.", "xiang": "Greathearted approach brings good fortune because the will is within." }
+    ]
+  },
+  "20": {
+    "name": "Contemplation",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Boylike contemplation. For an inferior person, no blame. For a superior person, humiliation.", "xiang": "Boylike contemplation of the inferior person means the way of the inferior person." },
+      { "position": 2, "yao": "Six in the second place", "text": "Contemplation through the crack of the door. Furthering for the perseverance of a woman.", "xiang": "Contemplation through the crack of the door for the perseverance of a woman means it is also a disgrace." },
+      { "position": 3, "yao": "Six in the third place", "text": "Contemplation of my life decides the choice between advance and retreat.", "xiang": "Contemplation of my life deciding advance and retreat means not losing the way." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Contemplation of the light of the kingdom. It furthers one to exert influence as a guest of the king.", "xiang": "Contemplation of the light of the kingdom means esteeming the guest." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Contemplation of my life. The superior person is without blame.", "xiang": "Contemplation of my life means observing the people." },
+      { "position": 6, "yao": "Nine at the top", "text": "Contemplation of his life. The superior person is without blame.", "xiang": "Contemplation of his life means the will is not yet peaceful." }
+    ]
+  },
+  "21": {
+    "name": "Biting Through",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "His feet are fastened in the stocks, and his toes disappear. No blame.", "xiang": "Feet fastened in the stocks mean he cannot walk." },
+      { "position": 2, "yao": "Six in the second place", "text": "Bites on dried meat and burns his nose. No blame.", "xiang": "Biting on dried meat and burning his nose means riding on the firm." },
+      { "position": 3, "yao": "Six in the third place", "text": "Bites on old dried meat and strikes on something poisonous. Slight humiliation. No blame.", "xiang": "Striking on something poisonous means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Bites on dried gristly meat. Receives metal arrows. It furthers one to be aware of difficulties. Good fortune.", "xiang": "It furthers one to be aware of difficulties because the light is not yet shining." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Bites on dried lean meat. Receives yellow gold. Perseverance brings danger. No blame.", "xiang": "Perseverance bringing no blame means obtaining what is appropriate." },
+      { "position": 6, "yao": "Nine at the top", "text": "His neck is fastened in the wooden cangue, and his ears disappear. Misfortune.", "xiang": "The neck fastened in the wooden cangue means the ears are not clear." }
+    ]
+  },
+  "22": {
+    "name": "Grace",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "He lends grace to his toes, leaves the carriage, and walks.", "xiang": "Leaving the carriage to walk means righteously he does not ride." },
+      { "position": 2, "yao": "Six in the second place", "text": "He lends grace to his beard.", "xiang": "He lends grace to his beard because he rises with what is above." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Graceful and moist. Constant perseverance brings good fortune.", "xiang": "The good fortune of constant perseverance means there is no one to humiliate him." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Grace or simplicity? A white horse comes as if on wings. He is not a robber; he will woo at the right time.", "xiang": "The six in the fourth place is in doubt." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Grace in gardens and hillocks. The roll of silk is meager and small. Humiliation, but in the end good fortune.", "xiang": "The good fortune of the six in the fifth place brings joy." },
+      { "position": 6, "yao": "Nine at the top", "text": "Simple grace. No blame.", "xiang": "Simple grace without blame means above one attains his will." }
+    ]
+  },
+  "23": {
+    "name": "Splitting Apart",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "The leg of the couch is split. Those who persevere are destroyed. Misfortune.", "xiang": "The leg of the couch split means destroying that which is below." },
+      { "position": 2, "yao": "Six in the second place", "text": "The couch is split to the frame. Those who persevere are destroyed. Misfortune.", "xiang": "The couch split to the frame means there is no correspondence." },
+      { "position": 3, "yao": "Six in the third place", "text": "He splits with them. No blame.", "xiang": "He splits with them without blame because he loses those above and below." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The couch is split to the skin. Misfortune.", "xiang": "The couch split to the skin means the misfortune is near at hand." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "A string of fish. The palace ladies rule. There is advantage in all things.", "xiang": "The palace ladies ruling means finally there is no fault." },
+      { "position": 6, "yao": "Nine at the top", "text": "The great fruit is not eaten. The superior person receives a carriage. The inferior person is destroyed beneath the palace.", "xiang": "The superior person receiving a carriage means he is carried by the people." }
+    ]
+  },
+  "24": {
+    "name": "Return",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Return from a short distance. No need for remorse. Great good fortune.", "xiang": "Return from a short distance means cultivating oneself." },
+      { "position": 2, "yao": "Six in the second place", "text": "Quiet return. Good fortune.", "xiang": "The good fortune of quiet return comes from the yielding below." },
+      { "position": 3, "yao": "Six in the third place", "text": "Repeated return. Danger. No blame.", "xiang": "Repeated return bringing danger means the meaning is without blame." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Walking in the midst of others, one returns alone.", "xiang": "Walking in the midst of others and returning alone means following the way." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Noblehearted return. No remorse.", "xiang": "Noblehearted return without remorse means self-examination in the center." },
+      { "position": 6, "yao": "Six at the top", "text": "Lost return. Misfortune. There is calamity and affliction. If one should set armies marching, in the end he will suffer a great defeat; and for the king, misfortune. For ten years he cannot attack again.", "xiang": "The misfortune of lost return means one turns against the way of the ruler." }
+    ]
+  },
+  "25": {
+    "name": "Innocence",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Innocent action brings good fortune.", "xiang": "Innocent action bringing good fortune means the will is carried out." },
+      { "position": 2, "yao": "Six in the second place", "text": "One who plows not nor sows reaps a harvest, though it be not his own field. It furthers one to have somewhere to go.", "xiang": "One who plows not nor sows is not yet rich." },
+      { "position": 3, "yao": "Six in the third place", "text": "Undeserved misfortune. A cow is tied to a tree. The traveler's cow is taken; the townsman's calamity.", "xiang": "The traveler's cow being taken brings calamity to the townsman." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "He who can be persevering remains without blame.", "xiang": "Remaining without blame means holding fast to what is one's own." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Use no medicine in an illness incurred through no fault of your own. It will pass of itself.", "xiang": "Use no medicine for an illness incurred through no fault; it cannot be tested." },
+      { "position": 6, "yao": "Nine at the top", "text": "Innocent action brings misfortune. Nothing that would further.", "xiang": "Innocent action bringing misfortune means disaster from exhaustion." }
+    ]
+  },
+  "26": {
+    "name": "The Taming Power of the Great",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Danger is at hand. It furthers one to desist.", "xiang": "Danger at hand and desisting means not running into disaster." },
+      { "position": 2, "yao": "Nine in the second place", "text": "The axletree is split.", "xiang": "The axletree split means there is no fault in the center." },
+      { "position": 3, "yao": "Nine in the third place", "text": "A good horse that follows others. Awareness of danger, with perseverance, furthers. Practice chariot driving and armed defense daily. It furthers one to have somewhere to go.", "xiang": "It furthers one to have somewhere to go because the will above is united." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The headboard of a young bull. Great good fortune.", "xiang": "Great good fortune of the six in the fourth place means there is joy." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "The tusks of a gelded boar. Good fortune.", "xiang": "The good fortune of the six in the fifth place brings celebration." },
+      { "position": 6, "yao": "Nine at the top", "text": "Heavenly gates. Good fortune.", "xiang": "Heavenly gates bringing good fortune means the way is greatly carried out." }
+    ]
+  },
+  "27": {
+    "name": "The Corners of the Mouth",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "You let your magic tortoise go, and look at me with the corners of your mouth drooping. Misfortune.", "xiang": "Looking at me with the corners of your mouth drooping means it is not worth esteeming." },
+      { "position": 2, "yao": "Six in the second place", "text": "Turning to the summit for nourishment, deviating from the way to seek nourishment from the hill. Advance brings misfortune.", "xiang": "Advance of the six in the second place brings misfortune because the conduct loses its kind." },
+      { "position": 3, "yao": "Six in the third place", "text": "Turning away from nourishment. Perseverance brings misfortune. Ten years will pass before there is any use for it. Nothing that would further.", "xiang": "Ten years of uselessness means going greatly against the way." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Turning to the summit for nourishment brings good fortune. He who keeps looking with a tiger's vigilance without blinking. There is no blame.", "xiang": "Turning to the summit for nourishment bringing good fortune means what is above bestows brightness." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Turning away from the path. Perseverance at home brings good fortune. It should not cross the great water.", "xiang": "Perseverance at home bringing good fortune means following and yielding to what is above." },
+      { "position": 6, "yao": "Nine at the top", "text": "The source of nourishment. Awareness of danger brings good fortune. It furthers one to cross the great water.", "xiang": "The source of nourishment bringing good fortune means there is great celebration." }
+    ]
+  },
+  "28": {
+    "name": "Preponderance of the Great",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Place a mat of white grass beneath. No blame.", "xiang": "Placing a mat of white grass beneath means yielding is below." },
+      { "position": 2, "yao": "Nine in the second place", "text": "A withered poplar puts forth flowers. An older man takes a young wife. Nothing that would not further.", "xiang": "An older man taking a young wife means passing over and uniting." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The ridgepole sags to the breaking point. Misfortune.", "xiang": "The ridgepole sagging to the breaking point means there is nothing to help." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "The ridgepole is braced. Good fortune. If there are ulterior motives, it is humiliating.", "xiang": "The ridgepole being braced bringing good fortune means it does not sag below." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "A withered poplar puts forth leaves. An older woman takes a young husband. No blame, no praise.", "xiang": "A withered poplar putting forth leaves means how can it last long?" },
+      { "position": 6, "yao": "Six at the top", "text": "One must go through the water. It goes over one's head. Misfortune. No blame.", "xiang": "The misfortune of going through the water that goes over one's head cannot be blamed on anyone." }
+    ]
+  },
+  "29": {
+    "name": "The Abysmal",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Repetition of the Abysmal. In the abyss one falls into a pit. Misfortune.", "xiang": "Repetition of the Abysmal and falling into a pit means losing the way brings misfortune." },
+      { "position": 2, "yao": "Nine in the second place", "text": "The abyss is dangerous. One achieves small things.", "xiang": "Achieving small things means not yet emerging from the center." },
+      { "position": 3, "yao": "Six in the third place", "text": "Coming upon the abyss, ahead an abyss, behind a dangerous height. When one enters a cave in a pit, there is misfortune.", "xiang": "Coming upon the abyss means finally without success." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "A jug of wine, a basket of food, with these earthen vessels a simple offering. Accepting this through the window. No blame in the end.", "xiang": "A jug of wine and a basket of food means the firm and yielding meet." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "The abyss does not overflow. It is filled only to the level of the ridge. No blame.", "xiang": "The abyss not overflowing means the center is not yet great." },
+      { "position": 6, "yao": "Six at the top", "text": "Bound with cords and ropes, shut in between thorn-hedged prison walls. For three years one does not find the way. Misfortune.", "xiang": "The six at the top losing the way means misfortune for three years." }
+    ]
+  },
+  "30": {
+    "name": "The Clinging",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "The footsteps are tangled. One creates disorder but there is no blame.", "xiang": "Tangled footsteps mean one shuns blame." },
+      { "position": 2, "yao": "Six in the second place", "text": "Yellow light. Supreme good fortune.", "xiang": "Yellow light bringing supreme good fortune means finding the middle way." },
+      { "position": 3, "yao": "Nine in the third place", "text": "In the light of the setting sun, men beat their pots and sing. The big men lament. Misfortune.", "xiang": "The light of the setting sun means how can it last long?" },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Its coming is sudden; it flames up, dies down, is thrown away.", "xiang": "Its coming is sudden means there is no place for it." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Tears in floods, sighing and lamenting. Good fortune.", "xiang": "The good fortune of the six in the fifth place means cleaving to the ruler." },
+      { "position": 6, "yao": "Nine at the top", "text": "The king uses him to march forth and chastise. Then it is best to cut off the heads and not to keep the prisoners. No blame.", "xiang": "The king using him to march forth means to correct the country." }
+    ]
+  },
+  "31": {
+    "name": "Influence",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Influence on the big toe.", "xiang": "Influence on the big toe means the will is directed outward." },
+      { "position": 2, "yao": "Six in the second place", "text": "Influence on the calves of the legs. Misfortune. Abiding brings good fortune.", "xiang": "Although there is misfortune, abiding brings good fortune because yielding does no harm." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Influence on the thighs. Holding to that which follows blindly brings humiliation.", "xiang": "Influence on the thighs means not resting in the place." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Perseverance brings good fortune. Remorse disappears. The fluttering thoughts come and go. Friends follow your thoughts.", "xiang": "Perseverance bringing good fortune and remorse disappearing means unharmed by stimulation." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Influence on the back of the neck. No remorse.", "xiang": "Influence on the back of the neck means the will is directed to the end." },
+      { "position": 6, "yao": "Six at the top", "text": "Influence on the jaws, cheeks, and tongue.", "xiang": "Influence on the jaws, cheeks, and tongue means speaking from the mouth." }
+    ]
+  },
+  "32": {
+    "name": "Duration",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Seeking duration too hastily brings misfortune. Nothing that would further.", "xiang": "Seeking duration too hastily brings misfortune because one seeks it too deeply from the start." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Remorse disappears.", "xiang": "Remorse disappearing of the nine in the second place means being able to last in the center." },
+      { "position": 3, "yao": "Nine in the third place", "text": "He who does not give duration to his character meets with disgrace. Persistent humiliation.", "xiang": "He who does not give duration to his character meets with disgrace because there is nowhere to go." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "No game in the field.", "xiang": "No game in the field means one is not in the right place long." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Giving duration to one's character. Perseverance brings good fortune for a woman. Misfortune for a man.", "xiang": "Good fortune for a woman means following to the end." },
+      { "position": 6, "yao": "Six at the top", "text": "Restlessness brings misfortune.", "xiang": "Restlessness at the top brings no success." }
+    ]
+  },
+  "33": {
+    "name": "Retreat",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Retreat at the tail. Danger. It does not further one to undertake anything.", "xiang": "The danger of retreat at the tail means not going; what disaster could there be?" },
+      { "position": 2, "yao": "Six in the second place", "text": "He holds him fast with yellow oxhide. No one can tear him loose.", "xiang": "He holds him fast with yellow oxhide means the will is firm." },
+      { "position": 3, "yao": "Nine in the third place", "text": "A halted retreat is nerve-wracking and dangerous. To retain people as men- and maidservants brings good fortune.", "xiang": "The nerve-wracking danger of a halted retreat means there is sickness and exhaustion." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Voluntary retreat brings good fortune to the superior person and downfall to the inferior person.", "xiang": "The superior person's voluntary retreat means the inferior person cannot do it." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Friendly retreat. Perseverance brings good fortune.", "xiang": "Friendly retreat bringing good fortune means the will is correct." },
+      { "position": 6, "yao": "Nine at the top", "text": "Cheerful retreat. Everything serves to further.", "xiang": "Cheerful retreat serving to further everything means there is no doubt." }
+    ]
+  },
+  "34": {
+    "name": "The Power of the Great",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Power in the toes. Continuing brings misfortune. This is certainly true.", "xiang": "Power in the toes means the certainty is exhausted." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Perseverance brings good fortune.", "xiang": "Perseverance of the nine in the second place brings good fortune because it is in the middle." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The inferior person uses power. The superior person uses influence. Perseverance brings danger. A ram butts against the fence and entangles his horns.", "xiang": "The inferior person uses power; the superior person refrains." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Perseverance brings good fortune. Remorse disappears. The fence opens up. He does not entangle his horns. The power is in the axle of a big wagon.", "xiang": "The fence opening up means going forward is supported." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Loses the goat in the field. No remorse.", "xiang": "Losing the goat in the field means the place is not correct." },
+      { "position": 6, "yao": "Six at the top", "text": "A ram butts against the fence. He cannot retreat, he cannot go forward. Nothing serves to further. If one notes the difficulty, this brings good fortune.", "xiang": "Not being able to retreat or go forward means there is no auspicious sign." }
+    ]
+  },
+  "35": {
+    "name": "Progress",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Progress that meets with confidence brings good fortune. If one is fearful and anxious, it brings good fortune. No blame.", "xiang": "Progress meeting with confidence means acting alone is correct." },
+      { "position": 2, "yao": "Six in the second place", "text": "Progress that meets with sorrow. Perseverance brings good fortune. One receives this great blessing from one's grandmother.", "xiang": "Receiving this great blessing means acting correctly in the center." },
+      { "position": 3, "yao": "Six in the third place", "text": "All are in agreement. Remorse disappears.", "xiang": "All being in agreement means the will moves upward." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Progress like a hamster. Perseverance brings danger.", "xiang": "Progress like a hamster means the place is not correct." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Remorse disappears. Do not trouble about gain or loss. Going forward brings good fortune. Everything serves to further.", "xiang": "Not troubling about gain or loss means going forward brings blessing." },
+      { "position": 6, "yao": "Nine at the top", "text": "Progress with one's horns. It is permissible to use force only to chastise one's own city. Danger. Good fortune. No blame. But perseverance brings humiliation.", "xiang": "It is permissible to use force only to chastise one's own city because the way is not yet bright." }
+    ]
+  },
+  "36": {
+    "name": "Darkening of the Light",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Darkening of the light during flight. He drops his wings. The superior person walks for three days without eating. He has a place to go. The host has things to say.", "xiang": "The superior person walking and not eating means it is right not to eat." },
+      { "position": 2, "yao": "Six in the second place", "text": "Darkening of the light injures the left thigh. He saves himself with the strength of a horse. Good fortune.", "xiang": "The good fortune of the six in the second place means acting in accordance with the law." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Darkening of the light during the hunt in the south. Their great leader is captured. One should not act hastily to make things right.", "xiang": "The will of the hunt in the south means great attainment." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "He penetrates the left side of the belly. One gets at the very heart of darkening of the light and leaves the gate and courtyard.", "xiang": "Penetrating the left side of the belly means getting at the heart of the matter." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Darkening of the light as with Chi. Perseverance furthers.", "xiang": "The perseverance of Chi means brightness cannot be extinguished." },
+      { "position": 6, "yao": "Six at the top", "text": "Not light but dark. First he climbed up to heaven, then he plunged into the depths of the earth.", "xiang": "First climbing up to heaven means illuminating the four countries." }
+    ]
+  },
+  "37": {
+    "name": "The Family",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Firm seclusion within the family. Remorse disappears.", "xiang": "Firm seclusion within the family means the will has not yet changed." },
+      { "position": 2, "yao": "Six in the second place", "text": "She should not follow her whims. She must attend within to the food. Perseverance brings good fortune.", "xiang": "The good fortune of the six in the second place means yielding to what is above." },
+      { "position": 3, "yao": "Nine in the third place", "text": "When tempers flare up in the family, too much severity brings remorse. Good fortune comes from the woman and child laughing and chatting.", "xiang": "When the family is stern, one is not lost." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "She is the treasure of the house. Great good fortune.", "xiang": "She is the treasure of the house, and all is favorable." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "As a king he approaches his family. Fear not. Good fortune.", "xiang": "As a king he approaches his family, and they love each other." },
+      { "position": 6, "yao": "Nine at the top", "text": "His work commands respect. In the end good fortune comes.", "xiang": "His work commanding respect means turning back upon oneself." }
+    ]
+  },
+  "38": {
+    "name": "Opposition",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Remorse disappears. If you lose your horse, do not run after it; it will return of itself. When you see an evil person, guard yourself against mistakes.", "xiang": "Seeing an evil person means guarding oneself to avoid blame." },
+      { "position": 2, "yao": "Nine in the second place", "text": "One meets his lord in a narrow street. No blame.", "xiang": "Meeting one's lord in a narrow street means not having lost the way." },
+      { "position": 3, "yao": "Six in the third place", "text": "One sees the wagon dragged back, the oxen hindered, the man's hair and nose cut off. Not a good beginning, but a good end.", "xiang": "Seeing the wagon dragged back means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Isolated through opposition, one meets a person of like kind. Though he is a relative, there is danger. No blame.", "xiang": "Meeting a person of like kind brings no blame because the will is carried out." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Remorse disappears. The companion bites his way through the wrappings. If one goes to him, how could it be a mistake?", "xiang": "Biting through the wrappings means going forward brings celebration." },
+      { "position": 6, "yao": "Nine at the top", "text": "Isolated through opposition, one sees his companion as a pig covered with dirt, as a wagon full of devils. First he draws his bow against him, then he lays it aside. He is not a robber; he will woo at the right time. Going forward, encountering rain, brings good fortune.", "xiang": "Encountering rain brings good fortune because all doubts are dispelled." }
+    ]
+  },
+  "39": {
+    "name": "Obstruction",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Going leads to obstruction, coming brings praise.", "xiang": "Going leads to obstruction, coming brings praise; it is right to wait." },
+      { "position": 2, "yao": "Six in the second place", "text": "The king's minister suffers obstruction upon obstruction, but it is not his own fault.", "xiang": "The king's minister suffering obstruction upon obstruction means finally there is no fault." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Going leads to obstruction; he comes back.", "xiang": "Going leads to obstruction and he comes back; those within rejoice." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Going leads to obstruction; he comes back and submits to his superior.", "xiang": "Going leads to obstruction and he comes back to submit; this is the position of reality." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "In the midst of the greatest obstruction, friends come.", "xiang": "In the midst of the greatest obstruction, friends come because of the central position." },
+      { "position": 6, "yao": "Six at the top", "text": "Going leads to obstruction; he comes back in a great flow. Good fortune. It furthers one to see the great person.", "xiang": "Going leads to obstruction and he comes back in a great flow; the will is within." }
+    ]
+  },
+  "40": {
+    "name": "Deliverance",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Without blame.", "xiang": "At the meeting of firm and yielding, there is no blame." },
+      { "position": 2, "yao": "Nine in the second place", "text": "One kills three foxes in the field and receives a yellow arrow. Perseverance brings good fortune.", "xiang": "Perseverance of the nine in the second place brings good fortune because he obtains the middle way." },
+      { "position": 3, "yao": "Six in the third place", "text": "If a man carries a burden on his back and nonetheless rides in a carriage, he thereby encourages robbers to draw near. Perseverance brings humiliation.", "xiang": "Riding in a carriage when carrying a burden means it is also a disgrace." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Deliver yourself from your great toe. Then the companion comes, and one is trusted.", "xiang": "Delivering from the great toe means the place is not correct." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "If only the superior person can deliver himself, it brings good fortune. He thus proves his confidence in inferior people.", "xiang": "If the superior person delivers himself, the inferior person withdraws." },
+      { "position": 6, "yao": "Six at the top", "text": "A prince shoots at a hawk on a high wall. He kills it. Everything serves to further.", "xiang": "A prince shooting at a hawk means delivering from rebellion." }
+    ]
+  },
+  "41": {
+    "name": "Decrease",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Going quickly when one's work is finished brings no blame. One must consider how much one may decrease others.", "xiang": "Going quickly when one's work is finished means holding fast to the will." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Perseverance brings good fortune. Going brings misfortune. Without decreasing oneself, one is able to increase others.", "xiang": "The good fortune of perseverance of the nine in the second place comes from acting correctly in the center." },
+      { "position": 3, "yao": "Six in the third place", "text": "When three people journey together, their number decreases by one. When one person journeys alone, he finds a companion.", "xiang": "One person journeying alone finding a companion means that when three are doubtful, one is doubtful." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "If a man decreases his faults, he may make others hurry to come with him. No blame.", "xiang": "Decreasing one's faults is also a cause for joy." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Someone does indeed increase him. Ten pairs of tortoises cannot oppose it. Supreme good fortune.", "xiang": "The supreme good fortune of the six in the fifth place comes from blessing from above." },
+      { "position": 6, "yao": "Nine at the top", "text": "If one is increased without diminishing others, there is no blame. Perseverance brings good fortune. It furthers one to undertake something. One obtains servants but no longer has a home.", "xiang": "If one is increased without diminishing others, it means the great will is carried out." }
+    ]
+  },
+  "42": {
+    "name": "Increase",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "It furthers one to accomplish great deeds. Supreme good fortune. No blame.", "xiang": "Supreme good fortune and no blame means the inferior person does not increase to excess." },
+      { "position": 2, "yao": "Six in the second place", "text": "Someone does indeed increase him. Ten pairs of tortoises cannot oppose it. Constant perseverance brings good fortune. The king presents him before God. Good fortune.", "xiang": "Someone increasing him means it comes from without." },
+      { "position": 3, "yao": "Six in the third place", "text": "One is increased through unfortunate events. No blame, if you are sincere and walk in the middle, and report with a seal to the prince.", "xiang": "Being increased through unfortunate events means it is by nature so." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "If you walk in the middle and report to the prince, he will follow. It furthers one to be used in the removal of the capital.", "xiang": "If he follows, it means the will is increased." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "If you are sincere and benevolent, there is no need for questions. Supreme good fortune. Sincerity and benevolence are the natural possessions of his own nature.", "xiang": "Sincerity and benevolence need no questions because the benevolence is in the center." },
+      { "position": 6, "yao": "Nine at the top", "text": "He is increased without being given a gift. He is attacked without being injured. Perseverance brings misfortune.", "xiang": "He is increased without being given a gift; the statement is one-sided." }
+    ]
+  },
+  "43": {
+    "name": "Breakthrough",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Vigorous in the toes. Going forward brings misfortune if one is not prepared.", "xiang": "Going forward and not being prepared means there is blame." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Alarm cries at night. Armed, no fear.", "xiang": "There is alarm at night, but no fear means obtaining the middle way." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Vigorous in the cheekbones brings misfortune. The superior person is fully resolved. He walks alone and encounters the rain, to his disadvantage, but there is no blame.", "xiang": "The superior person is fully resolved; finally there is no blame." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "There is no skin on his thighs, and walking is difficult. If he were to lead sheep, they would not follow. If he were to follow, he would not hear words. But if he can be persevering, there will be no blame.", "xiang": "Walking with difficulty means the place is not correct." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "In dealing with weeds, firm resolution is necessary. Walking in the middle remains free of blame.", "xiang": "Walking in the middle without blame means the middle is not yet bright." },
+      { "position": 6, "yao": "Six at the top", "text": "No cry. In the end there is misfortune.", "xiang": "The misfortune of no cry means it cannot last long." }
+    ]
+  },
+  "44": {
+    "name": "Coming to Meet",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "It must be checked with a brake of bronze. Perseverance brings good fortune. If one lets it go, one sees a pig covered with dirt. There is inconstancy.", "xiang": "It must be checked with a brake of bronze because the way of the yielding is led along." },
+      { "position": 2, "yao": "Nine in the second place", "text": "There is a fish in the bag. No blame. It does not further the guest.", "xiang": "There is a fish in the bag; the meaning does not extend to the guest." },
+      { "position": 3, "yao": "Nine in the third place", "text": "There is no skin on his thighs, and walking is difficult. Danger, but no great blame.", "xiang": "Walking with difficulty means the act is not led along." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "No fish in the bag. Misfortune.", "xiang": "The misfortune of no fish in the bag means keeping away from the people." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "A melon covered with willow leaves. Hidden in it, the thing he needs. It drops down to him from heaven.", "xiang": "The nine in the fifth place hiding the thing means central correctness." },
+      { "position": 6, "yao": "Nine at the top", "text": "He comes to meet with his horns. Humiliation. No blame.", "xiang": "He comes to meet with his horns; above, the place is exhausted and humiliating." }
+    ]
+  },
+  "45": {
+    "name": "Gathering Together",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "If you are sincere, but not to the end, there will sometimes be confusion, sometimes gathering together. If you call out, then after one shout of anguish you will laugh. Do not worry. It is without blame.", "xiang": "Sometimes confusion and sometimes gathering together means the will is confused." },
+      { "position": 2, "yao": "Six in the second place", "text": "If you are sincere, it brings good fortune. No blame. It furthers one to use a small offering in worship.", "xiang": "If you are sincere and it brings good fortune, it means the center is not changed." },
+      { "position": 3, "yao": "Six in the third place", "text": "If one gathers together with sighs, nothing that would further. Going is without blame. Small humiliation.", "xiang": "Going is without blame because above is gentle." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Great good fortune. No blame.", "xiang": "Great good fortune without blame means the place is not correct." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "If in gathering together there is position, no blame. If the unbelieving ones come, there is supreme perseverance. Remorse disappears.", "xiang": "If in gathering together there is position, it means the will is not yet shining." },
+      { "position": 6, "yao": "Six at the top", "text": "Sighing and weeping. No blame.", "xiang": "Sighing and weeping means not yet at ease above." }
+    ]
+  },
+  "46": {
+    "name": "Pushing Upward",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Pushing upward that meets with confidence brings great good fortune.", "xiang": "Pushing upward that meets with confidence brings great good fortune because the will is above." },
+      { "position": 2, "yao": "Nine in the second place", "text": "If one is sincere, it furthers one to use a small offering in worship. No blame.", "xiang": "The sincerity of the nine in the second place brings joy." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Pushing upward in an empty city.", "xiang": "Pushing upward in an empty city means there is no doubt." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The king makes him a present of his sacrificial food on Mount Ch'i. Good fortune. No blame.", "xiang": "The king makes him a present on Mount Ch'i because he serves him with gentleness." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Perseverance brings good fortune. Pushing upward by steps.", "xiang": "Perseverance brings good fortune in pushing upward by steps means the great will is carried out." },
+      { "position": 6, "yao": "Six at the top", "text": "Pushing upward in darkness. It furthers one to be unceasingly persevering.", "xiang": "Pushing upward in darkness at the top means growing, but not enriching." }
+    ]
+  },
+  "47": {
+    "name": "Oppression",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "One sits oppressed under a bare tree and strays into a gloomy valley. For three years one sees nothing.", "xiang": "Entering the gloomy valley means obscurity without light." },
+      { "position": 2, "yao": "Nine in the second place", "text": "One is oppressed while at meat and drink. The man with the scarlet knee bands is just coming. It furthers one to offer sacrifice. To set forth brings misfortune. No blame.", "xiang": "Being oppressed while at meat and drink means there is celebration in the center." },
+      { "position": 3, "yao": "Six in the third place", "text": "One is oppressed by a stone. He leans on a thorn bush. One enters his house and does not see his wife. Misfortune.", "xiang": "Leaning on a thorn bush means riding on the firm." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "He comes very slowly, oppressed in a golden carriage. Humiliation, but there is an end.", "xiang": "Coming very slowly means the will is below." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "His nose and feet are cut off. Oppression at the hands of the man with the purple knee bands. It furthers one to make offerings and to set forth slowly.", "xiang": "His nose and feet are cut off means the will is not yet attained." },
+      { "position": 6, "yao": "Six at the top", "text": "He is oppressed by creeping vines. He moves uncertainly and says, \"Movement brings remorse.\" If one feels remorse, going forward brings good fortune.", "xiang": "Being oppressed by creeping vines means the place is not correct." }
+    ]
+  },
+  "48": {
+    "name": "The Well",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "The well is muddy. No one drinks from it. The old well is the home of vermin. No one draws from it. Misfortune.", "xiang": "The well being muddy and undrinkable means it is below." },
+      { "position": 2, "yao": "Nine in the second place", "text": "A well is shot with fish and shrimp. The jug is broken and leaks.", "xiang": "A well shot with fish and shrimp means there is no correspondence." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The well is cleaned, but no one drinks from it. This is my heart's sorrow. It would be advantageous to draw water. When the king is bright, all receive the blessing.", "xiang": "The well cleaned but undrinkable means the heart is sorrowful." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The well is being lined. No blame.", "xiang": "The well being lined without blame means it is being repaired." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "In the well there is a clear, cold spring from which one can drink.", "xiang": "The clear, cold spring that can be drunk from means central correctness." },
+      { "position": 6, "yao": "Six at the top", "text": "One draws from the well without hindrance. It is dependable. Supreme good fortune.", "xiang": "Supreme good fortune above means great attainment." }
+    ]
+  },
+  "49": {
+    "name": "Revolution",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "He is bound with the skin of a yellow ox.", "xiang": "He is bound with the skin of a yellow ox; one cannot act thus." },
+      { "position": 2, "yao": "Six in the second place", "text": "When one's own day comes, one may create revolution. Starting brings good fortune. No blame.", "xiang": "When one's own day comes, starting brings good fortune because the action is meritorious." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Starting brings misfortune. Perseverance brings danger. When talk of revolution has gone the round three times, one may commit himself. There is faith.", "xiang": "When talk of revolution has gone the round three times, it is believed." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Remorse disappears. People change their ways. Good fortune.", "xiang": "Changing ways brings good fortune because the will is believed." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "The great man changes like a tiger. Even before the inquiry, there is faith.", "xiang": "The great man changes like a tiger; his stripes are clear and bright." },
+      { "position": 6, "yao": "Six at the top", "text": "The superior person changes like a leopard. The inferior person changes his face. Starting brings misfortune. To remain persevering brings good fortune.", "xiang": "The superior person changes like a leopard; his stripes are rich and glossy." }
+    ]
+  },
+  "50": {
+    "name": "The Cauldron",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "A cauldron with feet upturned. It furthers the removal of stagnating substance. One takes a concubine for the sake of her son. No blame.", "xiang": "A cauldron with feet upturned means there is no harm in this." },
+      { "position": 2, "yao": "Nine in the second place", "text": "There is food in the cauldron. My enemy is envious, but he cannot harm me. Good fortune.", "xiang": "There is food in the cauldron; one must be cautious about where one goes." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The handle of the cauldron is changed. One is impeded in his way of life. The fat of the pheasant is not eaten. Once rain falls, remorse is spent. In the end, good fortune comes.", "xiang": "The handle of the cauldron changed means losing the right meaning." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "The legs of the cauldron are broken. The prince's meal is spilled, and his person is soiled. Misfortune.", "xiang": "The prince's meal spilled means trust is lost. How can this be?" },
+      { "position": 5, "yao": "Six in the fifth place", "text": "The cauldron has yellow handles, golden carrying rings. Perseverance brings good fortune.", "xiang": "The cauldron having yellow handles means acting correctly in the center." },
+      { "position": 6, "yao": "Nine at the top", "text": "The carrying rings of the cauldron are jade. Great good fortune. Everything serves to further.", "xiang": "The jade carrying rings at the top mean the firm and yielding are in proper relation." }
+    ]
+  },
+  "51": {
+    "name": "The Arousing",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Thunder comes in the dread hour of night. Fear brings good fortune.", "xiang": "Fear bringing good fortune means fear brings blessing." },
+      { "position": 2, "yao": "Six in the second place", "text": "Thunder comes with a terrible roar. Then it laughs and talks cheerfully. Misfortune. One loses one's possessions for seven days. Then one finds them again.", "xiang": "The terrible roar means riding on the firm." },
+      { "position": 3, "yao": "Six in the third place", "text": "Thunder comes and is terrifying. He walks to and fro in the terror, but there is no harm.", "xiang": "Walking to and fro in the terror means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Thunder sinks into the mud.", "xiang": "Thunder sinking into the mud means the light is not yet shining." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Thunder comes to and fro with a terrible roar. He loses his possessions and cows for a hundred days. Then he finds them again.", "xiang": "Thunder coming to and fro means acting dangerously." },
+      { "position": 6, "yao": "Six at the top", "text": "Thunder comes shuddering. He looks around in dismay. Misfortune. The thunder does not hit him himself, but hits his neighbor. No blame. The friend has something to say concerning marriage.", "xiang": "Looking around in dismay means the center is not attained." }
+    ]
+  },
+  "52": {
+    "name": "The Keeping Still",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Keeping his toes still. No blame. Enduring perseverance brings good fortune.", "xiang": "Keeping his toes still means not losing correctness." },
+      { "position": 2, "yao": "Six in the second place", "text": "Keeping his calves still. He cannot rescue him whom he follows. His heart is not glad.", "xiang": "Not being able to rescue him whom he follows means he does not retreat to listen." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Keeping his hips still. Making his sacrum stiff. Danger enters into the heart.", "xiang": "Making his sacrum stiff means endangering the heart." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Keeping his trunk still. No blame.", "xiang": "Keeping his trunk still means stopping in the body." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Keeping his jaws still. The words are orderly. Remorse disappears.", "xiang": "Keeping his jaws still means acting correctly in the center." },
+      { "position": 6, "yao": "Nine at the top", "text": "Noblehearted keeping still. Good fortune.", "xiang": "Noblehearted keeping still brings good fortune because it ends generously." }
+    ]
+  },
+  "53": {
+    "name": "Development",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "The wild goose gradually draws near the shore. The young son is in danger. There is talk. No blame.", "xiang": "The danger of the young son means there is no blame in the meaning." },
+      { "position": 2, "yao": "Six in the second place", "text": "The wild goose gradually draws near the cliff. Eating and drinking in peace and concord. Good fortune.", "xiang": "Eating and drinking in peace and concord means not eating in vain." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The wild goose gradually draws near the plateau. The husband goes on an expedition and does not return. The wife is with child and does not give birth. Misfortune. It furthers one to fight off robbers.", "xiang": "The husband going on an expedition means he leaves his kind to go with the ugly." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The wild goose gradually draws near the tree. One may get a flat branch. No blame.", "xiang": "One may get a flat branch because the yielding follows." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "The wild goose gradually draws near the summit. For three years the wife has no child. In the end, nothing can hinder her. Good fortune.", "xiang": "In the end nothing can hinder her; good fortune comes because she obtains what she desires." },
+      { "position": 6, "yao": "Nine at the top", "text": "The wild goose gradually draws near the cloud heights. Its feathers can be used for the sacred dance. Good fortune.", "xiang": "Its feathers can be used for the sacred dance; good fortune means it cannot be disordered." }
+    ]
+  },
+  "54": {
+    "name": "The Marrying Maiden",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "The marrying maiden as a concubine. A lame person who can walk. Going brings good fortune.", "xiang": "The marrying maiden as a concubine means acting with constancy." },
+      { "position": 2, "yao": "Nine in the second place", "text": "A one-eyed person who can see. It furthers the perseverance of a secluded person.", "xiang": "It furthers the perseverance of a secluded person means the constant has not changed." },
+      { "position": 3, "yao": "Six in the third place", "text": "The marrying maiden as a slave. She marries as a concubine.", "xiang": "The marrying maiden as a slave means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "The marrying maiden draws out the time. The marriage is postponed. A late marriage is timed.", "xiang": "Postponing the time means the will waits for action." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "The sovereign I gave his daughter in marriage. The embroidered garments of the princess were not so gorgeous as those of the servingmaid. The moon that is nearly full brings good fortune.", "xiang": "The sovereign I gave his daughter in marriage. The embroidered garments were not so gorgeous means her place is in the center and she is modest." },
+      { "position": 6, "yao": "Six at the top", "text": "The woman holds the basket, but there are no fruits in it. The man stabs the sheep, but no blood flows. Nothing that would further.", "xiang": "The six at the top holding an empty basket means she receives nothing." }
+    ]
+  },
+  "55": {
+    "name": "Abundance",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "He meets his host. Although they are of the same kind, there is no blame. Going brings praise.", "xiang": "Although they are of the same kind, there is no blame; going past the day brings disaster." },
+      { "position": 2, "yao": "Six in the second place", "text": "He is surrounded by a screen so thick that at noon he can see the Dipper. Going forward brings mistrust and hate. If he rouses himself through the power of the dark, good fortune comes.", "xiang": "Rousing himself through the power of the dark brings good fortune because he acts sincerely." },
+      { "position": 3, "yao": "Nine in the third place", "text": "He is surrounded by a screen so thick that at noon he can see the foam. He breaks his right arm. No blame.", "xiang": "He breaks his right arm because he cannot undertake anything great." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "He is surrounded by a screen so thick that at noon he can see the Dipper. He meets his ruler. Good fortune.", "xiang": "The screen so thick that at noon he can see the Dipper means the place is not correct." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Lines are coming. Blessing and fame draw near. Good fortune.", "xiang": "The good fortune of the six in the fifth place means there is celebration." },
+      { "position": 6, "yao": "Six at the top", "text": "His house is in a state of abundance. He screens off his family. He looks out through the door and does not see anyone. For three years he sees no one. Misfortune.", "xiang": "His house in a state of abundance means he flutters about in the heights." }
+    ]
+  },
+  "56": {
+    "name": "The Wanderer",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "The wanderer comes in a mean, petty spirit. This brings misfortune and contempt.", "xiang": "The wanderer coming in a mean, petty spirit means the will is exhausted and brings disaster." },
+      { "position": 2, "yao": "Six in the second place", "text": "The wanderer comes to an inn. He has his property with him. He receives faithfulness within.", "xiang": "He has his property with him and receives faithfulness; finally there is no fault." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The wanderer's inn burns down. He loses the steadfastness of his young servant. Danger.", "xiang": "The wanderer's inn burning down means he also suffers hurt." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "The wanderer rests in a shelter. He obtains his property and an ax. My heart is not glad.", "xiang": "Resting in a shelter means not having obtained the place." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "He shoots a pheasant. It drops with the first arrow. In the end this brings praise and reward.", "xiang": "In the end bringing praise and reward means reaching above." },
+      { "position": 6, "yao": "Nine at the top", "text": "The bird's nest burns up. The wanderer first laughs and then must needs lament and weep. He loses his ox in the course of his adversity. Misfortune.", "xiang": "Taking the position of the wanderer at the top means to burn up is proper." }
+    ]
+  },
+  "57": {
+    "name": "The Gentle",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "Advance and retreat. It furthers the perseverance of a military man.", "xiang": "Advance and retreat means the will is in doubt." },
+      { "position": 2, "yao": "Nine in the second place", "text": "The gentle lies hidden in the bed. It brings the use of shamans and physicians. Good fortune. No blame.", "xiang": "The use of shamans and physicians bringing good fortune means obtaining the center." },
+      { "position": 3, "yao": "Nine in the third place", "text": "Repeated gentle. Humiliation.", "xiang": "Repeated gentle bringing humiliation means the will is exhausted." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Remorse disappears. In the field one catches game.", "xiang": "In the field one catches game because there is merit." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Perseverance brings good fortune. Remorse disappears. Nothing that does not further. Before the beginning, three days. After the end, three days. Good fortune.", "xiang": "The good fortune of the nine in the fifth place means the place is correct and central." },
+      { "position": 6, "yao": "Nine at the top", "text": "The gentle lies hidden under the bed. He loses his property and his ax. Perseverance brings misfortune.", "xiang": "The gentle lying hidden under the bed means the top is exhausted." }
+    ]
+  },
+  "58": {
+    "name": "The Joyous",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Contented joyousness. Good fortune.", "xiang": "Contented joyousness bringing good fortune means not being confused in going." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Sincere joyousness. Good fortune. Remorse disappears.", "xiang": "Sincere joyousness bringing good fortune means the will is believed." },
+      { "position": 3, "yao": "Six in the third place", "text": "Coming joyousness. Misfortune.", "xiang": "Coming joyousness bringing misfortune means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Joyousness that is weighed is not at peace. After ridding himself of mistakes, there is delight.", "xiang": "The delight of the nine in the fourth place brings joy." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Sincerity toward decay. It is believable.", "xiang": "Sincerity toward decay means the place is correct." },
+      { "position": 6, "yao": "Six at the top", "text": "Seductive joyousness.", "xiang": "Seductive joyousness at the top means it is not yet shining." }
+    ]
+  },
+  "59": {
+    "name": "Dispersion",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "He rescues him with a strong horse. Good fortune.", "xiang": "The good fortune of the six at the beginning means yielding." },
+      { "position": 2, "yao": "Nine in the second place", "text": "He hurries to his support with a hundred galloping horses. Remorse disappears.", "xiang": "Hurrying to his support with a hundred horses means the wish is obtained." },
+      { "position": 3, "yao": "Six in the third place", "text": "He dissolves his self. No remorse.", "xiang": "He dissolves his self; the will is outward." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "He dissolves his bond with his group. Supreme good fortune. Dispersion leads in turn to accumulation. This is something that ordinary people do not think of.", "xiang": "Dissolving the bond with the group brings supreme good fortune because the light is great." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "His loud cries are dissipated as sweat dissolves. The king dwells in the capital. There is no blame.", "xiang": "The king dwelling in the capital without blame means he is in the correct position." },
+      { "position": 6, "yao": "Nine at the top", "text": "He dissolves his blood. Departing, keeping at a distance, going out, is without blame.", "xiang": "He dissolves his blood; he keeps away from harm." }
+    ]
+  },
+  "60": {
+    "name": "Limitation",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Not going out of the door and the courtyard is without blame.", "xiang": "Not going out of the door and the courtyard means knowing the way of opening and closing." },
+      { "position": 2, "yao": "Nine in the second place", "text": "Not going out of the door and the courtyard brings misfortune.", "xiang": "Not going out of the door and the courtyard bringing misfortune means losing the opportunity to the extreme." },
+      { "position": 3, "yao": "Six in the third place", "text": "He who knows no limitation will have cause to lament. No blame.", "xiang": "The lamenting of knowing no limitation means who could blame him?" },
+      { "position": 4, "yao": "Six in the fourth place", "text": "Contented limitation. Success.", "xiang": "Contented limitation bringing success means receiving from above." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "Sweet limitation brings good fortune. Going on brings one to distinction.", "xiang": "Sweet limitation bringing good fortune means the place is central." },
+      { "position": 6, "yao": "Six at the top", "text": "Galling limitation. Perseverance brings misfortune. Remorse disappears.", "xiang": "Galling limitation brings misfortune because the way is exhausted." }
+    ]
+  },
+  "61": {
+    "name": "Inner Truth",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "Being prepared brings good fortune. If there are secret designs, it is unsettling.", "xiang": "Being prepared brings good fortune because the will is not yet changed." },
+      { "position": 2, "yao": "Nine in the second place", "text": "A crane calling in the shade. Its young answers it. I have a good goblet. I will share it with you.", "xiang": "Its young answering it means the center wishes this." },
+      { "position": 3, "yao": "Six in the third place", "text": "He finds an opponent. Sometimes he beats the drum, sometimes he stops. Sometimes he cries, sometimes he sings.", "xiang": "Sometimes beating the drum and sometimes stopping means the place is not correct." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The moon is nearly full. The team horse loses one horse. No blame.", "xiang": "The team horse losing one horse means cutting off the kind above." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "He possesses sincerity, which links together. No blame.", "xiang": "He possesses sincerity, which links together, because the place is correct." },
+      { "position": 6, "yao": "Nine at the top", "text": "A rooster mounts to heaven. Perseverance brings misfortune.", "xiang": "A rooster mounting to heaven means how can it last long?" }
+    ]
+  },
+  "62": {
+    "name": "Preponderance of the Small",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "The bird meets with misfortune.", "xiang": "The bird meeting with misfortune means there is nothing to be done." },
+      { "position": 2, "yao": "Six in the second place", "text": "Passing by one's grandfather and meeting one's grandmother. Not reaching one's ruler, one meets one's minister. No blame.", "xiang": "Not reaching one's ruler means the minister cannot pass by." },
+      { "position": 3, "yao": "Nine in the third place", "text": "If one does not guard against passing, one will be followed by robbers. How could there be blame? Misfortune.", "xiang": "Being followed by robbers means the misfortune is great." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "No blame. He meets him without passing by. Going is dangerous. One must be on guard. Do not act. Be constantly persevering.", "xiang": "He meets him without passing by means the place is not correct." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Dense clouds, no rain from our western territory. The prince shoots and hits him who is in the cave.", "xiang": "Dense clouds but no rain means it is already above." },
+      { "position": 6, "yao": "Six at the top", "text": "Not meeting him but passing by. The bird in flight meets with misfortune. This is truly a misfortune.", "xiang": "Not meeting him but passing by means it is already too high." }
+    ]
+  },
+  "63": {
+    "name": "After Completion",
+    "lines": [
+      { "position": 1, "yao": "Nine at the beginning", "text": "He drags the wheels back. His tail gets wet. No blame.", "xiang": "Dragging the wheels back means acting without blame." },
+      { "position": 2, "yao": "Six in the second place", "text": "The woman loses the curtain of her carriage. Do not run after it; on the seventh day you will get it.", "xiang": "Getting it on the seventh day means following the middle way." },
+      { "position": 3, "yao": "Nine in the third place", "text": "The Illustrious Ancestor disciplines the Devil's Country. After three years he conquers it. Inferior people must not be employed.", "xiang": "After three years he conquers it because he is exhausted." },
+      { "position": 4, "yao": "Six in the fourth place", "text": "The finest clothes turn to rags. Be careful all day long.", "xiang": "Being careful all day long means there is doubt." },
+      { "position": 5, "yao": "Nine in the fifth place", "text": "The neighbor in the east who slaughters an ox does not attain as much real happiness as the neighbor in the west with his small offering.", "xiang": "The neighbor in the east slaughtering an ox does not attain as much as the neighbor in the west because the time is not yet." },
+      { "position": 6, "yao": "Six at the top", "text": "He gets his tail wet. Just as he is getting his head in the water, misfortune comes.", "xiang": "Getting the tail wet means the misfortune of getting the head in the water cannot last long." }
+    ]
+  },
+  "64": {
+    "name": "Before Completion",
+    "lines": [
+      { "position": 1, "yao": "Six at the beginning", "text": "He gets his tail wet. Humiliation.", "xiang": "Getting the tail wet means not knowing the limit." },
+      { "position": 2, "yao": "Nine in the second place", "text": "He drags the wheels back. Perseverance brings good fortune.", "xiang": "The good fortune of perseverance of the nine in the second place means acting correctly in the center." },
+      { "position": 3, "yao": "Six in the third place", "text": "Before completion, misfortune. It furthers one to cross the great water.", "xiang": "Before completion bringing misfortune means the place is not correct." },
+      { "position": 4, "yao": "Nine in the fourth place", "text": "Perseverance brings good fortune. Remorse disappears. He shakes off the Demon's Country. After three years, rewards come to him from the great kingdom.", "xiang": "Perseverance bringing good fortune and remorse disappearing means the will is carried out." },
+      { "position": 5, "yao": "Six in the fifth place", "text": "Perseverance brings good fortune. No remorse. The light of the superior person is true. Good fortune.", "xiang": "The light of the superior person being true brings good fortune because his light shines." },
+      { "position": 6, "yao": "Nine at the top", "text": "He drinks wine in full confidence. There is no blame. But if he gets his head in the water, he loses confidence, and this is a mistake.", "xiang": "Drinking wine and getting the head in the water means not knowing the limit." }
+    ]
+  }
+}

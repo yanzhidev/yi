@@ -1,5 +1,8 @@
 import hexagramsData from '../data/hexagrams.json';
 import linesData from '../data/lines.json';
+import hexagramsDataEn from '../data/hexagrams_en.json';
+import linesDataEn from '../data/lines_en.json';
+import type { Language } from './i18n';
 
 // ==================== 类型定义 ====================
 
@@ -11,6 +14,21 @@ export interface LineInterpretation {
   yao: string;       // 爻名，如"初九"、"六二"等
   text: string;      // 爻辞
   xiang: string;     // 象曰
+}
+
+/**
+ * 卦象数据结构
+ */
+export interface HexagramData {
+  id: number;
+  name: string;
+  originalName?: string;
+  pinyin: string;
+  binary: string;
+  symbol: string;
+  text: string;
+  tuan: string;
+  daxiang: string;
 }
 
 /**
@@ -52,6 +70,56 @@ export type Coin = 0 | 1;
  * 三枚硬币投掷结果
  */
 export type ThreeCoins = [Coin, Coin, Coin];
+
+// ==================== 多语言数据支持 ====================
+
+const hexagramsDataMap: Record<Language, HexagramData[]> = {
+  'zh-CN': hexagramsData as HexagramData[],
+  'zh-TW': hexagramsData as HexagramData[],
+  'en': hexagramsDataEn as HexagramData[],
+  'es': hexagramsData as HexagramData[], // Spanish uses Chinese data for now
+};
+
+const linesDataMap: Record<Language, typeof linesData> = {
+  'zh-CN': linesData,
+  'zh-TW': linesData,
+  'en': linesDataEn,
+  'es': linesData, // Spanish uses Chinese data for now
+};
+
+let currentLanguage: Language = 'zh-CN';
+
+/**
+ * 设置当前语言
+ * @param lang 语言代码
+ */
+export function setLanguage(lang: Language): void {
+  currentLanguage = lang;
+}
+
+/**
+ * 获取当前语言
+ * @returns 当前语言代码
+ */
+export function getLanguage(): Language {
+  return currentLanguage;
+}
+
+/**
+ * 获取当前语言的卦象数据
+ * @returns 卦象数据数组
+ */
+export function getHexagrams(): HexagramData[] {
+  return hexagramsDataMap[currentLanguage] || hexagramsData;
+}
+
+/**
+ * 获取当前语言的爻辞数据
+ * @returns 爻辞数据对象
+ */
+export function getLinesData(): typeof linesData {
+  return linesDataMap[currentLanguage] || linesData;
+}
 
 // ==================== 三钱法核心逻辑 ====================
 
@@ -170,9 +238,9 @@ export interface HexagramData {
 }
 
 /**
- * 64卦数据数组（从JSON导入）
+ * 64卦数据数组（当前语言）
  */
-export const hexagrams: HexagramData[] = hexagramsData;
+export const hexagrams: HexagramData[] = getHexagrams();
 
 /**
  * 将 [0,1] 数组映射到卦名
@@ -205,7 +273,7 @@ export function getHexagramById(id: number): HexagramData | null {
     console.warn(`Invalid hexagram id: ${id}`);
     return null;
   }
-  return hexagrams.find(h => h.id === id) || null;
+  return getHexagrams().find(h => h.id === id) || null;
 }
 
 /**
@@ -226,7 +294,7 @@ export function getHexagramByBinary(binary: string): HexagramData | null {
  * 通过卦名获取卦象数据
  */
 export function getHexagramByName(name: string): HexagramData | null {
-  return hexagrams.find(h => h.name === name) || null;
+  return getHexagrams().find(h => h.name === name) || null;
 }
 
 // ==================== 辅助函数 ====================
@@ -294,8 +362,9 @@ export function getLineInterpretations(hexagramId: number): LineInterpretation[]
     return null;
   }
   
-  const key = hexagramId.toString() as keyof typeof linesData;
-  const hexagramLines = linesData[key];
+  const linesDataCurrent = getLinesData();
+  const key = hexagramId.toString() as keyof typeof linesDataCurrent;
+  const hexagramLines = linesDataCurrent[key];
   
   if (!hexagramLines) {
     console.warn(`No line data found for hexagram ${hexagramId}`);
@@ -363,5 +432,9 @@ export default {
   getLineInterpretations,
   getLineInterpretation,
   getChangingLineInterpretations,
+  getHexagrams,
+  getLinesData,
+  setLanguage,
+  getLanguage,
   hexagrams,
 };
