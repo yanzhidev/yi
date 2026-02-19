@@ -9,12 +9,10 @@ import {
   type LineResult,
   getChangingLineInterpretations,
   type LineInterpretation,
-  setLanguage as setIchingLanguage,
-  getDaXiangImage
+  setLanguage as setIchingLanguage
 } from './utils/iching'
 import { useLanguage } from './contexts/LanguageContext'
 import { LanguageSelector } from './components/LanguageSelector'
-import { HexagramDaxiangSVG } from './components/HexagramDaxiangSVG'
 
 function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -345,11 +343,12 @@ function App() {
                 {currentHexagram && (
                   <div className="mt-4 pt-4 border-t border-stone-200">
                     <div className="flex justify-center">
-                      <HexagramDaxiangSVG 
-                        symbol={currentHexagram.symbol} 
-                        name={currentHexagram.name}
+                      <img 
+                        src={`/images/daxiang/${currentHexagram.id}.svg`}
+                        alt={`${currentHexagram.name}大象图`}
                         width={300}
                         height={180}
+                        style={{ backgroundColor: '#f9f5eb' }}
                       />
                     </div>
                   </div>
@@ -594,11 +593,12 @@ function App() {
                   {/* 变卦大象图 */}
                   <div className="mt-4 pt-4 border-t border-amber-300">
                     <div className="flex justify-center">
-                      <HexagramDaxiangSVG 
-                        symbol={changedHexagram.symbol} 
-                        name={changedHexagram.name}
+                      <img 
+                        src={`/images/daxiang/${changedHexagram.id}.svg`}
+                        alt={`${changedHexagram.name}大象图`}
                         width={300}
                         height={180}
+                        style={{ backgroundColor: '#f9f5eb' }}
                       />
                     </div>
                   </div>

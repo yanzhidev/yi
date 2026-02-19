@@ -16,19 +16,11 @@
   <!-- 分隔线 -->
   <line x1="0" y1="90" x2="300" y2="90" stroke="#8b5a2b" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
   
-  <!-- 下卦: ☰ -->
+  <!-- 下卦: ☱ -->
   
-    <circle cx="150" cy="135" r="27" fill="none" stroke="#8b5a2b" stroke-width="2.5"/>
-    <!-- 太阳光芒 -->
-    <line x1="150" y1="99" x2="150" y2="108" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="150" y1="162" x2="150" y2="171" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="30" y1="135" x2="60" y2="135" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="240" y1="135" x2="270" y2="135" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="60" y1="108" x2="75" y2="112.5" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="225" y1="112.5" x2="240" y2="108" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="60" y1="162" x2="75" y2="157.5" stroke="#8b5a2b" stroke-width="2"/>
-    <line x1="225" y1="157.5" x2="240" y2="162" stroke="#8b5a2b" stroke-width="2"/>
+    <ellipse cx="150" cy="144" rx="120" ry="13.5" stroke="#8b5a2b" stroke-width="2" fill="none"/>
+    <path d="M30,144 Q90,135 150,144 T270,144" stroke="#8b5a2b" stroke-width="1.5" fill="none"/>
   
   <!-- 卦名 -->
-  <text x="290" y="170" font-size="14" fill="#8b5a2b" font-family="serif" text-anchor="end" style="font-style: italic">乾</text>
+  <text x="290" y="170" font-size="14" fill="#8b5a2b" font-family="serif" text-anchor="end" style="font-style: italic">天泽履</text>
 </svg>

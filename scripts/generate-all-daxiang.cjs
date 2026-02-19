@@ -105,16 +105,16 @@ function main() {
   hexagramsData.forEach(hexagram => {
     try {
       const svgContent = generateDaxiangSVG(hexagram.symbol, hexagram.name);
-      const filename = `${hexagram.pinyin}.svg`;
+      const filename = `${hexagram.id}.svg`;
       const filepath = path.join(outputDir, filename);
       
       fs.writeFileSync(filepath, svgContent, 'utf8');
       console.log(`✅ Generated: ${filename} (${hexagram.symbol} ${hexagram.name})`);
       successCount++;
     } catch (error) {
-      console.error(`❌ Error generating ${hexagram.pinyin}.svg:`, error.message);
+      console.error(`❌ Error generating ${hexagram.id}.svg:`, error.message);
       errorCount++;
-      errors.push({ pinyin: hexagram.pinyin, error: error.message });
+      errors.push({ id: hexagram.id, error: error.message });
     }
   });
 
