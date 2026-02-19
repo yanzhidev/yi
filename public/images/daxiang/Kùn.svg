@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="background-color: #f9f5eb">
+  <!-- 上卦: ☱ -->
+  
+    <ellipse cx="150" cy="54" rx="120" ry="13.5" stroke="#8b5a2b" stroke-width="2" fill="none"/>
+    <path d="M30,54 Q90,45 150,54 T270,54" stroke="#8b5a2b" stroke-width="1.5" fill="none"/>
+  
+  <!-- 分隔线 -->
+  <line x1="0" y1="90" x2="300" y2="90" stroke="#8b5a2b" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+  
+  <!-- 下卦: ☵ -->
+  
+    <path d="M0,117 Q75,108 150,117 T300,117" stroke="#8b5a2b" stroke-width="2" fill="none"/>
+    <path d="M0,135 Q75,126 150,135 T300,135" stroke="#8b5a2b" stroke-width="2" fill="none"/>
+    <path d="M0,153 Q75,144 150,153 T300,153" stroke="#8b5a2b" stroke-width="2" fill="none"/>
+  
+  <!-- 卦名 -->
+  <text x="290" y="170" font-size="14" fill="#8b5a2b" font-family="serif" text-anchor="end" style="font-style: italic">泽水困</text>
+</svg>

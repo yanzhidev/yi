@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="background-color: #f9f5eb">
+  <!-- 上卦: ☰ -->
+  
+    <circle cx="150" cy="45" r="27" fill="none" stroke="#8b5a2b" stroke-width="2.5"/>
+    <!-- 太阳光芒 -->
+    <line x1="150" y1="9" x2="150" y2="18" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="150" y1="72" x2="150" y2="81" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="30" y1="45" x2="60" y2="45" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="240" y1="45" x2="270" y2="45" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="60" y1="18" x2="75" y2="22.5" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="225" y1="22.5" x2="240" y2="18" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="60" y1="72" x2="75" y2="67.5" stroke="#8b5a2b" stroke-width="2"/>
+    <line x1="225" y1="67.5" x2="240" y2="72" stroke="#8b5a2b" stroke-width="2"/>
+  
+  <!-- 分隔线 -->
+  <line x1="0" y1="90" x2="300" y2="90" stroke="#8b5a2b" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+  
+  <!-- 下卦: ☳ -->
+  
+    <path d="M90,99 L150,126 L120,126 L180,171" stroke="#8b5a2b" stroke-width="2.5" fill="none"/>
+    <circle cx="150" cy="126" r="2" fill="#8b5a2b"/>
+  
+  <!-- 卦名 -->
+  <text x="290" y="170" font-size="14" fill="#8b5a2b" font-family="serif" text-anchor="end" style="font-style: italic">天雷无妄</text>
+</svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="background-color: #f9f5eb">
+  <!-- 上卦: ☲ -->
+  
+    <!-- 左边小火焰 -->
+    <path d="M60,72 Q45,54 75,36 Q60,18 90,13.5" stroke="#8b5a2b" stroke-width="1.5" fill="none"/>
+    <!-- 中间大火焰 -->
+    <path d="M150,76.5 Q120,54 150,27 Q135,9 150,4.5" stroke="#8b5a2b" stroke-width="2.5" fill="none"/>
+    <!-- 右边小火焰 -->
+    <path d="M240,72 Q255,54 225,36 Q240,18 210,13.5" stroke="#8b5a2b" stroke-width="1.5" fill="none"/>
+    <!-- 火焰顶端光点 -->
+    <circle cx="150" cy="4.5" r="2" fill="#8b5a2b"/>
+  
+  <!-- 分隔线 -->
+  <line x1="0" y1="90" x2="300" y2="90" stroke="#8b5a2b" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+  
+  <!-- 下卦: ☷ -->
+  
+    <line x1="0" y1="108" x2="120" y2="108" stroke="#8b5a2b" stroke-width="3"/>
+    <line x1="180" y1="108" x2="300" y2="108" stroke="#8b5a2b" stroke-width="3"/>
+    <line x1="0" y1="135" x2="120" y2="135" stroke="#8b5a2b" stroke-width="3"/>
+    <line x1="180" y1="135" x2="300" y2="135" stroke="#8b5a2b" stroke-width="3"/>
+    <line x1="0" y1="162" x2="120" y2="162" stroke="#8b5a2b" stroke-width="3"/>
+    <line x1="180" y1="162" x2="300" y2="162" stroke="#8b5a2b" stroke-width="3"/>
+  
+  <!-- 卦名 -->
+  <text x="290" y="170" font-size="14" fill="#8b5a2b" font-family="serif" text-anchor="end" style="font-style: italic">火地晋</text>
+</svg>
