@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useMemo } from 'react'
 import { Sparkles, RotateCcw, Scroll, Mountain, Wind } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { 
@@ -50,15 +50,24 @@ function App() {
   const [question, setQuestion] = useState('')
   const [result, setResult] = useState<HexagramCastResult | null>(null)
   const [isCasting, setIsCasting] = useState(false)
+  const [dataKey, setDataKey] = useState(0) // Used to force re-render when language changes
   const { t, language } = useLanguage()
 
-  // Sync iching language with UI language
+  // Sync iching language with UI language and force data refresh
   useEffect(() => {
     setIchingLanguage(language)
+    setDataKey(prev => prev + 1) // Force re-render to get new data
   }, [language])
 
-  const currentHexagram = result ? getHexagramById(result.hexagramId) : null
-  const changedHexagram = result?.changedHexagramId ? getHexagramById(result.changedHexagramId) : null
+  // Use useMemo to recompute hexagram data when language changes (via dataKey)
+  const currentHexagram = useMemo(() => 
+    result ? getHexagramById(result.hexagramId) : null, 
+    [result, dataKey]
+  )
+  const changedHexagram = useMemo(() => 
+    result?.changedHexagramId ? getHexagramById(result.changedHexagramId) : null, 
+    [result, dataKey]
+  )
 
   const handleCast = useCallback(() => {
     if (!question.trim()) return
