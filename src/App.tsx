@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import { Sparkles, RotateCcw, Scroll, Mountain, Wind, ChevronDown, Cloud } from 'lucide-react'
+import { RotateCcw, Scroll, Mountain, Wind, ChevronDown, Cloud } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { 
   castHexagram, 
@@ -184,11 +184,6 @@ function App() {
         <header className="text-center mb-10">
           <div className="flex justify-end mb-4">
             <LanguageSelector />
-          </div>
-          <div className="inline-flex items-center gap-2 mb-3">
-            <Sparkles className="w-5 h-5 text-stone-400" />
-            <span className="text-sm tracking-[0.3em] text-stone-400 uppercase">{t.iChing}</span>
-            <Sparkles className="w-5 h-5 text-stone-400" />
           </div>
           <h1 className="text-4xl font-medium tracking-wider text-stone-800">
             {t.title}
@@ -414,7 +409,7 @@ function App() {
                 {result && result.changingLines.length > 0 && currentHexagram && (
                   <div className="mt-6 pt-6 border-t border-stone-200">
                     <div className="flex items-center gap-2 mb-4">
-                      <Sparkles className="w-4 h-4 text-amber-600" />
+                      <Mountain className="w-4 h-4 text-amber-600" />
                       <span className="text-sm text-stone-700 font-semibold">{t.lineInterpretation}</span>
                     </div>
                     <div className="space-y-4">
@@ -689,15 +684,18 @@ function App() {
               <button
                 onClick={handleReset}
                 className={cn(
-                  "group flex items-center gap-2 px-8 py-4 rounded-full",
-                  "bg-stone-200 text-stone-600",
-                  "text-sm tracking-wider",
-                  "transition-all duration-300",
-                  "hover:bg-stone-300 hover:text-stone-700"
+                  "group relative px-12 py-4 rounded-full flex items-center justify-center",
+                  "bg-stone-700 text-stone-50",
+                  "text-sm tracking-[0.2em] uppercase",
+                  "transition-all duration-500 ease-out",
+                  "hover:bg-stone-600 hover:shadow-lg",
+                  "active:scale-95",
+                  "focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-2"
                 )}
               >
-                <RotateCcw className="w-4 h-4" />
-                <span>{t.resetButton}</span>
+                <RotateCcw className="w-4 h-4 mr-2" />
+                <span className="relative z-10">{t.resetButton}</span>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </button>
             )}
           </div>
