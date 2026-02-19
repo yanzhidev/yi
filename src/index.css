@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Noto Serif SC", "Songti SC", system-ui, serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #44403c;
+  background-color: #fafaf9;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: #d6d3d1;
+  color: #292524;
+}

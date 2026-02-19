@@ -1,0 +1,291 @@
+import hexagramsData from '../data/hexagrams.json';
+
+// ==================== 类型定义 ====================
+
+/**
+ * 单爻结果
+ * - value: 0 为阴爻(⚋)，1 为阳爻(⚊)
+ * - isChanging: 是否为变爻（老阴或老阳）
+ * - lineType: 详细爻类型
+ */
+export interface LineResult {
+  value: 0 | 1;
+  isChanging: boolean;
+  lineType: 'oldYin' | 'youngYang' | 'youngYin' | 'oldYang';
+}
+
+/**
+ * 卦象结果
+ * - lines: 六爻数组，从初爻（下）到上爻（上）
+ * - changingLines: 变爻位置数组（1-6），从下到上
+ * - hexagramId: 当前卦象的ID（1-64）
+ * - changedHexagramId: 变卦的ID（如果有变爻）
+ * - binary: 6位二进制字符串，0为阴，1为阳，从下到上
+ */
+export interface HexagramCastResult {
+  lines: LineResult[];
+  changingLines: number[];
+  hexagramId: number;
+  changedHexagramId: number | null;
+  binary: string;
+}
+
+/**
+ * 三钱法硬币结果
+ * - 0: 反面（字面）
+ * - 1: 正面（背/花面）
+ */
+export type Coin = 0 | 1;
+
+/**
+ * 三枚硬币投掷结果
+ */
+export type ThreeCoins = [Coin, Coin, Coin];
+
+// ==================== 三钱法核心逻辑 ====================
+
+/**
+ * 根据三枚硬币投掷结果计算单爻
+ * 
+ * 三钱法规则（传统铜钱）：
+ * - 正面（字面/有字）：为阴（2点）
+ * - 反面（背/花面）：为阳（3点）
+ * 
+ * 三枚硬币点数总和：
+ * - 6 (2+2+2) = 老阴 ⚋ (阴爻，变爻) - 3反
+ * - 7 (2+2+3) = 少阳 ⚊ (阳爻) - 2反1正
+ * - 8 (2+3+3) = 少阴 ⚋ (阴爻) - 1反2正
+ * - 9 (3+3+3) = 老阳 ⚊ (阳爻，变爻) - 3正
+ * 
+ * 注意：这里的 coin 值是 0=反/阳面，1=正/阴面
+ * 所以实际点数：coin 0 = 3点，coin 1 = 2点
+ */
+export function calculateLineFromCoins(coins: ThreeCoins): LineResult {
+  // 计算点数：反面(0)=3点，正面(1)=2点
+  const points = coins.map(c => c === 0 ? 3 : 2);
+  const sum = points[0] + points[1] + points[2];
+
+  switch (sum) {
+    case 6: // 老阴 (三阴/三正面)
+      return { value: 0, isChanging: true, lineType: 'oldYin' };
+    case 7: // 少阳 (两阴一阳/两正一反)
+      return { value: 1, isChanging: false, lineType: 'youngYang' };
+    case 8: // 少阴 (两阳一阴/两反一正)
+      return { value: 0, isChanging: false, lineType: 'youngYin' };
+    case 9: // 老阳 (三阳/三反面)
+      return { value: 1, isChanging: true, lineType: 'oldYang' };
+    default:
+      throw new Error(`Invalid coin sum: ${sum}`);
+  }
+}
+
+/**
+ * 投掷单枚硬币（随机）
+ */
+export function tossCoin(): Coin {
+  return Math.random() > 0.5 ? 1 : 0;
+}
+
+/**
+ * 投掷三枚硬币
+ */
+export function tossThreeCoins(): ThreeCoins {
+  return [tossCoin(), tossCoin(), tossCoin()];
+}
+
+/**
+ * 生成单爻（随机投掷）
+ */
+export function castLine(): LineResult {
+  return calculateLineFromCoins(tossThreeCoins());
+}
+
+/**
+ * 使用三钱法生成完整六爻卦象
+ * 从初爻（最下，第1位）到上爻（最上，第6位）依次生成
+ */
+export function castHexagram(): HexagramCastResult {
+  const lines: LineResult[] = [];
+  const changingLines: number[] = [];
+
+  // 生成6爻
+  for (let i = 0; i < 6; i++) {
+    const line = castLine();
+    lines.push(line);
+    
+    if (line.isChanging) {
+      changingLines.push(i + 1); // 位置从1开始（初爻=1，上爻=6）
+    }
+  }
+
+  // 生成二进制字符串（从下到上：初爻在前）
+  // value: 0=阴爻, 1=阳爻
+  const binary = lines.map(l => l.value).join('');
+  const hexagramId = parseInt(binary, 2) + 1; // 转换为1-64的卦序
+
+  // 计算变卦（如果有变爻）
+  let changedHexagramId: number | null = null;
+  if (changingLines.length > 0) {
+    // 变卦：所有变爻反转（阴变阳，阳变阴）
+    const changedBinary = lines
+      .map(l => l.isChanging ? (l.value === 0 ? 1 : 0) : l.value)
+      .join('');
+    changedHexagramId = parseInt(changedBinary, 2) + 1;
+  }
+
+  return {
+    lines,
+    changingLines,
+    hexagramId,
+    changedHexagramId,
+    binary,
+  };
+}
+
+// ==================== 卦名映射函数 ====================
+
+/**
+ * 卦象数据结构
+ */
+export interface HexagramData {
+  id: number;
+  name: string;
+  pinyin: string;
+  binary: string;
+  symbol: string;
+  text: string;
+  tuan: string;
+  daxiang: string;
+}
+
+/**
+ * 64卦数据数组（从JSON导入）
+ */
+export const hexagrams: HexagramData[] = hexagramsData;
+
+/**
+ * 将 [0,1] 数组映射到卦名
+ * @param linesArray 6个元素的数组，0为阴爻，1为阳爻，从下到上（初爻到上爻）
+ * @returns 对应的卦象数据，如果无效则返回 null
+ */
+export function mapLinesToHexagram(linesArray: number[]): HexagramData | null {
+  if (linesArray.length !== 6) {
+    console.warn(`Expected 6 lines, got ${linesArray.length}`);
+    return null;
+  }
+
+  // 验证所有元素都是 0 或 1
+  if (!linesArray.every(line => line === 0 || line === 1)) {
+    console.warn('All lines must be 0 or 1');
+    return null;
+  }
+
+  const binary = linesArray.join('');
+  const hexagramId = parseInt(binary, 2) + 1; // 转为1-64
+
+  return getHexagramById(hexagramId);
+}
+
+/**
+ * 通过卦序（1-64）获取卦象数据
+ */
+export function getHexagramById(id: number): HexagramData | null {
+  if (id < 1 || id > 64) {
+    console.warn(`Invalid hexagram id: ${id}`);
+    return null;
+  }
+  return hexagrams.find(h => h.id === id) || null;
+}
+
+/**
+ * 通过二进制字符串获取卦象数据
+ * @param binary 6位二进制字符串（0=阴，1=阳，从下到上）
+ */
+export function getHexagramByBinary(binary: string): HexagramData | null {
+  if (binary.length !== 6 || !/^[01]+$/.test(binary)) {
+    console.warn(`Invalid binary string: ${binary}`);
+    return null;
+  }
+
+  const id = parseInt(binary, 2) + 1;
+  return getHexagramById(id);
+}
+
+/**
+ * 通过卦名获取卦象数据
+ */
+export function getHexagramByName(name: string): HexagramData | null {
+  return hexagrams.find(h => h.name === name) || null;
+}
+
+// ==================== 辅助函数 ====================
+
+/**
+ * 获取爻的显示符号
+ */
+export function getLineSymbol(line: LineResult): string {
+  if (line.isChanging) {
+    return line.value === 0 ? '⚋' : '⚊'; // 变爻使用特殊标记或颜色
+  }
+  return line.value === 0 ? '⚋' : '⚊';
+}
+
+/**
+ * 获取爻的详细描述
+ */
+export function getLineDescription(line: LineResult): string {
+  const descriptions: Record<LineResult['lineType'], string> = {
+    oldYin: '老阴（变爻）',
+    youngYang: '少阳',
+    youngYin: '少阴',
+    oldYang: '老阳（变爻）',
+  };
+  return descriptions[line.lineType];
+}
+
+/**
+ * 生成变卦的爻数组
+ * @param lines 原始六爻
+ * @returns 变卦的 [0,1] 数组
+ */
+export function getChangedLines(lines: LineResult[]): number[] {
+  return lines.map(l => l.isChanging ? (l.value === 0 ? 1 : 0) : l.value);
+}
+
+/**
+ * 将二进制字符串转为爻数组
+ * @param binary 6位二进制字符串
+ * @returns [0,1] 数组
+ */
+export function binaryToLines(binary: string): number[] {
+  return binary.split('').map(b => parseInt(b, 10) as 0 | 1);
+}
+
+/**
+ * 将爻数组转为二进制字符串
+ * @param lines [0,1] 数组
+ * @returns 6位二进制字符串
+ */
+export function linesToBinary(lines: number[]): string {
+  return lines.join('');
+}
+
+// ==================== 导出默认 ====================
+
+export default {
+  castHexagram,
+  castLine,
+  tossCoin,
+  tossThreeCoins,
+  calculateLineFromCoins,
+  mapLinesToHexagram,
+  getHexagramById,
+  getHexagramByBinary,
+  getHexagramByName,
+  getLineSymbol,
+  getLineDescription,
+  getChangedLines,
+  binaryToLines,
+  linesToBinary,
+  hexagrams,
+};
