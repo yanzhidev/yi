@@ -10,6 +10,8 @@ import {
   getChangingLineInterpretations,
   type LineInterpretation
 } from './utils/iching'
+import { useLanguage } from './contexts/LanguageContext'
+import { LanguageSelector } from './components/LanguageSelector'
 
 function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -47,6 +49,7 @@ function App() {
   const [question, setQuestion] = useState('')
   const [result, setResult] = useState<HexagramCastResult | null>(null)
   const [isCasting, setIsCasting] = useState(false)
+  const { t } = useLanguage()
 
   const currentHexagram = result ? getHexagramById(result.hexagramId) : null
   const changedHexagram = result?.changedHexagramId ? getHexagramById(result.changedHexagramId) : null
@@ -72,18 +75,21 @@ function App() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200">
       <div className="max-w-2xl mx-auto px-6 py-12">
-        {/* 顶部标题 */}
+        {/* 顶部标题和语言选择器 */}
         <header className="text-center mb-10">
+          <div className="flex justify-end mb-4">
+            <LanguageSelector />
+          </div>
           <div className="inline-flex items-center gap-2 mb-3">
             <Sparkles className="w-5 h-5 text-stone-400" />
-            <span className="text-sm tracking-[0.3em] text-stone-400 uppercase">I Ching</span>
+            <span className="text-sm tracking-[0.3em] text-stone-400 uppercase">{t.iChing}</span>
             <Sparkles className="w-5 h-5 text-stone-400" />
           </div>
           <h1 className="text-4xl font-medium tracking-wider text-stone-800">
-            数字易经
+            {t.title}
           </h1>
           <p className="mt-3 text-stone-600 text-sm tracking-wide">
-            以心问卦，以卦明心
+            {t.subtitle}
           </p>
         </header>
 
@@ -92,12 +98,12 @@ function App() {
           <div className="mb-10">
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-stone-100">
               <label className="block text-sm text-stone-700 mb-3 tracking-wider font-medium">
-                心诚则灵，请输入你的问题：
+                {t.questionLabel}
               </label>
               <textarea
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                placeholder="例如：我应该接受这份工作吗？这次合作能否成功？..."
+                placeholder={t.questionPlaceholder}
                 className={cn(
                   "w-full px-4 py-3 rounded-xl",
                   "bg-white border border-stone-300",
@@ -114,7 +120,7 @@ function App() {
         {/* 显示已输入的问题 */}
         {result && question && (
           <div className="mb-8 text-center">
-            <p className="text-xs text-stone-500 tracking-wider mb-2">你所问</p>
+            <p className="text-xs text-stone-500 tracking-wider mb-2">{t.yourQuestion}</p>
             <p className="text-lg text-stone-800 font-medium">「{question}」</p>
           </div>
         )}
@@ -126,11 +132,11 @@ function App() {
               <div className="relative inline-block">
                 <div className="w-20 h-20 border-3 border-stone-200 border-t-stone-600 rounded-full animate-spin" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xs text-stone-500 tracking-widest">起卦</span>
+                  <span className="text-xs text-stone-500 tracking-widest">{t.castButton}</span>
                 </div>
               </div>
               <p className="mt-8 text-stone-600 text-sm tracking-wide animate-pulse font-medium">
-                正在感应天地之气，投掷铜钱...
+                {t.castingDescription}
               </p>
             </div>
           ) : result ? (
@@ -139,10 +145,10 @@ function App() {
               <div className="bg-white rounded-3xl p-8 shadow-md border border-stone-200">
                 <div className="flex items-center gap-2 mb-6">
                   <Mountain className="w-5 h-5 text-stone-700" />
-                  <h2 className="text-lg font-semibold text-stone-800 tracking-wider">本卦</h2>
+                  <h2 className="text-lg font-semibold text-stone-800 tracking-wider">{t.originalHexagram}</h2>
                   {result.changingLines.length > 0 && (
                     <span className="ml-auto text-xs text-amber-700 bg-amber-100 px-3 py-1 rounded-full font-medium">
-                      {result.changingLines.length} 个变爻
+                      {result.changingLines.length} {t.changingLinesCount}
                     </span>
                   )}
                 </div>
@@ -176,7 +182,7 @@ function App() {
                   <div className="mt-6 pt-6 border-t border-stone-200">
                     <div className="flex items-center gap-2 mb-3">
                       <Scroll className="w-4 h-4 text-stone-600" />
-                      <span className="text-sm text-stone-700 font-semibold">卦辞</span>
+                      <span className="text-sm text-stone-700 font-semibold">{t.guaText}</span>
                     </div>
                     <p className="text-stone-800 leading-relaxed text-base">
                       {currentHexagram.text}
@@ -189,7 +195,7 @@ function App() {
                   <div className="mt-4 pt-4 border-t border-stone-200">
                     <div className="flex items-center gap-2 mb-3">
                       <Wind className="w-4 h-4 text-stone-600" />
-                      <span className="text-sm text-stone-700 font-semibold">彖曰</span>
+                      <span className="text-sm text-stone-700 font-semibold">{t.tuan}</span>
                     </div>
                     <p className="text-sm text-stone-700 leading-relaxed">
                       {currentHexagram.tuan}
@@ -202,7 +208,7 @@ function App() {
                   <div className="mt-6 pt-6 border-t border-stone-200">
                     <div className="flex items-center gap-2 mb-4">
                       <Sparkles className="w-4 h-4 text-amber-600" />
-                      <span className="text-sm text-stone-700 font-semibold">动爻解读</span>
+                      <span className="text-sm text-stone-700 font-semibold">{t.lineInterpretation}</span>
                     </div>
                     <div className="space-y-4">
                       {(() => {
@@ -217,17 +223,17 @@ function App() {
                           >
                             <div className="flex items-center gap-2 mb-2">
                               <span className="text-xs font-medium text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
-                                第 {interp.position} 爻
+                                {t.changingLines} {interp.position}
                               </span>
                               <span className="text-sm font-semibold text-stone-800">
                                 {interp.yao}
                               </span>
                             </div>
                             <p className="text-stone-800 text-sm leading-relaxed mb-2">
-                              <span className="font-medium">爻辞：</span>{interp.text}
+                              <span className="font-medium">{t.yaoText}：</span>{interp.text}
                             </p>
                             <p className="text-stone-600 text-xs leading-relaxed">
-                              <span className="font-medium">象曰：</span>{interp.xiang}
+                              <span className="font-medium">{t.xiang}：</span>{interp.xiang}
                             </p>
                           </div>
                         ));
@@ -242,9 +248,9 @@ function App() {
                 <div className="bg-amber-50 rounded-3xl p-8 shadow-md border border-amber-200">
                   <div className="flex items-center gap-2 mb-6">
                     <Wind className="w-5 h-5 text-amber-800" />
-                    <h2 className="text-lg font-semibold text-amber-900 tracking-wider">变卦</h2>
+                    <h2 className="text-lg font-semibold text-amber-900 tracking-wider">{t.changedHexagram}</h2>
                     <span className="ml-auto text-xs text-amber-800 font-medium">
-                      变爻：第 {result.changingLines.join('、')} 爻
+                      {t.changingLines}：{result.changingLines.join('、')}
                     </span>
                   </div>
 
@@ -279,7 +285,7 @@ function App() {
                   {/* 变卦卦辞 */}
                   <div className="mt-6 pt-6 border-t border-amber-300">
                     <p className="text-amber-950 text-base leading-relaxed">
-                      <span className="text-amber-800 font-semibold">卦辞：</span>
+                      <span className="text-amber-800 font-semibold">{t.guaText}：</span>
                       {changedHexagram.text}
                     </p>
                   </div>
@@ -307,7 +313,7 @@ function App() {
                   "disabled:opacity-50 disabled:cursor-not-allowed"
                 )}
               >
-                <span className="relative z-10">起卦</span>
+                <span className="relative z-10">{t.castButton}</span>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </button>
             ) : (
@@ -322,12 +328,12 @@ function App() {
                 )}
               >
                 <RotateCcw className="w-4 h-4" />
-                <span>重新起卦</span>
+                <span>{t.resetButton}</span>
               </button>
             )}
           </div>
           <p className="mt-8 text-center text-xs text-stone-500 tracking-widest font-medium">
-            心诚则灵 · 顺应自然
+            {t.footer}
           </p>
         </footer>
       </div>
