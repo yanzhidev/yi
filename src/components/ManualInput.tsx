@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { useLanguage } from '../contexts/LanguageContext'
-import { LanguageSelector } from './LanguageSelector'
 import { getHexagramByBinary } from '../utils/iching'
 import type { LineResult, HexagramCastResult } from '../utils/iching'
 
@@ -150,32 +149,16 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200">
-      <div className="max-w-2xl mx-auto px-6 pt-1.5">
-        {/* 顶部标题和语言选择器 */}
-        <header className="text-center mb-5">
-          <div className="flex justify-end mb-4">
-            <LanguageSelector />
+    <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200 max-w-2xl mx-auto px-6 pt-1.5">
+      {/* 说明文本 */}
+        <div className="mb-4 text-center">
+          <div className="inline-block text-xs text-amber-700 bg-amber-50 rounded-lg px-4 py-2 max-w-lg">
+            <span className="font-medium">{t.explanation}</span>
+            <span className="text-amber-600 ml-1">{t.coinExplanation}</span>
           </div>
-          <h1 className="text-4xl font-medium tracking-wider text-stone-800">
-            {t.title}
-          </h1>
-          <p className="mt-3 text-stone-600 text-sm tracking-wide">
-            {t.subtitle}
-          </p>
-        </header>
+        </div>
 
-        {/* 手动输入标题和操作按钮 */}
-        <div className="mb-5">
-          {/* 说明文本 */}
-          <div className="mb-4 text-center">
-            <div className="inline-block text-xs text-amber-700 bg-amber-50 rounded-lg px-4 py-2 max-w-lg">
-              <span className="font-medium">{t.explanation}</span>
-              <span className="text-amber-600 ml-1">{t.coinExplanation}</span>
-            </div>
-          </div>
-
-          <div className="flex justify-between items-center mb-0">
+        <div className="flex justify-between items-center mb-0">
             <button
               onClick={onBack}
               className={cn(
@@ -199,7 +182,6 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               <RotateCcw className="w-4 h-4" />
               {t.reset}
             </button>
-          </div>
         </div>
 
         {/* 显示问题 - 隐藏 */}
@@ -274,7 +256,6 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
             </button>
           </div>
         </main>
-      </div>
     </div>
   )
 }

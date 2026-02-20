@@ -64,21 +64,10 @@ function App() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200">
       <div className="max-w-2xl mx-auto px-6 py-12">
-        {/* 顶部标题和语言选择器 */}
-        <header className={cn(
-          "text-center mb-10",
-          showManualInput ? "opacity-0 pointer-events-none h-0" : ""
-        )}>
-          <div className="flex justify-end mb-4">
-            <LanguageSelector />
-          </div>
-          <h1 className="text-4xl font-medium tracking-wider text-stone-800">
-            {t.title}
-          </h1>
-          <p className="mt-3 text-stone-600 text-sm tracking-wide">
-            {t.subtitle}
-          </p>
-        </header>
+        {/* 语言选择器 */}
+        <div className="flex justify-end mb-4">
+          <LanguageSelector />
+        </div>
 
         {/* 问题输入区域 */}
         {!result && !showManualInput && (
