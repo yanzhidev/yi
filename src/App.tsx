@@ -162,8 +162,6 @@ function App() {
   }, [getKeyInterpretationInfo])
 
   const handleCast = useCallback(() => {
-    if (!question.trim()) return
-    
     setIsCasting(true)
     
     // 模拟起卦的仪式感，延迟显示结果
@@ -172,7 +170,7 @@ function App() {
       setResult(castResult)
       setIsCasting(false)
     }, 1200)
-  }, [question])
+  }, [])
 
   const handleReset = useCallback(() => {
     setResult(null)
@@ -367,11 +365,11 @@ function App() {
                   <div className="mt-4 pt-4 border-t border-stone-200">
                     <div className="flex justify-center">
                       <img 
-                        src={`/images/daxiang/${currentHexagram.id}.svg`}
+                        src={`/images/hexagrams/${currentHexagram.id}.png`}
                         alt={`${currentHexagram.name}大象图`}
-                        width={300}
-                        height={180}
-                        style={{ backgroundColor: '#f9f5eb' }}
+                        width={450}
+                        height={270}
+                        style={{ mixBlendMode: 'multiply' }}
                       />
                     </div>
                   </div>
@@ -617,11 +615,11 @@ function App() {
                   <div className="mt-4 pt-4 border-t border-amber-300">
                     <div className="flex justify-center">
                       <img 
-                        src={`/images/daxiang/${changedHexagram.id}.svg`}
+                        src={`/images/hexagrams/${changedHexagram.id}.png`}
                         alt={`${changedHexagram.name}大象图`}
-                        width={300}
-                        height={180}
-                        style={{ backgroundColor: '#f9f5eb' }}
+                        width={450}
+                        height={270}
+                        style={{ mixBlendMode: 'multiply' }}
                       />
                     </div>
                   </div>
@@ -723,7 +721,7 @@ function App() {
                         "shadow-lg hover:shadow-xl"
                       )}
                     >
-                      <span className="relative z-10">钱卜</span>
+                      <span className="relative z-10">{t.coinDivination}</span>
                       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </button>
                   </>

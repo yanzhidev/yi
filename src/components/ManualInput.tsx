@@ -14,11 +14,11 @@ function cn(...inputs: ClassValue[]) {
 type YaoType = 'oldYang' | 'youngYang' | 'youngYin' | 'oldYin' | null
 
 // 爻的选项配置
-const yaoOptions = [
-  { type: 'oldYang' as const, label: '老阳', symbol: '⚊变', color: 'orange', extraSymbol: '○' },
-  { type: 'youngYang' as const, label: '少阳', symbol: '⚊', color: 'green', extraSymbol: '|||' },
-  { type: 'youngYin' as const, label: '少阴', symbol: '⚋', color: 'blue', extraSymbol: '||' },
-  { type: 'oldYin' as const, label: '老阴', symbol: '⚋变', color: 'orange', extraSymbol: '×' }
+const getYaoOptions = (t: any) => [
+  { type: 'oldYang' as const, label: t.oldYang, symbol: '⚊变', color: 'orange', extraSymbol: '○' },
+  { type: 'youngYang' as const, label: t.youngYang, symbol: '⚊', color: 'green', extraSymbol: '|||' },
+  { type: 'youngYin' as const, label: t.youngYin, symbol: '⚋', color: 'blue', extraSymbol: '||' },
+  { type: 'oldYin' as const, label: t.oldYin, symbol: '⚋变', color: 'orange', extraSymbol: '×' }
 ]
 
 // 爻的名称（从下到上）
@@ -33,6 +33,7 @@ interface ManualInputProps {
 export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
   const [selectedYaos, setSelectedYaos] = useState<YaoType[]>(Array(6).fill(null))
   const { t } = useLanguage()
+  const yaoOptions = getYaoOptions(t)
 
   // 处理爻的选择
   const handleYaoSelect = (position: number, type: YaoType) => {
@@ -179,7 +180,7 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               )}
             >
               <ArrowLeft className="w-4 h-4" />
-              返回
+              {t.back}
             </button>
             
             <button
@@ -191,7 +192,7 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               )}
             >
               <RotateCcw className="w-4 h-4" />
-              重置
+              {t.reset}
             </button>
           </div>
         </div>
@@ -255,17 +256,16 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               disabled={!canViewResult}
               className={cn(
                 "group relative px-12 py-4 rounded-full",
-                "bg-stone-700 text-stone-50",
+                canViewResult 
+                  ? "bg-amber-600 text-white hover:bg-amber-700" 
+                  : "bg-stone-300 text-stone-500 cursor-not-allowed",
                 "text-sm tracking-[0.2em] uppercase",
-                "transition-all duration-500 ease-out",
-                "hover:bg-stone-600 hover:shadow-lg",
-                "active:scale-95",
-                "focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-2",
-                "disabled:opacity-50 disabled:cursor-not-allowed"
+                "transition-all duration-300",
+                "shadow-lg hover:shadow-xl"
               )}
             >
-              <span className="relative z-10">查看结果</span>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative z-10">{t.viewResult}</span>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
           </div>
         </main>
