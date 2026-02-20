@@ -204,17 +204,18 @@ function AppContent() {
       
       {/* 主内容区域 */}
       <div className="flex-1 flex flex-col">
-        {/* 顶部工具栏 */}
-        <div className="flex justify-between items-center px-6 py-4">
+        {/* 固定的历史记录按钮 */}
+        {!sidebarOpen && (
           <button
             onClick={() => setSidebarOpen(true)}
-            className="p-2 rounded-lg bg-white/80 backdrop-blur-sm shadow-sm hover:bg-white hover:shadow-md transition-all duration-200"
+            className="fixed top-6 left-6 z-50 p-2 rounded-lg bg-white/80 backdrop-blur-sm shadow-sm hover:bg-white hover:shadow-md transition-all duration-200"
           >
             <Menu className="w-5 h-5 text-stone-600" />
           </button>
-          
-          <div className="flex-1" />
-          
+        )}
+        
+        {/* 顶部工具栏 */}
+        <div className="flex justify-end items-center px-6 py-4">
           <div className="flex items-center gap-4">
             <AuthButton />
             <LanguageSelector />
