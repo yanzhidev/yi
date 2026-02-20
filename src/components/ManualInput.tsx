@@ -189,12 +189,12 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
         {/* 爻位选择区域 */}
         <main className="space-y-6">
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-stone-100">
-            <div className="space-y-4">
+            <div className="space-y-2">
               {/* 从下到上显示爻位（初爻到上爻） */}
               {[0, 1, 2, 3, 4, 5].map((position) => (
-                <div key={position} className="border-b border-stone-100 pb-4 last:border-b-0">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-medium text-stone-800">
+                <div key={position} className="border-b border-stone-100 pb-2 last:border-b-0">
+                  <div className="flex items-center gap-4">
+                    <h3 className="text-lg font-medium text-stone-800 whitespace-nowrap" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
                       {yaoNames[position]}
                     </h3>
                     {selectedYaos[position] && (
@@ -207,21 +207,20 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                         </span>
                       </div>
                     )}
-                  </div>
-                  
-                  <div className="grid grid-cols-4 gap-2">
-                    {yaoOptions.map((option) => (
-                      <button
-                        key={option.type}
-                        onClick={() => handleYaoSelect(position, option.type)}
-                        className={getButtonStyle(position, option.type)}
-                      >
-                        <div className="text-center">
-                          <div className="text-lg mb-1">{option.symbol}</div>
-                          <div className="text-xs">{option.label}</div>
-                        </div>
-                      </button>
-                    ))}
+                    <div className="grid grid-cols-4 gap-2 flex-1">
+                      {yaoOptions.map((option) => (
+                        <button
+                          key={option.type}
+                          onClick={() => handleYaoSelect(position, option.type)}
+                          className={getButtonStyle(position, option.type)}
+                        >
+                          <div className="text-center">
+                            <div className="text-lg mb-1">{option.symbol}</div>
+                            <div className="text-xs">{option.label}</div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
