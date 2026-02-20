@@ -148,10 +148,10 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200">
-      <div className="max-w-2xl mx-auto px-6 py-12">
+      <div className="max-w-2xl mx-auto px-6 pt-1.5">
         {/* 顶部标题和返回按钮 */}
-        <header className="text-center mb-10">
-          <div className="flex justify-between items-center mb-6">
+        <header className="mb-5">
+          <div className="flex justify-between items-center mb-0">
             <button
               onClick={onBack}
               className={cn(
@@ -176,18 +176,11 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               重置
             </button>
           </div>
-          
-          <h1 className="text-3xl font-medium tracking-wider text-stone-800 mb-3">
-            手动摇卦输入
-          </h1>
-          <p className="text-stone-600 text-sm">
-            请按照从下到上的顺序，为每一爻选择铜钱投掷结果
-          </p>
         </header>
 
-        {/* 显示问题 */}
-        {question && (
-          <div className="mb-8 text-center">
+        {/* 显示问题 - 隐藏 */}
+        {false && (
+          <div className="opacity-0 pointer-events-none h-0 overflow-hidden mb-8 text-center">
             <p className="text-xs text-stone-500 mb-2">您的问题</p>
             <p className="text-lg text-stone-800 font-medium">「{question}」</p>
           </div>
@@ -197,8 +190,8 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
         <main className="space-y-6">
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-stone-100">
             <div className="space-y-4">
-              {/* 从上到下显示爻位（上爻到初爻） */}
-              {[5, 4, 3, 2, 1, 0].map((position) => (
+              {/* 从下到上显示爻位（初爻到上爻） */}
+              {[0, 1, 2, 3, 4, 5].map((position) => (
                 <div key={position} className="border-b border-stone-100 pb-4 last:border-b-0">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-lg font-medium text-stone-800">
