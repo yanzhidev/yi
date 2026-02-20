@@ -241,19 +241,25 @@ export function castHexagram(): HexagramCastResult {
     }
   }
 
-  // 生成二进制字符串（从下到上：初爻在前）
+  // 生成二进制字符串（从下到上：初爻到上爻）
   // value: 0=阴爻, 1=阳爻
   const binary = lines.map(l => l.value).join('');
-  const hexagramId = parseInt(binary, 2) + 1; // 转换为1-64的卦序
+  
+  // 为了匹配数据格式，需要反转来查找（数据中是从上到下）
+  const reversedBinary = lines.map(l => l.value).reverse().join('');
+  const hexagramData = getHexagramByBinary(reversedBinary);
+  const hexagramId = hexagramData ? hexagramData.id : 1;
 
   // 计算变卦（如果有变爻）
   let changedHexagramId: number | null = null;
   if (changingLines.length > 0) {
-    // 变卦：所有变爻反转（阴变阳，阳变阴）
-    const changedBinary = lines
+    // 变卦：所有变爻反转（阴变阳，阳变阴），然后反转来匹配数据格式
+    const reversedChangedBinary = lines
       .map(l => l.isChanging ? (l.value === 0 ? 1 : 0) : l.value)
+      .reverse()
       .join('');
-    changedHexagramId = parseInt(changedBinary, 2) + 1;
+    const changedHexagramData = getHexagramByBinary(reversedChangedBinary);
+    changedHexagramId = changedHexagramData ? changedHexagramData.id : null;
   }
 
   return {

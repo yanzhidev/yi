@@ -22,8 +22,8 @@ function cn(...inputs: ClassValue[]) {
 // 阴爻符号（断开的横线）
 const YinYao = ({ isChanging, className }: { isChanging?: boolean; className?: string }) => (
   <div className={cn("flex items-center justify-center gap-1 w-20", className)}>
-    <div className={cn("h-2 w-7 rounded-full", isChanging ? "bg-amber-600" : "bg-stone-700")} />
-    <div className={cn("h-2 w-7 rounded-full", isChanging ? "bg-amber-600" : "bg-stone-700")} />
+    <div className={cn("h-2 w-[38px] rounded-full", isChanging ? "bg-amber-600" : "bg-stone-700")} />
+    <div className={cn("h-2 w-[38px] rounded-full", isChanging ? "bg-amber-600" : "bg-stone-700")} />
   </div>
 )
 

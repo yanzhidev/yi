@@ -7,8 +7,8 @@ function cn(...inputs: ClassValue[]) {
 // 阴爻符号（断开的横线）
 const YinYao = ({ className }: { className?: string }) => (
   <div className={cn("flex items-center justify-center gap-1 w-16", className)}>
-    <div className="h-1.5 w-6 bg-stone-700 rounded-full" />
-    <div className="h-1.5 w-6 bg-stone-700 rounded-full" />
+    <div className="h-1.5 w-[30px] bg-stone-700 rounded-full" />
+    <div className="h-1.5 w-[30px] bg-stone-700 rounded-full" />
   </div>
 );
 
