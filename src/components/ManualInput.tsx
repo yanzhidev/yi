@@ -15,14 +15,11 @@ type YaoType = 'oldYang' | 'youngYang' | 'youngYin' | 'oldYin' | null
 
 // 爻的选项配置
 const getYaoOptions = (t: any) => [
-  { type: 'oldYang' as const, label: t.oldYang, symbol: '⚊变', color: 'orange', extraSymbol: '○' },
+  { type: 'oldYang' as const, label: t.oldYang, symbol: `⚊${t.changeSymbol}`, color: 'orange', extraSymbol: '○' },
   { type: 'youngYang' as const, label: t.youngYang, symbol: '⚊', color: 'green', extraSymbol: '|||' },
   { type: 'youngYin' as const, label: t.youngYin, symbol: '⚋', color: 'blue', extraSymbol: '||' },
-  { type: 'oldYin' as const, label: t.oldYin, symbol: '⚋变', color: 'orange', extraSymbol: '×' }
+  { type: 'oldYin' as const, label: t.oldYin, symbol: `⚋${t.changeSymbol}`, color: 'orange', extraSymbol: '×' }
 ]
-
-// 爻的名称（从下到上）
-const yaoNames = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻']
 
 interface ManualInputProps {
   question: string
@@ -214,7 +211,7 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                 <div key={position} className="border-b border-stone-100 pb-2 last:border-b-0">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-lg font-medium text-stone-800">
-                      {yaoNames[position]}
+                      {t.lineNames[position]}
                     </h3>
                     {selectedYaos[position] && (
                       <div className="flex items-center gap-2">

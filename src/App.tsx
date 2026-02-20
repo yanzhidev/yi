@@ -22,11 +22,13 @@ function App() {
   const [showInterpretation, setShowInterpretation] = useState(false) // 展开/隐藏通俗解读
   const [showChangedInterpretation, setShowChangedInterpretation] = useState(false) // 展开/隐藏变卦通俗解读
   const [showManualInput, setShowManualInput] = useState(false) // 显示手动输入界面
+  const [dataKey, setDataKey] = useState(0) // Used to force re-render when language changes
   const { t, language } = useLanguage()
 
-  // Sync iching language with UI language
+  // Sync iching language with UI language and force data refresh
   useEffect(() => {
     setIchingLanguage(language)
+    setDataKey(prev => prev + 1) // Force re-render to get new data
   }, [language])
 
   const handleCast = useCallback(() => {
@@ -129,6 +131,7 @@ function App() {
                 </div>
               ) : result ? (
                 <HexagramResult
+                  key={dataKey} // Force re-render when language changes
                   result={result}
                   question={question}
                   showInterpretation={showInterpretation}
@@ -173,7 +176,7 @@ function App() {
                         "text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
                       )}
                     >
-                      钱卜
+                      {t.coinDivination}
                     </button>
                   </>
                 )}
@@ -188,7 +191,7 @@ function App() {
                 )}
               >
                 <RotateCcw className="w-4 h-4" />
-                重新起卦
+                {t.resetButton}
               </button>
             )}
           </div>

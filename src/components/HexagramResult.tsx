@@ -53,7 +53,7 @@ export function HexagramResult({
       {keyInterpretationInfo && (
         <div className="mb-8 text-center">
           <div className="inline-block text-xs text-amber-700 bg-amber-50 rounded-lg px-4 py-2 max-w-lg">
-            <span className="font-medium">重点解读：</span>
+            <span className="font-medium">{t.keyInterpretationNote}：</span>
             <span className="text-amber-600 ml-1">{keyInterpretationInfo.message}</span>
           </div>
         </div>
@@ -81,7 +81,7 @@ export function HexagramResult({
                   {currentHexagram.name}
                 </h3>
                 <p className="text-sm text-stone-600 mt-1 font-medium">
-                  第 {currentHexagram.id} 卦 · {currentHexagram.pinyin}
+                  {t.hexagramNumber.replace('{0}', currentHexagram.id.toString())} · {currentHexagram.pinyin}
                 </p>
               </div>
               <p className="text-stone-700 text-base leading-relaxed">
@@ -318,7 +318,7 @@ export function HexagramResult({
                   {changedHexagram.name}
                 </h3>
                 <p className="text-sm text-amber-800 mt-1 font-medium">
-                  第 {changedHexagram.id} 卦 · {changedHexagram.pinyin}
+                  {t.hexagramNumber.replace('{0}', changedHexagram.id.toString())} · {changedHexagram.pinyin}
                 </p>
               </div>
               <p className="text-amber-900 text-base leading-relaxed">
