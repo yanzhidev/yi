@@ -13,6 +13,7 @@ import {
 } from './utils/iching'
 import { useLanguage } from './contexts/LanguageContext'
 import { LanguageSelector } from './components/LanguageSelector'
+import { ManualInput } from './components/ManualInput'
 
 function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -53,6 +54,7 @@ function App() {
   const [dataKey, setDataKey] = useState(0) // Used to force re-render when language changes
   const [showInterpretation, setShowInterpretation] = useState(false) // 展开/隐藏通俗解读
   const [showChangedInterpretation, setShowChangedInterpretation] = useState(false) // 展开/隐藏变卦通俗解读
+  const [showManualInput, setShowManualInput] = useState(false) // 显示手动输入界面
   const { t, language } = useLanguage()
 
   // Sync iching language with UI language and force data refresh
@@ -175,6 +177,18 @@ function App() {
   const handleReset = useCallback(() => {
     setResult(null)
     setQuestion('')
+    setShowManualInput(false)
+  }, [])
+
+  // 处理手动输入返回
+  const handleManualInputBack = useCallback(() => {
+    setShowManualInput(false)
+  }, [])
+
+  // 处理手动输入结果
+  const handleManualInputResult = useCallback((manualResult: HexagramCastResult) => {
+    setResult(manualResult)
+    setShowManualInput(false)
   }, [])
 
   return (
@@ -194,7 +208,7 @@ function App() {
         </header>
 
         {/* 问题输入区域 */}
-        {!result && (
+        {!result && !showManualInput && (
           <div className="mb-10">
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-stone-100">
               <label className="block text-sm text-stone-700 mb-3 tracking-wider font-medium">
@@ -225,6 +239,15 @@ function App() {
           </div>
         )}
 
+        {/* 手动输入界面 */}
+        {showManualInput && (
+          <ManualInput
+            question={question}
+            onBack={handleManualInputBack}
+            onResult={handleManualInputResult}
+          />
+        )}
+
         {/* 变爻重点解读规则 */}
         {result && getKeyInterpretationInfo && (
           <div className="mb-8 text-center">
@@ -237,7 +260,9 @@ function App() {
 
         {/* 主要显示区域 */}
         <main className="space-y-6">
-          {isCasting ? (
+          {!showManualInput && (
+            <>
+              {isCasting ? (
             <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-12 shadow-sm border border-stone-100 text-center">
               <div className="relative inline-block">
                 <div className="w-20 h-20 border-3 border-stone-200 border-t-stone-600 rounded-full animate-spin" />
@@ -657,29 +682,55 @@ function App() {
               )}
             </>
           ) : null}
+          </>
+        )}
         </main>
 
         {/* 底部按钮区域 */}
         <footer className="mt-10">
           <div className="flex justify-center gap-4">
             {!result ? (
-              <button
-                onClick={handleCast}
-                disabled={isCasting || !question.trim()}
-                className={cn(
-                  "group relative px-12 py-4 rounded-full",
-                  "bg-stone-700 text-stone-50",
-                  "text-sm tracking-[0.2em] uppercase",
-                  "transition-all duration-500 ease-out",
-                  "hover:bg-stone-600 hover:shadow-lg",
-                  "active:scale-95",
-                  "focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-2",
-                  "disabled:opacity-50 disabled:cursor-not-allowed"
+              <>
+                {!showManualInput && (
+                  <>
+                    <button
+                      onClick={handleCast}
+                      disabled={isCasting || !question.trim()}
+                      className={cn(
+                        "group relative px-12 py-4 rounded-full",
+                        "bg-stone-700 text-stone-50",
+                        "text-sm tracking-[0.2em] uppercase",
+                        "transition-all duration-500 ease-out",
+                        "hover:bg-stone-600 hover:shadow-lg",
+                        "active:scale-95",
+                        "focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-2",
+                        "disabled:opacity-50 disabled:cursor-not-allowed"
+                      )}
+                    >
+                      <span className="relative z-10">{t.castButton}</span>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </button>
+                    
+                    <button
+                      onClick={() => setShowManualInput(true)}
+                      disabled={!question.trim()}
+                      className={cn(
+                        "group relative px-12 py-4 rounded-full",
+                        "bg-amber-600 text-white",
+                        "text-sm tracking-[0.2em] uppercase",
+                        "transition-all duration-500 ease-out",
+                        "hover:bg-amber-500 hover:shadow-lg",
+                        "active:scale-95",
+                        "focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2",
+                        "disabled:opacity-50 disabled:cursor-not-allowed"
+                      )}
+                    >
+                      <span className="relative z-10">钱卜</span>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </button>
+                  </>
                 )}
-              >
-                <span className="relative z-10">{t.castButton}</span>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </button>
+              </>
             ) : (
               <button
                 onClick={handleReset}
