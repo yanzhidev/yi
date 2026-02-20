@@ -195,7 +195,10 @@ function App() {
     <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200">
       <div className="max-w-2xl mx-auto px-6 py-12">
         {/* 顶部标题和语言选择器 */}
-        <header className="text-center mb-10">
+        <header className={cn(
+          "text-center mb-10",
+          showManualInput ? "opacity-0 pointer-events-none h-0" : ""
+        )}>
           <div className="flex justify-end mb-4">
             <LanguageSelector />
           </div>
@@ -695,38 +698,33 @@ function App() {
                   <>
                     <button
                       onClick={handleCast}
-                      disabled={isCasting || !question.trim()}
+                      disabled={isCasting}
                       className={cn(
                         "group relative px-12 py-4 rounded-full",
                         "bg-stone-700 text-stone-50",
                         "text-sm tracking-[0.2em] uppercase",
-                        "transition-all duration-500 ease-out",
-                        "hover:bg-stone-600 hover:shadow-lg",
-                        "active:scale-95",
-                        "focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-2",
-                        "disabled:opacity-50 disabled:cursor-not-allowed"
+                        "disabled:opacity-50 disabled:cursor-not-allowed",
+                        "hover:bg-stone-800 transition-all duration-300",
+                        "shadow-lg hover:shadow-xl"
                       )}
                     >
                       <span className="relative z-10">{t.castButton}</span>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stone-600 to-stone-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </button>
                     
                     <button
                       onClick={() => setShowManualInput(true)}
-                      disabled={!question.trim()}
                       className={cn(
                         "group relative px-12 py-4 rounded-full",
                         "bg-amber-600 text-white",
                         "text-sm tracking-[0.2em] uppercase",
-                        "transition-all duration-500 ease-out",
-                        "hover:bg-amber-500 hover:shadow-lg",
-                        "active:scale-95",
-                        "focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2",
-                        "disabled:opacity-50 disabled:cursor-not-allowed"
+                        "disabled:opacity-50 disabled:cursor-not-allowed",
+                        "hover:bg-amber-700 transition-all duration-300",
+                        "shadow-lg hover:shadow-xl"
                       )}
                     >
                       <span className="relative z-10">钱卜</span>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </button>
                   </>
                 )}

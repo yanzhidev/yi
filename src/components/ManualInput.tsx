@@ -3,6 +3,7 @@ import { ArrowLeft, RotateCcw } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { useLanguage } from '../contexts/LanguageContext'
 import { LanguageSelector } from './LanguageSelector'
+import { getHexagramByBinary } from '../utils/iching'
 import type { LineResult, HexagramCastResult } from '../utils/iching'
 
 function cn(...inputs: ClassValue[]) {
@@ -14,10 +15,10 @@ type YaoType = 'oldYang' | 'youngYang' | 'youngYin' | 'oldYin' | null
 
 // 爻的选项配置
 const yaoOptions = [
-  { type: 'oldYang' as const, label: '3正', symbol: '⚊变', color: 'orange' },
-  { type: 'youngYang' as const, label: '2正1反', symbol: '⚊', color: 'green' },
-  { type: 'youngYin' as const, label: '1正2反', symbol: '⚋', color: 'blue' },
-  { type: 'oldYin' as const, label: '3反', symbol: '⚋变', color: 'orange' }
+  { type: 'oldYang' as const, label: '老阳', symbol: '⚊变', color: 'orange', extraSymbol: '○' },
+  { type: 'youngYang' as const, label: '少阳', symbol: '⚊', color: 'green', extraSymbol: '|||' },
+  { type: 'youngYin' as const, label: '少阴', symbol: '⚋', color: 'blue', extraSymbol: '||' },
+  { type: 'oldYin' as const, label: '老阴', symbol: '⚋变', color: 'orange', extraSymbol: '×' }
 ]
 
 // 爻的名称（从下到上）
@@ -92,7 +93,8 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
 
   // 二进制转卦ID
   const binaryToHexagramId = (binary: string): number => {
-    return parseInt(binary, 2) + 1
+    const hexagram = getHexagramByBinary(binary)
+    return hexagram ? hexagram.id : 0
   }
 
   // 检查是否可以查看结果
@@ -206,8 +208,8 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
         <main className="space-y-6">
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-stone-100">
             <div className="space-y-2">
-              {/* 从下到上显示爻位（初爻到上爻） */}
-              {[0, 1, 2, 3, 4, 5].map((position) => (
+              {/* 从上到下显示爻位（上爻到初爻） */}
+              {[5, 4, 3, 2, 1, 0].map((position) => (
                 <div key={position} className="border-b border-stone-100 pb-2 last:border-b-0">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-lg font-medium text-stone-800">
@@ -234,7 +236,9 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                       >
                         <div className="text-center">
                           <div className="text-lg mb-1">{option.symbol}</div>
-                          <div className="text-xs">{option.label}</div>
+                          <div className="text-xs">
+                            {option.label}{option.extraSymbol}
+                          </div>
                         </div>
                       </button>
                     ))}

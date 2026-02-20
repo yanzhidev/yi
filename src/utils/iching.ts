@@ -337,8 +337,8 @@ export function getHexagramByBinary(binary: string): HexagramData | null {
     return null;
   }
 
-  const id = parseInt(binary, 2) + 1;
-  return getHexagramById(id);
+  // 直接通过二进制字符串查找对应的卦象
+  return getHexagrams().find(h => h.binary === binary) || null;
 }
 
 /**
