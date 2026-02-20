@@ -44,6 +44,9 @@ export interface Translation {
   // Manual Input
   manualInputTitle: string; // 手动摇卦输入
   manualInputDescription: string; // 手动输入说明
+  coinExplanation: string; // 铜钱说明
+  explanation: string; // 说明标签
+  divineButton: string; // 解卦按钮
   oldYang: string; // 老阳
   youngYang: string; // 少阳
   youngYin: string; // 少阴
@@ -111,6 +114,9 @@ export const translations: Record<Language, Translation> = {
     interpretation6LinesOthers: 'All six lines are changing: ① If the original hexagram is Qian, read the text "Yong Jiu"; ② If the original hexagram is Kun, read the text "Yong Liu"; ③ For the other 62 hexagrams, read the text of the changed hexagram directly.',
     manualInputTitle: 'Manual Hexagram Input',
     manualInputDescription: 'Please select coin toss results for each line from bottom to top',
+    coinExplanation: '3 tails(9)=Old Yang, 2 heads 1 tail(7)=Young Yang, 2 tails 1 head(8)=Young Yin, 3 heads(6)=Old Yin',
+    explanation: 'Explanation:',
+    divineButton: 'Divine',
     oldYang: 'Old Yang',
     youngYang: 'Young Yang',
     youngYin: 'Young Yin',
@@ -171,6 +177,9 @@ export const translations: Record<Language, Translation> = {
     interpretation6LinesOthers: '六爻全变：① 如果本卦是乾卦，看"用九"爻辞；② 如果本卦是坤卦，看"用六"爻辞；③ 如果是其余62卦，直接看变卦的卦辞。',
     manualInputTitle: '手动摇卦输入',
     manualInputDescription: '请按照从下到上的顺序，为每一爻选择铜钱投掷结果',
+    coinExplanation: '3反(9)=老阳，2正1反(7)=少阳，2反1正(8)=少阴，3正(6)=老阴',
+    explanation: '说明：',
+    divineButton: '解卦',
     oldYang: '老阳',
     youngYang: '少阳',
     youngYin: '少阴',
@@ -231,6 +240,9 @@ export const translations: Record<Language, Translation> = {
     interpretation6LinesOthers: '六爻全變：① 如果本卦是乾卦，看"用九"爻辭；② 如果本卦是坤卦，看"用六"爻辭；③ 如果是其餘62卦，直接看變卦的卦辭。',
     manualInputTitle: '手動搖卦輸入',
     manualInputDescription: '請按照從下到上的順序，為每一爻選擇銅錢投擲結果',
+    coinExplanation: '3反(9)=老陽，2正1反(7)=少陽，2反1正(8)=少陰，3正(6)=老陰',
+    explanation: '說明：',
+    divineButton: '解卦',
     oldYang: '老陽',
     youngYang: '少陽',
     youngYin: '少陰',
@@ -290,6 +302,9 @@ export const translations: Record<Language, Translation> = {
     interpretation6LinesOthers: 'Todas las seis líneas están cambiando: ① Si el hexagrama original es Qian, leer el texto "Yong Jiu"; ② Si el hexagrama original es Kun, leer el texto "Yong Liu"; ③ Para los otros 62 hexagramas, leer el texto del hexagrama cambiado directamente.',
     manualInputTitle: 'Entrada Manual de Hexagrama',
     manualInputDescription: 'Por favor selecciona los resultados del lanzamiento de monedas para cada línea de abajo hacia arriba',
+    coinExplanation: '3 cruces(9)=Viejo Yang, 2 caras 1 cruz(7)=Joven Yang, 2 cruces 1 cara(8)=Joven Yin, 3 caras(6)=Viejo Yin',
+    explanation: 'Explicación:',
+    divineButton: 'Divinar',
     oldYang: 'Viejo Yang',
     youngYang: 'Joven Yang',
     youngYin: 'Joven Yin',

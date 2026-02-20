@@ -167,6 +167,14 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
 
         {/* 手动输入标题和操作按钮 */}
         <div className="mb-5">
+          {/* 说明文本 */}
+          <div className="mb-4 text-center">
+            <div className="inline-block text-xs text-amber-700 bg-amber-50 rounded-lg px-4 py-2 max-w-lg">
+              <span className="font-medium">{t.explanation}</span>
+              <span className="text-amber-600 ml-1">{t.coinExplanation}</span>
+            </div>
+          </div>
+
           <div className="flex justify-between items-center mb-0">
             <button
               onClick={onBack}
@@ -261,7 +269,7 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                 "shadow-lg hover:shadow-xl"
               )}
             >
-              <span className="relative z-10">{t.viewResult}</span>
+              <span className="relative z-10">{t.divineButton}</span>
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
           </div>
