@@ -15,10 +15,10 @@ type YaoType = 'oldYang' | 'youngYang' | 'youngYin' | 'oldYin' | null
 
 // 爻的选项配置
 const getYaoOptions = (t: any) => [
-  { type: 'oldYang' as const, label: t.oldYang, symbol: `⚊${t.changeSymbol}`, color: 'orange', extraSymbol: '○' },
-  { type: 'youngYang' as const, label: t.youngYang, symbol: '⚊', color: 'green', extraSymbol: '|||' },
-  { type: 'youngYin' as const, label: t.youngYin, symbol: '⚋', color: 'blue', extraSymbol: '||' },
-  { type: 'oldYin' as const, label: t.oldYin, symbol: `⚋${t.changeSymbol}`, color: 'orange', extraSymbol: '×' }
+  { type: 'oldYang' as const, label: t.oldYang, symbol: '', color: 'orange', extraSymbol: '○' },
+  { type: 'youngYang' as const, label: t.youngYang, symbol: '', color: 'green', extraSymbol: '|||' },
+  { type: 'youngYin' as const, label: t.youngYin, symbol: '', color: 'blue', extraSymbol: '||' },
+  { type: 'oldYin' as const, label: t.oldYin, symbol: '', color: 'orange', extraSymbol: '×' }
 ]
 
 interface ManualInputProps {
@@ -241,9 +241,9 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                         className={getButtonStyle(position, option.type)}
                       >
                         <div className="text-center">
-                          <div className="text-lg mb-1">{option.symbol}</div>
-                          <div className="text-xs">
-                            {option.label}{option.extraSymbol}
+                          <div className="text-base font-medium mb-1">{option.label}</div>
+                          <div className="text-lg">
+                            {option.extraSymbol}
                           </div>
                         </div>
                       </button>
