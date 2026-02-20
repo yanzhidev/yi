@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
+import { useLanguage } from '../contexts/LanguageContext'
+import { LanguageSelector } from './LanguageSelector'
 import type { LineResult, HexagramCastResult } from '../utils/iching'
 
 function cn(...inputs: ClassValue[]) {
@@ -29,6 +31,7 @@ interface ManualInputProps {
 
 export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
   const [selectedYaos, setSelectedYaos] = useState<YaoType[]>(Array(6).fill(null))
+  const { t } = useLanguage()
 
   // 处理爻的选择
   const handleYaoSelect = (position: number, type: YaoType) => {
@@ -149,8 +152,21 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-stone-100 to-stone-200">
       <div className="max-w-2xl mx-auto px-6 pt-1.5">
-        {/* 顶部标题和返回按钮 */}
-        <header className="mb-5">
+        {/* 顶部标题和语言选择器 */}
+        <header className="text-center mb-5">
+          <div className="flex justify-end mb-4">
+            <LanguageSelector />
+          </div>
+          <h1 className="text-4xl font-medium tracking-wider text-stone-800">
+            {t.title}
+          </h1>
+          <p className="mt-3 text-stone-600 text-sm tracking-wide">
+            {t.subtitle}
+          </p>
+        </header>
+
+        {/* 手动输入标题和操作按钮 */}
+        <div className="mb-5">
           <div className="flex justify-between items-center mb-0">
             <button
               onClick={onBack}
@@ -176,7 +192,7 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               重置
             </button>
           </div>
-        </header>
+        </div>
 
         {/* 显示问题 - 隐藏 */}
         {false && (
@@ -193,8 +209,8 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
               {/* 从下到上显示爻位（初爻到上爻） */}
               {[0, 1, 2, 3, 4, 5].map((position) => (
                 <div key={position} className="border-b border-stone-100 pb-2 last:border-b-0">
-                  <div className="flex items-center gap-4">
-                    <h3 className="text-lg font-medium text-stone-800 whitespace-nowrap" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-medium text-stone-800">
                       {yaoNames[position]}
                     </h3>
                     {selectedYaos[position] && (
@@ -207,20 +223,21 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                         </span>
                       </div>
                     )}
-                    <div className="grid grid-cols-4 gap-2 flex-1">
-                      {yaoOptions.map((option) => (
-                        <button
-                          key={option.type}
-                          onClick={() => handleYaoSelect(position, option.type)}
-                          className={getButtonStyle(position, option.type)}
-                        >
-                          <div className="text-center">
-                            <div className="text-lg mb-1">{option.symbol}</div>
-                            <div className="text-xs">{option.label}</div>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-4 gap-2">
+                    {yaoOptions.map((option) => (
+                      <button
+                        key={option.type}
+                        onClick={() => handleYaoSelect(position, option.type)}
+                        className={getButtonStyle(position, option.type)}
+                      >
+                        <div className="text-center">
+                          <div className="text-lg mb-1">{option.symbol}</div>
+                          <div className="text-xs">{option.label}</div>
+                        </div>
+                      </button>
+                    ))}
                   </div>
                 </div>
               ))}
