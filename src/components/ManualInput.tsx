@@ -241,7 +241,7 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
                         className={getButtonStyle(position, option.type)}
                       >
                         <div className="text-center">
-                          <div className="text-base font-medium mb-1">{option.label}</div>
+                          <div className="text-sm font-medium mb-1">{option.label}</div>
                           <div className="text-lg">
                             {option.extraSymbol}
                           </div>
