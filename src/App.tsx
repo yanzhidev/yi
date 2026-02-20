@@ -69,6 +69,16 @@ function App() {
           <LanguageSelector />
         </div>
 
+        {/* 标题和副标题 */}
+        <header className="text-center mb-10">
+          <h1 className="text-4xl font-medium tracking-wider text-stone-800">
+            {t.title}
+          </h1>
+          <p className="mt-3 text-stone-600 text-sm tracking-wide">
+            {t.subtitle}
+          </p>
+        </header>
+
         {/* 问题输入区域 */}
         {!result && !showManualInput && (
           <div className="mb-10">
