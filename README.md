@@ -1,6 +1,6 @@
 # 数字易经
 
-一个基于 React + TypeScript + Tailwind CSS 的现代易经起卦应用。
+一个基于 React + TypeScript + Tailwind CSS 的现代易经起卦应用，支持用户认证和历史记录功能。
 
 [在线演示](https://yi-pi.vercel.app/)
 
@@ -8,22 +8,42 @@
 
 - ✨ **三钱法起卦** - 使用传统铜钱投掷算法，支持变爻计算
 - 🎯 **手动输入** - 支持手动选择每爻结果，精确起卦
+- 👤 **用户认证** - Google 登录，安全可靠的身份验证
+- 📚 **历史记录** - 自动保存起卦记录，支持查看和删除
+- 📱 **响应式侧边栏** - 桌面端固定显示，移动端滑出式设计
 - 📚 **完整64卦数据** - 包含卦辞、彖曰、大象等详细信息
 - 🎨 **禅意设计** - 简约优雅的界面风格，留白与石色配色
 - 📱 **响应式布局** - 适配桌面与移动设备
 - ⚡ **快速体验** - Vite 构建，瞬时加载
-- 🌍 **完整多语言支持** - 支持中文简体、繁体、英文、西班牙文，包括卦序、爻位、按钮等全部界面元素
+- 🌍 **完整多语言支持** - 支持中文简体、繁体、英文、西班牙文，包括卦象名称、时间描述、历史记录等全部界面元素
 
 ## 技术栈
 
 - **框架**: React 19 + TypeScript
 - **构建**: Vite 7
 - **样式**: Tailwind CSS 4
+- **认证**: Firebase Authentication (Google Login)
+- **数据库**: Firebase Firestore (历史记录存储)
 - **图标**: Lucide React
 - **工具**: ESLint + TypeScript ESLint
 - **测试**: Vitest + React Testing Library
 
 ## 核心功能
+
+### 🔐 用户认证系统
+
+- **Google 登录** - 一键安全登录
+- **持久化状态** - 自动保持登录状态
+- **用户信息显示** - 头像和登出功能
+- **权限控制** - 每个用户只能访问自己的数据
+
+### 📝 历史记录管理
+
+- **自动保存** - 登录用户起卦后自动保存到云端
+- **完整记录** - 包含问题、本卦、变卦、时间等信息
+- **多语言支持** - 卦象名称、时间描述等支持多语言显示
+- **删除功能** - 支持删除单条历史记录，带权限验证
+- **响应式界面** - 桌面端侧边栏，移动端滑出菜单
 
 ### 起卦算法
 
@@ -41,52 +61,131 @@
 - **变卦** - 变爻后的卦象（如有变爻）
 - 支持显示卦辞、彖曰、大象等详细解读
 - **变爻重点解读** - 根据变爻数量智能确定解读重点
+- **多语言卦象名称** - 64卦名称支持四种语言显示
 
 ### 界面优化
 
 - **统一按钮风格** - 所有主要按钮采用一致的琥珀色主题
 - **优化按钮尺寸** - 起卦和钱卜按钮大小一致
 - **改进交互文案** - 重置按钮改为"重新起卦"，更直观
+- **历史记录侧边栏** - 优雅的侧边栏设计，支持桌面和移动端
 
 ## 快速开始
 
+### 环境准备
+
+1. **克隆项目**
 ```bash
-# 克隆项目
 git clone https://github.com/yanzhidev/yi.git
 cd yi
-
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run dev
-
-# 构建生产版本
-npm run build
-
-# 运行测试
-npm test
 ```
+
+2. **安装依赖**
+```bash
+npm install
+```
+
+3. **Firebase 配置**
+```bash
+# 复制环境变量模板
+cp .env.example .env.local
+
+# 编辑 .env.local，填入您的 Firebase 配置
+# 详见 FIREBASE_SETUP.md
+```
+
+4. **启动开发服务器**
+```bash
+npm run dev
+```
+
+5. **构建生产版本**
+```bash
+npm run build
+```
+
+### Firebase 设置
+
+详细的 Firebase 设置步骤请参考 [FIREBASE_SETUP.md](./FIREBASE_SETUP.md)：
+
+1. 创建 Firebase 项目
+2. 启用 Authentication (Google 登录)
+3. 设置 Firestore 数据库
+4. 配置安全规则
+5. 设置环境变量
 
 ## 项目结构
 
 ```
 src/
-├── components/     # React 组件
-│   ├── HexagramLines.tsx      # 卦象线条显示
-│   ├── HexagramResult.tsx     # 解卦结果组件
-│   ├── LanguageSelector.tsx    # 语言选择器
-│   └── ManualInput.tsx        # 手动输入界面
-├── contexts/      # React Context
-│   └── LanguageContext.tsx     # 语言管理
-├── hooks/         # 自定义 Hooks
+├── components/           # React 组件
+│   ├── AuthButton.tsx           # 认证按钮组件
+│   ├── HistorySidebar.tsx       # 历史记录侧边栏
+│   ├── HexagramDisplay.tsx      # 卦象显示组件
+│   ├── HexagramLines.tsx        # 卦象线条显示
+│   ├── HexagramResult.tsx       # 解卦结果组件
+│   ├── LanguageSelector.tsx     # 语言选择器
+│   └── ManualInput.tsx          # 手动输入界面
+├── contexts/           # React Context
+│   ├── AuthContext.tsx          # 认证状态管理
+│   └── LanguageContext.tsx      # 语言管理
+├── lib/                # Firebase 配置
+│   └── firebase.ts              # Firebase 初始化和函数
+├── data/               # 数据文件
+│   ├── hexagrams.json           # 64卦详细数据
+│   └── hexagramNames.ts        # 卦象名称多语言映射
+├── hooks/              # 自定义 Hooks
 │   └── useHexagramInterpretation.ts  # 变爻解读逻辑
-├── utils/         # 工具函数
-│   ├── iching.ts              # 三钱法起卦核心逻辑
-│   └── i18n.ts               # 国际化配置
-├── data/          # 64卦 JSON 数据
-├── App.tsx        # 主应用
-└── index.css      # 全局样式
+├── utils/              # 工具函数
+│   ├── iching.ts               # 三钱法起卦核心逻辑
+│   └── i18n.ts                 # 国际化配置
+├── App.tsx             # 主应用
+└── index.css           # 全局样式
+```
+
+## 数据模型
+
+### 历史记录 (HexagramHistory)
+
+```typescript
+interface HexagramHistory {
+  id?: string
+  userId: string              // 用户ID，确保数据隔离
+  question: string            // 用户问题
+  originalHexagram: {        // 本卦信息
+    number: number
+    name: string
+    lines: number[]
+  }
+  changedHexagram?: {        // 变卦信息（可选）
+    number: number
+    name: string
+    lines: number[]
+  } | null
+  changingLines: number[]    // 变爻位置
+  timestamp: Date            // 起卦时间
+}
+```
+
+## 安全机制
+
+### 🔒 数据安全
+
+- **用户隔离** - 每个用户只能访问自己的历史记录
+- **权限验证** - 删除操作验证文档所有权
+- **身份认证** - Firebase Auth 确保用户身份真实性
+- **安全规则** - Firestore 安全规则保护数据访问
+
+### 权限控制
+
+```typescript
+// 查看权限：只能查询自己的记录
+where('userId', '==', userId)
+
+// 删除权限：验证文档所有权
+if (data.userId !== userId) {
+  throw new Error('无权限删除此历史记录')
+}
 ```
 
 ## 64卦数据
@@ -101,6 +200,12 @@ src/
 - 大象
 - 通俗解读（白话翻译、人生启示、决策建议）
 
+多语言卦象名称位于 `src/data/hexagramNames.ts`，支持：
+- 简体中文 (zh-CN)
+- 繁体中文 (zh-TW)  
+- 英文 (en)
+- 西班牙语 (es)
+
 ## 开发计划
 
 - [x] 三钱法起卦算法
@@ -109,10 +214,13 @@ src/
 - [x] 本卦/变卦显示
 - [x] 动爻详细解读
 - [x] 手动输入功能
-- [x] 完整多语言支持 - 包括卦序、爻位、按钮、变爻符号等全部界面元素
-- [x] 组件重构优化
-- [ ] 历史记录
+- [x] 完整多语言支持
+- [x] 用户认证系统
+- [x] 历史记录功能
+- [x] 数据安全机制
+- [x] 响应式侧边栏
 - [ ] 分享功能
+- [ ] 离线支持
 
 ## 测试覆盖
 
@@ -128,10 +236,32 @@ npm test --run       # 单次运行
 npm test --ui        # 测试界面
 ```
 
+## 部署
+
+### Vercel 部署
+
+1. 连接 GitHub 仓库到 Vercel
+2. 设置环境变量（Firebase 配置）
+3. 自动部署
+
+### 其他平台
+
+支持部署到任何支持静态网站的平台：
+- Netlify
+- GitHub Pages
+- Firebase Hosting
+- 自建服务器
+
+## 文档
+
+- [Firebase 设置指南](./FIREBASE_SETUP.md) - 详细的 Firebase 配置步骤
+- [功能使用指南](./FEATURE_GUIDE.md) - 新功能使用说明
+
 ## 参考
 
 - [周易](https://zh.wikipedia.org/wiki/周易) - 维基百科
 - [易经六十四卦](https://zh.wikipedia.org/wiki/%E6%98%93%E7%BB%8F%E5%85%AD%E5%8D%81%E5%9B%9B%E5%8D%A6) - 卦象对照
+- [Firebase 文档](https://firebase.google.com/docs) - Firebase 官方文档
 
 ## License
 

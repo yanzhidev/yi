@@ -1,4 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getHexagramName } from '../data/hexagramNames';
 
 function cn(...inputs: ClassValue[]) {
   return clsx(inputs);
@@ -22,26 +24,6 @@ interface HexagramDisplayProps {
   className?: string;
   showNumber?: boolean;
   showName?: boolean;
-}
-
-// 64卦名称映射（简化版，基于二进制序号）
-const hexagramNames: Record<number, string> = {
-  0: '坤为地', 1: '山地剥', 2: '水地比', 3: '风地观',
-  4: '雷地豫', 5: '火地晋', 6: '泽地萃', 7: '天地否',
-  8: '地山谦', 9: '艮为山', 10: '水山蹇', 11: '风山渐',
-  12: '雷山小过', 13: '火山旅', 14: '泽山咸', 15: '天山遁',
-  16: '地水师', 17: '山水蒙', 18: '坎为水', 19: '风水涣',
-  20: '雷水解', 21: '火水未济', 22: '泽水困', 23: '天水讼',
-  24: '地风升', 25: '山风蛊', 26: '水风井', 27: '巽为风',
-  28: '雷风恒', 29: '火风鼎', 30: '泽风大过', 31: '天风姤',
-  32: '地雷复', 33: '山雷颐', 34: '水雷屯', 35: '风雷益',
-  36: '震为雷', 37: '火雷噬嗑', 38: '泽雷随', 39: '天雷无妄',
-  40: '地火明夷', 41: '山火贲', 42: '水火既济', 43: '风火家人',
-  44: '雷火丰', 45: '离为火', 46: '泽火革', 47: '天火同人',
-  48: '地泽临', 49: '山泽损', 50: '水泽节', 51: '风泽中孚',
-  52: '雷泽归妹', 53: '火泽睽', 54: '兑为泽', 55: '天泽履',
-  56: '地天泰', 57: '山天大畜', 58: '水天需', 59: '风天小畜',
-  60: '雷天大壮', 61: '火天大有', 62: '泽天夬', 63: '乾为天',
 };
 
 export function HexagramDisplay({ 
@@ -50,6 +32,8 @@ export function HexagramDisplay({
   showNumber = true,
   showName = true,
 }: HexagramDisplayProps) {
+  const { language } = useLanguage();
+  
   if (!hexagram || hexagram.length !== 6) {
     return (
       <div className={cn("flex flex-col items-center justify-center p-8", className)}>
@@ -63,8 +47,8 @@ export function HexagramDisplay({
     );
   }
 
-  const hexagramNumber = parseInt(hexagram, 2);
-  const hexagramName = hexagramNames[hexagramNumber] || '未知卦象';
+  const hexagramNumber = parseInt(hexagram, 2) + 1; // 转换为1-64的卦序
+  const hexagramName = getHexagramName(hexagramNumber, language);
 
   // 将二进制转为爻数组（从下到上显示，所以反转）
   const lines = hexagram.split('').reverse();

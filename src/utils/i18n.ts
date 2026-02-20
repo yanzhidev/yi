@@ -78,6 +78,30 @@ export interface Translation {
     'zh-TW': string;
     es: string;
   };
+
+  // Authentication
+  signIn: string;
+  logout: string;
+  loginRequired: string;
+  loginToSave: string;
+
+  // History
+  history: string;
+  noHistory: string;
+  viewHistory: string;
+  clearHistory: string;
+  historyRecord: string;
+  deleteHistory: string;
+  deleteConfirm: string;
+  deleteSuccess: string;
+  deleteError: string;
+  historyOriginalHexagram: string;
+  historyChangedHexagram: string;
+  justNow: string;
+  minutesAgo: string;
+  hoursAgo: string;
+  yesterday: string;
+  daysAgo: string;
 }
 
 export const translations: Record<Language, Translation> = {
@@ -136,6 +160,26 @@ export const translations: Record<Language, Translation> = {
     keyInterpretation: 'Key Interpretation',
     footer: 'Sincerity brings clarity · Follow the natural way',
     selectLanguage: 'Language',
+    signIn: 'Sign in with Google',
+    logout: 'Sign out',
+    loginRequired: 'Sign in required',
+    loginToSave: 'Sign in to save your divination history',
+    history: 'History',
+    noHistory: 'No history yet',
+    viewHistory: 'View History',
+    clearHistory: 'Clear History',
+    historyRecord: 'History Record',
+    deleteHistory: 'Delete',
+    deleteConfirm: 'Are you sure you want to delete this history record?',
+    deleteSuccess: 'History deleted successfully',
+    deleteError: 'Delete failed, please try again',
+    historyOriginalHexagram: 'Original Hexagram',
+    historyChangedHexagram: 'Changed Hexagram',
+    justNow: 'Just now',
+    minutesAgo: 'minutes ago',
+    hoursAgo: 'hours ago',
+    yesterday: 'Yesterday',
+    daysAgo: 'days ago',
     languages: {
       en: 'English',
       'zh-CN': '简体中文',
@@ -199,6 +243,26 @@ export const translations: Record<Language, Translation> = {
     keyInterpretation: '重点解读',
     footer: '心诚则灵 · 道法自然',
     selectLanguage: '语言',
+    signIn: '使用 Google 登录',
+    logout: '退出登录',
+    loginRequired: '需要登录',
+    loginToSave: '登录以保存您的算卦历史',
+    history: '历史记录',
+    noHistory: '暂无历史记录',
+    viewHistory: '查看历史',
+    clearHistory: '清除历史',
+    historyRecord: '历史记录',
+    deleteHistory: '删除',
+    deleteConfirm: '确定要删除这条历史记录吗？',
+    deleteSuccess: '历史记录删除成功',
+    deleteError: '删除失败，请重试',
+    historyOriginalHexagram: '本卦',
+    historyChangedHexagram: '变卦',
+    justNow: '刚刚',
+    minutesAgo: '分钟前',
+    hoursAgo: '小时前',
+    yesterday: '昨天',
+    daysAgo: '天前',
     languages: {
       en: 'English',
       'zh-CN': '简体中文',
@@ -262,6 +326,26 @@ export const translations: Record<Language, Translation> = {
     keyInterpretation: '重點解讀',
     footer: '心誠則靈 · 道法自然',
     selectLanguage: '語言',
+    signIn: '使用 Google 登入',
+    logout: '登出',
+    loginRequired: '需要登入',
+    loginToSave: '登入以保存您的算卦歷史',
+    history: '歷史記錄',
+    noHistory: '暫無歷史記錄',
+    viewHistory: '查看歷史',
+    clearHistory: '清空歷史',
+    historyRecord: '歷史記錄',
+    deleteHistory: '刪除',
+    deleteConfirm: '確定要刪除這條歷史記錄嗎？',
+    deleteSuccess: '歷史記錄刪除成功',
+    deleteError: '刪除失敗，請重試',
+    historyOriginalHexagram: '本卦',
+    historyChangedHexagram: '變卦',
+    justNow: '剛剛',
+    minutesAgo: '分鐘前',
+    hoursAgo: '小時前',
+    yesterday: '昨天',
+    daysAgo: '天前',
     languages: {
       en: 'English',
       'zh-CN': '简体中文',
@@ -324,6 +408,26 @@ export const translations: Record<Language, Translation> = {
     keyInterpretation: 'Interpretación Clave',
     footer: 'La sinceridad trae claridad · Sigue el camino natural',
     selectLanguage: 'Idioma',
+    signIn: 'Iniciar sesión con Google',
+    logout: 'Cerrar sesión',
+    loginRequired: 'Se requiere iniciar sesión',
+    loginToSave: 'Inicia sesión para guardar tu historial de adivinación',
+    history: 'Historial',
+    noHistory: 'Sin historial aún',
+    viewHistory: 'Ver Historial',
+    clearHistory: 'Limpiar Historial',
+    historyRecord: 'Registro Histórico',
+    deleteHistory: 'Eliminar',
+    deleteConfirm: '¿Estás seguro de que quieres eliminar este registro histórico?',
+    deleteSuccess: 'Historial eliminado exitosamente',
+    deleteError: 'Error al eliminar, por favor intenta de nuevo',
+    historyOriginalHexagram: 'Hexagrama Original',
+    historyChangedHexagram: 'Hexagrama Cambiado',
+    justNow: 'Ahora',
+    minutesAgo: 'hace minutos',
+    hoursAgo: 'hace horas',
+    yesterday: 'Ayer',
+    daysAgo: 'hace días',
     languages: {
       en: 'English',
       'zh-CN': '简体中文',
