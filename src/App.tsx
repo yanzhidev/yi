@@ -171,15 +171,19 @@ function AppContent() {
     // 将历史记录转换为 HexagramCastResult 格式
     const castResult: HexagramCastResult = {
       lines: history.originalHexagram.lines.map((line, index) => {
+        const isChanging = history.changingLines.includes(index + 1);
+        const isYang = line === 7 || line === 9; // 7,9 are yang; 6,8 are yin
+        
         let lineType: 'oldYin' | 'youngYang' | 'youngYin' | 'oldYang'
-        if (line === 6) lineType = 'oldYin'
-        else if (line === 7) lineType = 'youngYang'
-        else if (line === 8) lineType = 'youngYin'
-        else lineType = 'oldYang' // line === 9
+        if (isYang) {
+          lineType = isChanging ? 'oldYang' : 'youngYang'
+        } else {
+          lineType = isChanging ? 'oldYin' : 'youngYin'
+        }
         
         return {
-          value: line >= 7 ? 1 : 0,
-          isChanging: history.changingLines.includes(index),
+          value: isYang ? 1 : 0,
+          isChanging,
           lineType
         }
       }),
