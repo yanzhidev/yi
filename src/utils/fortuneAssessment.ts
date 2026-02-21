@@ -1,5 +1,6 @@
-import type { HexagramData } from './iching';
 import { getHexagramById } from './iching';
+import { getTranslation } from './i18n';
+import type { Language } from './i18n';
 
 // ==================== 吉凶判断类型定义 ====================
 
@@ -121,57 +122,67 @@ export interface FortuneAssessmentConfig {
 
 // ==================== 吉凶等级配置 ====================
 
-export const FORTUNE_LEVELS: Record<FortuneLevel, FortuneLevelConfig> = {
-  [FortuneLevel.EXTREMELY_AUSPICIOUS]: {
-    level: FortuneLevel.EXTREMELY_AUSPICIOUS,
-    score: 90,
-    label: '大吉',
-    color: '#dc2626', // red-600
-    description: '天时地利人和，万事亨通，千载难逢之良机'
-  },
-  [FortuneLevel.VERY_AUSPICIOUS]: {
-    level: FortuneLevel.VERY_AUSPICIOUS,
-    score: 75,
-    label: '吉',
-    color: '#ea580c', // orange-600
-    description: '运势良好，机遇颇多，宜积极进取'
-  },
-  [FortuneLevel.AUSPICIOUS]: {
-    level: FortuneLevel.AUSPICIOUS,
-    score: 60,
-    label: '小吉',
-    color: '#d97706', // amber-600
-    description: '运势平稳向好，小有成就，宜稳中求进'
-  },
-  [FortuneLevel.NEUTRAL]: {
-    level: FortuneLevel.NEUTRAL,
-    score: 45,
-    label: '中平',
-    color: '#65a30d', // lime-600
-    description: '运势平平，吉凶参半，宜谨慎行事'
-  },
-  [FortuneLevel.INAUSPICIOUS]: {
-    level: FortuneLevel.INAUSPICIOUS,
-    score: 30,
-    label: '小凶',
-    color: '#0891b2', // cyan-600
-    description: '运势略有阻滞，宜守不宜攻，待时而动'
-  },
-  [FortuneLevel.VERY_INAUSPICIOUS]: {
-    level: FortuneLevel.VERY_INAUSPICIOUS,
-    score: 15,
-    label: '凶',
-    color: '#2563eb', // blue-600
-    description: '运势不佳，困难重重，宜退守保身'
-  },
-  [FortuneLevel.EXTREMELY_INAUSPICIOUS]: {
-    level: FortuneLevel.EXTREMELY_INAUSPICIOUS,
-    score: 0,
-    label: '大凶',
-    color: '#7c3aed', // violet-600
-    description: '运势极差，危机四伏，宜静观其变，切勿轻举妄动'
-  }
-};
+/**
+ * 获取吉凶等级配置
+ * @param language 语言
+ * @returns 吉凶等级配置
+ */
+export function getFortuneLevels(language: Language = 'zh-CN'): Record<FortuneLevel, FortuneLevelConfig> {
+  return {
+    [FortuneLevel.EXTREMELY_AUSPICIOUS]: {
+      level: FortuneLevel.EXTREMELY_AUSPICIOUS,
+      score: 90,
+      label: getTranslation(language, 'extremelyAuspicious'),
+      color: '#dc2626', // red-600
+      description: getTranslation(language, 'extremelyAuspiciousDesc')
+    },
+    [FortuneLevel.VERY_AUSPICIOUS]: {
+      level: FortuneLevel.VERY_AUSPICIOUS,
+      score: 75,
+      label: getTranslation(language, 'veryAuspicious'),
+      color: '#ea580c', // orange-600
+      description: getTranslation(language, 'veryAuspiciousDesc')
+    },
+    [FortuneLevel.AUSPICIOUS]: {
+      level: FortuneLevel.AUSPICIOUS,
+      score: 60,
+      label: getTranslation(language, 'auspicious'),
+      color: '#d97706', // amber-600
+      description: getTranslation(language, 'auspiciousDesc')
+    },
+    [FortuneLevel.NEUTRAL]: {
+      level: FortuneLevel.NEUTRAL,
+      score: 45,
+      label: getTranslation(language, 'neutral'),
+      color: '#65a30d', // lime-600
+      description: getTranslation(language, 'neutralDesc')
+    },
+    [FortuneLevel.INAUSPICIOUS]: {
+      level: FortuneLevel.INAUSPICIOUS,
+      score: 30,
+      label: getTranslation(language, 'inauspicious'),
+      color: '#0891b2', // cyan-600
+      description: getTranslation(language, 'inauspiciousDesc')
+    },
+    [FortuneLevel.VERY_INAUSPICIOUS]: {
+      level: FortuneLevel.VERY_INAUSPICIOUS,
+      score: 15,
+      label: getTranslation(language, 'veryInauspicious'),
+      color: '#2563eb', // blue-600
+      description: getTranslation(language, 'veryInauspiciousDesc')
+    },
+    [FortuneLevel.EXTREMELY_INAUSPICIOUS]: {
+      level: FortuneLevel.EXTREMELY_INAUSPICIOUS,
+      score: 0,
+      label: getTranslation(language, 'extremelyInauspicious'),
+      color: '#7c3aed', // violet-600
+      description: getTranslation(language, 'extremelyInauspiciousDesc')
+    }
+  };
+}
+
+// 保持向后兼容的常量（默认中文）
+export const FORTUNE_LEVELS = getFortuneLevels('zh-CN');
 
 // ==================== 默认配置 ====================
 
@@ -210,21 +221,22 @@ const FORTUNE_KEYWORDS = {
 };
 
 /**
- * 卦辞断语评分函数
+ * 分析卦辞文本
  * @param hexagramData 卦象数据
- * @returns 卦辞断语评分结果
+ * @param language 语言
+ * @returns 卦辞评分
  */
-export function calculateHexagramTextScore(hexagramData: HexagramData): HexagramTextScore {
-  const { text, tuan, daxiang, name } = hexagramData;
-  const fullText = `${text} ${tuan} ${daxiang}`;
+function analyzeHexagramText(hexagramData: any, language: Language = 'zh-CN'): HexagramTextScore {
+  const { name, text } = hexagramData;
+  const fullText = `${name} ${text}`;
   
   let score = 50; // 基础分数
   const keywords: string[] = [];
-  let reasoning = '卦辞断语分析：\n';
+  let reasoning = getTranslation(language, 'hexagramTextAnalysisLabel') + '\n';
   
   // 分析卦辞原文
-  reasoning += `卦名：${name}\n`;
-  reasoning += `卦辞：${text}\n`;
+  reasoning += getTranslation(language, 'hexagramNameLabel') + name + '\n';
+  reasoning += getTranslation(language, 'hexagramTextLabel') + text + '\n';
   
   // 计算吉凶关键词得分
   const positiveScore = calculateKeywordScore(fullText, FORTUNE_KEYWORDS.positive, keywords);
@@ -241,8 +253,8 @@ export function calculateHexagramTextScore(hexagramData: HexagramData): Hexagram
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
   
-  reasoning += `\n关键词分析：${keywords.join('、')}`;
-  reasoning += `\n最终评分：${score.toFixed(1)}`;
+  reasoning += `\n${getTranslation(language, 'keywordAnalysisLabel')}${keywords.join('、')}`;
+  reasoning += `\n${getTranslation(language, 'finalScoreLabel')}${score.toFixed(1)}`;
   
   return {
     score,
@@ -366,11 +378,12 @@ const HEAVEN_EARTH_RELATIONS = {
 };
 
 /**
- * 上下卦关系评分函数
+ * 分析上下卦关系
  * @param binary 卦象二进制字符串
- * @returns 上下卦关系评分结果
+ * @param language 语言
+ * @returns 上下卦关系评分
  */
-export function calculateTrigramRelationScore(binary: string): TrigramRelationScore {
+export function analyzeTrigramRelation(binary: string, language: Language = 'zh-CN'): TrigramRelationScore {
   // 分离上下卦
   const upperTrigramBinary = binary.slice(0, 3);
   const lowerTrigramBinary = binary.slice(3);
@@ -381,47 +394,47 @@ export function calculateTrigramRelationScore(binary: string): TrigramRelationSc
   if (!upperTrigram || !lowerTrigram) {
     return {
       score: 50,
-      reasoning: '无效的卦象结构',
-      upperTrigram: '未知',
-      lowerTrigram: '未知',
-      relationship: '无法分析'
+      reasoning: getTranslation(language, 'invalidHexagramStructureLabel'),
+      upperTrigram: getTranslation(language, 'unknownLabel'),
+      lowerTrigram: getTranslation(language, 'unknownLabel'),
+      relationship: getTranslation(language, 'cannotAnalyzeLabel')
     };
   }
   
   let score = 50; // 基础分数
-  let reasoning = `上下卦关系分析：\n`;
-  reasoning += `上卦：${upperTrigram.name}（${upperTrigram.nature}，${upperTrigram.element}）\n`;
-  reasoning += `下卦：${lowerTrigram.name}（${lowerTrigram.nature}，${lowerTrigram.element}）\n`;
+  let reasoning = getTranslation(language, 'trigramRelationAnalysisLabel') + '\n';
+  reasoning += getTranslation(language, 'upperTrigramLabel') + `${upperTrigram.name}（${upperTrigram.nature}，${upperTrigram.element}）\n`;
+  reasoning += getTranslation(language, 'lowerTrigramLabel') + `${lowerTrigram.name}（${lowerTrigram.nature}，${lowerTrigram.element}）\n`;
   
   // 1. 天地关系评分
   const heavenEarthKey = `${upperTrigram.nature}-${lowerTrigram.nature}`;
   const heavenEarthRelation = HEAVEN_EARTH_RELATIONS[heavenEarthKey as keyof typeof HEAVEN_EARTH_RELATIONS];
   if (heavenEarthRelation) {
     score += heavenEarthRelation.score;
-    reasoning += `天地关系：${heavenEarthRelation.description} (+${heavenEarthRelation.score}分)\n`;
+    reasoning += getTranslation(language, 'heavenEarthRelationLabel') + `${heavenEarthRelation.description} (+${heavenEarthRelation.score}分)\n`;
   }
   
   // 2. 五行关系评分
-  const elementRelation = getElementRelationScore(upperTrigram.element, lowerTrigram.element);
+  const elementRelation = getElementRelationScore(upperTrigram.element, lowerTrigram.element, language);
   score += elementRelation.score;
-  reasoning += `五行关系：${elementRelation.description} (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}分)\n`;
+  reasoning += getTranslation(language, 'fiveElementsRelationLabel') + `${elementRelation.description} (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}分)\n`;
   
   // 3. 阴阳调和评分
   const yinYangBalance = getYinYangBalanceScore(upperTrigramBinary, lowerTrigramBinary);
   score += yinYangBalance.score;
-  reasoning += `阴阳调和：${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}分)\n`;
+  reasoning += getTranslation(language, 'yinYangHarmonyLabel') + `${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}分)\n`;
   
   // 4. 特殊组合调整
   const specialCombination = getSpecialCombinationAdjustment(upperTrigramBinary, lowerTrigramBinary);
   score += specialCombination.score;
-  reasoning += `特殊组合：${specialCombination.description} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}分)\n`;
+  reasoning += getTranslation(language, 'specialCombinationLabel') + `${specialCombination.description} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}分)\n`;
   
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
   
   const relationship = `${upperTrigram.name}${lowerTrigram.name}（${upperTrigram.nature}在${lowerTrigram.nature}上）`;
-  reasoning += `\n关系总结：${relationship}`;
-  reasoning += `\n最终评分：${score.toFixed(1)}`;
+  reasoning += `\n${getTranslation(language, 'relationshipSummary')}${relationship}`;
+  reasoning += `\n${getTranslation(language, 'finalScoreLabel')}${score.toFixed(1)}`;
   
   return {
     score,
@@ -436,34 +449,35 @@ export function calculateTrigramRelationScore(binary: string): TrigramRelationSc
  * 五行关系评分
  * @param upperElement 上卦五行
  * @param lowerElement 下卦五行
+ * @param language 语言
  * @returns 五行关系评分
  */
-function getElementRelationScore(upperElement: string, lowerElement: string): { score: number; description: string } {
+function getElementRelationScore(upperElement: string, lowerElement: string, language: Language = 'zh-CN'): { score: number; description: string } {
   const relations = FIVE_ELEMENTS_RELATIONS;
   
   // 上生下（上卦生下卦）- 吉
   if (relations.相生[upperElement as keyof typeof relations.相生] === lowerElement) {
-    return { score: 15, description: '上生下，相生之象，吉' };
+    return { score: 15, description: getTranslation(language, 'upperGeneratesLower') };
   }
   
   // 下生上（下卦生上卦）- 吉
   if (relations.相生[lowerElement as keyof typeof relations.相生] === upperElement) {
-    return { score: 12, description: '下生上，相生之象，吉' };
+    return { score: 12, description: getTranslation(language, 'lowerGeneratesUpper') };
   }
   
   // 上克下（上卦克下卦）- 凶
   if (relations.相克[upperElement as keyof typeof relations.相克] === lowerElement) {
-    return { score: -10, description: '上克下，相克之象，凶' };
+    return { score: -10, description: getTranslation(language, 'upperRestrictsLower') };
   }
   
   // 下克上（下卦克上卦）- 凶
   if (relations.相克[lowerElement as keyof typeof relations.相克] === upperElement) {
-    return { score: -8, description: '下克上，相克之象，凶' };
+    return { score: -8, description: getTranslation(language, 'lowerRestrictsUpper') };
   }
   
   // 同五行 - 中平
   if (upperElement === lowerElement) {
-    return { score: 5, description: '同五行，中和之象' };
+    return { score: 5, description: getTranslation(language, 'sameElement') };
   }
   
   return { score: 0, description: '五行关系无明显特征' };
@@ -573,12 +587,13 @@ const SPECIAL_LINE_COMBINATIONS = {
  * 爻位综合评分函数
  * @param lines 六爻数组
  * @param changingLines 变爻位置数组
+ * @param language 语言
  * @returns 爻位综合评分结果
  */
-export function calculateLinesPositionScore(lines: any[], changingLines: number[]): LinesPositionScore {
+export function calculateLinesPositionScore(lines: any[], changingLines: number[], language: Language = 'zh-CN'): LinesPositionScore {
   let score = 50; // 基础分数
   const linesAnalysis: string[] = [];
-  let reasoning = '爻位综合分析：\n';
+  let reasoning = getTranslation(language, 'linesPositionAnalysisLabel') + '\n';
   
   // 1. 分析各爻位置和类型
   let properPositionCount = 0;
@@ -586,7 +601,7 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
   let yangCount = 0;
   let yinCount = 0;
   
-  reasoning += '\n各爻分析：\n';
+  reasoning += '\n' + getTranslation(language, 'eachLineAnalysis') + '\n';
   
   lines.forEach((line, index) => {
     const position = index + 1;
@@ -622,27 +637,27 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
   // 2. 特殊组合评分
   const specialCombinations = getSpecialLineCombinations(lines, changingLines);
   score += specialCombinations.score;
-  reasoning += `\n特殊组合：${specialCombinations.description} (${specialCombinations.score > 0 ? '+' : ''}${specialCombinations.score}分)\n`;
+  reasoning += `\n${getTranslation(language, 'specialCombinationsLabel')}${specialCombinations.description} (${specialCombinations.score > 0 ? '+' : ''}${specialCombinations.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 3. 变爻分析
   const changingLinesAnalysis = analyzeChangingLines(lines, changingLines);
   score += changingLinesAnalysis.score;
-  reasoning += `\n变爻分析：${changingLinesAnalysis.description} (${changingLinesAnalysis.score > 0 ? '+' : ''}${changingLinesAnalysis.score}分)\n`;
+  reasoning += `\n${getTranslation(language, 'changingLinesAnalysisLabel')}${changingLinesAnalysis.description} (${changingLinesAnalysis.score > 0 ? '+' : ''}${changingLinesAnalysis.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 4. 阴阳平衡分析
   const yinYangBalance = analyzeLinesYinYangBalance(yangCount, yinCount);
   score += yinYangBalance.score;
-  reasoning += `\n阴阳平衡：${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}分)\n`;
+  reasoning += `\n${getTranslation(language, 'yinYangBalanceLabel')}${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 5. 爻位结构分析
   const positionStructure = analyzePositionStructure(lines);
   score += positionStructure.score;
-  reasoning += `\n爻位结构：${positionStructure.description} (${positionStructure.score > 0 ? '+' : ''}${positionStructure.score}分)\n`;
+  reasoning += `\n${getTranslation(language, 'positionStructureLabel')}${positionStructure.description} (${positionStructure.score > 0 ? '+' : ''}${positionStructure.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
   
-  reasoning += `\n最终评分：${score.toFixed(1)}`;
+  reasoning += `\n${getTranslation(language, 'finalScoreLabel')}${score.toFixed(1)}`;
   
   return {
     score,
@@ -1064,11 +1079,13 @@ function getHexagramWeight(changingLines: number[]): {
  * 综合吉凶判断主函数
  * @param result 卦象结果
  * @param config 判断配置
+ * @param language 语言代码
  * @returns 综合吉凶判断结果
  */
 export function assessFortune(
   result: any, 
-  config: FortuneAssessmentConfig = DEFAULT_FORTUNE_CONFIG
+  config: FortuneAssessmentConfig = DEFAULT_FORTUNE_CONFIG,
+  language: Language = 'zh-CN'
 ): FortuneAssessment {
   // 获取卦象数据
   const hexagramData = getHexagramById(result.hexagramId);
@@ -1082,9 +1099,9 @@ export function assessFortune(
   const weights = getHexagramWeight(result.changingLines);
   
   // 1. 计算本卦各维度评分
-  const benHexagramTextScore = calculateHexagramTextScore(hexagramData);
-  const benTrigramRelationScore = calculateTrigramRelationScore(hexagramData.binary);
-  const benLinesPositionScore = calculateLinesPositionScore(result.lines, result.changingLines);
+  const benHexagramTextScore = analyzeHexagramText(hexagramData, language);
+  const benTrigramRelationScore = analyzeTrigramRelation(hexagramData.binary, language);
+  const benLinesPositionScore = calculateLinesPositionScore(result.lines, result.changingLines, language);
   
   // 2. 计算变卦各维度评分（如果有变卦）
   let bianHexagramTextScore: HexagramTextScore | null = null;
@@ -1095,14 +1112,12 @@ export function assessFortune(
     // 计算变卦的爻位（变爻反转后的爻位）
     const changedLines = result.lines.map((line: any) => ({
       ...line,
-      value: line.isChanging ? (line.value === 0 ? 1 : 0) : line.value,
-      isChanging: false, // 变卦的爻都是静爻
-      lineType: line.isChanging ? (line.value === 0 ? 'youngYang' : 'youngYin') : line.lineType
+      value: line.value === 0 ? 1 : 0 // 反转变爻
     }));
     
-    bianHexagramTextScore = calculateHexagramTextScore(changedHexagramData);
-    bianTrigramRelationScore = calculateTrigramRelationScore(changedHexagramData.binary);
-    bianLinesPositionScore = calculateLinesPositionScore(changedLines, []); // 变卦没有变爻
+    bianHexagramTextScore = analyzeHexagramText(changedHexagramData, language);
+    bianTrigramRelationScore = analyzeTrigramRelation(changedHexagramData.binary, language);
+    bianLinesPositionScore = calculateLinesPositionScore(changedLines, result.changingLines, language);
   }
   
   // 3. 按权重合并本卦和变卦评分
@@ -1127,13 +1142,13 @@ export function assessFortune(
   const fortuneLevel = getFortuneLevel(totalScore);
   
   // 7. 生成总体建议
-  const overallAdvice = generateOverallAdvice(fortuneLevel, hexagramTextScore, trigramRelationScore, linesPositionScore);
+  const overallAdvice = generateOverallAdvice(fortuneLevel, hexagramTextScore, trigramRelationScore, linesPositionScore, language);
   
   // 8. 计算置信度
   const confidence = calculateConfidence(hexagramTextScore, trigramRelationScore, linesPositionScore);
   
   // 9. 生成详细分析
-  const detailedAnalysis = generateDetailedAnalysis(fortuneLevel, hexagramTextScore, trigramRelationScore, linesPositionScore);
+  const detailedAnalysis = generateDetailedAnalysis(fortuneLevel, hexagramTextScore, trigramRelationScore, linesPositionScore, language);
   
   return {
     hexagramId: result.hexagramId,
@@ -1201,15 +1216,17 @@ function getFortuneLevel(score: number): FortuneLevel {
  * @param textScore 卦辞评分
  * @param trigramScore 上下卦评分
  * @param linesScore 爻位评分
+ * @param language 语言
  * @returns 总体建议
  */
 function generateOverallAdvice(
   fortuneLevel: FortuneLevel,
   textScore: HexagramTextScore,
   trigramScore: TrigramRelationScore,
-  linesScore: LinesPositionScore
+  linesScore: LinesPositionScore,
+  language: Language = 'zh-CN'
 ): string {
-  const levelConfig = FORTUNE_LEVELS[fortuneLevel];
+  const levelConfig = getFortuneLevels(language)[fortuneLevel];
   let advice = levelConfig.description;
   
   // 根据各维度评分添加具体建议
@@ -1264,44 +1281,140 @@ function calculateConfidence(
  * @param textScore 卦辞评分
  * @param trigramScore 上下卦评分
  * @param linesScore 爻位评分
+ * @param language 语言代码
  * @returns 详细分析
  */
 function generateDetailedAnalysis(
   _fortuneLevel: FortuneLevel,
   textScore: HexagramTextScore,
   trigramScore: TrigramRelationScore,
-  linesScore: LinesPositionScore
+  linesScore: LinesPositionScore,
+  language: string = 'zh-CN'
 ): { strengths: string[]; weaknesses: string[]; opportunities: string[]; threats: string[] } {
   const strengths: string[] = [];
   const weaknesses: string[] = [];
   const opportunities: string[] = [];
   const threats: string[] = [];
   
+  // 多语言内容映射
+  const content = {
+    'en': {
+      strengths: {
+        hexagram: 'Hexagram text is auspicious, with heavenly assistance',
+        trigram: 'Upper and lower trigrams harmonized, with timing and location advantages',
+        lines: 'Line positions are proper, with harmonious human relations'
+      },
+      weaknesses: {
+        hexagram: 'Hexagram text is inauspicious, need cautious action',
+        trigram: 'Upper and lower trigrams conflict, with unfavorable environment',
+        lines: 'Line positions are improper, with disharmonious human relations'
+      },
+      opportunities: {
+        hexagram: 'Seize the timing, actively advance',
+        trigram: 'Leverage environmental advantages, follow the trend',
+        lines: 'Unite and cooperate, seek common development'
+      },
+      threats: {
+        hexagram: 'Prevent trouble before it happens, avoid impulsiveness',
+        trigram: 'Guard against external risks, advance steadily',
+        lines: 'Prevent internal conflicts, distinguish right from wrong'
+      }
+    },
+    'zh-CN': {
+      strengths: {
+        hexagram: '卦辞吉祥，有天道相助',
+        trigram: '上下卦调和，得天时地利',
+        lines: '爻位得当，人事和谐'
+      },
+      weaknesses: {
+        hexagram: '卦辞不吉，需谨慎行事',
+        trigram: '上下卦冲突，环境不利',
+        lines: '爻位失当，人事不和'
+      },
+      opportunities: {
+        hexagram: '把握时机，积极进取',
+        trigram: '借助环境优势，顺势而为',
+        lines: '团结协作，共谋发展'
+      },
+      threats: {
+        hexagram: '防患于未然，避免冲动',
+        trigram: '防范外部风险，稳扎稳打',
+        lines: '防范内部矛盾，明辨是非'
+      }
+    },
+    'zh-TW': {
+      strengths: {
+        hexagram: '卦辭吉祥，有天道相助',
+        trigram: '上下卦調和，得天時地利',
+        lines: '爻位得當，人事和諧'
+      },
+      weaknesses: {
+        hexagram: '卦辭不吉，需謹慎行事',
+        trigram: '上下卦衝突，環境不利',
+        lines: '爻位失當，人事不和'
+      },
+      opportunities: {
+        hexagram: '把握時機，積極進取',
+        trigram: '借助環境優勢，順勢而為',
+        lines: '團結協作，共謀發展'
+      },
+      threats: {
+        hexagram: '防患於未然，避免衝動',
+        trigram: '防範外部風險，穩紮穩打',
+        lines: '防範內部矛盾，明辨是非'
+      }
+    },
+    'es': {
+      strengths: {
+        hexagram: 'El texto del hexagrama es auspicioso, con asistencia celestial',
+        trigram: 'Trigramas superior e inferior armonizados, con ventajas de tiempo y lugar',
+        lines: 'Las posiciones de las líneas son apropiadas, con relaciones humanas armoniosas'
+      },
+      weaknesses: {
+        hexagram: 'El texto del hexagrama es inauspicioso, requiere acción cautelosa',
+        trigram: 'Trigramas superior e inferior en conflicto, con entorno desfavorable',
+        lines: 'Las posiciones de las líneas son inapropiadas, con relaciones humanas discordantes'
+      },
+      opportunities: {
+        hexagram: 'Aprovechar el momento, avanzar activamente',
+        trigram: 'Leverage ventajas ambientales, seguir la tendencia',
+        lines: 'Unirse y cooperar, buscar desarrollo común'
+      },
+      threats: {
+        hexagram: 'Prevenir problemas antes de que ocurran, evitar impulsividad',
+        trigram: 'Proteger contra riesgos externos, avanzar steady',
+        lines: 'Prevenir conflictos internos, distinguir lo correcto de lo incorrecto'
+      }
+    }
+  };
+  
+  const langContent = content[language as keyof typeof content] || content['zh-CN'];
+  
   // 基于卦辞分析
   if (textScore.score >= 60) {
-    strengths.push('卦辞吉祥，有天道相助');
-    opportunities.push('把握时机，积极进取');
+    strengths.push(langContent.strengths.hexagram);
+    opportunities.push(langContent.opportunities.hexagram);
   } else {
-    weaknesses.push('卦辞不吉，需谨慎行事');
-    threats.push('防患于未然，避免冲动');
+    weaknesses.push(langContent.weaknesses.hexagram);
+    threats.push(langContent.threats.hexagram);
   }
   
   // 基于上下卦关系分析
   if (trigramScore.score >= 60) {
-    strengths.push('上下卦调和，得天时地利');
-    opportunities.push('借助环境优势，顺势而为');
+    strengths.push(langContent.strengths.trigram);
+    opportunities.push(langContent.opportunities.trigram);
   } else {
-    weaknesses.push('上下卦冲突，环境不利');
-    threats.push('防范外部风险，稳扎稳打');
+    weaknesses.push(langContent.weaknesses.trigram);
+    threats.push(langContent.threats.trigram);
   }
   
   // 基于爻位分析
   if (linesScore.score >= 60) {
-    strengths.push('爻位得当，人事和谐');
-    opportunities.push('团结协作，共谋发展');
+    strengths.push(langContent.strengths.lines);
+    opportunities.push(langContent.opportunities.lines);
   } else {
-    weaknesses.push('爻位失当，人事不和');
-    threats.push('防范内部矛盾，明辨是非');
+    weaknesses.push(langContent.weaknesses.lines);
+    threats.push(langContent.threats.lines);
   }
   
   return { strengths, weaknesses, opportunities, threats };

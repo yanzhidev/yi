@@ -79,6 +79,84 @@ export interface Translation {
   lineCharacter: string; // 爻字
   inContextOf: string; // 的背景下
 
+  // Fortune Assessment
+  fortuneAssessment: string;
+  confidence: string;
+  benGuaWeight: string;
+  bianGuaWeight: string;
+  overallScore: string;
+  dimensionAnalysis: string;
+  hexagramTextScore: string;
+  trigramRelationScore: string;
+  linesPositionScore: string;
+  changingLinesAdjustment: string;
+  situationAnalysis: string;
+  strengths: string;
+  weaknesses: string;
+  opportunities: string;
+  threats: string;
+  detailedAnalysis: string;
+  hexagramTextAnalysis: string;
+  trigramRelationAnalysis: string;
+  linesPositionAnalysis: string;
+  changingLinesAnalysis: string;
+  none: string;
+
+  // Fortune Levels
+  extremelyAuspicious: string;
+  veryAuspicious: string;
+  auspicious: string;
+  neutral: string;
+  inauspicious: string;
+  veryInauspicious: string;
+  extremelyInauspicious: string;
+
+  // Fortune Level Descriptions
+  extremelyAuspiciousDesc: string;
+  veryAuspiciousDesc: string;
+  auspiciousDesc: string;
+  neutralDesc: string;
+  inauspiciousDesc: string;
+  veryInauspiciousDesc: string;
+  extremelyInauspiciousDesc: string;
+
+  // Fortune Assessment Reasoning
+  hexagramTextAnalysisLabel: string;
+  hexagramNameLabel: string;
+  hexagramTextLabel: string;
+  keywordAnalysisLabel: string;
+  finalScoreLabel: string;
+  trigramRelationAnalysisLabel: string;
+  upperTrigramLabel: string;
+  lowerTrigramLabel: string;
+  heavenEarthRelationLabel: string;
+  fiveElementsRelationLabel: string;
+  yinYangHarmonyLabel: string;
+  specialCombinationLabel: string;
+  linesPositionAnalysisLabel: string;
+  changingLinesAnalysisLabel: string;
+  yinYangBalanceLabel: string;
+  positionStructureLabel: string;
+  specialCombinationsLabel: string;
+  invalidHexagramStructureLabel: string;
+  unknownLabel: string;
+  cannotAnalyzeLabel: string;
+
+  // Additional Reasoning Labels
+  relationshipSummary: string;
+  eachLineAnalysis: string;
+  properPositionCount: string;
+  improperPositionCount: string;
+  yangLinesCount: string;
+  yinLinesCount: string;
+  pointsText: string;
+  upperGeneratesLower: string;
+  lowerGeneratesUpper: string;
+  sameElement: string;
+  upperRestrictsLower: string;
+  lowerRestrictsUpper: string;
+  restrictedBy: string;
+
   // Footer
   footer: string;
 
@@ -182,6 +260,82 @@ export const translations: Record<Language, Translation> = {
     modernInterpretation: 'Modern Interpretation',
     lineCharacter: 'Line',
     inContextOf: 'in the context of',
+
+    // Fortune Assessment
+    fortuneAssessment: 'Fortune Assessment',
+    confidence: 'Confidence',
+    benGuaWeight: 'Original Hexagram Weight',
+    bianGuaWeight: 'Changed Hexagram Weight',
+    overallScore: 'Overall Score',
+    dimensionAnalysis: 'Dimension Analysis',
+    hexagramTextScore: 'Hexagram Text Score',
+    trigramRelationScore: 'Trigram Relation Score',
+    linesPositionScore: 'Lines Position Score',
+    changingLinesAdjustment: 'Changing Lines Adjustment',
+    situationAnalysis: 'Situation Analysis',
+    strengths: 'Strengths',
+    weaknesses: 'Weaknesses',
+    opportunities: 'Opportunities',
+    threats: 'Threats',
+    detailedAnalysis: 'Detailed Analysis',
+    hexagramTextAnalysis: 'Hexagram Text Analysis',
+    trigramRelationAnalysis: 'Trigram Relation Analysis',
+    linesPositionAnalysis: 'Lines Position Analysis',
+    changingLinesAnalysis: 'Changing Lines Analysis',
+    none: 'None',
+
+    // Fortune Levels
+    extremelyAuspicious: 'Extremely Auspicious',
+    veryAuspicious: 'Very Auspicious',
+    auspicious: 'Auspicious',
+    neutral: 'Neutral',
+    inauspicious: 'Inauspicious',
+    veryInauspicious: 'Very Inauspicious',
+    extremelyInauspicious: 'Extremely Inauspicious',
+
+    extremelyAuspiciousDesc: 'Heavenly timing, geographical advantage, and human harmony. All matters prosper smoothly, a once-in-a-lifetime opportunity.',
+    veryAuspiciousDesc: 'Good fortune with many opportunities. It is advisable to actively advance.',
+    auspiciousDesc: 'Fortune trends steadily upward with small achievements. It is advisable to seek progress while maintaining stability.',
+    neutralDesc: 'Fortune is average with mixed blessings and misfortunes. It is advisable to act cautiously.',
+    inauspiciousDesc: 'Fortune encounters slight obstacles. It is advisable to defend rather than attack, and wait for the right moment.',
+    veryInauspiciousDesc: 'Fortune is poor with numerous difficulties. It is advisable to retreat and protect oneself.',
+    extremelyInauspiciousDesc: 'Fortune is extremely poor with crises lurking. It is advisable to observe quietly and avoid reckless actions.',
+
+    hexagramTextAnalysisLabel: 'Hexagram Text Analysis:',
+    hexagramNameLabel: 'Hexagram Name:',
+    hexagramTextLabel: 'Hexagram Text:',
+    keywordAnalysisLabel: 'Keyword Analysis:',
+    finalScoreLabel: 'Final Score:',
+    trigramRelationAnalysisLabel: 'Upper and Lower Trigram Relation Analysis:',
+    upperTrigramLabel: 'Upper Trigram:',
+    lowerTrigramLabel: 'Lower Trigram:',
+    heavenEarthRelationLabel: 'Heaven-Earth Relation:',
+    fiveElementsRelationLabel: 'Five Elements Relation:',
+    yinYangHarmonyLabel: 'Yin-Yang Harmony:',
+    specialCombinationLabel: 'Special Combination:',
+    linesPositionAnalysisLabel: 'Lines Position Analysis:',
+    changingLinesAnalysisLabel: 'Changing Lines Analysis:',
+    yinYangBalanceLabel: 'Yin-Yang Balance:',
+    positionStructureLabel: 'Position Structure:',
+    specialCombinationsLabel: 'Special Combinations:',
+    invalidHexagramStructureLabel: 'Invalid hexagram structure',
+    unknownLabel: 'Unknown',
+    cannotAnalyzeLabel: 'Cannot analyze',
+
+    relationshipSummary: 'Relationship Summary:',
+    eachLineAnalysis: 'Each Line Analysis:',
+    properPositionCount: 'Proper position count:',
+    improperPositionCount: 'Improper position count:',
+    yangLinesCount: 'Yang lines count:',
+    yinLinesCount: 'Yin lines count:',
+    pointsText: 'points',
+    upperGeneratesLower: 'Upper generates lower, auspicious',
+    lowerGeneratesUpper: 'Lower generates upper, inauspicious',
+    sameElement: 'Same element, neutral',
+    upperRestrictsLower: 'Upper restricts lower, inauspicious',
+    lowerRestrictsUpper: 'Lower restricts upper, auspicious',
+    restrictedBy: 'restricted by',
+
     footer: 'Sincerity brings clarity · Follow the natural way',
     selectLanguage: 'Language',
     signIn: 'Sign in with Google',
@@ -277,6 +431,82 @@ export const translations: Record<Language, Translation> = {
     modernInterpretation: '现代解读',
     lineCharacter: '爻',
     inContextOf: '在',
+
+    // Fortune Assessment
+    fortuneAssessment: '吉凶判断',
+    confidence: '置信度',
+    benGuaWeight: '本卦权重',
+    bianGuaWeight: '变卦权重',
+    overallScore: '综合评分',
+    dimensionAnalysis: '维度分析',
+    hexagramTextScore: '卦辞断语',
+    trigramRelationScore: '上下卦关系',
+    linesPositionScore: '爻位综合',
+    changingLinesAdjustment: '变爻调整',
+    situationAnalysis: '态势分析',
+    strengths: '优势',
+    weaknesses: '劣势',
+    opportunities: '机遇',
+    threats: '威胁',
+    detailedAnalysis: '详细分析',
+    hexagramTextAnalysis: '卦辞断语分析',
+    trigramRelationAnalysis: '上下卦关系分析',
+    linesPositionAnalysis: '爻位综合分析',
+    changingLinesAnalysis: '变爻规则分析',
+    none: '无',
+
+    // Fortune Levels
+    extremelyAuspicious: '大吉',
+    veryAuspicious: '吉',
+    auspicious: '小吉',
+    neutral: '中平',
+    inauspicious: '小凶',
+    veryInauspicious: '凶',
+    extremelyInauspicious: '大凶',
+
+    extremelyAuspiciousDesc: '天时地利人和，万事亨通，千载难逢之良机',
+    veryAuspiciousDesc: '运势良好，机遇颇多，宜积极进取',
+    auspiciousDesc: '运势平稳向好，小有成就，宜稳中求进',
+    neutralDesc: '运势平平，吉凶参半，宜谨慎行事',
+    inauspiciousDesc: '运势略有阻滞，宜守不宜攻，待时而动',
+    veryInauspiciousDesc: '运势不佳，困难重重，宜退守保身',
+    extremelyInauspiciousDesc: '运势极差，危机四伏，宜静观其变，切勿轻举妄动',
+
+    hexagramTextAnalysisLabel: '卦辞断语分析：',
+    hexagramNameLabel: '卦名：',
+    hexagramTextLabel: '卦辞：',
+    keywordAnalysisLabel: '关键词分析：',
+    finalScoreLabel: '最终评分：',
+    trigramRelationAnalysisLabel: '上下卦关系分析：',
+    upperTrigramLabel: '上卦：',
+    lowerTrigramLabel: '下卦：',
+    heavenEarthRelationLabel: '天地关系：',
+    fiveElementsRelationLabel: '五行关系：',
+    yinYangHarmonyLabel: '阴阳调和：',
+    specialCombinationLabel: '特殊组合：',
+    linesPositionAnalysisLabel: '爻位综合分析：',
+    changingLinesAnalysisLabel: '变爻分析：',
+    yinYangBalanceLabel: '阴阳平衡：',
+    positionStructureLabel: '爻位结构：',
+    specialCombinationsLabel: '特殊组合：',
+    invalidHexagramStructureLabel: '无效的卦象结构',
+    unknownLabel: '未知',
+    cannotAnalyzeLabel: '无法分析',
+
+    relationshipSummary: '关系总结：',
+    eachLineAnalysis: '各爻分析：',
+    properPositionCount: '当位爻数：',
+    improperPositionCount: '失位爻数：',
+    yangLinesCount: '阳爻数量：',
+    yinLinesCount: '阴爻数量：',
+    pointsText: '分',
+    upperGeneratesLower: '上生下，相生之象，吉',
+    lowerGeneratesUpper: '下生上，相生之象，吉',
+    sameElement: '同五行，中平',
+    upperRestrictsLower: '上克下，相克之象，凶',
+    lowerRestrictsUpper: '下克上，相克之象，凶',
+    restrictedBy: '受克于',
+
     footer: '心诚则灵 · 道法自然',
     selectLanguage: '语言',
     signIn: '使用 Google 登录',
@@ -372,6 +602,82 @@ export const translations: Record<Language, Translation> = {
     modernInterpretation: '現代解讀',
     lineCharacter: '爻',
     inContextOf: '在',
+
+    // Fortune Assessment
+    fortuneAssessment: '吉凶判斷',
+    confidence: '置信度',
+    benGuaWeight: '本卦權重',
+    bianGuaWeight: '變卦權重',
+    overallScore: '綜合評分',
+    dimensionAnalysis: '維度分析',
+    hexagramTextScore: '卦辭斷語',
+    trigramRelationScore: '上下卦關係',
+    linesPositionScore: '爻位綜合',
+    changingLinesAdjustment: '變爻調整',
+    situationAnalysis: '態勢分析',
+    strengths: '優勢',
+    weaknesses: '劣勢',
+    opportunities: '機遇',
+    threats: '威脅',
+    detailedAnalysis: '詳細分析',
+    hexagramTextAnalysis: '卦辭斷語分析',
+    trigramRelationAnalysis: '上下卦關係分析',
+    linesPositionAnalysis: '爻位綜合分析',
+    changingLinesAnalysis: '變爻規則分析',
+    none: '無',
+
+    // Fortune Levels
+    extremelyAuspicious: '大吉',
+    veryAuspicious: '吉',
+    auspicious: '小吉',
+    neutral: '中平',
+    inauspicious: '小凶',
+    veryInauspicious: '凶',
+    extremelyInauspicious: '大凶',
+
+    extremelyAuspiciousDesc: '天時地利人和，萬事亨通，千載難逢之良機',
+    veryAuspiciousDesc: '運勢良好，機遇頗多，宜積極進取',
+    auspiciousDesc: '運勢平穩向好，小有成就，宜穩中求進',
+    neutralDesc: '運勢平平，吉凶參半，宜謹慎行事',
+    inauspiciousDesc: '運勢略有阻滞，宜守不宜攻，待時而動',
+    veryInauspiciousDesc: '運勢不佳，困難重重，宜退守保身',
+    extremelyInauspiciousDesc: '運勢極差，危機四伏，宜靜觀其變，切勿輕舉妄動',
+
+    hexagramTextAnalysisLabel: '卦辭斷語分析：',
+    hexagramNameLabel: '卦名：',
+    hexagramTextLabel: '卦辭：',
+    keywordAnalysisLabel: '關鍵詞分析：',
+    finalScoreLabel: '最終評分：',
+    trigramRelationAnalysisLabel: '上下卦關係分析：',
+    upperTrigramLabel: '上卦：',
+    lowerTrigramLabel: '下卦：',
+    heavenEarthRelationLabel: '天地關係：',
+    fiveElementsRelationLabel: '五行關係：',
+    yinYangHarmonyLabel: '陰陽調和：',
+    specialCombinationLabel: '特殊組合：',
+    linesPositionAnalysisLabel: '爻位綜合分析：',
+    changingLinesAnalysisLabel: '變爻分析：',
+    yinYangBalanceLabel: '陰陽平衡：',
+    positionStructureLabel: '爻位結構：',
+    specialCombinationsLabel: '特殊組合：',
+    invalidHexagramStructureLabel: '無效的卦象結構',
+    unknownLabel: '未知',
+    cannotAnalyzeLabel: '無法分析',
+
+    relationshipSummary: '關係總結：',
+    eachLineAnalysis: '各爻分析：',
+    properPositionCount: '當位爻數：',
+    improperPositionCount: '失位爻數：',
+    yangLinesCount: '陽爻數量：',
+    yinLinesCount: '陰爻數量：',
+    pointsText: '分',
+    upperGeneratesLower: '上生下，相生之象，吉',
+    lowerGeneratesUpper: '下生上，相生之象，吉',
+    sameElement: '同五行，中平',
+    upperRestrictsLower: '上克下，相克之象，凶',
+    lowerRestrictsUpper: '下克上，相克之象，凶',
+    restrictedBy: '受克於',
+
     footer: '心誠則靈 · 道法自然',
     selectLanguage: '語言',
     signIn: '使用 Google 登入',
@@ -466,6 +772,82 @@ export const translations: Record<Language, Translation> = {
     modernInterpretation: 'Interpretación Moderna',
     lineCharacter: 'Línea',
     inContextOf: 'en el contexto de',
+
+    // Fortune Assessment
+    fortuneAssessment: 'Evaluación de Fortuna',
+    confidence: 'Confianza',
+    benGuaWeight: 'Peso Hexagrama Original',
+    bianGuaWeight: 'Peso Hexagrama Cambiado',
+    overallScore: 'Puntuación General',
+    dimensionAnalysis: 'Análisis de Dimensiones',
+    hexagramTextScore: 'Puntuación Texto Hexagrama',
+    trigramRelationScore: 'Puntuación Relación Trigramas',
+    linesPositionScore: 'Puntuación Posición Líneas',
+    changingLinesAdjustment: 'Ajuste Líneas Cambiantes',
+    situationAnalysis: 'Análisis de Situación',
+    strengths: 'Fortalezas',
+    weaknesses: 'Debilidades',
+    opportunities: 'Oportunidades',
+    threats: 'Amenazas',
+    detailedAnalysis: 'Análisis Detallado',
+    hexagramTextAnalysis: 'Análisis Texto Hexagrama',
+    trigramRelationAnalysis: 'Análisis Relación Trigramas',
+    linesPositionAnalysis: 'Análisis Posición Líneas',
+    changingLinesAnalysis: 'Análisis Líneas Cambiantes',
+    none: 'Ninguno',
+
+    // Fortune Levels
+    extremelyAuspicious: 'Extremadamente Auspicioso',
+    veryAuspicious: 'Muy Auspicioso',
+    auspicious: 'Auspicioso',
+    neutral: 'Neutral',
+    inauspicious: 'Inauspicioso',
+    veryInauspicious: 'Muy Inauspicioso',
+    extremelyInauspicious: 'Extremadamente Inauspicioso',
+
+    extremelyAuspiciousDesc: 'Momento celestial, ventaja geográfica y armonía humana. Todos los asuntos prosperan suavemente, una oportunidad única en la vida.',
+    veryAuspiciousDesc: 'Buena fortuna con muchas oportunidades. Es aconsejable avanzar activamente.',
+    auspiciousDesc: 'La fortuna tiende steady hacia arriba con pequeños logros. Es aconsejable buscar progreso manteniendo la estabilidad.',
+    neutralDesc: 'La fortuna es promedio con bendiciones y desgracias mixtas. Es aconsejable actuar con cautela.',
+    inauspiciousDesc: 'La fortuna encuentra obstáculos ligeros. Es aconsejable defender en lugar de atacar y esperar el momento adecuado.',
+    veryInauspiciousDesc: 'La fortuna es pobre con numerosas dificultades. Es aconsejable retirarse y protegerse.',
+    extremelyInauspiciousDesc: 'La fortuna es extremadamente pobre con crisis al acecho. Es aconsejable observar quietly y evitar acciones temerarias.',
+
+    hexagramTextAnalysisLabel: 'Análisis Texto Hexagrama:',
+    hexagramNameLabel: 'Nombre Hexagrama:',
+    hexagramTextLabel: 'Texto Hexagrama:',
+    keywordAnalysisLabel: 'Análisis Palabras Clave:',
+    finalScoreLabel: 'Puntuación Final:',
+    trigramRelationAnalysisLabel: 'Análisis Relación Trigramas Superior e Inferior:',
+    upperTrigramLabel: 'Trigrama Superior:',
+    lowerTrigramLabel: 'Trigrama Inferior:',
+    heavenEarthRelationLabel: 'Relación Cielo-Tierra:',
+    fiveElementsRelationLabel: 'Relación Cinco Elementos:',
+    yinYangHarmonyLabel: 'Armonía Yin-Yang:',
+    specialCombinationLabel: 'Combinación Especial:',
+    linesPositionAnalysisLabel: 'Análisis Posición Líneas:',
+    changingLinesAnalysisLabel: 'Análisis Líneas Cambiantes:',
+    yinYangBalanceLabel: 'Equilibrio Yin-Yang:',
+    positionStructureLabel: 'Estructura Posición:',
+    specialCombinationsLabel: 'Combinaciones Especiales:',
+    invalidHexagramStructureLabel: 'Estructura de hexagrama inválida',
+    unknownLabel: 'Desconocido',
+    cannotAnalyzeLabel: 'No se puede analizar',
+
+    relationshipSummary: 'Resumen de Relación:',
+    eachLineAnalysis: 'Análisis de Cada Línea:',
+    properPositionCount: 'Conteo de posiciones properas:',
+    improperPositionCount: 'Conteo de posiciones impropias:',
+    yangLinesCount: 'Conteo de líneas Yang:',
+    yinLinesCount: 'Conteo de líneas Yin:',
+    pointsText: 'puntos',
+    upperGeneratesLower: 'Superior genera inferior, auspicioso',
+    lowerGeneratesUpper: 'Inferior genera superior, inauspicioso',
+    sameElement: 'Mismo elemento, neutral',
+    upperRestrictsLower: 'Superior restringe inferior, inauspicioso',
+    lowerRestrictsUpper: 'Inferior restringe superior, auspicioso',
+    restrictedBy: 'restringido por',
+
     footer: 'La sinceridad trae claridad · Sigue el camino natural',
     selectLanguage: 'Idioma',
     signIn: 'Iniciar sesión con Google',
@@ -500,3 +882,14 @@ export const translations: Record<Language, Translation> = {
 export const defaultLanguage: Language = 'zh-CN';
 
 export const languages: Language[] = ['en', 'zh-CN', 'zh-TW', 'es'];
+
+/**
+ * 获取翻译文本
+ * @param language 语言
+ * @param key 翻译键
+ * @returns 翻译文本
+ */
+export function getTranslation(language: Language, key: keyof Translation): string {
+  const translation = translations[language][key] || translations[defaultLanguage][key];
+  return typeof translation === 'string' ? translation : String(translation);
+}

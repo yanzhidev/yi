@@ -2,11 +2,14 @@ import { TrendingUp, TrendingDown, Minus, AlertTriangle, CheckCircle, Info, BarC
 import { Scroll as ScrollIcon } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { 
+  getFortuneLevels
+} from '../utils/fortuneAssessment';
 import type { 
   FortuneAssessment, 
   FortuneLevel
 } from '../utils/fortuneAssessment';
-import { FORTUNE_LEVELS } from '../utils/fortuneAssessment';
 
 function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -19,6 +22,8 @@ interface FortuneAssessmentDisplayProps {
 export function FortuneAssessmentDisplay({ 
   assessment 
 }: FortuneAssessmentDisplayProps) {
+  const { t, language } = useLanguage();
+  
   const { 
     totalScore, 
     fortuneLevel, 
@@ -34,9 +39,31 @@ export function FortuneAssessmentDisplay({
 
   const [showDetailedAnalysis, setShowDetailedAnalysis] = useState(false);
 
-  const levelConfig = FORTUNE_LEVELS[fortuneLevel];
+  const levelConfig = getFortuneLevels(language)[fortuneLevel];
   const scoreColor = getScoreColor(totalScore);
   const confidenceColor = getConfidenceColor(confidence);
+  
+  // 获取翻译后的标签
+  const getFortuneLevelLabel = (level: FortuneLevel) => {
+    switch (level) {
+      case 'extremely_auspicious':
+        return t.extremelyAuspicious;
+      case 'very_auspicious':
+        return t.veryAuspicious;
+      case 'auspicious':
+        return t.auspicious;
+      case 'neutral':
+        return t.neutral;
+      case 'inauspicious':
+        return t.inauspicious;
+      case 'very_inauspicious':
+        return t.veryInauspicious;
+      case 'extremely_inauspicious':
+        return t.extremelyInauspicious;
+      default:
+        return levelConfig.label;
+    }
+  };
 
   return (
     <div className="space-y-0">
@@ -45,10 +72,10 @@ export function FortuneAssessmentDisplay({
         <div className="flex items-center gap-3 mb-4">
           <div className="flex items-center gap-2">
             {getFortuneIcon(fortuneLevel)}
-            <h3 className="text-lg font-semibold text-stone-800">吉凶判断</h3>
+            <h3 className="text-lg font-semibold text-stone-800">{t.fortuneAssessment}</h3>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <span className="text-xs text-stone-500">置信度</span>
+            <span className="text-xs text-stone-500">{t.confidence}</span>
             <div className={cn(
               "px-2 py-1 rounded-full text-xs font-medium",
               confidenceColor.bg, confidenceColor.text
@@ -62,10 +89,10 @@ export function FortuneAssessmentDisplay({
         {assessment.changedHexagramId && (
           <div className="mb-4 p-3 bg-stone-50 rounded-lg">
             <div className="flex items-center gap-2 text-sm text-stone-700">
-              <span className="font-medium">本卦权重：</span>
+              <span className="font-medium">{t.benGuaWeight}：</span>
               <span className="text-stone-900 font-bold">{weights.benWeight}%</span>
               <span className="text-stone-500">·</span>
-              <span className="font-medium">变卦权重：</span>
+              <span className="font-medium">{t.bianGuaWeight}：</span>
               <span className="text-stone-900 font-bold">{weights.bianWeight}%</span>
             </div>
           </div>
@@ -80,11 +107,11 @@ export function FortuneAssessmentDisplay({
             )}
             style={{ backgroundColor: levelConfig.color + '15', color: levelConfig.color }}
           >
-            {levelConfig.label}
+            {getFortuneLevelLabel(fortuneLevel)}
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm text-stone-600">综合评分</span>
+              <span className="text-sm text-stone-600">{t.overallScore}</span>
               <span className="text-2xl font-bold" style={{ color: levelConfig.color }}>
                 {totalScore.toFixed(1)}
               </span>
@@ -121,13 +148,13 @@ export function FortuneAssessmentDisplay({
       <div className="py-6">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="w-5 h-5 text-stone-700" />
-          <h3 className="text-lg font-semibold text-stone-800">维度分析</h3>
+          <h3 className="text-lg font-semibold text-stone-800">{t.dimensionAnalysis}</h3>
         </div>
 
         <div className="space-y-4">
           {/* 卦辞断语评分 */}
           <ScoreItem
-            title="卦辞断语"
+            title={t.hexagramTextScore}
             score={hexagramTextScore.score}
             weight="40%"
             icon={ScrollIcon}
@@ -137,7 +164,7 @@ export function FortuneAssessmentDisplay({
 
           {/* 上下卦关系评分 */}
           <ScoreItem
-            title="上下卦关系"
+            title={t.trigramRelationScore}
             score={trigramRelationScore.score}
             weight="30%"
             icon={Target}
@@ -147,7 +174,7 @@ export function FortuneAssessmentDisplay({
 
           {/* 爻位综合评分 */}
           <ScoreItem
-            title="爻位综合"
+            title={t.linesPositionScore}
             score={linesPositionScore.score}
             weight="30%"
             icon={Shield}
@@ -161,7 +188,7 @@ export function FortuneAssessmentDisplay({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-amber-600" />
-                  <span className="text-sm font-medium text-stone-700">变爻调整</span>
+                  <span className="text-sm font-medium text-stone-700">{t.changingLinesAdjustment}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={cn(
@@ -185,13 +212,13 @@ export function FortuneAssessmentDisplay({
       <div className="py-6">
         <div className="flex items-center gap-2 mb-4">
           <Target className="w-5 h-5 text-stone-700" />
-          <h3 className="text-lg font-semibold text-stone-800">态势分析</h3>
+          <h3 className="text-lg font-semibold text-stone-800">{t.situationAnalysis}</h3>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           {/* 优势 */}
           <SWOTCard
-            title="优势"
+            title={t.strengths}
             items={detailedAnalysis.strengths}
             icon={CheckCircle}
             color="green"
@@ -199,7 +226,7 @@ export function FortuneAssessmentDisplay({
 
           {/* 劣势 */}
           <SWOTCard
-            title="劣势"
+            title={t.weaknesses}
             items={detailedAnalysis.weaknesses}
             icon={AlertTriangle}
             color="red"
@@ -207,7 +234,7 @@ export function FortuneAssessmentDisplay({
 
           {/* 机遇 */}
           <SWOTCard
-            title="机遇"
+            title={t.opportunities}
             items={detailedAnalysis.opportunities}
             icon={TrendingUp}
             color="blue"
@@ -215,7 +242,7 @@ export function FortuneAssessmentDisplay({
 
           {/* 威胁 */}
           <SWOTCard
-            title="威胁"
+            title={t.threats}
             items={detailedAnalysis.threats}
             icon={TrendingDown}
             color="orange"
@@ -233,7 +260,7 @@ export function FortuneAssessmentDisplay({
           className="flex items-center gap-2 w-full text-left group mb-4"
         >
           <ScrollIcon className="w-4 h-4 text-stone-600" />
-          <span className="text-sm text-stone-700 font-semibold">详细分析</span>
+          <span className="text-sm text-stone-700 font-semibold">{t.detailedAnalysis}</span>
           <ChevronDown 
             className={cn(
               "w-4 h-4 text-stone-500 ml-auto transition-transform duration-300",
@@ -246,21 +273,21 @@ export function FortuneAssessmentDisplay({
           <div className="space-y-4">
             {/* 卦辞详细分析 */}
             <DetailSection
-              title="卦辞断语分析"
+              title={t.hexagramTextAnalysis}
               content={hexagramTextScore.reasoning}
               icon={ScrollIcon}
             />
 
             {/* 上下卦详细分析 */}
             <DetailSection
-              title="上下卦关系分析"
+              title={t.trigramRelationAnalysis}
               content={trigramRelationScore.reasoning}
               icon={Target}
             />
 
             {/* 爻位详细分析 */}
             <DetailSection
-              title="爻位综合分析"
+              title={t.linesPositionAnalysis}
               content={linesPositionScore.reasoning}
               icon={Shield}
             />
@@ -268,7 +295,7 @@ export function FortuneAssessmentDisplay({
             {/* 变爻详细分析 */}
             {changingLinesAdjustment.adjustment !== 0 && (
               <DetailSection
-                title="变爻规则分析"
+                title={t.changingLinesAnalysis}
                 content={changingLinesAdjustment.reasoning}
                 icon={Zap}
               />
@@ -328,6 +355,8 @@ interface SWOTCardProps {
 }
 
 function SWOTCard({ title, items, icon: Icon, color }: SWOTCardProps) {
+  const { t } = useLanguage();
+  
   const colorClasses = {
     green: 'bg-green-50 border-green-200 text-green-700',
     red: 'bg-red-50 border-red-200 text-red-700',
@@ -351,7 +380,7 @@ function SWOTCard({ title, items, icon: Icon, color }: SWOTCardProps) {
           </div>
         ))}
         {items.length === 0 && (
-          <div className="text-xs opacity-75">无</div>
+          <div className="text-xs opacity-75">{t.none}</div>
         )}
       </div>
     </div>

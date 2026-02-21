@@ -50,7 +50,7 @@ export function HexagramResult({
   const changedHexagram = result.changedHexagramId ? getHexagramById(result.changedHexagramId) : null;
 
   // 计算吉凶判断
-  const fortuneAssessment = assessFortune(result);
+  const fortuneAssessment = assessFortune(result, undefined, language);
 
   return (
     <>
@@ -574,7 +574,7 @@ export function HexagramResult({
       <div className="bg-white rounded-3xl p-8 shadow-md border border-stone-200 mt-6">
         <div className="flex items-center gap-2 mb-6">
           <Target className="w-5 h-5 text-stone-700" />
-          <h2 className="text-lg font-semibold text-stone-800 tracking-wider">吉凶判断</h2>
+          <h2 className="text-lg font-semibold text-stone-800 tracking-wider">{t.fortuneAssessment}</h2>
         </div>
 
         {/* 吉凶判断总览 */}
