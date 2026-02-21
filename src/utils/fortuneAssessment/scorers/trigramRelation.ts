@@ -84,17 +84,17 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   const chineseLowerElement = getTranslation('zh-CN', lowerTrigram.elementKey as keyof Translation);
   const elementRelation = getElementRelationScore(chineseUpperElement, chineseLowerElement, 'zh-CN'); // 始终使用中文计算
   score += elementRelation.score;
-  reasoning += getTranslation(language, 'fiveElementsRelationLabel') + getTranslation(language, elementRelation.score > 0 ? 'upperGeneratesLower' : elementRelation.score < 0 ? 'upperRestrictsLower' : 'sameElement') + ` (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}${getTranslation(language, 'pointsText')})\n`;
+  reasoning += getTranslation(language, 'fiveElementsRelationLabel') + getTranslation(language, elementRelation.descriptionKey as keyof Translation) + ` (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 3. 阴阳调和评分 - 使用中文键值进行计算
   const yinYangBalance = getYinYangBalanceScore(upperTrigramBinary, lowerTrigramBinary, 'zh-CN'); // 始终使用中文计算
   score += yinYangBalance.score;
-  reasoning += getTranslation(language, 'yinYangHarmonyLabel') + getTranslation(language, yinYangBalance.score > 0 ? 'yinYangIdeal' : yinYangBalance.score < 0 ? 'yinYangInverted' : 'yinYangBalanced') + ` (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
+  reasoning += getTranslation(language, 'yinYangHarmonyLabel') + getTranslation(language, yinYangBalance.descriptionKey as keyof Translation) + ` (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 4. 特殊组合调整 - 使用中文键值进行计算
   const specialCombination = getSpecialCombinationAdjustment(upperTrigramBinary, lowerTrigramBinary, 'zh-CN'); // 始终使用中文计算
   score += specialCombination.score;
-  reasoning += getTranslation(language, 'specialCombinationLabel') + getTranslation(language, specialCombination.score > 0 ? 'pureYangHexagram' : specialCombination.score < 0 ? 'piHexagram' : 'taiHexagram') + ` (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}${getTranslation(language, 'pointsText')})\n`;
+  reasoning += getTranslation(language, 'specialCombinationLabel') + getTranslation(language, specialCombination.descriptionKey as keyof Translation) + ` (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
@@ -145,35 +145,35 @@ function getHeavenEarthRelations(): Record<string, HeavenEarthRelation> {
  * @param language 语言
  * @returns 五行关系评分
  */
-function getElementRelationScore(upperElement: string, lowerElement: string, language: Language = 'zh-CN'): { score: number; description: string } {
+function getElementRelationScore(upperElement: string, lowerElement: string, _language: Language = 'zh-CN'): { score: number; descriptionKey: string } {
   const relations = getFiveElementsRelations();
   
   // 上生下（上卦生下卦）- 吉
   if (relations.generate[upperElement as keyof typeof relations.generate] === lowerElement) {
-    return { score: 15, description: getTranslation(language, 'upperGeneratesLower') };
+    return { score: 15, descriptionKey: 'upperGeneratesLower' };
   }
   
   // 下生上（下卦生上卦）- 吉
   if (relations.generate[lowerElement as keyof typeof relations.generate] === upperElement) {
-    return { score: 12, description: getTranslation(language, 'lowerGeneratesUpper') };
+    return { score: 12, descriptionKey: 'lowerGeneratesUpper' };
   }
   
   // 上克下（上卦克下卦）- 凶
   if (relations.overcome[upperElement as keyof typeof relations.overcome] === lowerElement) {
-    return { score: -10, description: getTranslation(language, 'upperRestrictsLower') };
+    return { score: -10, descriptionKey: 'upperRestrictsLower' };
   }
   
   // 下克上（下卦克上卦）- 凶
   if (relations.overcome[lowerElement as keyof typeof relations.overcome] === upperElement) {
-    return { score: -8, description: getTranslation(language, 'lowerRestrictsUpper') };
+    return { score: -8, descriptionKey: 'lowerRestrictsUpper' };
   }
   
   // 同五行 - 中平
   if (upperElement === lowerElement) {
-    return { score: 5, description: getTranslation(language, 'sameElement') };
+    return { score: 5, descriptionKey: 'sameElement' };
   }
   
-  return { score: 0, description: getTranslation(language, 'fiveElementsNoFeature') };
+  return { score: 0, descriptionKey: 'fiveElementsNoFeature' };
 }
 
 /**
@@ -183,7 +183,7 @@ function getElementRelationScore(upperElement: string, lowerElement: string, lan
  * @param language 语言
  * @returns 阴阳调和评分
  */
-function getYinYangBalanceScore(upperBinary: string, lowerBinary: string, language: Language = 'zh-CN'): { score: number; description: string } {
+function getYinYangBalanceScore(upperBinary: string, lowerBinary: string, _language: Language = 'zh-CN'): { score: number; descriptionKey: string } {
   const upperYangCount = (upperBinary.match(/1/g) || []).length;
   const lowerYangCount = (lowerBinary.match(/1/g) || []).length;
   const upperYinCount = 3 - upperYangCount;
@@ -191,20 +191,20 @@ function getYinYangBalanceScore(upperBinary: string, lowerBinary: string, langua
   
   // 理想状态：上卦多阳，下卦多阴（天在上，地在下）
   if (upperYangCount > upperYinCount && lowerYinCount > lowerYangCount) {
-    return { score: 10, description: getTranslation(language, 'yinYangIdeal') };
+    return { score: 10, descriptionKey: 'yinYangIdeal' };
   }
   
   // 次佳状态：上下卦阴阳平衡
   if (upperYangCount === upperYinCount && lowerYangCount === lowerYinCount) {
-    return { score: 8, description: getTranslation(language, 'yinYangBalanced') };
+    return { score: 8, descriptionKey: 'yinYangBalanced' };
   }
   
   // 不佳状态：上卦多阴，下卦多阳（天地倒置）
   if (upperYinCount > upperYangCount && lowerYangCount > lowerYinCount) {
-    return { score: -12, description: getTranslation(language, 'yinYangInverted') };
+    return { score: -12, descriptionKey: 'yinYangInverted' };
   }
   
-  return { score: 0, description: getTranslation(language, 'yinYangNoFeature') };
+  return { score: 0, descriptionKey: 'yinYangNoFeature' };
 }
 
 /**
@@ -214,27 +214,28 @@ function getYinYangBalanceScore(upperBinary: string, lowerBinary: string, langua
  * @param language 语言
  * @returns 特殊组合调整
  */
-function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: string, language: Language = 'zh-CN'): { score: number; description: string } {
+function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: string, _language: Language = 'zh-CN'): { score: number; descriptionKey: string } {
   const combination = upperBinary + lowerBinary;
   
-  const specialCases: Record<string, { score: number; description: string }> = {
+  // 返回翻译键而非翻译后的文本
+  const specialCases: Record<string, { score: number; descriptionKey: string }> = {
     // 乾卦 - 纯阳
-    '111111': { score: 20, description: getTranslation(language, 'pureYangHexagram') },
+    '111111': { score: 20, descriptionKey: 'pureYangHexagram' },
     // 坤卦 - 纯阴
-    '000000': { score: 15, description: getTranslation(language, 'pureYinHexagram') },
+    '000000': { score: 15, descriptionKey: 'pureYinHexagram' },
     // 泰卦 - 天地交泰
-    '111000': { score: 25, description: getTranslation(language, 'taiHexagram') },
+    '111000': { score: 25, descriptionKey: 'taiHexagram' },
     // 否卦 - 天地不交
-    '000111': { score: -20, description: getTranslation(language, 'piHexagram') },
+    '000111': { score: -20, descriptionKey: 'piHexagram' },
     // 既济 - 水火既济
-    '010101': { score: 18, description: getTranslation(language, 'jiJiHexagram') },
+    '010101': { score: 18, descriptionKey: 'jiJiHexagram' },
     // 未济 - 水火未济
-    '101010': { score: -5, description: getTranslation(language, 'weiJiHexagram') },
+    '101010': { score: -5, descriptionKey: 'weiJiHexagram' },
     // 丰卦 - 雷火丰
-    '101001': { score: 12, description: getTranslation(language, 'fengHexagram') },
+    '101001': { score: 12, descriptionKey: 'fengHexagram' },
     // 困卦 - 泽水困
-    '110010': { score: -10, description: getTranslation(language, 'kunHexagram') }
+    '110010': { score: -10, descriptionKey: 'kunHexagram' }
   };
   
-  return specialCases[combination] || { score: 0, description: getTranslation(language, 'noSpecialCombination') };
+  return specialCases[combination] || { score: 0, descriptionKey: 'noSpecialCombination' };
 }

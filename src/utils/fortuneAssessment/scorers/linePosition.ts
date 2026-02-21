@@ -74,29 +74,31 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
   // 2. 特殊组合评分 - 始终使用中文计算
   const specialCombinations = getSpecialLineCombinations(lines, changingLines, 'zh-CN');
   score += specialCombinations.score;
-  reasoning += `\n${getTranslation(language, 'specialCombinationsLabel')}${getTranslation(language, specialCombinations.score > 15 ? 'allYangDesc' : specialCombinations.score > 5 ? 'properPositionDesc' : specialCombinations.score < 0 ? 'improperPositionDesc' : 'middlePositionDesc')} (${specialCombinations.score > 0 ? '+' : ''}${specialCombinations.score}${getTranslation(language, 'pointsText')})\n`;
+  const specialComboDesc = specialCombinations.description[0];
+  reasoning += `\n${getTranslation(language, 'specialCombinationsLabel')}${getTranslation(language, specialComboDesc as keyof Translation)} (${specialCombinations.score > 0 ? '+' : ''}${specialCombinations.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 3. 特殊组合调整 - 始终使用中文计算
   const upperBinary = binary.slice(0, 3);
   const lowerBinary = binary.slice(3);
   const specialCombination = getSpecialCombinationAdjustment(upperBinary, lowerBinary, 'zh-CN');
   score += specialCombination.score;
-  reasoning += `\n${getTranslation(language, 'specialCombinationAdjustmentLabel')}${getTranslation(language, specialCombination.score > 15 ? 'pureYangHexagram' : specialCombination.score < 0 ? 'piHexagram' : 'taiHexagram')} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}${getTranslation(language, 'pointsText')})\n`;
+  reasoning += `\n${getTranslation(language, 'specialCombinationAdjustmentLabel')}${getTranslation(language, specialCombination.descriptionKey as keyof Translation)} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 4. 变爻分析 - 始终使用中文计算
   const changingLinesAnalysis = analyzeChangingLines(lines, changingLines, 'zh-CN');
   score += changingLinesAnalysis.score;
-  reasoning += `\n${getTranslation(language, 'changingLinesAnalysisLabel')}${getTranslation(language, changingLinesAnalysis.score > 5 ? 'oneChangingLine' : changingLinesAnalysis.score > 0 ? 'twoChangingLines' : changingLinesAnalysis.score < 0 ? 'manyChangingLines' : 'noChangingLines')} (${changingLinesAnalysis.score > 0 ? '+' : ''}${changingLinesAnalysis.score}${getTranslation(language, 'pointsText')})\n`;
+  reasoning += `\n${getTranslation(language, 'changingLinesAnalysisLabel')}${getTranslation(language, changingLinesAnalysis.descriptionKey as keyof Translation)} (${changingLinesAnalysis.score > 0 ? '+' : ''}${changingLinesAnalysis.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 5. 阴阳平衡分析 - 始终使用中文计算
   const yinYangBalance = analyzeLinesYinYangBalance(yangCount, yinCount, 'zh-CN');
   score += yinYangBalance.score;
-  reasoning += `\n${getTranslation(language, 'yinYangBalanceLabel')}${getTranslation(language, yinYangBalance.score > 5 ? 'yinYangBalancedHarmony' : yinYangBalance.score > 0 ? 'yangMoreThanYin' : 'yinYangNoFeature')} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
+  reasoning += `\n${getTranslation(language, 'yinYangBalanceLabel')}${getTranslation(language, yinYangBalance.descriptionKey as keyof Translation)} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 6. 爻位结构分析 - 始终使用中文计算
   const positionStructure = analyzePositionStructure(lines, 'zh-CN');
   score += positionStructure.score;
-  reasoning += `\n${getTranslation(language, 'positionStructureLabel')}${getTranslation(language, positionStructure.score > 0 ? 'lines25Correspondence' : 'positionStructureNoFeature')} (${positionStructure.score > 0 ? '+' : ''}${positionStructure.score}${getTranslation(language, 'pointsText')})\n`;
+  const positionDesc = positionStructure.descriptionKeys[0];
+  reasoning += `\n${getTranslation(language, 'positionStructureLabel')}${getTranslation(language, positionDesc as keyof Translation)} (${positionStructure.score > 0 ? '+' : ''}${positionStructure.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
@@ -116,12 +118,13 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
  * @param language 语言
  * @returns 爻型吉凶权重配置
  */
-function getLineTypeWeights(language: Language = 'zh-CN'): Record<string, LineTypeWeight> {
+function getLineTypeWeights(_language: Language = 'zh-CN'): Record<string, LineTypeWeight> {
+  // 返回翻译键而非翻译后的文本
   return {
-    'oldYang': { score: 8, description: getTranslation(language, 'oldYangDesc') },
-    'youngYang': { score: 6, description: getTranslation(language, 'youngYangDesc') },
-    'youngYin': { score: 4, description: getTranslation(language, 'youngYinDesc') },
-    'oldYin': { score: 2, description: getTranslation(language, 'oldYinDesc') }
+    'oldYang': { score: 8, description: 'oldYangDesc' },
+    'youngYang': { score: 6, description: 'youngYangDesc' },
+    'youngYin': { score: 4, description: 'youngYinDesc' },
+    'oldYin': { score: 2, description: 'oldYinDesc' }
   };
 }
 
@@ -132,15 +135,16 @@ function getLineTypeWeights(language: Language = 'zh-CN'): Record<string, LineTy
  * @param language 语言
  * @returns 特殊组合评分
  */
-function getSpecialLineCombinations(lines: any[], changingLines: number[], language: Language = 'zh-CN'): { score: number; description: string } {
+function getSpecialLineCombinations(lines: any[], changingLines: number[], _language: Language = 'zh-CN'): { score: number; description: string[] } {
   let totalScore = 0;
   const descriptions: string[] = [];
+  // 返回翻译键而非翻译后的文本
   const specialCombinations: Record<string, SpecialCombination> = {
-    'all-yang': { score: 20, description: getTranslation(language, 'allYangDesc') },
-    'all-yin': { score: 15, description: getTranslation(language, 'allYinDesc') },
-    '2-5': { score: 15, description: getTranslation(language, 'middlePositionDesc') },
-    'proper-position': { score: 10, description: getTranslation(language, 'properPositionDesc') },
-    'improper-position': { score: -8, description: getTranslation(language, 'improperPositionDesc') }
+    'all-yang': { score: 20, description: 'allYangDesc' },
+    'all-yin': { score: 15, description: 'allYinDesc' },
+    '2-5': { score: 15, description: 'middlePositionDesc' },
+    'proper-position': { score: 10, description: 'properPositionDesc' },
+    'improper-position': { score: -8, description: 'improperPositionDesc' }
   };
   
   // 检查纯阳纯阴
@@ -191,7 +195,7 @@ function getSpecialLineCombinations(lines: any[], changingLines: number[], langu
   
   return {
     score: totalScore,
-    description: descriptions.join('；') || getTranslation(language, 'noSpecialCombination')
+    description: descriptions.length > 0 ? descriptions : ['noSpecialCombination']
   };
 }
 
@@ -202,30 +206,30 @@ function getSpecialLineCombinations(lines: any[], changingLines: number[], langu
  * @param language 语言
  * @returns 变爻分析结果
  */
-function analyzeChangingLines(_lines: any[], changingLines: number[], language: Language = 'zh-CN'): { score: number; description: string } {
+function analyzeChangingLines(_lines: any[], changingLines: number[], _language: Language = 'zh-CN'): { score: number; descriptionKey: string } {
   const changingCount = changingLines.length;
   
   if (changingCount === 0) {
-    return { score: 5, description: getTranslation(language, 'noChangingLines') };
+    return { score: 5, descriptionKey: 'noChangingLines' };
   }
   
   if (changingCount === 1) {
-    return { score: 8, description: getTranslation(language, 'oneChangingLine') };
+    return { score: 8, descriptionKey: 'oneChangingLine' };
   }
   
   if (changingCount === 2) {
-    return { score: 6, description: getTranslation(language, 'twoChangingLines') };
+    return { score: 6, descriptionKey: 'twoChangingLines' };
   }
   
   if (changingCount === 3) {
-    return { score: 4, description: getTranslation(language, 'threeChangingLines') };
+    return { score: 4, descriptionKey: 'threeChangingLines' };
   }
   
   if (changingCount >= 4) {
-    return { score: -5, description: getTranslation(language, 'manyChangingLines') };
+    return { score: -5, descriptionKey: 'manyChangingLines' };
   }
   
-  return { score: 0, description: getTranslation(language, 'changingLinesUnknown') };
+  return { score: 0, descriptionKey: 'changingLinesUnknown' };
 }
 
 /**
@@ -235,28 +239,28 @@ function analyzeChangingLines(_lines: any[], changingLines: number[], language: 
  * @param language 语言
  * @returns 阴阳平衡分析结果
  */
-function analyzeLinesYinYangBalance(yangCount: number, yinCount: number, language: Language = 'zh-CN'): { score: number; description: string } {
+function analyzeLinesYinYangBalance(yangCount: number, yinCount: number, _language: Language = 'zh-CN'): { score: number; descriptionKey: string } {
   if (yangCount === yinCount) {
-    return { score: 10, description: getTranslation(language, 'yinYangBalancedHarmony') };
+    return { score: 10, descriptionKey: 'yinYangBalancedHarmony' };
   }
   
   if (yangCount === 4 && yinCount === 2) {
-    return { score: 8, description: getTranslation(language, 'yangMoreThanYin') };
+    return { score: 8, descriptionKey: 'yangMoreThanYin' };
   }
   
   if (yangCount === 2 && yinCount === 4) {
-    return { score: 6, description: getTranslation(language, 'yinMoreThanYang') };
+    return { score: 6, descriptionKey: 'yinMoreThanYang' };
   }
   
   if (yangCount === 5 && yinCount === 1) {
-    return { score: 4, description: getTranslation(language, 'yangExtreme') };
+    return { score: 4, descriptionKey: 'yangExtreme' };
   }
   
   if (yangCount === 1 && yinCount === 5) {
-    return { score: 3, description: getTranslation(language, 'yinExtreme') };
+    return { score: 3, descriptionKey: 'yinExtreme' };
   }
   
-  return { score: 0, description: getTranslation(language, 'yinYangNoFeature') };
+  return { score: 0, descriptionKey: 'yinYangNoFeature' };
 }
 
 /**
@@ -265,7 +269,7 @@ function analyzeLinesYinYangBalance(yangCount: number, yinCount: number, languag
  * @param language 语言
  * @returns 爻位结构分析结果
  */
-function analyzePositionStructure(lines: any[], language: Language = 'zh-CN'): { score: number; description: string } {
+function analyzePositionStructure(lines: any[], _language: Language = 'zh-CN'): { score: number; descriptionKeys: string[] } {
   let score = 0;
   const descriptions: string[] = [];
   
@@ -277,13 +281,13 @@ function analyzePositionStructure(lines: any[], language: Language = 'zh-CN'): {
     // 三四爻为阴阳相济为佳
     if (line3.value !== line4.value) {
       score += 5;
-      descriptions.push(getTranslation(language, 'lines34Harmony'));
+      descriptions.push('lines34Harmony');
     }
     
     // 三四爻凶位，宜静不宜动
     if (line3.value === 0 && line4.value === 0) {
       score += 3;
-      descriptions.push(getTranslation(language, 'lines34Gentle'));
+      descriptions.push('lines34Gentle');
     }
   }
   
@@ -295,7 +299,7 @@ function analyzePositionStructure(lines: any[], language: Language = 'zh-CN'): {
     // 初上爻相应为佳
     if (line1.value === line6.value) {
       score += 4;
-      descriptions.push(getTranslation(language, 'lines16Correspondence'));
+      descriptions.push('lines16Correspondence');
     }
   }
   
@@ -307,13 +311,13 @@ function analyzePositionStructure(lines: any[], language: Language = 'zh-CN'): {
     // 二五爻相应为佳
     if (line2.value !== line5.value) {
       score += 6;
-      descriptions.push(getTranslation(language, 'lines25Correspondence'));
+      descriptions.push('lines25Correspondence');
     }
   }
   
   return {
     score,
-    description: descriptions.join('；') || getTranslation(language, 'positionStructureNoFeature')
+    descriptionKeys: descriptions.length > 0 ? descriptions : ['positionStructureNoFeature']
   };
 }
 
@@ -324,27 +328,28 @@ function analyzePositionStructure(lines: any[], language: Language = 'zh-CN'): {
  * @param language 语言
  * @returns 特殊组合调整
  */
-function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: string, language: Language = 'zh-CN'): { score: number; description: string } {
+function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: string, _language: Language = 'zh-CN'): { score: number; descriptionKey: string } {
   const combination = upperBinary + lowerBinary;
   
-  const specialCases: Record<string, { score: number; description: string }> = {
+  // 返回翻译键而非翻译后的文本
+  const specialCases: Record<string, { score: number; descriptionKey: string }> = {
     // 乾卦 - 纯阳
-    '111111': { score: 20, description: getTranslation(language, 'pureYangHexagram') },
+    '111111': { score: 20, descriptionKey: 'pureYangHexagram' },
     // 坤卦 - 纯阴
-    '000000': { score: 15, description: getTranslation(language, 'pureYinHexagram') },
+    '000000': { score: 15, descriptionKey: 'pureYinHexagram' },
     // 泰卦 - 天地交泰
-    '111000': { score: 25, description: getTranslation(language, 'taiHexagram') },
+    '111000': { score: 25, descriptionKey: 'taiHexagram' },
     // 否卦 - 天地不交
-    '000111': { score: -20, description: getTranslation(language, 'piHexagram') },
+    '000111': { score: -20, descriptionKey: 'piHexagram' },
     // 既济 - 水火既济
-    '010101': { score: 18, description: getTranslation(language, 'jiJiHexagram') },
+    '010101': { score: 18, descriptionKey: 'jiJiHexagram' },
     // 未济 - 水火未济
-    '101010': { score: -5, description: getTranslation(language, 'weiJiHexagram') },
+    '101010': { score: -5, descriptionKey: 'weiJiHexagram' },
     // 丰卦 - 雷火丰
-    '101001': { score: 12, description: getTranslation(language, 'fengHexagram') },
+    '101001': { score: 12, descriptionKey: 'fengHexagram' },
     // 困卦 - 泽水困
-    '110010': { score: -10, description: getTranslation(language, 'kunHexagram') }
+    '110010': { score: -10, descriptionKey: 'kunHexagram' }
   };
   
-  return specialCases[combination] || { score: 0, description: getTranslation(language, 'noSpecialCombination') };
+  return specialCases[combination] || { score: 0, descriptionKey: 'noSpecialCombination' };
 }

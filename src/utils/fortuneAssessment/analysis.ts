@@ -1,5 +1,5 @@
 import { getTranslation } from '../i18n';
-import type { Language } from '../i18n';
+import type { Language, Translation } from '../i18n';
 import type { 
   ChangingLinesAdjustment, 
   FortuneAssessment, 
@@ -56,24 +56,28 @@ export function calculateChangingLinesAdjustment(
   // 2. 特殊变爻位置调整（始终使用中文逻辑）
   const specialPositions = analyzeSpecialChangingPositions(changingLines, language);
   adjustment += specialPositions.adjustment;
-  reasoning += specialPositions.reasoning;
+  specialPositions.reasoning.forEach(reasonKey => {
+    reasoning += getTranslation(language, reasonKey as keyof Translation) + '\n';
+  });
   
   // 3. 特殊卦象变化分析（始终使用中文逻辑）
   if (changedHexagramId) {
     const specialChange = analyzeSpecialHexagramChange(hexagramId, changedHexagramId, 'zh-CN');
     adjustment += specialChange.adjustment;
-    reasoning += getTranslation(language, specialChange.adjustment > 0 ? 'qianToKun' : specialChange.adjustment < -10 ? 'taiToPi' : 'jiJiToWeiJi');
+    reasoning += getTranslation(language, specialChange.reasoning as keyof Translation);
     if (specialChange.specialCase) {
-      specialCase = getTranslation(language, specialChange.specialCase === 'qianKunConversion' ? 'qianKunConversion' : 'taiPiConversion');
+      specialCase = getTranslation(language, specialChange.specialCase as keyof Translation);
     }
   }
   
   // 4. 极端情况调整（始终使用中文逻辑）
   const extremeCase = analyzeExtremeChangingCase(changingLines, hexagramId, 'zh-CN');
   adjustment += extremeCase.adjustment;
-  reasoning += getTranslation(language, extremeCase.adjustment > 10 ? 'qianAllChange' : extremeCase.adjustment < 0 ? 'middleFourChange' : 'jumpingChange');
+  if (extremeCase.reasoning) {
+    reasoning += getTranslation(language, extremeCase.reasoning as keyof Translation);
+  }
   if (extremeCase.specialCase) {
-    specialCase = getTranslation(language, extremeCase.specialCase === 'yongJiu' ? 'yongJiu' : extremeCase.specialCase === 'fourLineChange' ? 'fourLineChange' : 'jumpingChange');
+    specialCase = getTranslation(language, extremeCase.specialCase as keyof Translation);
   }
   
   // 确保调整值在合理范围内
@@ -94,39 +98,40 @@ export function calculateChangingLinesAdjustment(
  * @param language 语言
  * @returns 特殊位置分析结果
  */
-function analyzeSpecialChangingPositions(changingLines: number[], language: Language = 'zh-CN'): { adjustment: number; reasoning: string } {
+function analyzeSpecialChangingPositions(changingLines: number[], _language: Language = 'zh-CN'): { adjustment: number; reasoning: string[] } {
   let adjustment = 0;
   const reasoning: string[] = [];
   
+  // 变爻位置调整规则 - 返回reasoningKey数组
   changingLines.forEach(position => {
     switch (position) {
       case 2: // 二爻变
         adjustment += 3;
-        reasoning.push(getTranslation(language, 'secondLineChange'));
+        reasoning.push('secondLineChange');
         break;
       case 5: // 五爻变
         adjustment += 4;
-        reasoning.push(getTranslation(language, 'fifthLineChange'));
+        reasoning.push('fifthLineChange');
         break;
       case 3: // 三爻变
       case 4: // 四爻变
         adjustment -= 2;
-        reasoning.push(getTranslation(language, 'thirdOrFourthLineChange'));
+        reasoning.push('thirdOrFourthLineChange');
         break;
       case 1: // 初爻变
         adjustment += 1;
-        reasoning.push(getTranslation(language, 'firstLineChange'));
+        reasoning.push('firstLineChange');
         break;
       case 6: // 上爻变
         adjustment += 2;
-        reasoning.push(getTranslation(language, 'sixthLineChange'));
+        reasoning.push('sixthLineChange');
         break;
     }
   });
   
   return {
     adjustment,
-    reasoning: reasoning.join('\n') + '\n'
+    reasoning
   };
 }
 
@@ -137,24 +142,36 @@ function analyzeSpecialChangingPositions(changingLines: number[], language: Lang
  * @param language 语言
  * @returns 特殊卦象变化分析
  */
-function analyzeSpecialHexagramChange(fromId: number, toId: number, language: Language = 'zh-CN'): { adjustment: number; reasoning: string; specialCase?: string } {
-  const specialChanges: Record<string, { adjustment: number; reasoning: string; specialCase?: string }> = {
+function analyzeSpecialHexagramChange(fromId: number, toId: number, _language: Language = 'zh-CN'): { adjustment: number; reasoning: string; specialCase?: string } {
+  // 特殊卦象变化映射 - 使用中文进行判断
+  const specialChanges: Record<string, { adjustment: number; reasoningKey: string; specialCaseKey?: string }> = {
     // 乾变坤
-    '1-2': { adjustment: -10, reasoning: getTranslation(language, 'qianToKun'), specialCase: getTranslation(language, 'qianKunConversion') },
+    '1-2': { adjustment: -10, reasoningKey: 'qianToKun', specialCaseKey: 'qianKunConversion' },
     // 坤变乾
-    '2-1': { adjustment: 10, reasoning: getTranslation(language, 'kunToQian'), specialCase: getTranslation(language, 'qianKunConversion') },
+    '2-1': { adjustment: 10, reasoningKey: 'kunToQian', specialCaseKey: 'qianKunConversion' },
     // 泰变否
-    '11-12': { adjustment: -15, reasoning: getTranslation(language, 'taiToPi'), specialCase: getTranslation(language, 'taiPiConversion') },
+    '11-12': { adjustment: -15, reasoningKey: 'taiToPi', specialCaseKey: 'taiPiConversion' },
     // 否变泰
-    '12-11': { adjustment: 15, reasoning: getTranslation(language, 'piToTai'), specialCase: getTranslation(language, 'taiPiConversion') },
+    '12-11': { adjustment: 15, reasoningKey: 'piToTai', specialCaseKey: 'taiPiConversion' },
     // 既济变未济
-    '63-64': { adjustment: -12, reasoning: getTranslation(language, 'jiJiToWeiJi'), specialCase: getTranslation(language, 'jiWeiConversion') },
+    '63-64': { adjustment: -12, reasoningKey: 'jiJiToWeiJi', specialCaseKey: 'jiWeiConversion' },
     // 未济变既济
-    '64-63': { adjustment: 12, reasoning: getTranslation(language, 'weiJiToJiJi'), specialCase: getTranslation(language, 'jiWeiConversion') }
+    '64-63': { adjustment: 12, reasoningKey: 'weiJiToJiJi', specialCaseKey: 'jiWeiConversion' }
   };
   
   const key = `${fromId}-${toId}`;
-  return specialChanges[key] || { adjustment: 0, reasoning: getTranslation(language, 'hexagramChangeNoFeature') + '\n' };
+  const change = specialChanges[key];
+  
+  if (change) {
+    // 返回中文reasoningKey，由调用方处理翻译
+    return {
+      adjustment: change.adjustment,
+      reasoning: change.reasoningKey,
+      specialCase: change.specialCaseKey
+    };
+  }
+  
+  return { adjustment: 0, reasoning: 'hexagramChangeNoFeature', specialCase: '' };
 }
 
 /**
@@ -164,15 +181,15 @@ function analyzeSpecialHexagramChange(fromId: number, toId: number, language: La
  * @param language 语言
  * @returns 极端情况分析
  */
-function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number, language: Language = 'zh-CN'): { adjustment: number; reasoning: string; specialCase?: string } {
+function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number, _language: Language = 'zh-CN'): { adjustment: number; reasoning: string; specialCase?: string } {
   const changingCount = changingLines.length;
   
   // 乾卦六爻全变（用九）
   if (hexagramId === 1 && changingCount === 6) {
     return {
       adjustment: 18,
-      reasoning: getTranslation(language, 'qianAllChange'),
-      specialCase: getTranslation(language, 'yongJiu')
+      reasoning: 'qianAllChange',
+      specialCase: 'yongJiu'
     };
   }
   
@@ -180,8 +197,8 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number,
   if (hexagramId === 2 && changingCount === 6) {
     return {
       adjustment: 15,
-      reasoning: getTranslation(language, 'kunAllChange'),
-      specialCase: getTranslation(language, 'yongLiu')
+      reasoning: 'kunAllChange',
+      specialCase: 'yongLiu'
     };
   }
   
@@ -191,8 +208,8 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number,
       changingLines.includes(4) && changingLines.includes(5)) {
     return {
       adjustment: -8,
-      reasoning: getTranslation(language, 'middleFourChange'),
-      specialCase: getTranslation(language, 'fourLineChange')
+      reasoning: 'middleFourChange',
+      specialCase: 'fourLineChange'
     };
   }
   
@@ -206,13 +223,13 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number,
     if (isJumping) {
       return {
         adjustment: -5,
-        reasoning: getTranslation(language, 'jumpingChange'),
-        specialCase: getTranslation(language, 'jumpingChange')
+        reasoning: 'jumpingChange',
+        specialCase: 'jumpingChange'
       };
     }
   }
   
-  return { adjustment: 0, reasoning: '' };
+  return { adjustment: 0, reasoning: '', specialCase: '' };
 }
 
 /**

@@ -1,7 +1,7 @@
 import { getTranslation } from '../../i18n/index';
 import type { Language, Translation } from '../../i18n/index';
 import type { HexagramTextScore, KeywordGroup } from '../types';
-import { getHexagramById } from '../../iching';
+import { getHexagramById, setLanguage, getLanguage } from '../../iching';
 
 /**
  * 吉凶关键词映射
@@ -36,8 +36,17 @@ const FORTUNE_KEYWORDS: {
  */
 export function analyzeHexagramText(hexagramData: any, language: Language = 'zh-CN'): HexagramTextScore {
   const { name, text } = hexagramData;
-  // 始终使用中文文本进行计算
+  
+  // 保存当前语言设置
+  const originalLanguage = getLanguage();
+  
+  // 临时切换到中文获取数据用于计算
+  setLanguage('zh-CN');
   const chineseHexagramData = getHexagramById(hexagramData.id);
+  
+  // 恢复原始语言设置
+  setLanguage(originalLanguage);
+  
   if (!chineseHexagramData) {
     throw new Error(`无法找到卦象数据：${hexagramData.id}`);
   }
@@ -61,7 +70,9 @@ export function analyzeHexagramText(hexagramData: any, language: Language = 'zh-
   // 特殊卦象调整（始终使用中文）
   const specialAdjustment = getSpecialHexagramAdjustment(hexagramData.id, 'zh-CN');
   score += specialAdjustment.adjustment;
-  reasoning += getTranslation(language, specialAdjustment.adjustment > 0 ? 'hexagram1Adjustment' : specialAdjustment.adjustment < 0 ? 'hexagram12Adjustment' : 'hexagram64Adjustment');
+  if (specialAdjustment.reasoning) {
+    reasoning += getTranslation(language, specialAdjustment.reasoning as keyof Translation);
+  }
   
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
