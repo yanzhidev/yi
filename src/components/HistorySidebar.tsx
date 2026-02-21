@@ -137,8 +137,7 @@ export function HistorySidebar({ isOpen, onClose, onSelectHistory }: HistorySide
                         <p className="text-sm font-medium text-stone-800 truncate">
                           {getHexagramName(item.originalHexagram.number, language)}
                         </p>
-                        <p className="text-xs text-stone-500 mb-2">{t.yourQuestionLabel}</p>
-                        <p className="text-xs text-stone-500">{formatDate(item.timestamp)}</p>
+                        <p className="text-xs text-stone-500">{t.yourQuestionLabel}</p>
                       </div>
                       {item.changedHexagram && (
                         <span className="text-xs text-stone-400">→ {getHexagramName(item.changedHexagram.number, language)}</span>
@@ -152,10 +151,11 @@ export function HistorySidebar({ isOpen, onClose, onSelectHistory }: HistorySide
                       </button>
                     </div>
                     {item.question && (
-                      <p className="text-xs text-stone-600 line-clamp-2">
+                      <p className="text-xs text-stone-600 line-clamp-2 mb-1">
                         {item.question}
                       </p>
                     )}
+                    <p className="text-xs text-stone-500 mt-1">{formatDate(item.timestamp)}</p>
                   </div>
                 ))}
               </div>
