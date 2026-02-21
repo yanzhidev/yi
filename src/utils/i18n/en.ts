@@ -20,7 +20,7 @@ export const en: Translation = {
   changingLines: 'Changing Lines',
   changingLinesCount: 'changing lines',
   hexagramNumber: 'Hexagram {0}',
-  keyInterpretationNote: 'Key interpretation based on changing lines',
+  keyInterpretationNote: 'Key interpretation',
   interpretationRules: '0 changing lines: Read original hexagram text | 1 changing line: Read that specific line text | 2 changing lines: Read both lines, prioritize the upper one | 3 changing lines: Read both original and changed hexagram texts | 4 changing lines: Read the lower unchanged line of the changed hexagram | 5 changing lines: Read the only unchanged line of the changed hexagram | 6 changing lines: For Qian use "Yong Jiu", for Kun use "Yong Liu", for others read changed hexagram text',
   interpretation0Lines: 'All six lines are static without changes. Read the original hexagram text directly, representing the general trend of the matter.',
   interpretation1Line: 'Only one line is changing. Read the text of this changing line directly, as it provides the most fundamental guidance.',

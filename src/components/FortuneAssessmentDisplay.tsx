@@ -324,7 +324,7 @@ function ScoreItem({ title, score, weight, icon: Icon, color, description }: Sco
       <div className="flex items-center gap-3">
         <span className="text-xs text-stone-600">{description}</span>
         <div className="flex items-center gap-2">
-          <div className="w-16 bg-stone-200 rounded-full h-1.5">
+          <div className="w-6 bg-stone-200 rounded-full h-1.5">
             <div 
               className="h-1.5 rounded-full transition-all duration-500"
               style={{ 
