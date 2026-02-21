@@ -1,6 +1,6 @@
 import type { LineResult } from './iching';
 import type { Language } from './i18n';
-import { getLineRelationsTranslations, type LineRelationsTranslations } from './lineRelationsI18n';
+import { getLineRelationsTranslations } from './lineRelationsI18n';
 
 // ==================== 类型定义 ====================
 
@@ -83,14 +83,20 @@ export function getYingRelation(position: number, lines: LineResult[], language:
   const currentLine = lines[position - 1];
   const correspondingLine = lines[positionMap[position] - 1];
   const translations = getLineRelationsTranslations(language);
-  const positionNames = translations.positionNames;
   
   if (currentLine.value !== correspondingLine.value) {
     // 阴阳相应
-    return `${positionNames[position - 1]}${translations.lineCharacter}与${positionNames[positionMap[position] - 1]}${translations.lineCharacter}${translations.yinYangCorrespondence}`;
+    return translations.yinYangCorrespondence;
   } else {
     // 同性相斥
-    return `${positionNames[position - 1]}${translations.lineCharacter}与${positionNames[positionMap[position] - 1]}${translations.lineCharacter}${translations.sameGenderRepulsion}`;
+    const dangWei = isDangWei(position, currentLine.value);
+    if (dangWei) {
+      // 虽无外应，但自身得位得正，可稳中求进
+      return translations.noExternalResponseButDangWei;
+    } else {
+      // 同性相斥，缺乏呼应，需主动寻求支援
+      return translations.sameGenderRepulsion;
+    }
   }
 }
 

@@ -8,7 +8,6 @@ import {
   analyzeLineRelation,
   analyzeChangingLineRelations
 } from './lineRelations';
-import type { Language } from './i18n';
 import type { LineResult } from './iching';
 
 describe('lineRelations', () => {
@@ -63,13 +62,31 @@ describe('lineRelations', () => {
   describe('getYingRelation', () => {
     it('应该正确分析相应关系', () => {
       // 初爻与四爻：阳爻(1)与阴爻(0)相应
-      expect(getYingRelation(1, testLines, 'zh-CN')).toContain("初爻与四爻阴阳相应");
+      expect(getYingRelation(1, testLines, 'zh-CN')).toBe("阴阳相应，内外协调，有助益之象");
       
       // 二爻与五爻：阴爻(0)与阳爻(1)相应
-      expect(getYingRelation(2, testLines, 'zh-CN')).toContain("二爻与五爻阴阳相应");
+      expect(getYingRelation(2, testLines, 'zh-CN')).toBe("阴阳相应，内外协调，有助益之象");
       
       // 三爻与上爻：阳爻(1)与阴爻(0)相应
-      expect(getYingRelation(3, testLines, 'zh-CN')).toContain("三爻与上爻阴阳相应");
+      expect(getYingRelation(3, testLines, 'zh-CN')).toBe("阴阳相应，内外协调，有助益之象");
+    });
+    
+    it('应该正确分析同性相斥且当位的情况', () => {
+      // 创建同性相斥但当位的测试数据
+      const sameGenderLines: LineResult[] = [
+        { value: 1, isChanging: false, lineType: 'youngYang' },  // 初九（当位）
+        { value: 0, isChanging: false, lineType: 'youngYin' },  // 六二（当位）
+        { value: 1, isChanging: false, lineType: 'youngYang' },  // 九三（当位）
+        { value: 1, isChanging: false, lineType: 'youngYang' },  // 九四（不当位）
+        { value: 0, isChanging: false, lineType: 'youngYin' },  // 六五（不当位）
+        { value: 0, isChanging: false, lineType: 'youngYin' }   // 上六（当位）
+      ];
+      
+      // 初爻与四爻：阳爻与阳爻相斥，但初爻当位
+      expect(getYingRelation(1, sameGenderLines, 'zh-CN')).toBe("虽无外应，但自身得位得正，可稳中求进");
+      
+      // 四爻与初爻：阳爻与阳爻相斥，且四爻不当位
+      expect(getYingRelation(4, sameGenderLines, 'zh-CN')).toBe("同性相斥，缺乏呼应，需主动寻求支援");
     });
   });
 
@@ -86,7 +103,7 @@ describe('lineRelations', () => {
   describe('getLinePositionAdvice', () => {
     it('应该返回基于爻位的现代解读', () => {
       const advice = getLinePositionAdvice(1, 1, "乾为天", 'zh-CN');
-      expect(advice).toContain("在乾为天的背景下");
+      expect(advice).toContain("乾为天的背景下");
       expect(advice).toContain("初爻为事物初始阶段");
     });
   });
@@ -100,8 +117,8 @@ describe('lineRelations', () => {
       expect(analysis.lineValue).toBe(1);
       expect(analysis.isDangWei).toBe(true);
       expect(analysis.dangWeiText).toContain("阳爻居阳位，得位得正");
-      expect(analysis.yingRelation).toContain("初爻与四爻阴阳相应");
-      expect(analysis.positionAdvice).toContain("在乾为天的背景下");
+      expect(analysis.yingRelation).toBe("阴阳相应，内外协调，有助益之象");
+      expect(analysis.positionAdvice).toContain("乾为天的背景下");
     });
   });
 

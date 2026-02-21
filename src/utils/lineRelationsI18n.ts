@@ -12,6 +12,7 @@ export interface LineRelationsTranslations {
   // 相应关系文本
   yinYangCorrespondence: string;   // 阴阳相应
   sameGenderRepulsion: string;     // 同性相斥
+  noExternalResponseButDangWei: string; // 虽无外应，但自身得位得正，可稳中求进
   
   // 承乘关系文本
   yinSupportsYang: string;         // 阴爻承阳爻
@@ -49,8 +50,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     yangInYinPosition: 'Yang line in yin position, improper, with excessive rigidity, requiring gentleness and moderation',
     yinInYangPosition: 'Yin line in yang position, improper, with insufficient gentleness, requiring firmness and support',
     
-    yinYangCorrespondence: 'correspond with each other in yin-yang harmony, with internal and external coordination, indicating mutual benefit',
-    sameGenderRepulsion: 'repel each other due to same gender, lacking resonance, requiring active seeking of support',
+    yinYangCorrespondence: 'Yin and Yang correspond, internal and external coordination, beneficial signs',
+    sameGenderRepulsion: 'Same gender repels each other, lacks response, need to actively seek support',
+    noExternalResponseButDangWei: 'Although no external response, but properly positioned, can advance steadily',
     
     yinSupportsYang: 'supports the yang line above, with gentle support bringing benefit',
     yinRidesYang: 'rides the yang line below, with gentility over firmness suggesting overstepping',
@@ -84,6 +86,7 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     
     yinYangCorrespondence: '阴阳相应，内外协调，有助益之象',
     sameGenderRepulsion: '同性相斥，缺乏呼应，需主动寻求支援',
+    noExternalResponseButDangWei: '虽无外应，但自身得位得正，可稳中求进',
     
     yinSupportsYang: '柔顺承刚，得助之象',
     yinRidesYang: '柔乘刚上，有僭越之嫌',
@@ -117,6 +120,7 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     
     yinYangCorrespondence: '陰陽相應，內外協調，有助益之象',
     sameGenderRepulsion: '同性相斥，缺乏呼應，需主動尋求支援',
+    noExternalResponseButDangWei: '雖無外應，但自身得位得正，可穩中求進',
     
     yinSupportsYang: '柔順承剛，得助之象',
     yinRidesYang: '柔乘剛上，有僭越之嫌',
@@ -150,6 +154,7 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     
     yinYangCorrespondence: 'se corresponden entre sí en armonía yin-yang, con coordinación interna y externa, indicando beneficio mutuo',
     sameGenderRepulsion: 'se repelen debido al mismo género, careciendo de resonancia, requiriendo búsqueda activa de apoyo',
+    noExternalResponseButDangWei: 'Aunque sin respuesta externa, pero correctamente posicionado, puede avanzar steady',
     
     yinSupportsYang: 'apoya la línea yang arriba, con apoyo suave trayendo beneficio',
     yinRidesYang: 'monta la línea yang abajo, con suavidad sobre firmeza sugiriendo sobrepasación',
