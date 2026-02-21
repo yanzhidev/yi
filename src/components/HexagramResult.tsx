@@ -1,4 +1,4 @@
-import { assessFortune } from '../utils/fortuneAssessment';
+import { assessFortune } from '../utils/fortuneAssessment/index';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useHexagramInterpretation } from '../hooks/useHexagramInterpretation';
 import {

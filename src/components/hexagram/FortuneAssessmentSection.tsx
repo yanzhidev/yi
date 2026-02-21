@@ -1,6 +1,6 @@
 import { Target } from 'lucide-react';
 import { FortuneAssessmentDisplay } from '../FortuneAssessmentDisplay';
-import type { FortuneAssessment } from '../../utils/fortuneAssessment';
+import type { FortuneAssessment } from '../../utils/fortuneAssessment/index';
 
 interface FortuneAssessmentSectionProps {
   assessment: FortuneAssessment;

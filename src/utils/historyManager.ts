@@ -41,14 +41,11 @@ export async function saveHexagramToHistory(
   question: string,
   user: { uid: string } | null,
   t: Translation
-): Promise<void> {
+): Promise<void> => {
   if (!user) {
-    console.log('用户未登录，跳过历史记录保存')
     return
   }
 
-  console.log('用户已登录，开始保存历史记录...')
-  
   try {
     // 获取卦象信息
     const hexagramData = await import('../data/hexagrams.json')
@@ -56,10 +53,7 @@ export async function saveHexagramToHistory(
     const originalHexagram = hexagrams.find(h => h.id === result.hexagramId)
     const changedHexagram = result.changedHexagramId ? hexagrams.find(h => h.id === result.changedHexagramId) : undefined
     
-    console.log('卦象信息:', { originalHexagram, changedHexagram })
-    
     if (!originalHexagram) {
-      console.error('找不到本卦信息:', result.hexagramId)
       return
     }
     
@@ -72,10 +66,7 @@ export async function saveHexagramToHistory(
       historyData.changedHexagram!.name = changedHexagram.name || t.hexagramNameFormat.replace('{0}', result.changedHexagramId!.toString())
     }
     
-    console.log('准备保存的历史数据:', historyData)
-    
     await saveHexagramHistory(historyData)
-    console.log('历史记录保存成功!')
   } catch (error) {
     console.error('保存历史记录错误:', error)
   }

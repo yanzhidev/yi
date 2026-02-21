@@ -6,7 +6,7 @@ export type {
   TrigramRelationScore,
   LinesPositionScore,
   ChangingLinesAdjustment,
-  FortuneAssessment as IFortuneAssessmentType,
+  FortuneAssessment,
   FortuneAssessmentConfig,
   TrigramAttributes,
   LinePosition,

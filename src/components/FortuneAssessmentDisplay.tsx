@@ -5,11 +5,11 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { cn } from '../utils/styles';
 import { 
   getFortuneLevels
-} from '../utils/fortuneAssessment';
+} from '../utils/fortuneAssessment/index';
 import type { 
   FortuneAssessment, 
   FortuneLevel
-} from '../utils/fortuneAssessment';
+} from '../utils/fortuneAssessment/index';
 
 interface FortuneAssessmentDisplayProps {
   assessment: FortuneAssessment;

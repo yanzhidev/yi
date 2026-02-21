@@ -26,11 +26,9 @@ export function HistorySidebar({ isOpen, onClose, onSelectHistory }: HistorySide
 
   const loadHistory = async () => {
     if (!user) return
-    console.log('开始加载历史记录，用户ID:', user.uid)
     setLoading(true)
     try {
       const historyData = await getUserHistory(user.uid)
-      console.log('获取到的历史数据:', historyData)
       setHistory(historyData)
     } catch (error) {
       console.error('Error loading history:', error)
@@ -49,7 +47,6 @@ export function HistorySidebar({ isOpen, onClose, onSelectHistory }: HistorySide
     
     try {
       await deleteHexagramHistory(docId, user!.uid) // 传递用户ID进行权限验证
-      console.log('历史记录删除成功:', docId)
       // 重新加载历史记录
       await loadHistory()
     } catch (error) {

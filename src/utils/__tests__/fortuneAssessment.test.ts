@@ -5,7 +5,7 @@ import {
   calculateLinesPositionScore, 
   calculateChangingLinesAdjustment,
   type FortuneAssessmentConfig 
-} from '../fortuneAssessment';
+} from '../fortuneAssessment/index';
 
 // 模拟测试数据
 const mockHexagramResult = {

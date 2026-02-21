@@ -62,14 +62,8 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   const chineseUpperNature = getTranslation('zh-CN', upperTrigram.natureKey as keyof Translation);
   const chineseLowerNature = getTranslation('zh-CN', lowerTrigram.natureKey as keyof Translation);
   const heavenEarthKey = `${chineseUpperNature}-${chineseLowerNature}`;
-  const heavenEarthRelations = getHeavenEarthRelations(); // 始终使用中文映射
-  const heavenEarthRelation = heavenEarthRelations[heavenEarthKey];
-  
-  // 调试信息
-  if (language !== 'zh-CN') {
-    console.log(`Debug ${language}: chineseKey="${heavenEarthKey}"`);
-    console.log(`Debug ${language}: found relation=`, heavenEarthRelation);
-  }
+  const trigramRelations = getHeavenEarthRelations(); // 始终使用中文映射
+  const heavenEarthRelation = trigramRelations[heavenEarthKey];
   
   if (heavenEarthRelation) {
     score += heavenEarthRelation.score;

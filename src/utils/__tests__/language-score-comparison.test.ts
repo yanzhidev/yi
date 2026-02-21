@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { assessFortune } from '../fortuneAssessment';
+import { assessFortune } from '../fortuneAssessment/index';
 
 describe('Language Score Comparison Tests', () => {
   const mockHexagramResult = {
