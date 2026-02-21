@@ -41,7 +41,7 @@ export async function saveHexagramToHistory(
   question: string,
   user: { uid: string } | null,
   t: Translation
-): Promise<void> => {
+): Promise<void> {
   if (!user) {
     return
   }

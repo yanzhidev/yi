@@ -42,8 +42,8 @@ export function HexagramCard({
   const bgColor = isChangedVariant ? 'bg-amber-50' : 'bg-white';
   const borderColor = isChangedVariant ? 'border-amber-200' : 'border-stone-200';
 
-  const changingLinesCount = variant === 'original' ? result.changingLines.length : undefined;
-  const changingLinesCountLabel = variant === 'original' ? translations.changingLinesCount : undefined;
+  const changingLinesCount = variant === 'original' && result.changingLines.length > 0 ? result.changingLines.length : undefined;
+  const changingLinesCountLabel = variant === 'original' && result.changingLines.length > 0 ? translations.changingLinesCount : undefined;
 
   return (
     <div className={cn("rounded-3xl p-8 shadow-md border", bgColor, borderColor)}>
