@@ -388,6 +388,8 @@ export const en: Translation = {
     en: 'English',
     'zh-CN': '简体中文',
     'zh-TW': '繁體中文',
-    es: 'Español'
-  }
+    es: 'Español',
+    ja: '日本語',
+    ko: '한국어'
+  },
 };

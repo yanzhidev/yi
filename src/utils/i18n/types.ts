@@ -1,4 +1,4 @@
-export type Language = 'en' | 'zh-CN' | 'zh-TW' | 'es';
+export type Language = 'en' | 'zh-CN' | 'zh-TW' | 'es' | 'ja' | 'ko';
 
 export interface Translation {
   // Header
@@ -409,6 +409,8 @@ export interface Translation {
     'zh-CN': string;
     'zh-TW': string;
     es: string;
+    ja: string;
+    ko: string;
   };
 
   // Authentication

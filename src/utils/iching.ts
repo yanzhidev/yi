@@ -83,6 +83,8 @@ const hexagramsDataMap: Record<Language, HexagramData[]> = {
   'zh-TW': hexagramsData as HexagramData[],
   'en': hexagramsDataEn as HexagramData[],
   'es': hexagramsDataEs as HexagramData[],
+  'ja': hexagramsData as HexagramData[], // Use Chinese data for Japanese
+  'ko': hexagramsData as HexagramData[], // Use Chinese data for Korean
 };
 
 const linesDataMap: Record<Language, Record<string, { name: string; lines: LineInterpretation[] }>> = {
@@ -90,6 +92,8 @@ const linesDataMap: Record<Language, Record<string, { name: string; lines: LineI
   'zh-TW': linesData as Record<string, { name: string; lines: LineInterpretation[] }>,
   'en': linesDataEn as Record<string, { name: string; lines: LineInterpretation[] }>,
   'es': linesDataEs as Record<string, { name: string; lines: LineInterpretation[] }>,
+  'ja': linesData as Record<string, { name: string; lines: LineInterpretation[] }>, // Use Chinese data for Japanese
+  'ko': linesData as Record<string, { name: string; lines: LineInterpretation[] }>, // Use Chinese data for Korean
 };
 
 let currentLanguage: Language = 'zh-CN';

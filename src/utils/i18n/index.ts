@@ -6,18 +6,22 @@ import { en } from './en';
 import { zhCN } from './zh-CN';
 import { zhTW } from './zh-TW';
 import { es } from './es';
+import { ja } from './ja';
+import { ko } from './ko';
 import type { Language, Translation } from './types';
 
 export const translations = {
   'en': en,
   'zh-CN': zhCN,
   'zh-TW': zhTW,
-  'es': es
+  'es': es,
+  'ja': ja,
+  'ko': ko
 } as const;
 
 export const defaultLanguage: Language = 'zh-CN';
 
-export const languages: Language[] = ['en', 'zh-CN', 'zh-TW', 'es'];
+export const languages: Language[] = ['en', 'zh-CN', 'zh-TW', 'es', 'ja', 'ko'];
 
 /**
  * 获取翻译文本

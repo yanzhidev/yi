@@ -243,6 +243,100 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     inContextOf: translations.es.inContextOf,
     yangLineSuffix: 'Nueve',
     yinLineSuffix: 'Seis'
+  },
+
+  'ja': {
+    yangInYangPosition: '陽爻が陽位にあり、適切で正しく、エネルギーが充実し、行いが光明正大',
+    yinInYinPosition: '陰爻が陰位にあり、適切で正しく、柔和で中正、物事を安定的に処理',
+    yangInYinPosition: '陽爻が陰位にあり、不適切で、剛強すぎる傾向があり、柔和な調和が必要',
+    yinInYangPosition: '陰爻が陽位にあり、不適切で、柔弱不足の懸念があり、剛健な補助が必要',
+    
+    yinYangCorrespondence: '陰陽が応じ、内外が調和し、助け合う象',
+    sameGenderRepulsion: '同性が互いに反発し、共鳴に欠け、積極的な支援を求める必要あり',
+    noExternalResponseButDangWei: '外部からの応答はないが、自身は適切な位置にあり、安定の中で前進可能',
+    
+    // 承
+    yinSupportsYang: '⚖️ 陰が陽を承く：柔が剛を支える - 調和の取れた支持、吉',
+    yangSupportsYin: '⚠️ 陽が陰を承く：剛が柔を支える - 下位に立ち、不適切',
+    yangSupportsYang: '⚔️ 陽が陽を承く：剛が剛を支える - 二つの剛が対峙、競争的',
+    yinSupportsYin: '🌱 陰が陰を承く：柔が柔を支える - 相互の弱さ、不足',
+    
+    // 乗
+    yinRidesYang: '❗ 陰が陽に乗る：柔が剛に乗る - 僭越不順、最凶',
+    yangRidesYin: '✓ 陽が陰に乗る：剛が柔に乗る - 適切な統御、吉',
+    yangRidesYang: '⚡ 陽が陽に乗る：剛が剛に乗る - 二つの剛が衝突、対立',
+    yinRidesYin: '💧 陰が陰に乗る：柔が柔に乗る - 柔弱な威権、不足',
+    
+    // 承乗関係詳細説明
+    yinSupportsYangDesc: '陰爻が下で陽爻を支え、臣が君を補い、妻が夫を助ける如く、柔和順調の象',
+    yinRidesYangDesc: '陰爻が上で陽爻に乗り、妻が夫を制し、臣が君を欺く如く、僭越不順の象',
+    noSpecialRelation: '特殊な承乗関係なし',
+    
+    position1Yang: '物事の初期段階を表し、朝日が昇る如し。この時、機会を掴み、積極的に行動し、今後の発展の基礎を築くべき',
+    position1Yin: '物事の萌芽段階を表し、種子が発芽する如し。この時、謙虚を保ち、力を蓄え、早まって鋭さを現すべきでない',
+    position2Yang: '顕在的な発展段階を表し、太陽が天中にある如し。この時、才能を発揮し、積極的に進むべきだが、中正の道を保つべき',
+    position2Yin: '柔和な発展段階を表し、月夜の如し。この時、柔で剛を制し、時勢に従い、貴人の助けを求めるべき',
+    position3Yang: '努力奮闘段階を表し、山を登る如し。この時、忍耐強く、困難を克服すべきだが、方法と戦略に注意すべき',
+    position3Yin: '慎重前進段階を表し、水を渡る如し。この時、一歩一歩進み、時勢を判断し、無謀な冒険を避けるべき',
+    position4Yang: '君に近く補佐する段階を表し、左腕右腕の如し。この時、忠実に職務を果たし、上級者を補助すべきだが、権限を越えて行動すべきでない',
+    position4Yin: '柔和に補佐する段階を表し、賢内助の如し。この時、静かに支持し、柔で剛を補い、幕后で役割を果たすべき',
+    position5Yang: '中正鼎盛段階を表し、君王が朝廷に臨む如し。この時、全局を把握し、公正に決断し、リーダーシップを発揮すべき',
+    position5Yin: '柔中居正段階を表し、明君が仁政を行う如し。この時、徳で人を服させ、人に寛厚に接し、大衆の支持を得るべき',
+    position6Yang: '物事の終局段階を表し、成功後に身を引く如し。この時、見好就収し、経験を総括し、新しい始まりの準備をすべき',
+    position6Yin: '円満收官段階を表し、月満則亏の如し。この時、足るを知り、流れから退き、盛極而衰を避けるべき',
+    
+    positionNames: ['初', '二', '三', '四', '五', '上'],
+    lineCharacter: translations.ja.lineCharacter,
+    inContextOf: translations.ja.inContextOf,
+    yangLineSuffix: '九',
+    yinLineSuffix: '六'
+  },
+
+  'ko': {
+    yangInYangPosition: '양효가 양위에 있고, 적절하고 바르며, 기운이 충만하고 행동이 정대',
+    yinInYinPosition: '음효가 음위에 있고, 적절하고 바르며, 유순하고 중정하며, 일을 안정적으로 처리',
+    yangInYinPosition: '양효가 음위에 있고, 부적절하며, 강강함이 지나치고, 유순한 조화가 필요',
+    yinInYangPosition: '음효가 양위에 있고, 부적절하며, 유약함이 부족하고, 강건한 보조가 필요',
+    
+    yinYangCorrespondence: '음양이 응하고, 내외가 조화하며, 서로 돕는 상',
+    sameGenderRepulsion: '동성이 서로 반발하고, 공명이 부족하며, 적극적인 지원을 구해야 함',
+    noExternalResponseButDangWei: '외부의 응답은 없지만, 자신은 적절한 위치에 있고, 안정 속에서 전진 가능',
+    
+    // 승
+    yinSupportsYang: '⚖️ 음이 양을 승함：유가 강을 지킴 - 조화로운 지지, 길',
+    yangSupportsYin: '⚠️ 양이 음을 승함：강이 유를 지킴 - 하위에 서고, 부적절',
+    yangSupportsYang: '⚔️ 양이 양을 승함：강이 강을 지킴 - 두 강이 대치, 경쟁적',
+    yinSupportsYin: '🌱 음이 음을 승함：유가 유를 지킴 - 상호 약점, 부족',
+    
+    // 승
+    yinRidesYang: '❗ 음이 양에 승함：유가 강에 승함 - 참월 불순, 최흉',
+    yangRidesYin: '✓ 양이 음에 승함：강이 유에 승함 - 적절한 통어, 길',
+    yangRidesYang: '⚡ 양이 양에 승함：강이 강에 승함 - 두 강이 충돌, 대립',
+    yinRidesYin: '💧 음이 음에 승함：유가 유에 승함 - 유약한 위권, 부족',
+    
+    // 승승 관계 상세 설명
+    yinSupportsYangDesc: '음효가 아래에서 양효를 지지하고, 신이 군주를 보좌하며, 아내가 남편을 돕는 것과 같이, 유순 순조의 상',
+    yinRidesYangDesc: '음효가 위에서 양효에 승하고, 아내가 남편을 제어하며, 신하가 군주를 속이는 것과 같이, 참월 불순의 상',
+    noSpecialRelation: '특수한 승승 관계 없음',
+    
+    position1Yang: '사물의 초기 단계를 나타내며, 아침 해가 뜨는 것과 같음. 이때, 기회를 잡고, 적극적으로 행동하며, 앞으로 발전의 기초를 다져야 함',
+    position1Yin: '사물의 맹아 단계를 나타내며, 씨앗이 발아하는 것과 같음. 이때, 겸손을 유지하고, 힘을 축적하며, 이르게 예리함을 나타내지 말아야 함',
+    position2Yang: '현저한 발전 단계를 나타내며, 태양이 하늘 중앙에 있는 것과 같음. 이때, 재능을 발휘하고, 적극적으로 나아가야 하지만, 중정의 도를 유지해야 함',
+    position2Yin: '유순한 발전 단계를 나타내며, 달밤의 것과 같음. 이때, 유로 강을 제어하고, 시세를 따르며, 귀인의 도움을 구해야 함',
+    position3Yang: '노력 분투 단계를 나타내며, 산을 오르는 것과 같음. 이때, 인내심 있게, 어려움을 극복해야 하지만, 방법과 전략에 주의해야 함',
+    position3Yin: '신중 전진 단계를 나타내며, 물을 건너는 것과 같음. 이때, 한 걸음 한 걸음 나아가고, 시세를 판단하며, 무모한 모험을 피해야 함',
+    position4Yang: '군주에게 가까이 보좌하는 단계를 나타내며, 왼팔 오른팔의 것과 같음. 이때, 충실하게 직무를 수행하고, 상급자를 보좌해야 하지만, 권한을 넘어 행동해서는 안 됨',
+    position4Yin: '유순하게 보좌하는 단계를 나타내며, 현명한 내조의 것과 같음. 이때, 조용히 지지하고, 유로 강을 보좌하며, 막후에서 역할을 해야 함',
+    position5Yang: '중정 정성 단계를 나타내며, 군왕이 조정에 임하는 것과 같음. 이때, 전체 상황을 파악하고, 공정하게 결단하며, 리더십을 발휘해야 함',
+    position5Yin: '유중 거정 단계를 나타내며, 현명한 군주가 인정을 행하는 것과 같음. 이때, 덕으로 사람을 복종시키고, 사람에게 관후하게 대하며, 대중의 지지를 얻어야 함',
+    position6Yang: '사물의 종국 단계를 나타내며, 성공 후에 물러서는 것과 같음. 이때, 만족할 줄 알고, 경험을 총괄하며, 새로운 시작의 준비를 해야 함',
+    position6Yin: '원만 수관 단계를 나타내며, 달이 차면 이지러지는 것과 같음. 이때, 만족할 줄 알고, 흐름에서 물러서며, 성극이쇠를 피해야 함',
+    
+    positionNames: ['초', '이', '삼', '사', '오', '상'],
+    lineCharacter: translations.ko.lineCharacter,
+    inContextOf: translations.ko.inContextOf,
+    yangLineSuffix: '구',
+    yinLineSuffix: '육'
   }
 };
 
