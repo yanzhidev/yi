@@ -123,7 +123,7 @@ export function getChengChengRelation(position: number, lines: LineResult[], lan
     const upperLine = lines[position];
     const supportRelation = getSupportRelation(currentLine.value, upperLine.value, translations);
     if (supportRelation) {
-      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}承${positionNames[position]}${translations.lineCharacter}，${supportRelation}`);
+      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}${translations.supportCharacter}${positionNames[position]}${translations.lineCharacter}，${supportRelation}`);
     }
   }
   
@@ -132,7 +132,7 @@ export function getChengChengRelation(position: number, lines: LineResult[], lan
     const lowerLine = lines[position - 2];
     const rideRelation = getRideRelation(currentLine.value, lowerLine.value, translations);
     if (rideRelation) {
-      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}乘${positionNames[position - 2]}${translations.lineCharacter}，${rideRelation}`);
+      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}${translations.rideCharacter}${positionNames[position - 2]}${translations.lineCharacter}，${rideRelation}`);
     }
   }
   

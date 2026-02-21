@@ -53,6 +53,10 @@ export interface LineRelationsTranslations {
   inContextOf: string;             // 的背景下
   yangLineSuffix: string;          // 九 (阳爻后缀)
   yinLineSuffix: string;           // 六 (阴爻后缀)
+  
+  // 承乘关系字符
+  supportCharacter: string;        // 承
+  rideCharacter: string;           // 乘
 }
 
 export const lineRelationsTranslations: Record<Language, LineRelationsTranslations> = {
@@ -101,7 +105,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     lineCharacter: translations.en.lineCharacter,
     inContextOf: translations.en.inContextOf,
     yangLineSuffix: 'Nine',
-    yinLineSuffix: 'Six'
+    yinLineSuffix: 'Six',
+    supportCharacter: 'supports',
+    rideCharacter: 'rides'
   },
 
   'zh-CN': {
@@ -148,7 +154,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     lineCharacter: translations['zh-CN'].lineCharacter,
     inContextOf: translations['zh-CN'].inContextOf,
     yangLineSuffix: '九',
-    yinLineSuffix: '六'
+    yinLineSuffix: '六',
+    supportCharacter: '承',
+    rideCharacter: '乘'
   },
 
   'zh-TW': {
@@ -195,7 +203,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     lineCharacter: translations['zh-TW'].lineCharacter,
     inContextOf: translations['zh-TW'].inContextOf,
     yangLineSuffix: '九',
-    yinLineSuffix: '六'
+    yinLineSuffix: '六',
+    supportCharacter: '承',
+    rideCharacter: '乘'
   },
 
   'es': {
@@ -242,7 +252,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     lineCharacter: translations.es.lineCharacter,
     inContextOf: translations.es.inContextOf,
     yangLineSuffix: 'Nueve',
-    yinLineSuffix: 'Seis'
+    yinLineSuffix: 'Seis',
+    supportCharacter: 'apoya',
+    rideCharacter: 'monta'
   },
 
   'ja': {
@@ -289,7 +301,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     lineCharacter: translations.ja.lineCharacter,
     inContextOf: translations.ja.inContextOf,
     yangLineSuffix: '九',
-    yinLineSuffix: '六'
+    yinLineSuffix: '六',
+    supportCharacter: 'が承く',
+    rideCharacter: 'に乗る'
   },
 
   'ko': {
@@ -336,7 +350,9 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     lineCharacter: translations.ko.lineCharacter,
     inContextOf: translations.ko.inContextOf,
     yangLineSuffix: '구',
-    yinLineSuffix: '육'
+    yinLineSuffix: '육',
+    supportCharacter: '을 승함',
+    rideCharacter: '에 승함'
   }
 };
 
