@@ -1,6 +1,6 @@
 import { getHexagramById } from './iching';
 import { getTranslation } from './i18n';
-import type { Language } from './i18n';
+import type { Language, Translation } from './i18n';
 
 // ==================== 吉凶判断类型定义 ====================
 
@@ -246,7 +246,7 @@ function analyzeHexagramText(hexagramData: any, language: Language = 'zh-CN'): H
   score += positiveScore - negativeScore;
   
   // 特殊卦象调整
-  const specialAdjustment = getSpecialHexagramAdjustment(hexagramData.id);
+  const specialAdjustment = getSpecialHexagramAdjustment(hexagramData.id, language);
   score += specialAdjustment.adjustment;
   reasoning += specialAdjustment.reasoning;
   
@@ -307,25 +307,34 @@ function calculateKeywordScore(
 /**
  * 特殊卦象调整
  * @param hexagramId 卦象ID
+ * @param language 语言
  * @returns 调整值和理由
  */
-function getSpecialHexagramAdjustment(hexagramId: number): { adjustment: number; reasoning: string } {
-  const specialCases: Record<number, { adjustment: number; reasoning: string }> = {
+function getSpecialHexagramAdjustment(hexagramId: number, language: Language = 'zh-CN'): { adjustment: number; reasoning: string } {
+  const specialCases: Record<number, { adjustment: number; reasoningKey: keyof Translation }> = {
     // 乾卦 - 至阳至刚，大吉
-    1: { adjustment: 20, reasoning: '\n乾为天，纯阳之卦，刚健中正，为大吉之象。' },
+    1: { adjustment: 20, reasoningKey: 'hexagram1Adjustment' },
     // 坤卦 - 厚德载物，吉
-    2: { adjustment: 15, reasoning: '\n坤为地，纯阴之卦，厚德载物，为吉顺之象。' },
+    2: { adjustment: 15, reasoningKey: 'hexagram2Adjustment' },
     // 泰卦 - 天地交泰，大吉
-    11: { adjustment: 25, reasoning: '\n天地交泰，阴阳调和，诸事亨通，为大吉之象。' },
+    11: { adjustment: 25, reasoningKey: 'hexagram11Adjustment' },
     // 否卦 - 天地不交，凶
-    12: { adjustment: -20, reasoning: '\n天地不交，阴阳闭塞，诸事不宜，为凶险之象。' },
+    12: { adjustment: -20, reasoningKey: 'hexagram12Adjustment' },
     // 既济 - 水火既济，事成，吉
-    63: { adjustment: 18, reasoning: '\n水火既济，事已成功，但需防骄奢，为吉中有警之象。' },
+    63: { adjustment: 18, reasoningKey: 'hexagram63Adjustment' },
     // 未济 - 水火未济，事未成，中平
-    64: { adjustment: -5, reasoning: '\n水火未济，事尚未成，需努力进取，为中平之象。' }
+    64: { adjustment: -5, reasoningKey: 'hexagram64Adjustment' }
   };
   
-  return specialCases[hexagramId] || { adjustment: 0, reasoning: '' };
+  const specialCase = specialCases[hexagramId];
+  if (specialCase) {
+    return {
+      adjustment: specialCase.adjustment,
+      reasoning: getTranslation(language, specialCase.reasoningKey as keyof Translation)
+    };
+  }
+  
+  return { adjustment: 0, reasoning: '' };
 }
 
 // ==================== 上下卦关系评分算法 (30%权重) ====================
@@ -357,25 +366,29 @@ const FIVE_ELEMENTS_RELATIONS = {
 };
 
 /**
- * 天地关系评分
+ * 获取天地关系评分
+ * @param language 语言
+ * @returns 天地关系评分配置
  */
-const HEAVEN_EARTH_RELATIONS = {
-  '天-地': { score: 25, description: '天地交泰，阴阳调和' },
-  '天-天': { score: 15, description: '刚健有余，需防过刚' },
-  '地-地': { score: 10, description: '柔顺有余，需防过柔' },
-  '天-山': { score: 12, description: '天在山上，高远之象' },
-  '天-泽': { score: 18, description: '天在泽上，润泽之象' },
-  '天-火': { score: 20, description: '天火同人，光明之象' },
-  '天-风': { score: 16, description: '天风姤，相遇之象' },
-  '天-水': { score: 8, description: '天水讼，争讼之象' },
-  '天-雷': { score: 14, description: '天雷无妄，无妄之象' },
-  '地-山': { score: 12, description: '地山谦，谦逊之象' },
-  '地-泽': { score: 16, description: '地泽临，临莅之象' },
-  '地-火': { score: 8, description: '地火明夷，光明受损' },
-  '地-风': { score: 14, description: '地风升，上升之象' },
-  '地-水': { score: 10, description: '地水师，师旅之象' },
-  '地-雷': { score: 18, description: '地雷复，复归之象' }
-};
+function getHeavenEarthRelations(language: Language = 'zh-CN'): Record<string, { score: number; description: string }> {
+  return {
+    '天-地': { score: 25, description: getTranslation(language, 'heavenEarthRelation') },
+    '天-天': { score: 15, description: getTranslation(language, 'heavenHeavenRelation') },
+    '地-地': { score: 10, description: getTranslation(language, 'earthEarthRelation') },
+    '天-山': { score: 12, description: getTranslation(language, 'heavenMountainRelation') },
+    '天-泽': { score: 18, description: getTranslation(language, 'heavenLakeRelation') },
+    '天-火': { score: 20, description: getTranslation(language, 'heavenFireRelation') },
+    '天-风': { score: 16, description: getTranslation(language, 'heavenWindRelation') },
+    '天-水': { score: 8, description: getTranslation(language, 'heavenWaterRelation') },
+    '天-雷': { score: 14, description: getTranslation(language, 'heavenThunderRelation') },
+    '地-山': { score: 12, description: getTranslation(language, 'earthMountainRelation') },
+    '地-泽': { score: 16, description: getTranslation(language, 'earthLakeRelation') },
+    '地-火': { score: 8, description: getTranslation(language, 'earthFireRelation') },
+    '地-风': { score: 14, description: getTranslation(language, 'earthWindRelation') },
+    '地-水': { score: 10, description: getTranslation(language, 'earthWaterRelation') },
+    '地-雷': { score: 18, description: getTranslation(language, 'earthThunderRelation') }
+  };
+}
 
 /**
  * 分析上下卦关系
@@ -408,7 +421,8 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   
   // 1. 天地关系评分
   const heavenEarthKey = `${upperTrigram.nature}-${lowerTrigram.nature}`;
-  const heavenEarthRelation = HEAVEN_EARTH_RELATIONS[heavenEarthKey as keyof typeof HEAVEN_EARTH_RELATIONS];
+  const heavenEarthRelations = getHeavenEarthRelations(language);
+  const heavenEarthRelation = heavenEarthRelations[heavenEarthKey];
   if (heavenEarthRelation) {
     score += heavenEarthRelation.score;
     reasoning += getTranslation(language, 'heavenEarthRelationLabel') + `${heavenEarthRelation.description} (+${heavenEarthRelation.score}分)\n`;
@@ -420,7 +434,7 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   reasoning += getTranslation(language, 'fiveElementsRelationLabel') + `${elementRelation.description} (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}分)\n`;
   
   // 3. 阴阳调和评分
-  const yinYangBalance = getYinYangBalanceScore(upperTrigramBinary, lowerTrigramBinary);
+  const yinYangBalance = getYinYangBalanceScore(upperTrigramBinary, lowerTrigramBinary, language);
   score += yinYangBalance.score;
   reasoning += getTranslation(language, 'yinYangHarmonyLabel') + `${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}分)\n`;
   
@@ -480,16 +494,17 @@ function getElementRelationScore(upperElement: string, lowerElement: string, lan
     return { score: 5, description: getTranslation(language, 'sameElement') };
   }
   
-  return { score: 0, description: '五行关系无明显特征' };
+  return { score: 0, description: getTranslation(language, 'fiveElementsNoFeature') };
 }
 
 /**
  * 阴阳调和评分
  * @param upperBinary 上卦二进制
  * @param lowerBinary 下卦二进制
+ * @param language 语言
  * @returns 阴阳调和评分
  */
-function getYinYangBalanceScore(upperBinary: string, lowerBinary: string): { score: number; description: string } {
+function getYinYangBalanceScore(upperBinary: string, lowerBinary: string, language: Language = 'zh-CN'): { score: number; description: string } {
   const upperYangCount = (upperBinary.match(/1/g) || []).length;
   const lowerYangCount = (lowerBinary.match(/1/g) || []).length;
   const upperYinCount = 3 - upperYangCount;
@@ -497,51 +512,52 @@ function getYinYangBalanceScore(upperBinary: string, lowerBinary: string): { sco
   
   // 理想状态：上卦多阳，下卦多阴（天在上，地在下）
   if (upperYangCount > upperYinCount && lowerYinCount > lowerYangCount) {
-    return { score: 10, description: '上阳下阴，天地正位，阴阳调和' };
+    return { score: 10, description: getTranslation(language, 'yinYangIdeal') };
   }
   
   // 次佳状态：上下卦阴阳平衡
   if (upperYangCount === upperYinCount && lowerYangCount === lowerYinCount) {
-    return { score: 8, description: '阴阳平衡，中和之象' };
+    return { score: 8, description: getTranslation(language, 'yinYangBalanced') };
   }
   
   // 不佳状态：上卦多阴，下卦多阳（天地倒置）
   if (upperYinCount > upperYangCount && lowerYangCount > lowerYinCount) {
-    return { score: -12, description: '上阴下阳，天地倒置，阴阳失调' };
+    return { score: -12, description: getTranslation(language, 'yinYangInverted') };
   }
   
-  return { score: 0, description: '阴阳分布无明显特征' };
+  return { score: 0, description: getTranslation(language, 'yinYangNoFeature') };
 }
 
 /**
  * 特殊组合调整
  * @param upperBinary 上卦二进制
  * @param lowerBinary 下卦二进制
+ * @param language 语言
  * @returns 特殊组合调整
  */
-function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: string): { score: number; description: string } {
+function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: string, language: Language = 'zh-CN'): { score: number; description: string } {
   const combination = upperBinary + lowerBinary;
   
   const specialCases: Record<string, { score: number; description: string }> = {
     // 乾卦 - 纯阳
-    '111111': { score: 20, description: '纯阳之卦，刚健中正' },
+    '111111': { score: 20, description: getTranslation(language, 'pureYangHexagram') },
     // 坤卦 - 纯阴
-    '000000': { score: 15, description: '纯阴之卦，厚德载物' },
+    '000000': { score: 15, description: getTranslation(language, 'pureYinHexagram') },
     // 泰卦 - 天地交泰
-    '111000': { score: 25, description: '天地交泰，阴阳调和' },
+    '111000': { score: 25, description: getTranslation(language, 'taiHexagram') },
     // 否卦 - 天地不交
-    '000111': { score: -20, description: '天地不交，阴阳闭塞' },
+    '000111': { score: -20, description: getTranslation(language, 'piHexagram') },
     // 既济 - 水火既济
-    '010101': { score: 18, description: '水火既济，事已成功' },
+    '010101': { score: 18, description: getTranslation(language, 'jiJiHexagram') },
     // 未济 - 水火未济
-    '101010': { score: -5, description: '水火未济，事尚未成' },
+    '101010': { score: -5, description: getTranslation(language, 'weiJiHexagram') },
     // 丰卦 - 雷火丰
-    '101001': { score: 12, description: '雷火丰，丰盛之象' },
+    '101001': { score: 12, description: getTranslation(language, 'fengHexagram') },
     // 困卦 - 泽水困
-    '110010': { score: -10, description: '泽水困，困顿之象' }
+    '110010': { score: -10, description: getTranslation(language, 'kunHexagram') }
   };
   
-  return specialCases[combination] || { score: 0, description: '无特殊组合特征' };
+  return specialCases[combination] || { score: 0, description: getTranslation(language, 'noSpecialCombination') };
 }
 
 // ==================== 爻位综合评分算法 (30%权重) ====================
@@ -559,29 +575,88 @@ const LINE_POSITIONS = {
 };
 
 /**
- * 爻型吉凶权重
+ * 获取爻型吉凶权重
+ * @param language 语言
+ * @returns 爻型吉凶权重配置
  */
-const LINE_TYPE_WEIGHTS = {
-  'oldYang': { score: 8, description: '老阳，变爻，阳气极盛' },
-  'youngYang': { score: 6, description: '少阳，阳爻，阳气上升' },
-  'youngYin': { score: 4, description: '少阴，阴爻，阴气下沉' },
-  'oldYin': { score: 2, description: '老阴，变爻，阴气极盛' }
-};
+function getLineTypeWeights(language: Language = 'zh-CN'): Record<string, { score: number; description: string }> {
+  return {
+    'oldYang': { score: 8, description: getTranslation(language, 'oldYangDesc') },
+    'youngYang': { score: 6, description: getTranslation(language, 'youngYangDesc') },
+    'youngYin': { score: 4, description: getTranslation(language, 'youngYinDesc') },
+    'oldYin': { score: 2, description: getTranslation(language, 'oldYinDesc') }
+  };
+}
 
 /**
- * 特殊爻位组合
+ * 获取特殊爻位组合
+ * @param lines 六爻数组
+ * @param changingLines 变爻位置数组
+ * @param language 语言
+ * @returns 特殊组合评分
  */
-const SPECIAL_LINE_COMBINATIONS = {
-  // 中正之位（二五爻）
-  '2-5': { score: 15, description: '二五中正，君臣得位' },
-  // 乾坤纯卦
-  'all-yang': { score: 20, description: '纯阳之卦，刚健中正' },
-  'all-yin': { score: 15, description: '纯阴之卦，厚德载物' },
-  // 当位爻（阳爻居阳位，阴爻居阴位）
-  'proper-position': { score: 10, description: '爻位得当，各司其职' },
-  // 失位爻（阳爻居阴位，阴爻居阳位）
-  'improper-position': { score: -8, description: '爻位失当，阴阳失调' }
-};
+function getSpecialLineCombinations(lines: any[], changingLines: number[], language: Language = 'zh-CN'): { score: number; description: string } {
+  let totalScore = 0;
+  const descriptions: string[] = [];
+  const specialCombinations = {
+    'all-yang': { score: 20, description: getTranslation(language, 'allYangDesc') },
+    'all-yin': { score: 15, description: getTranslation(language, 'allYinDesc') },
+    '2-5': { score: 15, description: getTranslation(language, 'middlePositionDesc') },
+    'proper-position': { score: 10, description: getTranslation(language, 'properPositionDesc') },
+    'improper-position': { score: -8, description: getTranslation(language, 'improperPositionDesc') }
+  };
+  
+  // 检查纯阳纯阴
+  const allYang = lines.every((line: any) => line.value === 1);
+  const allYin = lines.every((line: any) => line.value === 0);
+  
+  if (allYang) {
+    totalScore += specialCombinations['all-yang'].score;
+    descriptions.push(specialCombinations['all-yang'].description);
+  }
+  
+  if (allYin) {
+    totalScore += specialCombinations['all-yin'].score;
+    descriptions.push(specialCombinations['all-yin'].description);
+  }
+  
+  // 检查特殊爻位组合
+  for (const position of changingLines) {
+    const line = lines[position - 1];
+    if (line?.isChanging) {
+      if (position === 2 || position === 5) {
+        totalScore += specialCombinations['2-5'].score;
+        descriptions.push(specialCombinations['2-5'].description);
+      }
+    }
+  }
+  
+  // 检查爻位得当性
+  let properCount = 0;
+  let improperCount = 0;
+  lines.forEach((line: any, index: number) => {
+    const position = index + 1;
+    const isProper = (line.value === 1 && position % 2 === 1) || (line.value === 0 && position % 2 === 0);
+    if (isProper) {
+      properCount++;
+    } else {
+      improperCount++;
+    }
+  });
+  
+  if (properCount > improperCount) {
+    totalScore += specialCombinations['proper-position'].score;
+    descriptions.push(specialCombinations['proper-position'].description);
+  } else if (improperCount > properCount) {
+    totalScore += specialCombinations['improper-position'].score;
+    descriptions.push(specialCombinations['improper-position'].description);
+  }
+  
+  return {
+    score: totalScore,
+    description: descriptions.join('；') || getTranslation(language, 'noSpecialCombination')
+  };
+}
 
 /**
  * 爻位综合评分函数
@@ -595,6 +670,9 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
   const linesAnalysis: string[] = [];
   let reasoning = getTranslation(language, 'linesPositionAnalysisLabel') + '\n';
   
+  // 构建 binary 字符串
+  const binary = lines.map(line => line.value.toString()).join('');
+  
   // 1. 分析各爻位置和类型
   let properPositionCount = 0;
   let improperPositionCount = 0;
@@ -606,7 +684,8 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
   lines.forEach((line, index) => {
     const position = index + 1;
     const positionInfo = LINE_POSITIONS[position as keyof typeof LINE_POSITIONS];
-    const lineTypeWeight = LINE_TYPE_WEIGHTS[line.lineType as keyof typeof LINE_TYPE_WEIGHTS];
+    const lineTypeWeights = getLineTypeWeights(language);
+    const lineTypeWeight = lineTypeWeights[line.lineType as keyof typeof lineTypeWeights];
     
     // 计算爻位得分
     const positionScore = lineTypeWeight.score * positionInfo.weight;
@@ -635,22 +714,29 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
   });
   
   // 2. 特殊组合评分
-  const specialCombinations = getSpecialLineCombinations(lines, changingLines);
+  const specialCombinations = getSpecialLineCombinations(lines, changingLines, language);
   score += specialCombinations.score;
   reasoning += `\n${getTranslation(language, 'specialCombinationsLabel')}${specialCombinations.description} (${specialCombinations.score > 0 ? '+' : ''}${specialCombinations.score}${getTranslation(language, 'pointsText')})\n`;
   
+  // 3. 特殊组合调整
+  const upperBinary = binary.slice(0, 3);
+  const lowerBinary = binary.slice(3);
+  const specialCombination = getSpecialCombinationAdjustment(upperBinary, lowerBinary, language);
+  score += specialCombination.score;
+  reasoning += `\n${getTranslation(language, 'specialCombinationAdjustmentLabel')}${specialCombination.description} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}${getTranslation(language, 'pointsText')})\n`;
+  
   // 3. 变爻分析
-  const changingLinesAnalysis = analyzeChangingLines(lines, changingLines);
+  const changingLinesAnalysis = analyzeChangingLines(lines, changingLines, language);
   score += changingLinesAnalysis.score;
   reasoning += `\n${getTranslation(language, 'changingLinesAnalysisLabel')}${changingLinesAnalysis.description} (${changingLinesAnalysis.score > 0 ? '+' : ''}${changingLinesAnalysis.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 4. 阴阳平衡分析
-  const yinYangBalance = analyzeLinesYinYangBalance(yangCount, yinCount);
+  const yinYangBalance = analyzeLinesYinYangBalance(yangCount, yinCount, language);
   score += yinYangBalance.score;
   reasoning += `\n${getTranslation(language, 'yinYangBalanceLabel')}${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 5. 爻位结构分析
-  const positionStructure = analyzePositionStructure(lines);
+  const positionStructure = analyzePositionStructure(lines, language);
   score += positionStructure.score;
   reasoning += `\n${getTranslation(language, 'positionStructureLabel')}${positionStructure.description} (${positionStructure.score > 0 ? '+' : ''}${positionStructure.score}${getTranslation(language, 'pointsText')})\n`;
   
@@ -668,137 +754,76 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
 }
 
 /**
- * 获取特殊爻位组合
- * @param lines 六爻数组
- * @param changingLines 变爻位置数组
- * @returns 特殊组合评分
- */
-function getSpecialLineCombinations(lines: any[], changingLines: number[]): { score: number; description: string } {
-  let totalScore = 0;
-  const descriptions: string[] = [];
-  
-  // 检查纯阳纯阴
-  const allYang = lines.every((line: any) => line.value === 1);
-  const allYin = lines.every((line: any) => line.value === 0);
-  
-  if (allYang) {
-    totalScore += SPECIAL_LINE_COMBINATIONS['all-yang'].score;
-    descriptions.push(SPECIAL_LINE_COMBINATIONS['all-yang'].description);
-  }
-  
-  if (allYin) {
-    totalScore += SPECIAL_LINE_COMBINATIONS['all-yin'].score;
-    descriptions.push(SPECIAL_LINE_COMBINATIONS['all-yin'].description);
-  }
-  
-  // 检查特殊爻位组合
-  for (const position of changingLines) {
-    const line = lines[position - 1];
-    if (line?.isChanging) {
-      if (position === 2 || position === 5) {
-        totalScore += SPECIAL_LINE_COMBINATIONS['2-5'].score;
-        descriptions.push(SPECIAL_LINE_COMBINATIONS['2-5'].description);
-      }
-    }
-  }
-  
-  // 检查爻位得当性
-  let properCount = 0;
-  let improperCount = 0;
-  lines.forEach((line: any, index: number) => {
-    const position = index + 1;
-    const isProper = (line.value === 1 && position % 2 === 1) || (line.value === 0 && position % 2 === 0);
-    if (isProper) {
-      properCount++;
-    } else {
-      improperCount++;
-    }
-  });
-  
-  if (properCount > improperCount) {
-    totalScore += SPECIAL_LINE_COMBINATIONS['proper-position'].score;
-    descriptions.push(SPECIAL_LINE_COMBINATIONS['proper-position'].description);
-  } else if (improperCount > properCount) {
-    totalScore += SPECIAL_LINE_COMBINATIONS['improper-position'].score;
-    descriptions.push(SPECIAL_LINE_COMBINATIONS['improper-position'].description);
-  }
-  
-  return {
-    score: totalScore,
-    description: descriptions.join('；') || '无特殊组合'
-  };
-}
-
-// ...
-
-/**
  * 分析变爻
  * @param lines 六爻数组
  * @param changingLines 变爻位置数组
+ * @param language 语言
  * @returns 变爻分析结果
  */
-function analyzeChangingLines(_lines: any[], changingLines: number[]): { score: number; description: string } {
+function analyzeChangingLines(_lines: any[], changingLines: number[], language: Language = 'zh-CN'): { score: number; description: string } {
   const changingCount = changingLines.length;
   
   if (changingCount === 0) {
-    return { score: 5, description: '无变爻，局势稳定' };
+    return { score: 5, description: getTranslation(language, 'noChangingLines') };
   }
   
   if (changingCount === 1) {
-    return { score: 8, description: '一爻变，变化适中，宜顺势而为' };
+    return { score: 8, description: getTranslation(language, 'oneChangingLine') };
   }
   
   if (changingCount === 2) {
-    return { score: 6, description: '二爻变，变化较多，需谨慎应对' };
+    return { score: 6, description: getTranslation(language, 'twoChangingLines') };
   }
   
   if (changingCount === 3) {
-    return { score: 4, description: '三爻变，变化剧烈，局势动荡' };
+    return { score: 4, description: getTranslation(language, 'threeChangingLines') };
   }
   
   if (changingCount >= 4) {
-    return { score: -5, description: '多爻变，变化极大，宜静观其变' };
+    return { score: -5, description: getTranslation(language, 'manyChangingLines') };
   }
   
-  return { score: 0, description: '变爻情况不明' };
+  return { score: 0, description: getTranslation(language, 'changingLinesUnknown') };
 }
 
 /**
  * 分析阴阳平衡
  * @param yangCount 阳爻数量
  * @param yinCount 阴爻数量
+ * @param language 语言
  * @returns 阴阳平衡分析结果
  */
-function analyzeLinesYinYangBalance(yangCount: number, yinCount: number): { score: number; description: string } {
+function analyzeLinesYinYangBalance(yangCount: number, yinCount: number, language: Language = 'zh-CN'): { score: number; description: string } {
   if (yangCount === yinCount) {
-    return { score: 10, description: '阴阳平衡，和谐之象' };
+    return { score: 10, description: getTranslation(language, 'yinYangBalancedHarmony') };
   }
   
   if (yangCount === 4 && yinCount === 2) {
-    return { score: 8, description: '阳多阴少，阳气旺盛' };
+    return { score: 8, description: getTranslation(language, 'yangMoreThanYin') };
   }
   
   if (yangCount === 2 && yinCount === 4) {
-    return { score: 6, description: '阴多阳少，阴气充足' };
+    return { score: 6, description: getTranslation(language, 'yinMoreThanYang') };
   }
   
   if (yangCount === 5 && yinCount === 1) {
-    return { score: 4, description: '阳极盛，防过刚' };
+    return { score: 4, description: getTranslation(language, 'yangExtreme') };
   }
   
   if (yangCount === 1 && yinCount === 5) {
-    return { score: 3, description: '阴极盛，防过柔' };
+    return { score: 3, description: getTranslation(language, 'yinExtreme') };
   }
   
-  return { score: 0, description: '阴阳分布无明显特征' };
+  return { score: 0, description: getTranslation(language, 'yinYangNoFeature') };
 }
 
 /**
  * 分析爻位结构
  * @param lines 六爻数组
+ * @param language 语言
  * @returns 爻位结构分析结果
  */
-function analyzePositionStructure(lines: any[]): { score: number; description: string } {
+function analyzePositionStructure(lines: any[], language: Language = 'zh-CN'): { score: number; description: string } {
   let score = 0;
   const descriptions: string[] = [];
   
@@ -810,13 +835,13 @@ function analyzePositionStructure(lines: any[]): { score: number; description: s
     // 三四爻为阴阳相济为佳
     if (line3.value !== line4.value) {
       score += 5;
-      descriptions.push('三四爻阴阳相济');
+      descriptions.push(getTranslation(language, 'lines34Harmony'));
     }
     
     // 三四爻凶位，宜静不宜动
     if (line3.value === 0 && line4.value === 0) {
       score += 3;
-      descriptions.push('三四爻阴柔，以静制动');
+      descriptions.push(getTranslation(language, 'lines34Gentle'));
     }
   }
   
@@ -828,7 +853,7 @@ function analyzePositionStructure(lines: any[]): { score: number; description: s
     // 初上爻相应为佳
     if (line1.value === line6.value) {
       score += 4;
-      descriptions.push('初上爻相应');
+      descriptions.push(getTranslation(language, 'lines16Correspondence'));
     }
   }
   
@@ -840,13 +865,13 @@ function analyzePositionStructure(lines: any[]): { score: number; description: s
     // 二五爻相应为佳
     if (line2.value !== line5.value) {
       score += 6;
-      descriptions.push('二五爻相应，阴阳调和');
+      descriptions.push(getTranslation(language, 'lines25Correspondence'));
     }
   }
   
   return {
     score,
-    description: descriptions.join('；') || '爻位结构无明显特征'
+    description: descriptions.join('；') || getTranslation(language, 'positionStructureNoFeature')
   };
 }
 
@@ -862,54 +887,55 @@ function analyzePositionStructure(lines: any[]): { score: number; description: s
 export function calculateChangingLinesAdjustment(
   changingLines: number[], 
   hexagramId: number, 
-  changedHexagramId: number | null
+  changedHexagramId: number | null,
+  language: Language = 'zh-CN'
 ): ChangingLinesAdjustment {
   let adjustment = 0;
-  let reasoning = '变爻规则分析：\n';
-  let specialCase = '一般情况';
+  let reasoning = getTranslation(language, 'changingLinesAnalysisLabel') + '\n';
+  let specialCase = getTranslation(language, 'generalCase');
   
   const changingCount = changingLines.length;
   
   // 1. 根据变爻数量调整
   if (changingCount === 0) {
     adjustment += 5;
-    reasoning += '无变爻：局势稳定，宜守成 (+5分)\n';
-    specialCase = '静卦';
+    reasoning += getTranslation(language, 'noChangingLines') + ' (+5分)\n';
+    specialCase = getTranslation(language, 'staticHexagram');
   } else if (changingCount === 1) {
     adjustment += 8;
-    reasoning += '一爻变：变化适中，宜顺势而为 (+8分)\n';
-    specialCase = '单爻变';
+    reasoning += getTranslation(language, 'oneChangingLine') + ' (+8分)\n';
+    specialCase = getTranslation(language, 'singleLineChange');
   } else if (changingCount === 2) {
     adjustment += 3;
-    reasoning += '二爻变：变化较多，需谨慎应对 (+3分)\n';
-    specialCase = '双爻变';
+    reasoning += getTranslation(language, 'twoChangingLines') + ' (+3分)\n';
+    specialCase = getTranslation(language, 'doubleLineChange');
   } else if (changingCount === 3) {
     adjustment -= 2;
-    reasoning += '三爻变：变化剧烈，局势动荡 (-2分)\n';
-    specialCase = '三爻变';
+    reasoning += getTranslation(language, 'threeChangingLines') + ' (-2分)\n';
+    specialCase = getTranslation(language, 'tripleLineChange');
   } else if (changingCount >= 4) {
     adjustment -= 8;
-    reasoning += '多爻变：变化极大，宜静观其变 (-8分)\n';
-    specialCase = '多爻变';
+    reasoning += getTranslation(language, 'manyChangingLines') + ' (-8分)\n';
+    specialCase = getTranslation(language, 'multipleLineChange');
   }
   
   // 2. 特殊变爻位置调整
-  const specialPositions = analyzeSpecialChangingPositions(changingLines);
+  const specialPositions = analyzeSpecialChangingPositions(changingLines, language);
   adjustment += specialPositions.adjustment;
   reasoning += specialPositions.reasoning;
   
-  // 3. 特殊卦象变爻调整
+  // 3. 特殊卦象变化分析
   if (changedHexagramId) {
-    const specialHexagramChange = analyzeSpecialHexagramChange(hexagramId, changedHexagramId);
-    adjustment += specialHexagramChange.adjustment;
-    reasoning += specialHexagramChange.reasoning;
-    if (specialHexagramChange.specialCase) {
-      specialCase = specialHexagramChange.specialCase;
+    const specialChange = analyzeSpecialHexagramChange(hexagramId, changedHexagramId, language);
+    adjustment += specialChange.adjustment;
+    reasoning += specialChange.reasoning;
+    if (specialChange.specialCase) {
+      specialCase = specialChange.specialCase;
     }
   }
   
   // 4. 极端情况调整
-  const extremeCase = analyzeExtremeChangingCase(changingLines, hexagramId);
+  const extremeCase = analyzeExtremeChangingCase(changingLines, hexagramId, language);
   adjustment += extremeCase.adjustment;
   reasoning += extremeCase.reasoning;
   if (extremeCase.specialCase) {
@@ -931,9 +957,10 @@ export function calculateChangingLinesAdjustment(
 /**
  * 分析特殊变爻位置
  * @param changingLines 变爻位置数组
+ * @param language 语言
  * @returns 特殊位置分析结果
  */
-function analyzeSpecialChangingPositions(changingLines: number[]): { adjustment: number; reasoning: string } {
+function analyzeSpecialChangingPositions(changingLines: number[], language: Language = 'zh-CN'): { adjustment: number; reasoning: string } {
   let adjustment = 0;
   const reasoning: string[] = [];
   
@@ -941,24 +968,24 @@ function analyzeSpecialChangingPositions(changingLines: number[]): { adjustment:
     switch (position) {
       case 2: // 二爻变
         adjustment += 3;
-        reasoning.push('二爻变：中位变化，影响核心 (+3分)');
+        reasoning.push(getTranslation(language, 'secondLineChange'));
         break;
       case 5: // 五爻变
         adjustment += 4;
-        reasoning.push('五爻变：君位变化，影响重大 (+4分)');
+        reasoning.push(getTranslation(language, 'fifthLineChange'));
         break;
       case 3: // 三爻变
       case 4: // 四爻变
         adjustment -= 2;
-        reasoning.push(`${position}爻变：人位变化，多有风险 (-2分)`);
+        reasoning.push(getTranslation(language, 'thirdOrFourthLineChange'));
         break;
       case 1: // 初爻变
         adjustment += 1;
-        reasoning.push('初爻变：始位变化，影响基础 (+1分)');
+        reasoning.push(getTranslation(language, 'firstLineChange'));
         break;
       case 6: // 上爻变
         adjustment += 2;
-        reasoning.push('上爻变：终位变化，影响结果 (+2分)');
+        reasoning.push(getTranslation(language, 'sixthLineChange'));
         break;
     }
   });
@@ -973,43 +1000,45 @@ function analyzeSpecialChangingPositions(changingLines: number[]): { adjustment:
  * 分析特殊卦象变化
  * @param fromId 原卦象ID
  * @param toId 变卦象ID
+ * @param language 语言
  * @returns 特殊卦象变化分析
  */
-function analyzeSpecialHexagramChange(fromId: number, toId: number): { adjustment: number; reasoning: string; specialCase?: string } {
+function analyzeSpecialHexagramChange(fromId: number, toId: number, language: Language = 'zh-CN'): { adjustment: number; reasoning: string; specialCase?: string } {
   const specialChanges: Record<string, { adjustment: number; reasoning: string; specialCase?: string }> = {
     // 乾变坤
-    '1-2': { adjustment: -10, reasoning: '乾变坤：刚变柔，由主动转被动 (-10分)', specialCase: '乾坤转换' },
+    '1-2': { adjustment: -10, reasoning: getTranslation(language, 'qianToKun'), specialCase: getTranslation(language, 'qianKunConversion') },
     // 坤变乾
-    '2-1': { adjustment: 10, reasoning: '坤变乾：柔变刚，由被动转主动 (+10分)', specialCase: '乾坤转换' },
+    '2-1': { adjustment: 10, reasoning: getTranslation(language, 'kunToQian'), specialCase: getTranslation(language, 'qianKunConversion') },
     // 泰变否
-    '11-12': { adjustment: -15, reasoning: '泰变否：由通转塞，运势急转直下 (-15分)', specialCase: '泰否转换' },
+    '11-12': { adjustment: -15, reasoning: getTranslation(language, 'taiToPi'), specialCase: getTranslation(language, 'taiPiConversion') },
     // 否变泰
-    '12-11': { adjustment: 15, reasoning: '否变泰：由塞转通，运势豁然开朗 (+15分)', specialCase: '泰否转换' },
+    '12-11': { adjustment: 15, reasoning: getTranslation(language, 'piToTai'), specialCase: getTranslation(language, 'taiPiConversion') },
     // 既济变未济
-    '63-64': { adjustment: -12, reasoning: '既济变未济：由成转败，功败垂成 (-12分)', specialCase: '既未转换' },
+    '63-64': { adjustment: -12, reasoning: getTranslation(language, 'jiJiToWeiJi'), specialCase: getTranslation(language, 'jiWeiConversion') },
     // 未济变既济
-    '64-63': { adjustment: 12, reasoning: '未济变既济：由败转成，大器晚成 (+12分)', specialCase: '既未转换' }
+    '64-63': { adjustment: 12, reasoning: getTranslation(language, 'weiJiToJiJi'), specialCase: getTranslation(language, 'jiWeiConversion') }
   };
   
   const key = `${fromId}-${toId}`;
-  return specialChanges[key] || { adjustment: 0, reasoning: '卦象变化无特殊特征\n' };
+  return specialChanges[key] || { adjustment: 0, reasoning: getTranslation(language, 'hexagramChangeNoFeature') + '\n' };
 }
 
 /**
  * 分析极端变爻情况
  * @param changingLines 变爻位置数组
  * @param hexagramId 卦象ID
+ * @param language 语言
  * @returns 极端情况分析
  */
-function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number): { adjustment: number; reasoning: string; specialCase?: string } {
+function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number, language: Language = 'zh-CN'): { adjustment: number; reasoning: string; specialCase?: string } {
   const changingCount = changingLines.length;
   
   // 乾卦六爻全变（用九）
   if (hexagramId === 1 && changingCount === 6) {
     return {
       adjustment: 18,
-      reasoning: '乾卦六爻全变：见群龙无首，吉 (+18分)',
-      specialCase: '用九'
+      reasoning: getTranslation(language, 'qianAllChange'),
+      specialCase: getTranslation(language, 'yongJiu')
     };
   }
   
@@ -1017,8 +1046,8 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number)
   if (hexagramId === 2 && changingCount === 6) {
     return {
       adjustment: 15,
-      reasoning: '坤卦六爻全变：利永贞，吉 (+15分)',
-      specialCase: '用六'
+      reasoning: getTranslation(language, 'kunAllChange'),
+      specialCase: getTranslation(language, 'yongLiu')
     };
   }
   
@@ -1028,8 +1057,8 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number)
       changingLines.includes(4) && changingLines.includes(5)) {
     return {
       adjustment: -8,
-      reasoning: '中间四爻变：核心动荡，局势不稳 (-8分)',
-      specialCase: '四爻变'
+      reasoning: getTranslation(language, 'middleFourChange'),
+      specialCase: getTranslation(language, 'fourLineChange')
     };
   }
   
@@ -1043,8 +1072,8 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number)
     if (isJumping) {
       return {
         adjustment: -5,
-        reasoning: '隔爻变化：变化不连贯，难以把握 (-5分)',
-        specialCase: '隔爻变'
+        reasoning: getTranslation(language, 'jumpingChange'),
+        specialCase: getTranslation(language, 'jumpingChange')
       };
     }
   }
@@ -1127,8 +1156,8 @@ export function assessFortune(
   
   // 4. 计算变爻调整
   const changingLinesAdjustment = config.enableChangingLinesAdjustment 
-    ? calculateChangingLinesAdjustment(result.changingLines, result.hexagramId, result.changedHexagramId)
-    : { adjustment: 0, reasoning: '变爻调整已禁用', specialCase: '无调整' };
+    ? calculateChangingLinesAdjustment(result.changingLines, result.hexagramId, result.changedHexagramId, language)
+    : { adjustment: 0, reasoning: '', specialCase: '' };
   
   // 5. 计算加权总分
   const weightedScore = 
@@ -1231,21 +1260,21 @@ function generateOverallAdvice(
   
   // 根据各维度评分添加具体建议
   if (textScore.score >= 70) {
-    advice += ' 卦辞显示大吉，可放心前行。';
+    advice += getTranslation(language, 'hexagramTextGood');
   } else if (textScore.score <= 30) {
-    advice += ' 卦辞显示凶险，务必谨慎。';
+    advice += getTranslation(language, 'hexagramTextBad');
   }
   
   if (trigramScore.score >= 70) {
-    advice += ' 上下卦调和，得天时地利。';
+    advice += getTranslation(language, 'trigramGood');
   } else if (trigramScore.score <= 30) {
-    advice += ' 上下卦冲突，需调整策略。';
+    advice += getTranslation(language, 'trigramBad');
   }
   
   if (linesScore.score >= 70) {
-    advice += ' 爻位得当，人事和谐。';
+    advice += getTranslation(language, 'linesGood');
   } else if (linesScore.score <= 30) {
-    advice += ' 爻位失当，需防小人。';
+    advice += getTranslation(language, 'linesBad');
   }
   
   return advice;

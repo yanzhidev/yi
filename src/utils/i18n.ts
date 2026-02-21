@@ -157,6 +157,137 @@ export interface Translation {
   lowerRestrictsUpper: string;
   restrictedBy: string;
 
+  // Special Hexagram Adjustments
+  hexagram1Adjustment: string;
+  hexagram2Adjustment: string;
+  hexagram11Adjustment: string;
+  hexagram12Adjustment: string;
+  hexagram63Adjustment: string;
+  hexagram64Adjustment: string;
+
+  // Heaven-Earth Relations
+  heavenEarthRelation: string;
+  heavenHeavenRelation: string;
+  earthEarthRelation: string;
+  heavenMountainRelation: string;
+  heavenLakeRelation: string;
+  heavenFireRelation: string;
+  heavenWindRelation: string;
+  heavenWaterRelation: string;
+  heavenThunderRelation: string;
+  earthMountainRelation: string;
+  earthLakeRelation: string;
+  earthFireRelation: string;
+  earthWindRelation: string;
+  earthWaterRelation: string;
+  earthThunderRelation: string;
+
+  // Yin-Yang Balance Relations
+  yinYangIdeal: string;
+  yinYangBalanced: string;
+  yinYangInverted: string;
+  yinYangNoFeature: string;
+  fiveElementsNoFeature: string;
+
+  // Changing Lines Analysis
+  noChangingLines: string;
+  oneChangingLine: string;
+  twoChangingLines: string;
+  threeChangingLines: string;
+  manyChangingLines: string;
+  changingLinesUnknown: string;
+
+  // Lines Yin-Yang Balance
+  yinYangBalancedHarmony: string;
+  yangMoreThanYin: string;
+  yinMoreThanYang: string;
+  yangExtreme: string;
+  yinExtreme: string;
+
+  // Special Line Combinations
+  allYangHexagram: string;
+  allYinHexagram: string;
+  middlePosition: string;
+
+  // Position Structure Analysis
+  lines34Harmony: string;
+  lines34Gentle: string;
+  lines16Correspondence: string;
+  lines25Correspondence: string;
+  positionStructureNoFeature: string;
+
+  // Special Changing Positions Analysis
+  firstLineChange: string;
+  sixthLineChange: string;
+  secondLineChange: string;
+  fifthLineChange: string;
+  thirdOrFourthLineChange: string;
+  hexagramChangeNoFeature: string;
+
+  // Changing Lines Cases
+  generalCase: string;
+  staticHexagram: string;
+  singleLineChange: string;
+  doubleLineChange: string;
+  tripleLineChange: string;
+  multipleLineChange: string;
+
+  // Line Type Weights
+  oldYangDesc: string;
+  youngYangDesc: string;
+  youngYinDesc: string;
+  oldYinDesc: string;
+
+  // Special Combinations
+  pureYangHexagram: string;
+  pureYinHexagram: string;
+  taiHexagram: string;
+  piHexagram: string;
+  jiJiHexagram: string;
+  weiJiHexagram: string;
+  fengHexagram: string;
+  kunHexagram: string;
+  noSpecialCombination: string;
+
+  // Special Combination Adjustment
+  specialCombinationAdjustmentLabel: string;
+
+  // Extreme Changing Cases
+  qianAllChange: string;
+  kunAllChange: string;
+  middleFourChange: string;
+  jumpingChange: string;
+  yongJiu: string;
+  yongLiu: string;
+  fourLineChange: string;
+  jumpingLineChange: string;
+
+  // Overall Advice
+  hexagramTextGood: string;
+  hexagramTextBad: string;
+  trigramGood: string;
+  trigramBad: string;
+  linesGood: string;
+  linesBad: string;
+
+  // Special Line Combinations
+  middlePositionDesc: string;
+  allYangDesc: string;
+  allYinDesc: string;
+  properPositionDesc: string;
+  improperPositionDesc: string;
+
+  // Special Hexagram Changes
+  qianToKun: string;
+  kunToQian: string;
+  taiToPi: string;
+  piToTai: string;
+  jiJiToWeiJi: string;
+  weiJiToJiJi: string;
+  qianKunConversion: string;
+  taiPiConversion: string;
+  jiWeiConversion: string;
+
   // Footer
   footer: string;
 
@@ -336,6 +467,121 @@ export const translations: Record<Language, Translation> = {
     lowerRestrictsUpper: 'Lower restricts upper, auspicious',
     restrictedBy: 'restricted by',
 
+    hexagram1Adjustment: '\nQian represents heaven, a purely yang hexagram, strong and righteous, an extremely auspicious sign.',
+    hexagram2Adjustment: '\nKun represents earth, a purely yin hexagram, virtuous and nurturing, an auspicious and harmonious sign.',
+    hexagram11Adjustment: '\nHeaven and earth interact in harmony, yin and yang balance, all matters prosper smoothly, an extremely auspicious sign.',
+    hexagram12Adjustment: '\nHeaven and earth do not interact, yin and yang are blocked, all matters are unfavorable, a dangerous sign.',
+    hexagram63Adjustment: '\nWater and fire are already in harmony, matters have succeeded, but guard against arrogance and extravagance, an auspicious sign with warning.',
+    hexagram64Adjustment: '\nWater and fire are not yet in harmony, matters have not yet succeeded, need to strive forward, a neutral sign.',
+
+    heavenEarthRelation: 'Heaven and earth interact in harmony, yin and yang balance',
+    heavenHeavenRelation: 'Heaven on heaven, strong and righteous, guard against excessive rigidity',
+    earthEarthRelation: 'Earth on earth, gentle and nurturing, guard against excessive softness',
+    heavenMountainRelation: 'Heaven on mountain, lofty and far-reaching sign',
+    heavenLakeRelation: 'Heaven on lake, moistening and nourishing sign',
+    heavenFireRelation: 'Heaven fire fellowship, bright and illuminating sign',
+    heavenWindRelation: 'Heaven wind encounter, meeting sign',
+    heavenWaterRelation: 'Heaven water lawsuit, dispute sign',
+    heavenThunderRelation: 'Heaven thunder without recklessness, no recklessness sign',
+    earthMountainRelation: 'Earth mountain humility, modest sign',
+    earthLakeRelation: 'Earth lake approach, overseeing sign',
+    earthFireRelation: 'Earth fire brightness, light damaged sign',
+    earthWindRelation: 'Earth wind ascension, rising sign',
+    earthWaterRelation: 'Earth water army, military expedition sign',
+    earthThunderRelation: 'Earth thunder return, returning sign',
+
+    yinYangIdeal: 'Upper yang and lower yin, heaven and earth in proper position, yin and yang harmonized',
+    yinYangBalanced: 'Yin and yang balanced, neutral sign',
+    yinYangInverted: 'Upper yin and lower yang, heaven and earth inverted, yin and yang imbalanced',
+    yinYangNoFeature: 'Yin and yang distribution has no obvious characteristics',
+    fiveElementsNoFeature: 'Five elements relationship has no obvious characteristics',
+
+    noChangingLines: 'No changing lines, situation stable',
+    oneChangingLine: 'One changing line, moderate change, advisable to follow the trend',
+    twoChangingLines: 'Two changing lines, many changes, need to respond cautiously',
+    threeChangingLines: 'Three changing lines, drastic changes, turbulent situation',
+    manyChangingLines: 'Many changing lines, extreme changes, advisable to observe quietly',
+    changingLinesUnknown: 'Changing lines situation unclear',
+
+    yinYangBalancedHarmony: 'Yin and yang balanced, harmonious sign',
+    yangMoreThanYin: 'More yang than yin, yang energy vigorous',
+    yinMoreThanYang: 'More yin than yang, yin energy sufficient',
+    yangExtreme: 'Yang extremely vigorous, guard against excessive rigidity',
+    yinExtreme: 'Yin extremely vigorous, guard against excessive softness',
+
+    allYangHexagram: 'Pure yang hexagram, strong and righteous',
+    allYinHexagram: 'Pure yin hexagram, virtuous and nurturing',
+    middlePosition: 'Middle position, ruler and minister in proper position',
+
+    lines34Harmony: 'Third and fourth lines yin and yang complement each other',
+    lines34Gentle: 'Third and fourth lines yin and gentle, using stillness to control movement',
+    lines16Correspondence: 'First and sixth lines correspond',
+    lines25Correspondence: 'Second and fifth lines correspond, yin and yang harmonized',
+    positionStructureNoFeature: 'Position structure has no obvious characteristics',
+
+    firstLineChange: 'First line change: beginning position changes, affecting foundation (+1 point)',
+    sixthLineChange: 'Sixth line change: final position changes, affecting result (+2 points)',
+    secondLineChange: 'Second line change: middle position changes, affecting human affairs (+3 points)',
+    fifthLineChange: 'Fifth line change: middle position changes, affecting human affairs (+4 points)',
+    thirdOrFourthLineChange: 'Third or fourth line change: middle position changes, affecting human affairs (-2 points)',
+    hexagramChangeNoFeature: 'Hexagram change has no special characteristics',
+
+    generalCase: 'General case',
+    staticHexagram: 'Static hexagram',
+    singleLineChange: 'Single line change',
+    doubleLineChange: 'Double line change',
+    tripleLineChange: 'Triple line change',
+    multipleLineChange: 'Multiple line change',
+
+    oldYangDesc: 'Old yang, changing line, yang energy at its peak',
+    youngYangDesc: 'Young yang, yang line, yang energy rising',
+    youngYinDesc: 'Young yin, yin line, yin energy sinking',
+    oldYinDesc: 'Old yin, changing line, yin energy at its peak',
+
+    pureYangHexagram: 'Pure yang hexagram, strong and righteous',
+    pureYinHexagram: 'Pure yin hexagram, virtuous and nurturing',
+    taiHexagram: 'Tai hexagram, heaven and earth in harmony, yin and yang balanced',
+    piHexagram: 'Pi hexagram, heaven and earth not interacting, yin and yang blocked',
+    jiJiHexagram: 'Jiji hexagram, water and fire in harmony, matters have succeeded',
+    weiJiHexagram: 'Weiji hexagram, water and fire not in harmony, matters have not yet succeeded',
+    fengHexagram: 'Feng hexagram, thunder and fire abundance, sign of abundance',
+    kunHexagram: 'Kun hexagram, water and marsh trapped, sign of being trapped',
+    noSpecialCombination: 'No special combination characteristics',
+
+    specialCombinationAdjustmentLabel: 'Special combination adjustment:',
+
+    qianAllChange: 'Qian hexagram all six lines change: seeing dragons without a head, auspicious (+18 points)',
+    kunAllChange: 'Kun hexagram all six lines change: beneficial for eternal perseverance, auspicious (+15 points)',
+    middleFourChange: 'Middle four lines change: core turbulence, unstable situation (-8 points)',
+    jumpingChange: 'Jumping line changes: changes are incoherent, difficult to grasp (-5 points)',
+    yongJiu: 'Using nine',
+    yongLiu: 'Using six',
+    fourLineChange: 'Four line change',
+    jumpingLineChange: 'Jumping line change',
+
+    middlePositionDesc: 'Middle position, ruler and minister in proper position',
+    allYangDesc: 'Pure yang hexagram, strong and righteous',
+    allYinDesc: 'Pure yin hexagram, virtuous and nurturing',
+    properPositionDesc: 'Line position proper, each performs its duty',
+    improperPositionDesc: 'Line position improper, yin and yang imbalanced',
+
+    hexagramTextGood: ' The hexagram text shows great fortune, you can proceed with confidence.',
+    hexagramTextBad: ' The hexagram text shows danger, you must be cautious.',
+    trigramGood: ' The upper and lower trigrams are harmonious, you have heaven-sent timing and geographical advantage.',
+    trigramBad: ' The upper and lower trigrams conflict, you need to adjust your strategy.',
+    linesGood: ' The line positions are proper, human affairs are harmonious.',
+    linesBad: ' The line positions are improper, you need to guard against villains.',
+
+    qianToKun: 'Qian to Kun: hard to soft, from active to passive (-10 points)',
+    kunToQian: 'Kun to Qian: soft to hard, from passive to active (+10 points)',
+    taiToPi: 'Tai to Pi: from smooth to blocked, fortune turns sharply downward (-15 points)',
+    piToTai: 'Pi to Tai: from blocked to smooth, fortune suddenly brightens (+15 points)',
+    jiJiToWeiJi: 'Jiji to Weiji: from success to failure, success at the brink of failure (-12 points)',
+    weiJiToJiJi: 'Weiji to Jiji: from failure to success, late bloomer (+12 points)',
+    qianKunConversion: 'Qian-Kun conversion',
+    taiPiConversion: 'Tai-Pi conversion',
+    jiWeiConversion: 'Ji-Wei conversion',
+
     footer: 'Sincerity brings clarity · Follow the natural way',
     selectLanguage: 'Language',
     signIn: 'Sign in with Google',
@@ -506,6 +752,121 @@ export const translations: Record<Language, Translation> = {
     upperRestrictsLower: '上克下，相克之象，凶',
     lowerRestrictsUpper: '下克上，相克之象，凶',
     restrictedBy: '受克于',
+
+    hexagram1Adjustment: '\n乾为天，纯阳之卦，刚健中正，为大吉之象。',
+    hexagram2Adjustment: '\n坤为地，纯阴之卦，厚德载物，为吉顺之象。',
+    hexagram11Adjustment: '\n天地交泰，阴阳调和，诸事亨通，为大吉之象。',
+    hexagram12Adjustment: '\n天地不交，阴阳闭塞，诸事不宜，为凶险之象。',
+    hexagram63Adjustment: '\n水火既济，事已成功，但需防骄奢，为吉中有警之象。',
+    hexagram64Adjustment: '\n水火未济，事尚未成，需努力进取，为中平之象。',
+
+    heavenEarthRelation: '天地交泰，阴阳调和',
+    heavenHeavenRelation: '刚健有余，需防过刚',
+    earthEarthRelation: '柔顺有余，需防过柔',
+    heavenMountainRelation: '天在山上，高远之象',
+    heavenLakeRelation: '天在泽上，润泽之象',
+    heavenFireRelation: '天火同人，光明之象',
+    heavenWindRelation: '天风姤，相遇之象',
+    heavenWaterRelation: '天水讼，争讼之象',
+    heavenThunderRelation: '天雷无妄，无妄之象',
+    earthMountainRelation: '地山谦，谦逊之象',
+    earthLakeRelation: '地泽临，临莅之象',
+    earthFireRelation: '地火明夷，光明受损',
+    earthWindRelation: '地风升，上升之象',
+    earthWaterRelation: '地水师，师旅之象',
+    earthThunderRelation: '地雷复，复归之象',
+
+    yinYangIdeal: '上阳下阴，天地正位，阴阳调和',
+    yinYangBalanced: '阴阳平衡，中和之象',
+    yinYangInverted: '上阴下阳，天地倒置，阴阳失调',
+    yinYangNoFeature: '阴阳分布无明显特征',
+    fiveElementsNoFeature: '五行关系无明显特征',
+
+    noChangingLines: '无变爻，局势稳定',
+    oneChangingLine: '一爻变，变化适中，宜顺势而为',
+    twoChangingLines: '二爻变，变化较多，需谨慎应对',
+    threeChangingLines: '三爻变，变化剧烈，局势动荡',
+    manyChangingLines: '多爻变，变化极大，宜静观其变',
+    changingLinesUnknown: '变爻情况不明',
+
+    yinYangBalancedHarmony: '阴阳平衡，和谐之象',
+    yangMoreThanYin: '阳多阴少，阳气旺盛',
+    yinMoreThanYang: '阴多阳少，阴气充足',
+    yangExtreme: '阳极盛，防过刚',
+    yinExtreme: '阴极盛，防过柔',
+
+    allYangHexagram: '纯阳之卦，刚健中正',
+    allYinHexagram: '纯阴之卦，厚德载物',
+    middlePosition: '二五中正，君臣得位',
+
+    lines34Harmony: '三四爻阴阳相济',
+    lines34Gentle: '三四爻阴柔，以静制动',
+    lines16Correspondence: '初上爻相应',
+    lines25Correspondence: '二五爻相应，阴阳调和',
+    positionStructureNoFeature: '爻位结构无明显特征',
+
+    firstLineChange: '初爻变：始位变化，影响基础 (+1分)',
+    sixthLineChange: '上爻变：终位变化，影响结果 (+2分)',
+    secondLineChange: '二爻变：中位变化，影响人事 (+3分)',
+    fifthLineChange: '五爻变：中位变化，影响人事 (+4分)',
+    thirdOrFourthLineChange: '三爻变或四爻变：中位变化，影响人事 (-2分)',
+    hexagramChangeNoFeature: '卦象变化无特殊特征',
+
+    generalCase: '一般情况',
+    staticHexagram: '静卦',
+    singleLineChange: '单爻变',
+    doubleLineChange: '双爻变',
+    tripleLineChange: '三爻变',
+    multipleLineChange: '多爻变',
+
+    oldYangDesc: '老阳，变爻，阳气极盛',
+    youngYangDesc: '少阳，阳爻，阳气上升',
+    youngYinDesc: '少阴，阴爻，阴气下沉',
+    oldYinDesc: '老阴，变爻，阴气极盛',
+
+    pureYangHexagram: '纯阳之卦，刚健中正',
+    pureYinHexagram: '纯阴之卦，厚德载物',
+    taiHexagram: '泰卦，天地交泰，阴阳调和',
+    piHexagram: '否卦，天地不交，阴阳闭塞',
+    jiJiHexagram: '既济卦，水火既济，事已成功',
+    weiJiHexagram: '未济卦，水火未济，事尚未成',
+    fengHexagram: '丰卦，雷火丰，丰盛之象',
+    kunHexagram: '困卦，泽水困，困顿之象',
+    noSpecialCombination: '无特殊组合特征',
+
+    specialCombinationAdjustmentLabel: '特殊组合调整：',
+
+    qianAllChange: '乾卦六爻全变：见群龙无首，吉 (+18分)',
+    kunAllChange: '坤卦六爻全变：利永贞，吉 (+15分)',
+    middleFourChange: '中间四爻变：核心动荡，局势不稳 (-8分)',
+    jumpingChange: '隔爻变化：变化不连贯，难以把握 (-5分)',
+    yongJiu: '用九',
+    yongLiu: '用六',
+    fourLineChange: '四爻变',
+    jumpingLineChange: '隔爻变',
+
+    middlePositionDesc: '二五中正，君臣得位',
+    allYangDesc: '纯阳之卦，刚健中正',
+    allYinDesc: '纯阴之卦，厚德载物',
+    properPositionDesc: '爻位得当，各司其职',
+    improperPositionDesc: '爻位失当，阴阳失调',
+
+    hexagramTextGood: ' 卦辞显示大吉，可放心前行。',
+    hexagramTextBad: ' 卦辞显示凶险，务必谨慎。',
+    trigramGood: ' 上下卦调和，得天时地利。',
+    trigramBad: ' 上下卦冲突，需调整策略。',
+    linesGood: ' 爻位得当，人事和谐。',
+    linesBad: ' 爻位失当，需防小人。',
+
+    qianToKun: '乾变坤：刚变柔，由主动转被动 (-10分)',
+    kunToQian: '坤变乾：柔变刚，由被动转主动 (+10分)',
+    taiToPi: '泰变否：由通转塞，运势急转直下 (-15分)',
+    piToTai: '否变泰：由塞转通，运势豁然开朗 (+15分)',
+    jiJiToWeiJi: '既济变未济：由成转败，功败垂成 (-12分)',
+    weiJiToJiJi: '未济变既济：由败转成，大器晚成 (+12分)',
+    qianKunConversion: '乾坤转换',
+    taiPiConversion: '泰否转换',
+    jiWeiConversion: '既未转换',
 
     footer: '心诚则灵 · 道法自然',
     selectLanguage: '语言',
@@ -678,6 +1039,121 @@ export const translations: Record<Language, Translation> = {
     lowerRestrictsUpper: '下克上，相克之象，凶',
     restrictedBy: '受克於',
 
+    hexagram1Adjustment: '\n乾為天，純陽之卦，剛健中正，為大吉之象。',
+    hexagram2Adjustment: '\n坤為地，純陰之卦，厚德載物，為吉順之象。',
+    hexagram11Adjustment: '\n天地交泰，陰陽調和，諸事亨通，為大吉之象。',
+    hexagram12Adjustment: '\n天地不交，陰陽閉塞，諸事不宜，為凶險之象。',
+    hexagram63Adjustment: '\n水火既濟，事已成功，但需防驕奢，為吉中有警之象。',
+    hexagram64Adjustment: '\n水火未濟，事尚未成，需努力進取，為中平之象。',
+
+    heavenEarthRelation: '天地交泰，陰陽調和',
+    heavenHeavenRelation: '剛健有餘，需防過剛',
+    earthEarthRelation: '柔順有餘，需防過柔',
+    heavenMountainRelation: '天在山上，高遠之象',
+    heavenLakeRelation: '天在澤上，潤澤之象',
+    heavenFireRelation: '天火同人，光明之象',
+    heavenWindRelation: '天風姤，相遇之象',
+    heavenWaterRelation: '天水訟，爭訟之象',
+    heavenThunderRelation: '天雷無妄，無妄之象',
+    earthMountainRelation: '地山謙，謙遜之象',
+    earthLakeRelation: '地澤臨，臨莅之象',
+    earthFireRelation: '地火明夷，光明受損',
+    earthWindRelation: '地風升，上升之象',
+    earthWaterRelation: '地水師，師旅之象',
+    earthThunderRelation: '地雷復，復歸之象',
+
+    yinYangIdeal: '上陽下陰，天地正位，陰陽調和',
+    yinYangBalanced: '陰陽平衡，中和之象',
+    yinYangInverted: '上陰下陽，天地倒置，陰陽失調',
+    yinYangNoFeature: '陰陽分布無明顯特徵',
+    fiveElementsNoFeature: '五行關係無明顯特徵',
+
+    noChangingLines: '無變爻，局勢穩定',
+    oneChangingLine: '一爻變，變化適中，宜順勢而為',
+    twoChangingLines: '二爻變，變化較多，需謹慎應對',
+    threeChangingLines: '三爻變，變化劇烈，局勢動盪',
+    manyChangingLines: '多爻變，變化極大，宜靜觀其變',
+    changingLinesUnknown: '變爻情況不明',
+
+    yinYangBalancedHarmony: '陰陽平衡，和諧之象',
+    yangMoreThanYin: '陽多陰少，陽氣旺盛',
+    yinMoreThanYang: '陰多陽少，陰氣充足',
+    yangExtreme: '陽極盛，防過剛',
+    yinExtreme: '陰極盛，防過柔',
+
+    allYangHexagram: '純陽之卦，剛健中正',
+    allYinHexagram: '純陰之卦，厚德載物',
+    middlePosition: '二五中正，君臣得位',
+
+    lines34Harmony: '三四爻陰陽相濟',
+    lines34Gentle: '三四爻陰柔，以靜制動',
+    lines16Correspondence: '初上爻相應',
+    lines25Correspondence: '二五爻相應，陰陽調和',
+    positionStructureNoFeature: '爻位結構無明顯特徵',
+
+    firstLineChange: '初爻變：始位變化，影響基礎 (+1分)',
+    sixthLineChange: '上爻變：終位變化，影響結果 (+2分)',
+    secondLineChange: '二爻變：中位變化，影響人事 (+3分)',
+    fifthLineChange: '五爻變：中位變化，影響人事 (+4分)',
+    thirdOrFourthLineChange: '三爻變或四爻變：中位變化，影響人事 (-2分)',
+    hexagramChangeNoFeature: '卦象變化無特殊特徵',
+
+    generalCase: '一般情況',
+    staticHexagram: '靜卦',
+    singleLineChange: '單爻變',
+    doubleLineChange: '雙爻變',
+    tripleLineChange: '三爻變',
+    multipleLineChange: '多爻變',
+
+    oldYangDesc: '老陽，變爻，陽氣極盛',
+    youngYangDesc: '少陽，陽爻，陽氣上升',
+    youngYinDesc: '少陰，陰爻，陰氣下沉',
+    oldYinDesc: '老陰，變爻，陰氣極盛',
+
+    pureYangHexagram: '純陽之卦，剛健中正',
+    pureYinHexagram: '純陰之卦，厚德載物',
+    taiHexagram: '泰卦，天地交泰，陰陽調和',
+    piHexagram: '否卦，天地不交，陰陽閉塞',
+    jiJiHexagram: '既濟卦，水火既濟，事已成功',
+    weiJiHexagram: '未濟卦，水火未濟，事尚未成',
+    fengHexagram: '豐卦，雷火豐，豐盛之象',
+    kunHexagram: '困卦，澤水困，困頓之象',
+    noSpecialCombination: '無特殊組合特徵',
+
+    specialCombinationAdjustmentLabel: '特殊組合調整：',
+
+    qianAllChange: '乾卦六爻全變：見群龍無首，吉 (+18分)',
+    kunAllChange: '坤卦六爻全變：利永貞，吉 (+15分)',
+    middleFourChange: '中間四爻變：核心動盪，局勢不穩 (-8分)',
+    jumpingChange: '隔爻變化：變化不連貫，難以把握 (-5分)',
+    yongJiu: '用九',
+    yongLiu: '用六',
+    fourLineChange: '四爻變',
+    jumpingLineChange: '隔爻變',
+
+    middlePositionDesc: '二五中正，君臣得位',
+    allYangDesc: '純陽之卦，剛健中正',
+    allYinDesc: '純陰之卦，厚德載物',
+    properPositionDesc: '爻位得當，各司其職',
+    improperPositionDesc: '爻位失當，陰陽失調',
+
+    hexagramTextGood: ' 卦辭顯示大吉，可放心前行。',
+    hexagramTextBad: ' 卦辭顯示凶險，務必謹慎。',
+    trigramGood: ' 上下卦調和，得天時地利。',
+    trigramBad: ' 上下卦衝突，需調整策略。',
+    linesGood: ' 爻位得當，人事和諧。',
+    linesBad: ' 爻位失當，需防小人。',
+
+    qianToKun: '乾變坤：剛變柔，由主動轉被動 (-10分)',
+    kunToQian: '坤變乾：柔變剛，由被動轉主動 (+10分)',
+    taiToPi: '泰變否：由通轉塞，運勢急轉直下 (-15分)',
+    piToTai: '否變泰：由塞轉通，運勢豁然開朗 (+15分)',
+    jiJiToWeiJi: '既濟變未濟：由成轉敗，功敗垂成 (-12分)',
+    weiJiToJiJi: '未濟變既濟：由敗轉成，大器晚成 (+12分)',
+    qianKunConversion: '乾坤轉換',
+    taiPiConversion: '泰否轉換',
+    jiWeiConversion: '既未轉換',
+
     footer: '心誠則靈 · 道法自然',
     selectLanguage: '語言',
     signIn: '使用 Google 登入',
@@ -847,6 +1323,121 @@ export const translations: Record<Language, Translation> = {
     upperRestrictsLower: 'Superior restringe inferior, inauspicioso',
     lowerRestrictsUpper: 'Inferior restringe superior, auspicioso',
     restrictedBy: 'restringido por',
+
+    hexagram1Adjustment: '\nQian representa el cielo, un hexagrama puramente yang, fuerte y recto, una señal extremadamente auspiciosa.',
+    hexagram2Adjustment: '\nKun representa la tierra, un hexagrama puramente yin, virtuoso y nutricio, una señal auspiciosa y armoniosa.',
+    hexagram11Adjustment: '\nEl cielo y la tierra interactúan en armonía, el yin y yang equilibran, todos los asuntos prosperan suavemente, una señal extremadamente auspiciosa.',
+    hexagram12Adjustment: '\nEl cielo y la tierra no interactúan, el yin y yang están bloqueados, todos los asuntos son desfavorables, una señal peligrosa.',
+    hexagram63Adjustment: '\nEl agua y el fuego ya están en armonía, los asuntos han tenido éxito, pero guardarse contra la arrogancia y extravagancia, una señal auspiciosa con advertencia.',
+    hexagram64Adjustment: '\nEl agua y el fuego aún no están en armonía, los asuntos aún no han tenido éxito, necesitan esforzarse hacia adelante, una señal neutral.',
+
+    heavenEarthRelation: 'El cielo y la tierra interactúan en armonía, el yin y yang equilibran',
+    heavenHeavenRelation: 'Cielo en cielo, fuerte y recto, guardarse contra rigidez excesiva',
+    earthEarthRelation: 'Tierra en tierra, gentil y nutricio, guardarse contra suavidad excesiva',
+    heavenMountainRelation: 'Cielo en montaña, elevado y lejano signo',
+    heavenLakeRelation: 'Cielo en lago, humedeciendo y nutricio signo',
+    heavenFireRelation: 'Fuego celestial compañerismo, brillante e iluminador signo',
+    heavenWindRelation: 'Viento celestial encuentro, encuentro signo',
+    heavenWaterRelation: 'Agua celestial lawsuit, disputa signo',
+    heavenThunderRelation: 'Trueno celestial sin temeridad, sin temeridad signo',
+    earthMountainRelation: 'Tierra montaña humildad, modesto signo',
+    earthLakeRelation: 'Tierra lago aproximación, supervisando signo',
+    earthFireRelation: 'Tierra fuego brillo, luz dañada signo',
+    earthWindRelation: 'Tierra viento ascensión, ascendiendo signo',
+    earthWaterRelation: 'Tierra agua ejército, expedición militar signo',
+    earthThunderRelation: 'Tierra trueno retorno, regresando signo',
+
+    yinYangIdeal: 'Superior yang e inferior yin, cielo y tierra en posición apropiada, yin y yang armonizados',
+    yinYangBalanced: 'Yin y yang equilibrados, signo neutral',
+    yinYangInverted: 'Superior yin e inferior yang, cielo y tierra invertidos, yin y yang desequilibrados',
+    yinYangNoFeature: 'La distribución yin y yang no tiene características obvias',
+    fiveElementsNoFeature: 'La relación de cinco elementos no tiene características obvias',
+
+    noChangingLines: 'Sin líneas cambiantes, situación estable',
+    oneChangingLine: 'Una línea cambiante, cambio moderado, aconsejable seguir la tendencia',
+    twoChangingLines: 'Dos líneas cambiantes, muchos cambios, necesidad de responder con cautela',
+    threeChangingLines: 'Tres líneas cambiantes, cambios drásticos, situación turbulenta',
+    manyChangingLines: 'Muchas líneas cambiantes, cambios extremos, aconsejable observar quietly',
+    changingLinesUnknown: 'Situación de líneas cambiantes unclear',
+
+    yinYangBalancedHarmony: 'Yin y yang equilibrados, signo armonioso',
+    yangMoreThanYin: 'Más yang que yin, energía yang vigorosa',
+    yinMoreThanYang: 'Más yin que yang, energía yin suficiente',
+    yangExtreme: 'Yang extremadamente vigoroso, guardarse contra rigidez excesiva',
+    yinExtreme: 'Yin extremadamente vigoroso, guardarse contra suavidad excesiva',
+
+    allYangHexagram: 'Hexagrama puramente yang, fuerte y recto',
+    allYinHexagram: 'Hexagrama puramente yin, virtuoso y nutricio',
+    middlePosition: 'Posición media, gobernante y ministro en posición apropiada',
+
+    lines34Harmony: 'Tercera y cuarta líneas yin y yang se complementan',
+    lines34Gentle: 'Tercera y cuarta líneas yin y gentil, usando quietud para controlar movimiento',
+    lines16Correspondence: 'Primera y sexta líneas corresponden',
+    lines25Correspondence: 'Segunda y quinta líneas corresponden, yin y yang armonizados',
+    positionStructureNoFeature: 'Estructura de posición no tiene características obvias',
+
+    firstLineChange: 'Primera línea cambiante: posición inicial cambia, afectando fundamento (+1 punto)',
+    sixthLineChange: 'Sexta línea cambiante: posición final cambia, afectando resultado (+2 puntos)',
+    secondLineChange: 'Segunda línea cambiante: posición media cambia, afectando asuntos humanos (+3 puntos)',
+    fifthLineChange: 'Quinta línea cambiante: posición media cambia, afectando asuntos humanos (+4 puntos)',
+    thirdOrFourthLineChange: 'Tercera o cuarta línea cambiante: posición media cambia, afectando asuntos humanos (-2 puntos)',
+    hexagramChangeNoFeature: 'Cambio de hexagrama no tiene características especiales',
+
+    generalCase: 'Caso general',
+    staticHexagram: 'Hexagrama estático',
+    singleLineChange: 'Cambio de línea única',
+    doubleLineChange: 'Cambio de doble línea',
+    tripleLineChange: 'Cambio de triple línea',
+    multipleLineChange: 'Cambio de múltiples líneas',
+
+    oldYangDesc: 'Yang viejo, línea cambiante, energía yang en su punto máximo',
+    youngYangDesc: 'Yang joven, línea yang, energía yang ascendiendo',
+    youngYinDesc: 'Yin joven, línea yin, energía yin descendiendo',
+    oldYinDesc: 'Yin viejo, línea cambiante, energía yin en su punto máximo',
+
+    pureYangHexagram: 'Hexagrama puramente yang, fuerte y recto',
+    pureYinHexagram: 'Hexagrama puramente yin, virtuoso y nutricio',
+    taiHexagram: 'Hexagrama Tai, cielo y tierra en armonía, yin y yang equilibrados',
+    piHexagram: 'Hexagrama Pi, cielo y tierra no interactúan, yin y yang bloqueados',
+    jiJiHexagram: 'Hexagrama Jiji, agua y fuego en armonía, los asuntos han tenido éxito',
+    weiJiHexagram: 'Hexagrama Weiji, agua y fuego no en armonía, los asuntos aún no han tenido éxito',
+    fengHexagram: 'Hexagrama Feng, trueno y fuego abundancia, signo de abundancia',
+    kunHexagram: 'Hexagrama Kun, agua y pantano atrapado, signo de estar atrapado',
+    noSpecialCombination: 'Sin características de combinación especiales',
+
+    specialCombinationAdjustmentLabel: 'Ajuste de combinación especial:',
+
+    qianAllChange: 'Hexagrama Qian todas las seis líneas cambian: ver dragones sin cabeza, auspicioso (+18 puntos)',
+    kunAllChange: 'Hexagrama Kun todas las seis líneas cambian: beneficioso para perseverancia eterna, auspicioso (+15 puntos)',
+    middleFourChange: 'Cuatro líneas medias cambian: turbulencia central, situación inestable (-8 puntos)',
+    jumpingChange: 'Cambios de línea saltando: cambios incoherentes, difíciles de comprender (-5 puntos)',
+    yongJiu: 'Usando nueve',
+    yongLiu: 'Usando seis',
+    fourLineChange: 'Cambio de cuatro líneas',
+    jumpingLineChange: 'Cambio de línea saltando',
+
+    middlePositionDesc: 'Posición media, gobernante y ministro en posición apropiada',
+    allYangDesc: 'Hexagrama puramente yang, fuerte y recto',
+    allYinDesc: 'Hexagrama puramente yin, virtuoso y nutricio',
+    properPositionDesc: 'Posición de línea apropiada, cada uno cumple su deber',
+    improperPositionDesc: 'Posición de línea inapropiada, yin y yang desequilibrados',
+
+    hexagramTextGood: ' El texto del hexagrama muestra gran fortuna, puedes proceder con confianza.',
+    hexagramTextBad: ' El texto del hexagrama muestra peligro, debes ser cauteloso.',
+    trigramGood: ' Los trigramas superior e inferior son armoniosos, tienes tiempo divino y ventaja geográfica.',
+    trigramBad: ' Los trigramas superior e inferior entran en conflicto, necesitas ajustar tu estrategia.',
+    linesGood: ' Las posiciones de las líneas son apropiadas, los asuntos humanos son armoniosos.',
+    linesBad: ' Las posiciones de las líneas son inapropiadas, necesitas protegerte de villanos.',
+
+    qianToKun: 'Qian a Kun: duro a suave, de activo a pasivo (-10 puntos)',
+    kunToQian: 'Kun a Qian: suave a duro, de pasivo a activo (+10 puntos)',
+    taiToPi: 'Tai a Pi: de suave a bloqueado, fortuna gira bruscamente hacia abajo (-15 puntos)',
+    piToTai: 'Pi a Tai: de bloqueado a suave, fortuna se ilumina repentinamente (+15 puntos)',
+    jiJiToWeiJi: 'Jiji a Weiji: de éxito a fracaso, éxito al borde del fracaso (-12 puntos)',
+    weiJiToJiJi: 'Weiji a Jiji: de fracaso a éxito, florecimiento tardío (+12 puntos)',
+    qianKunConversion: 'Conversión Qian-Kun',
+    taiPiConversion: 'Conversión Tai-Pi',
+    jiWeiConversion: 'Conversión Ji-Wei',
 
     footer: 'La sinceridad trae claridad · Sigue el camino natural',
     selectLanguage: 'Idioma',
