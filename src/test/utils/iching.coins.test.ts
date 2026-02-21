@@ -6,7 +6,7 @@ import {
   castLine,
   type ThreeCoins,
   type Coin
-} from './iching';
+} from '../../utils/iching';
 
 describe('iching.ts - 三钱法算法测试', () => {
   

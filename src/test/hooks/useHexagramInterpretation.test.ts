@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { useHexagramInterpretation } from './useHexagramInterpretation';
-import type { HexagramCastResult } from '../utils/iching';
+import { useHexagramInterpretation } from '../../hooks/useHexagramInterpretation';
+import type { HexagramCastResult } from '../../utils/iching';
 
 // Mock React hooks for testing
 function renderHook<T>(hook: () => T): T {

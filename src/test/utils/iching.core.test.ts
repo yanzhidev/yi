@@ -6,7 +6,7 @@ import {
   mapLinesToHexagram,
   type HexagramCastResult,
   type LineResult
-} from './iching';
+} from '../../utils/iching';
 
 describe('iching.ts - 核心功能测试', () => {
   

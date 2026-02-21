@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { HexagramLines, YinYao, YangYao } from './HexagramLines';
-import type { LineResult } from '../utils/iching';
+import { HexagramLines, YinYao, YangYao } from '../../components/HexagramLines';
+import type { LineResult } from '../../utils/iching';
 
 describe('HexagramLines 组件测试', () => {
   

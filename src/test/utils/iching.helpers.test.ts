@@ -7,7 +7,7 @@ import {
   getDaXiangImage,
   type LineInterpretation,
   type LineResult
-} from './iching';
+} from '../../utils/iching';
 
 describe('iching.ts - 辅助功能测试', () => {
   

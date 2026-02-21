@@ -7,8 +7,8 @@ import {
   getLinePositionAdvice,
   analyzeLineRelation,
   analyzeChangingLineRelations
-} from './lineRelations';
-import type { LineResult } from './iching';
+} from '../../utils/lineRelations';
+import type { LineResult } from '../../utils/iching';
 
 describe('lineRelations', () => {
   // 测试用的六爻数组（从下到上：初爻到上爻）
