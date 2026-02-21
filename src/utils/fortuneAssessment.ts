@@ -80,8 +80,8 @@ export interface FortuneAssessment {
   
   // 权重信息
   weights: {
-    benWeight: number;  // 本卦权重
-    bianWeight: number; // 变卦权重
+    originalWeight: number;  // 本卦权重
+    changedWeight: number; // 变卦权重
   };
   
   // 各维度评分
@@ -343,24 +343,24 @@ function getSpecialHexagramAdjustment(hexagramId: number, language: Language = '
  * 八卦属性定义
  */
 const TRIGRAM_ATTRIBUTES = {
-  '111': { name: '乾', element: '金', nature: '天', quality: '刚健', position: '上' },
-  '000': { name: '坤', element: '土', nature: '地', quality: '柔顺', position: '下' },
-  '001': { name: '震', element: '木', nature: '雷', quality: '震动', position: '下' },
-  '010': { name: '坎', element: '水', nature: '水', quality: '险陷', position: '下' },
-  '011': { name: '艮', element: '土', nature: '山', quality: '静止', position: '上' },
-  '100': { name: '巽', element: '木', nature: '风', quality: '顺从', position: '下' },
-  '101': { name: '离', element: '火', nature: '火', quality: '附着', position: '上' },
-  '110': { name: '兑', element: '金', nature: '泽', quality: '喜悦', position: '上' }
+  '111': { nameKey: 'trigramQian', elementKey: 'elementMetal', natureKey: 'natureHeaven', qualityKey: 'qualityFirm', positionKey: 'positionHighest' },
+  '000': { nameKey: 'trigramKun', elementKey: 'elementEarth', natureKey: 'natureEarth', qualityKey: 'qualityGentle', positionKey: 'positionLowest' },
+  '001': { nameKey: 'trigramZhen', elementKey: 'elementWood', natureKey: 'natureThunder', qualityKey: 'qualityMoving', positionKey: 'positionLowest' },
+  '010': { nameKey: 'trigramKan', elementKey: 'elementWater', natureKey: 'natureWater', qualityKey: 'qualityDangerous', positionKey: 'positionLowest' },
+  '011': { nameKey: 'trigramGen', elementKey: 'elementEarth', natureKey: 'natureMountain', qualityKey: 'qualityStill', positionKey: 'positionHighest' },
+  '100': { nameKey: 'trigramXun', elementKey: 'elementWood', natureKey: 'natureWind', qualityKey: 'qualityObedient', positionKey: 'positionLowest' },
+  '101': { nameKey: 'trigramLi', elementKey: 'elementFire', natureKey: 'natureFire', qualityKey: 'qualityClinging', positionKey: 'positionHighest' },
+  '110': { nameKey: 'trigramDui', elementKey: 'elementMetal', natureKey: 'natureLake', qualityKey: 'qualityJoyful', positionKey: 'positionHighest' }
 };
 
 /**
  * 五行相生相克关系
  */
 const FIVE_ELEMENTS_RELATIONS = {
-  相生: {
+  generate: {
     '木': '火', '火': '土', '土': '金', '金': '水', '水': '木'
   },
-  相克: {
+  overcome: {
     '木': '土', '土': '水', '水': '火', '火': '金', '金': '木'
   }
 };
@@ -416,45 +416,45 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   
   let score = 50; // 基础分数
   let reasoning = getTranslation(language, 'trigramRelationAnalysisLabel') + '\n';
-  reasoning += getTranslation(language, 'upperTrigramLabel') + `${upperTrigram.name}（${upperTrigram.nature}，${upperTrigram.element}）\n`;
-  reasoning += getTranslation(language, 'lowerTrigramLabel') + `${lowerTrigram.name}（${lowerTrigram.nature}，${lowerTrigram.element}）\n`;
+  reasoning += getTranslation(language, 'upperTrigramLabel') + `${getTranslation(language, upperTrigram.nameKey as keyof Translation)}（${getTranslation(language, upperTrigram.natureKey as keyof Translation)}，${getTranslation(language, upperTrigram.elementKey as keyof Translation)}）\n`;
+  reasoning += getTranslation(language, 'lowerTrigramLabel') + `${getTranslation(language, lowerTrigram.nameKey as keyof Translation)}（${getTranslation(language, lowerTrigram.natureKey as keyof Translation)}，${getTranslation(language, lowerTrigram.elementKey as keyof Translation)}）\n`;
   
   // 1. 天地关系评分
-  const heavenEarthKey = `${upperTrigram.nature}-${lowerTrigram.nature}`;
+  const heavenEarthKey = `${getTranslation(language, upperTrigram.natureKey as keyof Translation)}-${getTranslation(language, lowerTrigram.natureKey as keyof Translation)}`;
   const heavenEarthRelations = getHeavenEarthRelations(language);
   const heavenEarthRelation = heavenEarthRelations[heavenEarthKey];
   if (heavenEarthRelation) {
     score += heavenEarthRelation.score;
-    reasoning += getTranslation(language, 'heavenEarthRelationLabel') + `${heavenEarthRelation.description} (+${heavenEarthRelation.score}分)\n`;
+    reasoning += getTranslation(language, 'heavenEarthRelationLabel') + `${heavenEarthRelation.description} (+${heavenEarthRelation.score}${getTranslation(language, 'pointsText')})\n`;
   }
   
   // 2. 五行关系评分
-  const elementRelation = getElementRelationScore(upperTrigram.element, lowerTrigram.element, language);
+  const elementRelation = getElementRelationScore(getTranslation(language, upperTrigram.elementKey as keyof Translation), getTranslation(language, lowerTrigram.elementKey as keyof Translation), language);
   score += elementRelation.score;
-  reasoning += getTranslation(language, 'fiveElementsRelationLabel') + `${elementRelation.description} (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}分)\n`;
+  reasoning += getTranslation(language, 'fiveElementsRelationLabel') + `${elementRelation.description} (${elementRelation.score > 0 ? '+' : ''}${elementRelation.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 3. 阴阳调和评分
   const yinYangBalance = getYinYangBalanceScore(upperTrigramBinary, lowerTrigramBinary, language);
   score += yinYangBalance.score;
-  reasoning += getTranslation(language, 'yinYangHarmonyLabel') + `${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}分)\n`;
+  reasoning += getTranslation(language, 'yinYangHarmonyLabel') + `${yinYangBalance.description} (${yinYangBalance.score > 0 ? '+' : ''}${yinYangBalance.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 4. 特殊组合调整
   const specialCombination = getSpecialCombinationAdjustment(upperTrigramBinary, lowerTrigramBinary);
   score += specialCombination.score;
-  reasoning += getTranslation(language, 'specialCombinationLabel') + `${specialCombination.description} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}分)\n`;
+  reasoning += getTranslation(language, 'specialCombinationLabel') + `${specialCombination.description} (${specialCombination.score > 0 ? '+' : ''}${specialCombination.score}${getTranslation(language, 'pointsText')})\n`;
   
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
   
-  const relationship = `${upperTrigram.name}${lowerTrigram.name}（${upperTrigram.nature}在${lowerTrigram.nature}上）`;
+  const relationship = `${getTranslation(language, upperTrigram.nameKey as keyof Translation)}${getTranslation(language, lowerTrigram.nameKey as keyof Translation)}（${getTranslation(language, upperTrigram.natureKey as keyof Translation)}在${getTranslation(language, lowerTrigram.natureKey as keyof Translation)}上）`;
   reasoning += `\n${getTranslation(language, 'relationshipSummary')}${relationship}`;
   reasoning += `\n${getTranslation(language, 'finalScoreLabel')}${score.toFixed(1)}`;
   
   return {
     score,
     reasoning,
-    upperTrigram: upperTrigram.name,
-    lowerTrigram: lowerTrigram.name,
+    upperTrigram: getTranslation(language, upperTrigram.nameKey as keyof Translation),
+    lowerTrigram: getTranslation(language, lowerTrigram.nameKey as keyof Translation),
     relationship
   };
 }
@@ -470,22 +470,22 @@ function getElementRelationScore(upperElement: string, lowerElement: string, lan
   const relations = FIVE_ELEMENTS_RELATIONS;
   
   // 上生下（上卦生下卦）- 吉
-  if (relations.相生[upperElement as keyof typeof relations.相生] === lowerElement) {
+  if (relations.generate[upperElement as keyof typeof relations.generate] === lowerElement) {
     return { score: 15, description: getTranslation(language, 'upperGeneratesLower') };
   }
   
   // 下生上（下卦生上卦）- 吉
-  if (relations.相生[lowerElement as keyof typeof relations.相生] === upperElement) {
+  if (relations.generate[lowerElement as keyof typeof relations.generate] === upperElement) {
     return { score: 12, description: getTranslation(language, 'lowerGeneratesUpper') };
   }
   
   // 上克下（上卦克下卦）- 凶
-  if (relations.相克[upperElement as keyof typeof relations.相克] === lowerElement) {
+  if (relations.overcome[upperElement as keyof typeof relations.overcome] === lowerElement) {
     return { score: -10, description: getTranslation(language, 'upperRestrictsLower') };
   }
   
   // 下克上（下卦克上卦）- 凶
-  if (relations.相克[lowerElement as keyof typeof relations.相克] === upperElement) {
+  if (relations.overcome[lowerElement as keyof typeof relations.overcome] === upperElement) {
     return { score: -8, description: getTranslation(language, 'lowerRestrictsUpper') };
   }
   
@@ -566,12 +566,12 @@ function getSpecialCombinationAdjustment(upperBinary: string, lowerBinary: strin
  * 爻位属性定义
  */
 const LINE_POSITIONS = {
-  1: { name: '初爻', position: '最下', nature: '始', weight: 1.0 },
-  2: { name: '二爻', position: '下中', nature: '中', weight: 1.1 },
-  3: { name: '三爻', position: '下上', nature: '凶', weight: 0.9 },
-  4: { name: '四爻', position: '上下', nature: '凶', weight: 0.9 },
-  5: { name: '五爻', position: '上中', nature: '吉', weight: 1.2 },
-  6: { name: '上爻', position: '最上', nature: '终', weight: 1.0 }
+  1: { nameKey: 'lineFirst', positionKey: 'positionLowest', natureKey: 'natureBeginning', weight: 1.0 },
+  2: { nameKey: 'lineSecond', positionKey: 'positionLowerMiddle', natureKey: 'natureMiddle', weight: 1.1 },
+  3: { nameKey: 'lineThird', positionKey: 'positionLowerUpper', natureKey: 'natureDangerous2', weight: 0.9 },
+  4: { nameKey: 'lineFourth', positionKey: 'positionUpperLower', natureKey: 'natureDangerous2', weight: 0.9 },
+  5: { nameKey: 'lineFifth', positionKey: 'positionUpperMiddle', natureKey: 'natureAuspicious', weight: 1.2 },
+  6: { nameKey: 'lineSixth', positionKey: 'positionHighest', natureKey: 'natureEnd', weight: 1.0 }
 };
 
 /**
@@ -708,7 +708,8 @@ export function calculateLinesPositionScore(lines: any[], changingLines: number[
       yinCount++;
     }
     
-    const analysis = `${positionInfo.name}(${lineTypeWeight.description})：${isProperPosition ? '当位' : '失位'} (+${positionScore.toFixed(1)}分)`;
+    const positionName = getTranslation(language, positionInfo.nameKey as keyof Translation);
+    const analysis = `${positionName}(${lineTypeWeight.description})：${isProperPosition ? getTranslation(language, 'properPosition') : getTranslation(language, 'improperPosition')} (+${positionScore.toFixed(1)}${getTranslation(language, 'pointsText2')})`;
     linesAnalysis.push(analysis);
     reasoning += `${analysis}\n`;
   });
@@ -899,23 +900,23 @@ export function calculateChangingLinesAdjustment(
   // 1. 根据变爻数量调整
   if (changingCount === 0) {
     adjustment += 5;
-    reasoning += getTranslation(language, 'noChangingLines') + ' (+5分)\n';
+    reasoning += getTranslation(language, 'noChangingLines') + ' (+5' + getTranslation(language, 'pointsText') + ')\n';
     specialCase = getTranslation(language, 'staticHexagram');
   } else if (changingCount === 1) {
     adjustment += 8;
-    reasoning += getTranslation(language, 'oneChangingLine') + ' (+8分)\n';
+    reasoning += getTranslation(language, 'oneChangingLine') + ' (+8' + getTranslation(language, 'pointsText') + ')\n';
     specialCase = getTranslation(language, 'singleLineChange');
   } else if (changingCount === 2) {
     adjustment += 3;
-    reasoning += getTranslation(language, 'twoChangingLines') + ' (+3分)\n';
+    reasoning += getTranslation(language, 'twoChangingLines') + ' (+3' + getTranslation(language, 'pointsText') + ')\n';
     specialCase = getTranslation(language, 'doubleLineChange');
   } else if (changingCount === 3) {
     adjustment -= 2;
-    reasoning += getTranslation(language, 'threeChangingLines') + ' (-2分)\n';
+    reasoning += getTranslation(language, 'threeChangingLines') + ' (-2' + getTranslation(language, 'pointsText') + ')\n';
     specialCase = getTranslation(language, 'tripleLineChange');
   } else if (changingCount >= 4) {
     adjustment -= 8;
-    reasoning += getTranslation(language, 'manyChangingLines') + ' (-8分)\n';
+    reasoning += getTranslation(language, 'manyChangingLines') + ' (-8' + getTranslation(language, 'pointsText') + ')\n';
     specialCase = getTranslation(language, 'multipleLineChange');
   }
   
@@ -945,7 +946,7 @@ export function calculateChangingLinesAdjustment(
   // 确保调整值在合理范围内
   adjustment = Math.max(-20, Math.min(20, adjustment));
   
-  reasoning += `\n最终调整：${adjustment > 0 ? '+' : ''}${adjustment}分`;
+  reasoning += `\n${getTranslation(language, 'changingLinesAdjustment')}：${adjustment > 0 ? '+' : ''}${adjustment}${getTranslation(language, 'pointsText')}`;
   
   return {
     adjustment,
@@ -1089,19 +1090,19 @@ function analyzeExtremeChangingCase(changingLines: number[], hexagramId: number,
  * @returns 本卦权重和变卦权重
  */
 function getHexagramWeight(changingLines: number[]): {
-  benWeight: number;  // 本卦权重
-  bianWeight: number; // 变卦权重
+  originalWeight: number;  // 本卦权重
+  changedWeight: number; // 变卦权重
 } {
   const count = changingLines.length;
   
   // 基于变爻数量动态调整
-  if (count === 0) return { benWeight: 100, bianWeight: 0 };
-  if (count === 1) return { benWeight: 90, bianWeight: 10 };
-  if (count === 2) return { benWeight: 80, bianWeight: 20 };
-  if (count === 3) return { benWeight: 60, bianWeight: 40 };
-  if (count === 4) return { benWeight: 40, bianWeight: 60 };
-  if (count === 5) return { benWeight: 20, bianWeight: 80 };
-  return { benWeight: 10, bianWeight: 90 }; // 六爻全变
+  if (count === 0) return { originalWeight: 100, changedWeight: 0 };
+  if (count === 1) return { originalWeight: 90, changedWeight: 10 };
+  if (count === 2) return { originalWeight: 80, changedWeight: 20 };
+  if (count === 3) return { originalWeight: 60, changedWeight: 40 };
+  if (count === 4) return { originalWeight: 40, changedWeight: 60 };
+  if (count === 5) return { originalWeight: 20, changedWeight: 80 };
+  return { originalWeight: 10, changedWeight: 90 }; // 六爻全变
 }
 
 /**
@@ -1150,9 +1151,9 @@ export function assessFortune(
   }
   
   // 3. 按权重合并本卦和变卦评分
-  const hexagramTextScore = combineScores(benHexagramTextScore, bianHexagramTextScore, weights.benWeight, weights.bianWeight);
-  const trigramRelationScore = combineScores(benTrigramRelationScore, bianTrigramRelationScore, weights.benWeight, weights.bianWeight);
-  const linesPositionScore = combineScores(benLinesPositionScore, bianLinesPositionScore, weights.benWeight, weights.bianWeight);
+  const hexagramTextScore = combineScores(benHexagramTextScore, bianHexagramTextScore, weights.originalWeight, weights.changedWeight, language);
+  const trigramRelationScore = combineScores(benTrigramRelationScore, bianTrigramRelationScore, weights.originalWeight, weights.changedWeight, language);
+  const linesPositionScore = combineScores(benLinesPositionScore, bianLinesPositionScore, weights.originalWeight, weights.changedWeight, language);
   
   // 4. 计算变爻调整
   const changingLinesAdjustment = config.enableChangingLinesAdjustment 
@@ -1200,22 +1201,31 @@ export function assessFortune(
  * 合并本卦和变卦评分
  * @param benScore 本卦评分
  * @param bianScore 变卦评分
- * @param benWeight 本卦权重
- * @param bianWeight 变卦权重
+ * @param originalWeight 本卦权重
+ * @param changedWeight 变卦权重
  * @returns 合并后的评分
  */
 function combineScores<T extends { score: number; reasoning: string }>(
   benScore: T, 
   bianScore: T | null, 
-  benWeight: number, 
-  bianWeight: number
+  originalWeight: number, 
+  changedWeight: number,
+  language: Language = 'zh-CN'
 ): T {
   if (!bianScore) {
     return benScore;
   }
   
-  const combinedScore = (benScore.score * benWeight + bianScore.score * bianWeight) / 100;
-  const combinedReasoning = `本卦评分：${benScore.score.toFixed(1)}分 (权重${benWeight}%)\n变卦评分：${bianScore.score.toFixed(1)}分 (权重${bianWeight}%)\n综合评分：${combinedScore.toFixed(1)}分\n\n本卦分析：\n${benScore.reasoning}\n\n变卦分析：\n${bianScore.reasoning}`;
+  const combinedScore = (benScore.score * originalWeight + bianScore.score * changedWeight) / 100;
+  const combinedReasoning = `${getTranslation(language, 'originalHexagramScore')}：${benScore.score.toFixed(1)}${getTranslation(language, 'pointsText2')} (${getTranslation(language, 'weightPercentage')}${originalWeight}%)
+${getTranslation(language, 'changedHexagramScore')}：${bianScore.score.toFixed(1)}${getTranslation(language, 'pointsText2')} (${getTranslation(language, 'weightPercentage')}${changedWeight}%)
+${getTranslation(language, 'combinedScore')}：${combinedScore.toFixed(1)}${getTranslation(language, 'pointsText2')}
+
+${getTranslation(language, 'originalHexagramAnalysis')}：
+${benScore.reasoning}
+
+${getTranslation(language, 'changedHexagramAnalysis')}：
+${bianScore.reasoning}`;
   
   return {
     ...benScore,
@@ -1318,132 +1328,38 @@ function generateDetailedAnalysis(
   textScore: HexagramTextScore,
   trigramScore: TrigramRelationScore,
   linesScore: LinesPositionScore,
-  language: string = 'zh-CN'
+  language: Language = 'zh-CN'
 ): { strengths: string[]; weaknesses: string[]; opportunities: string[]; threats: string[] } {
   const strengths: string[] = [];
   const weaknesses: string[] = [];
   const opportunities: string[] = [];
   const threats: string[] = [];
   
-  // 多语言内容映射
-  const content = {
-    'en': {
-      strengths: {
-        hexagram: 'Hexagram text is auspicious, with heavenly assistance',
-        trigram: 'Upper and lower trigrams harmonized, with timing and location advantages',
-        lines: 'Line positions are proper, with harmonious human relations'
-      },
-      weaknesses: {
-        hexagram: 'Hexagram text is inauspicious, need cautious action',
-        trigram: 'Upper and lower trigrams conflict, with unfavorable environment',
-        lines: 'Line positions are improper, with disharmonious human relations'
-      },
-      opportunities: {
-        hexagram: 'Seize the timing, actively advance',
-        trigram: 'Leverage environmental advantages, follow the trend',
-        lines: 'Unite and cooperate, seek common development'
-      },
-      threats: {
-        hexagram: 'Prevent trouble before it happens, avoid impulsiveness',
-        trigram: 'Guard against external risks, advance steadily',
-        lines: 'Prevent internal conflicts, distinguish right from wrong'
-      }
-    },
-    'zh-CN': {
-      strengths: {
-        hexagram: '卦辞吉祥，有天道相助',
-        trigram: '上下卦调和，得天时地利',
-        lines: '爻位得当，人事和谐'
-      },
-      weaknesses: {
-        hexagram: '卦辞不吉，需谨慎行事',
-        trigram: '上下卦冲突，环境不利',
-        lines: '爻位失当，人事不和'
-      },
-      opportunities: {
-        hexagram: '把握时机，积极进取',
-        trigram: '借助环境优势，顺势而为',
-        lines: '团结协作，共谋发展'
-      },
-      threats: {
-        hexagram: '防患于未然，避免冲动',
-        trigram: '防范外部风险，稳扎稳打',
-        lines: '防范内部矛盾，明辨是非'
-      }
-    },
-    'zh-TW': {
-      strengths: {
-        hexagram: '卦辭吉祥，有天道相助',
-        trigram: '上下卦調和，得天時地利',
-        lines: '爻位得當，人事和諧'
-      },
-      weaknesses: {
-        hexagram: '卦辭不吉，需謹慎行事',
-        trigram: '上下卦衝突，環境不利',
-        lines: '爻位失當，人事不和'
-      },
-      opportunities: {
-        hexagram: '把握時機，積極進取',
-        trigram: '借助環境優勢，順勢而為',
-        lines: '團結協作，共謀發展'
-      },
-      threats: {
-        hexagram: '防患於未然，避免衝動',
-        trigram: '防範外部風險，穩紮穩打',
-        lines: '防範內部矛盾，明辨是非'
-      }
-    },
-    'es': {
-      strengths: {
-        hexagram: 'El texto del hexagrama es auspicioso, con asistencia celestial',
-        trigram: 'Trigramas superior e inferior armonizados, con ventajas de tiempo y lugar',
-        lines: 'Las posiciones de las líneas son apropiadas, con relaciones humanas armoniosas'
-      },
-      weaknesses: {
-        hexagram: 'El texto del hexagrama es inauspicioso, requiere acción cautelosa',
-        trigram: 'Trigramas superior e inferior en conflicto, con entorno desfavorable',
-        lines: 'Las posiciones de las líneas son inapropiadas, con relaciones humanas discordantes'
-      },
-      opportunities: {
-        hexagram: 'Aprovechar el momento, avanzar activamente',
-        trigram: 'Leverage ventajas ambientales, seguir la tendencia',
-        lines: 'Unirse y cooperar, buscar desarrollo común'
-      },
-      threats: {
-        hexagram: 'Prevenir problemas antes de que ocurran, evitar impulsividad',
-        trigram: 'Proteger contra riesgos externos, avanzar steady',
-        lines: 'Prevenir conflictos internos, distinguir lo correcto de lo incorrecto'
-      }
-    }
-  };
-  
-  const langContent = content[language as keyof typeof content] || content['zh-CN'];
-  
   // 基于卦辞分析
   if (textScore.score >= 60) {
-    strengths.push(langContent.strengths.hexagram);
-    opportunities.push(langContent.opportunities.hexagram);
+    strengths.push(getTranslation(language, 'detailedStrengthsHexagram'));
+    opportunities.push(getTranslation(language, 'detailedOpportunitiesHexagram'));
   } else {
-    weaknesses.push(langContent.weaknesses.hexagram);
-    threats.push(langContent.threats.hexagram);
+    weaknesses.push(getTranslation(language, 'detailedWeaknessesHexagram'));
+    threats.push(getTranslation(language, 'detailedThreatsHexagram'));
   }
   
   // 基于上下卦关系分析
   if (trigramScore.score >= 60) {
-    strengths.push(langContent.strengths.trigram);
-    opportunities.push(langContent.opportunities.trigram);
+    strengths.push(getTranslation(language, 'detailedStrengthsTrigram'));
+    opportunities.push(getTranslation(language, 'detailedOpportunitiesTrigram'));
   } else {
-    weaknesses.push(langContent.weaknesses.trigram);
-    threats.push(langContent.threats.trigram);
+    weaknesses.push(getTranslation(language, 'detailedWeaknessesTrigram'));
+    threats.push(getTranslation(language, 'detailedThreatsTrigram'));
   }
   
   // 基于爻位分析
   if (linesScore.score >= 60) {
-    strengths.push(langContent.strengths.lines);
-    opportunities.push(langContent.opportunities.lines);
+    strengths.push(getTranslation(language, 'detailedStrengthsLines'));
+    opportunities.push(getTranslation(language, 'detailedOpportunitiesLines'));
   } else {
-    weaknesses.push(langContent.weaknesses.lines);
-    threats.push(langContent.threats.lines);
+    weaknesses.push(getTranslation(language, 'detailedWeaknessesLines'));
+    threats.push(getTranslation(language, 'detailedThreatsLines'));
   }
   
   return { strengths, weaknesses, opportunities, threats };

@@ -288,6 +288,106 @@ export interface Translation {
   taiPiConversion: string;
   jiWeiConversion: string;
 
+  // Detailed Analysis Content
+  detailedStrengthsHexagram: string;
+  detailedStrengthsTrigram: string;
+  detailedStrengthsLines: string;
+  detailedWeaknessesHexagram: string;
+  detailedWeaknessesTrigram: string;
+  detailedWeaknessesLines: string;
+  detailedOpportunitiesHexagram: string;
+  detailedOpportunitiesTrigram: string;
+  detailedOpportunitiesLines: string;
+  detailedThreatsHexagram: string;
+  detailedThreatsTrigram: string;
+  detailedThreatsLines: string;
+
+  // Trigram Names
+  trigramQian: string;
+  trigramKun: string;
+  trigramZhen: string;
+  trigramKan: string;
+  trigramGen: string;
+  trigramXun: string;
+  trigramLi: string;
+  trigramDui: string;
+
+  // Trigram Natures
+  natureHeaven: string;
+  natureEarth: string;
+  natureThunder: string;
+  natureWater: string;
+  natureMountain: string;
+  natureWind: string;
+  natureFire: string;
+  natureLake: string;
+
+  // Trigram Qualities
+  qualityFirm: string;
+  qualityGentle: string;
+  qualityMoving: string;
+  qualityDangerous: string;
+  qualityStill: string;
+  qualityObedient: string;
+  qualityClinging: string;
+  qualityJoyful: string;
+
+  // Five Elements
+  elementMetal: string;
+  elementWood: string;
+  elementWater: string;
+  elementFire: string;
+  elementEarth: string;
+
+  // Line Positions
+  lineFirst: string;
+  lineSecond: string;
+  lineThird: string;
+  lineFourth: string;
+  lineFifth: string;
+  lineSixth: string;
+
+  // Line Position Types
+  positionLowest: string;
+  positionLowerMiddle: string;
+  positionLowerUpper: string;
+  positionUpperLower: string;
+  positionUpperMiddle: string;
+  positionHighest: string;
+
+  // Line Natures
+  natureBeginning: string;
+  natureMiddle: string;
+  natureDangerous2: string;
+  natureAuspicious: string;
+  natureEnd: string;
+
+  // Weight Calculation Text
+  originalHexagramScore: string;
+  changedHexagramScore: string;
+  combinedScore: string;
+  originalHexagramAnalysis: string;
+  changedHexagramAnalysis: string;
+  weightPercentage: string;
+
+  // Position Analysis Text
+  properPosition: string;
+  improperPosition: string;
+  pointsText2: string;
+
+  // Hexagram Display Text
+  clickToStart: string;
+  hexagramNumberWithSuffix: string;
+
+  // Hexagram Result Text
+  daxiangImageAlt: string;
+  yongJiuLabel: string;
+  yongLiuLabel: string;
+
+  // Auth Button Fallback Text
+  logoutFallback: string;
+  signInFallback: string;
+
   // Footer
   footer: string;
 
@@ -582,6 +682,103 @@ export const translations: Record<Language, Translation> = {
     taiPiConversion: 'Tai-Pi conversion',
     jiWeiConversion: 'Ji-Wei conversion',
 
+    // Detailed Analysis Content
+    detailedStrengthsHexagram: 'Hexagram text is auspicious, with heavenly assistance',
+    detailedStrengthsTrigram: 'Upper and lower trigrams harmonized, with timing and location advantages',
+    detailedStrengthsLines: 'Line positions are proper, with harmonious human relations',
+    detailedWeaknessesHexagram: 'Hexagram text is inauspicious, need cautious action',
+    detailedWeaknessesTrigram: 'Upper and lower trigrams conflict, with unfavorable environment',
+    detailedWeaknessesLines: 'Line positions are improper, with disharmonious human relations',
+    detailedOpportunitiesHexagram: 'Seize the timing, actively advance',
+    detailedOpportunitiesTrigram: 'Leverage environmental advantages, follow the trend',
+    detailedOpportunitiesLines: 'Unite and cooperate, seek common development',
+    detailedThreatsHexagram: 'Prevent trouble before it happens, avoid impulsiveness',
+    detailedThreatsTrigram: 'Guard against external risks, advance steadily',
+    detailedThreatsLines: 'Prevent internal conflicts, distinguish right from wrong',
+
+    // Trigram Names
+    trigramQian: 'Qian',
+    trigramKun: 'Kun',
+    trigramZhen: 'Zhen',
+    trigramKan: 'Kan',
+    trigramGen: 'Gen',
+    trigramXun: 'Xun',
+    trigramLi: 'Li',
+    trigramDui: 'Dui',
+
+    // Trigram Natures
+    natureHeaven: 'Heaven',
+    natureEarth: 'Earth',
+    natureThunder: 'Thunder',
+    natureWater: 'Water',
+    natureMountain: 'Mountain',
+    natureWind: 'Wind',
+    natureFire: 'Fire',
+    natureLake: 'Lake',
+
+    // Trigram Qualities
+    qualityFirm: 'Firm',
+    qualityGentle: 'Gentle',
+    qualityMoving: 'Moving',
+    qualityDangerous: 'Dangerous',
+    qualityStill: 'Still',
+    qualityObedient: 'Obedient',
+    qualityClinging: 'Clinging',
+    qualityJoyful: 'Joyful',
+
+    // Five Elements
+    elementMetal: 'Metal',
+    elementWood: 'Wood',
+    elementWater: 'Water',
+    elementFire: 'Fire',
+    elementEarth: 'Earth',
+
+    // Line Positions
+    lineFirst: 'First Line',
+    lineSecond: 'Second Line',
+    lineThird: 'Third Line',
+    lineFourth: 'Fourth Line',
+    lineFifth: 'Fifth Line',
+    lineSixth: 'Sixth Line',
+
+    // Line Position Types
+    positionLowest: 'Lowest',
+    positionLowerMiddle: 'Lower Middle',
+    positionLowerUpper: 'Lower Upper',
+    positionUpperLower: 'Upper Lower',
+    positionUpperMiddle: 'Upper Middle',
+    positionHighest: 'Highest',
+
+    // Line Natures
+    natureBeginning: 'Beginning',
+    natureMiddle: 'Middle',
+    natureDangerous2: 'Dangerous',
+    natureAuspicious: 'Auspicious',
+    natureEnd: 'End',
+
+    // Weight Calculation Text
+    originalHexagramScore: 'Original hexagram score',
+    changedHexagramScore: 'Changed hexagram score',
+    combinedScore: 'Combined score',
+    originalHexagramAnalysis: 'Original hexagram analysis',
+    changedHexagramAnalysis: 'Changed hexagram analysis',
+    weightPercentage: 'weight',
+
+    // Position Analysis Text
+    properPosition: 'Proper Position',
+    improperPosition: 'Improper Position',
+    pointsText2: 'points',
+
+    clickToStart: 'Click the button below to start divination',
+    hexagramNumberWithSuffix: 'Hexagram {0}',
+
+    daxiangImageAlt: '{0} Daxiang Image',
+    yongJiuLabel: 'Yong Jiu:',
+    yongLiuLabel: 'Yong Liu:',
+
+    logoutFallback: 'Sign Out',
+    signInFallback: 'Sign in with Google',
+
     footer: 'Sincerity brings clarity · Follow the natural way',
     selectLanguage: 'Language',
     signIn: 'Sign in with Google',
@@ -862,13 +1059,109 @@ export const translations: Record<Language, Translation> = {
     kunToQian: '坤变乾：柔变刚，由被动转主动 (+10分)',
     taiToPi: '泰变否：由通转塞，运势急转直下 (-15分)',
     piToTai: '否变泰：由塞转通，运势豁然开朗 (+15分)',
-    jiJiToWeiJi: '既济变未济：由成转败，功败垂成 (-12分)',
+    jiJiToWeiJi: '既济变未济：由成转败，成功在即 (-12分)',
     weiJiToJiJi: '未济变既济：由败转成，大器晚成 (+12分)',
-    qianKunConversion: '乾坤转换',
-    taiPiConversion: '泰否转换',
-    jiWeiConversion: '既未转换',
+    qianKunConversion: '乾坤转化',
+    taiPiConversion: '泰否转化',
+    jiWeiConversion: '既未转化',
 
-    footer: '心诚则灵 · 道法自然',
+    detailedStrengthsHexagram: '卦辞吉祥，有天道相助',
+    detailedStrengthsTrigram: '上下卦调和，得天时地利',
+    detailedStrengthsLines: '爻位得当，人事和谐',
+    detailedWeaknessesHexagram: '卦辞不吉，需谨慎行事',
+    detailedWeaknessesTrigram: '上下卦冲突，环境不利',
+    detailedWeaknessesLines: '爻位失当，人事不和',
+    detailedOpportunitiesHexagram: '把握时机，积极进取',
+    detailedOpportunitiesTrigram: '借助环境优势，顺势而为',
+    detailedOpportunitiesLines: '团结协作，共谋发展',
+    detailedThreatsHexagram: '防患于未然，避免冲动',
+    detailedThreatsTrigram: '防范外部风险，稳扎稳打',
+    detailedThreatsLines: '防范内部矛盾，明辨是非',
+
+    // Trigram Names
+    trigramQian: '乾',
+    trigramKun: '坤',
+    trigramZhen: '震',
+    trigramKan: '坎',
+    trigramGen: '艮',
+    trigramXun: '巽',
+    trigramLi: '离',
+    trigramDui: '兑',
+
+    // Trigram Natures
+    natureHeaven: '天',
+    natureEarth: '地',
+    natureThunder: '雷',
+    natureWater: '水',
+    natureMountain: '山',
+    natureWind: '风',
+    natureFire: '火',
+    natureLake: '泽',
+
+    // Trigram Qualities
+    qualityFirm: '刚健',
+    qualityGentle: '柔顺',
+    qualityMoving: '震动',
+    qualityDangerous: '险陷',
+    qualityStill: '静止',
+    qualityObedient: '顺从',
+    qualityClinging: '附着',
+    qualityJoyful: '喜悦',
+
+    // Five Elements
+    elementMetal: '金',
+    elementWood: '木',
+    elementWater: '水',
+    elementFire: '火',
+    elementEarth: '土',
+
+    // Line Positions
+    lineFirst: '初爻',
+    lineSecond: '二爻',
+    lineThird: '三爻',
+    lineFourth: '四爻',
+    lineFifth: '五爻',
+    lineSixth: '上爻',
+
+    // Line Position Types
+    positionLowest: '最下',
+    positionLowerMiddle: '下中',
+    positionLowerUpper: '下上',
+    positionUpperLower: '上下',
+    positionUpperMiddle: '上中',
+    positionHighest: '最上',
+
+    // Line Natures
+    natureBeginning: '始',
+    natureMiddle: '中',
+    natureDangerous2: '凶',
+    natureAuspicious: '吉',
+    natureEnd: '终',
+
+    // Weight Calculation Text
+    originalHexagramScore: '本卦评分',
+    changedHexagramScore: '变卦评分',
+    combinedScore: '综合评分',
+    originalHexagramAnalysis: '本卦分析',
+    changedHexagramAnalysis: '变卦分析',
+    weightPercentage: '权重',
+
+    // Position Analysis Text
+    properPosition: '当位',
+    improperPosition: '失位',
+    pointsText2: '分',
+
+    clickToStart: '点击下方按钮，开始起卦',
+    hexagramNumberWithSuffix: '第{0}卦',
+
+    daxiangImageAlt: '{0}大象图',
+    yongJiuLabel: '用九：',
+    yongLiuLabel: '用六：',
+
+    logoutFallback: '退出登录',
+    signInFallback: '使用 Google 登录',
+
+    footer: '心诚则灵 · 顺其自然',
     selectLanguage: '语言',
     signIn: '使用 Google 登录',
     logout: '退出登录',
@@ -1154,6 +1447,103 @@ export const translations: Record<Language, Translation> = {
     taiPiConversion: '泰否轉換',
     jiWeiConversion: '既未轉換',
 
+    // Detailed Analysis Content
+    detailedStrengthsHexagram: '卦辭吉祥，有天道相助',
+    detailedStrengthsTrigram: '上下卦調和，得天時地利',
+    detailedStrengthsLines: '爻位得當，人事和諧',
+    detailedWeaknessesHexagram: '卦辭不吉，需謹慎行事',
+    detailedWeaknessesTrigram: '上下卦衝突，環境不利',
+    detailedWeaknessesLines: '爻位失當，人事不和',
+    detailedOpportunitiesHexagram: '把握時機，積極進取',
+    detailedOpportunitiesTrigram: '借助環境優勢，順勢而為',
+    detailedOpportunitiesLines: '團結協作，共謀發展',
+    detailedThreatsHexagram: '防患於未然，避免衝動',
+    detailedThreatsTrigram: '防範外部風險，穩紮穩打',
+    detailedThreatsLines: '防範內部矛盾，明辨是非',
+
+    // Trigram Names
+    trigramQian: '乾',
+    trigramKun: '坤',
+    trigramZhen: '震',
+    trigramKan: '坎',
+    trigramGen: '艮',
+    trigramXun: '巽',
+    trigramLi: '離',
+    trigramDui: '兌',
+
+    // Trigram Natures
+    natureHeaven: '天',
+    natureEarth: '地',
+    natureThunder: '雷',
+    natureWater: '水',
+    natureMountain: '山',
+    natureWind: '風',
+    natureFire: '火',
+    natureLake: '澤',
+
+    // Trigram Qualities
+    qualityFirm: '剛健',
+    qualityGentle: '柔順',
+    qualityMoving: '震動',
+    qualityDangerous: '險陷',
+    qualityStill: '靜止',
+    qualityObedient: '順從',
+    qualityClinging: '附著',
+    qualityJoyful: '喜悅',
+
+    // Five Elements
+    elementMetal: '金',
+    elementWood: '木',
+    elementWater: '水',
+    elementFire: '火',
+    elementEarth: '土',
+
+    // Line Positions
+    lineFirst: '初爻',
+    lineSecond: '二爻',
+    lineThird: '三爻',
+    lineFourth: '四爻',
+    lineFifth: '五爻',
+    lineSixth: '上爻',
+
+    // Line Position Types
+    positionLowest: '最下',
+    positionLowerMiddle: '下中',
+    positionLowerUpper: '下上',
+    positionUpperLower: '上下',
+    positionUpperMiddle: '上中',
+    positionHighest: '最上',
+
+    // Line Natures
+    natureBeginning: '始',
+    natureMiddle: '中',
+    natureDangerous2: '凶',
+    natureAuspicious: '吉',
+    natureEnd: '終',
+
+    // Weight Calculation Text
+    originalHexagramScore: '本卦評分',
+    changedHexagramScore: '變卦評分',
+    combinedScore: '綜合評分',
+    originalHexagramAnalysis: '本卦分析',
+    changedHexagramAnalysis: '變卦分析',
+    weightPercentage: '權重',
+
+    // Position Analysis Text
+    properPosition: '當位',
+    improperPosition: '失位',
+    pointsText2: '分',
+
+    clickToStart: '點擊下方按鈕，開始起卦',
+    hexagramNumberWithSuffix: '第{0}卦',
+
+    daxiangImageAlt: '{0}大象圖',
+    yongJiuLabel: '用九：',
+    yongLiuLabel: '用六：',
+
+    logoutFallback: '登出',
+    signInFallback: '使用 Google 登入',
+
     footer: '心誠則靈 · 道法自然',
     selectLanguage: '語言',
     signIn: '使用 Google 登入',
@@ -1438,6 +1828,106 @@ export const translations: Record<Language, Translation> = {
     qianKunConversion: 'Conversión Qian-Kun',
     taiPiConversion: 'Conversión Tai-Pi',
     jiWeiConversion: 'Conversión Ji-Wei',
+
+    // Detailed Analysis Content
+    detailedStrengthsHexagram: 'El texto del hexagrama es auspicioso, con asistencia celestial',
+    detailedStrengthsTrigram: 'Trigramas superior e inferior armonizados, con ventajas de tiempo y lugar',
+    detailedStrengthsLines: 'Las posiciones de las líneas son apropiadas, con relaciones humanas armoniosas',
+    detailedWeaknessesHexagram: 'El texto del hexagrama es inauspicioso, requiere acción cautelosa',
+    detailedWeaknessesTrigram: 'Trigramas superior e inferior en conflicto, con entorno desfavorable',
+    detailedWeaknessesLines: 'Las posiciones de las líneas son inapropiadas, con relaciones humanas discordantes',
+    detailedOpportunitiesHexagram: 'Aprovechar el momento, avanzar activamente',
+    detailedOpportunitiesTrigram: 'Aprovechar ventajas ambientales, seguir la tendencia',
+    detailedOpportunitiesLines: 'Unirse y cooperar, buscar desarrollo común',
+    detailedThreatsHexagram: 'Prevenir problemas antes de que ocurran, evitar impulsividad',
+    detailedThreatsTrigram: 'Proteger contra riesgos externos, avanzar steady',
+    detailedThreatsLines: 'Prevenir conflictos internos, distinguir lo correcto de lo incorrecto',
+
+    // Trigram Names
+    trigramQian: 'Qian',
+    trigramKun: 'Kun',
+    trigramZhen: 'Zhen',
+    trigramKan: 'Kan',
+    trigramGen: 'Gen',
+    trigramXun: 'Xun',
+    trigramLi: 'Li',
+    trigramDui: 'Dui',
+
+    // Trigram Natures
+    natureHeaven: 'Cielo',
+    natureEarth: 'Tierra',
+    natureThunder: 'Trueno',
+    natureWater: 'Agua',
+    natureMountain: 'Montaña',
+    natureWind: 'Viento',
+    natureFire: 'Fuego',
+    natureLake: 'Lago',
+
+    // Trigram Qualities
+    qualityFirm: 'Firme',
+    qualityGentle: 'Suave',
+    qualityMoving: 'Móvil',
+    qualityDangerous: 'Peligroso',
+    qualityStill: 'Quieto',
+    qualityObedient: 'Obediente',
+    qualityClinging: 'Adherido',
+    qualityJoyful: 'Alegre',
+
+    // Five Elements
+    elementMetal: 'Metal',
+    elementWood: 'Madera',
+    elementWater: 'Agua',
+    elementFire: 'Fuego',
+    elementEarth: 'Tierra',
+
+    // Line Positions
+    lineFirst: 'Primera Línea',
+    lineSecond: 'Segunda Línea',
+    lineThird: 'Tercera Línea',
+    lineFourth: 'Cuarta Línea',
+    lineFifth: 'Quinta Línea',
+    lineSixth: 'Sexta Línea',
+
+    // Line Position Types
+    positionLowest: 'Más Bajo',
+    positionLowerMiddle: 'Inferior Medio',
+    positionLowerUpper: 'Inferior Superior',
+    positionUpperLower: 'Superior Inferior',
+    positionUpperMiddle: 'Superior Medio',
+    positionHighest: 'Más Alto',
+
+    // Line Natures
+    natureBeginning: 'Comienzo',
+    natureMiddle: 'Medio',
+    natureDangerous2: 'Peligroso',
+    natureAuspicious: 'Auspicioso',
+    natureEnd: 'Fin',
+
+    // Weight Calculation Text
+    originalHexagramScore: 'Puntuación hexagrama original',
+    changedHexagramScore: 'Puntuación hexagrama cambiado',
+    combinedScore: 'Puntuación combinada',
+    originalHexagramAnalysis: 'Análisis hexagrama original',
+    changedHexagramAnalysis: 'Análisis hexagrama cambiado',
+    weightPercentage: 'peso',
+
+    // Position Analysis Text
+    properPosition: 'Posición Apropiada',
+    improperPosition: 'Posición Inapropiada',
+    pointsText2: 'puntos',
+
+    // Hexagram Display Text
+    clickToStart: 'Haga clic en el botón de abajo para comenzar la adivinación',
+    hexagramNumberWithSuffix: 'Hexagrama {0}',
+
+    // Hexagram Result Text
+    daxiangImageAlt: 'Imagen Daxiang de {0}',
+    yongJiuLabel: 'Yong Jiu:',
+    yongLiuLabel: 'Yong Liu:',
+
+    // Auth Button Fallback Text
+    logoutFallback: 'Cerrar sesión',
+    signInFallback: 'Iniciar sesión con Google',
 
     footer: 'La sinceridad trae claridad · Sigue el camino natural',
     selectLanguage: 'Idioma',

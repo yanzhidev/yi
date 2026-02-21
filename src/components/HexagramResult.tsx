@@ -144,7 +144,7 @@ export function HexagramResult({
             <div className="flex justify-center">
               <img 
                 src={`/images/hexagrams/${currentHexagram.id}.png`}
-                alt={`${currentHexagram.name}大象图`}
+                alt={t.daxiangImageAlt.replace('{0}', currentHexagram.name)}
                 width={450}
                 height={270}
                 style={{ mixBlendMode: 'multiply' }}
@@ -456,14 +456,14 @@ export function HexagramResult({
             {keyInterpretationInfo?.type === 'specialUse' && keyInterpretationInfo.hexagramId === 1 ? (
               <div>
                 <p className={cn("text-base leading-relaxed font-medium", isKeyChangedGua ? "text-amber-950" : "text-amber-950")}>
-                  <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>用九：</span>
+                  <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.yongJiuLabel}</span>
                   {currentHexagram?.yongjiu}
                 </p>
               </div>
             ) : keyInterpretationInfo?.type === 'specialUse' && keyInterpretationInfo.hexagramId === 2 ? (
               <div>
                 <p className={cn("text-base leading-relaxed font-medium", isKeyChangedGua ? "text-amber-950" : "text-amber-950")}>
-                  <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>用六：</span>
+                  <span className={cn("font-semibold", isKeyChangedGua ? "text-amber-900" : "text-amber-800")}>{t.yongLiuLabel}</span>
                   {currentHexagram?.yongliu}
                 </p>
               </div>
@@ -496,7 +496,7 @@ export function HexagramResult({
             <div className="flex justify-center">
               <img 
                 src={`/images/hexagrams/${changedHexagram.id}.png`}
-                alt={`${changedHexagram.name}大象图`}
+                alt={t.daxiangImageAlt.replace('{0}', changedHexagram.name)}
                 width={450}
                 height={270}
                 style={{ mixBlendMode: 'multiply' }}

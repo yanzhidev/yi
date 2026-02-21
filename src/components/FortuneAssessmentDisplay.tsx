@@ -90,10 +90,10 @@ export function FortuneAssessmentDisplay({
           <div className="mb-4 p-3 bg-stone-50 rounded-lg">
             <div className="flex items-center gap-2 text-sm text-stone-700">
               <span className="font-medium">{t.benGuaWeight}：</span>
-              <span className="text-stone-900 font-bold">{weights.benWeight}%</span>
+              <span className="text-stone-900 font-bold">{weights.originalWeight}%</span>
               <span className="text-stone-500">·</span>
               <span className="font-medium">{t.bianGuaWeight}：</span>
-              <span className="text-stone-900 font-bold">{weights.bianWeight}%</span>
+              <span className="text-stone-900 font-bold">{weights.changedWeight}%</span>
             </div>
           </div>
         )}

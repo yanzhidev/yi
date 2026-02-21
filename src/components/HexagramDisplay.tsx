@@ -32,7 +32,7 @@ export function HexagramDisplay({
   showNumber = true,
   showName = true,
 }: HexagramDisplayProps) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   
   if (!hexagram || hexagram.length !== 6) {
     return (
@@ -41,7 +41,7 @@ export function HexagramDisplay({
           <span className="text-5xl text-stone-300">?</span>
         </div>
         <p className="mt-6 text-stone-400 text-sm tracking-wide">
-          点击下方按钮，开始起卦
+          {t.clickToStart}
         </p>
       </div>
     );
@@ -78,7 +78,7 @@ export function HexagramDisplay({
         )}
         {showNumber && (
           <p className="text-sm text-stone-400 tracking-widest">
-            第 {hexagramNumber + 1} 卦
+            {t.hexagramNumberWithSuffix.replace('{0}', (hexagramNumber + 1).toString())}
           </p>
         )}
       </div>
