@@ -89,6 +89,11 @@ export const zhCN: Translation = {
     changingLinesAnalysis: '变爻规则分析',
     none: '无',
 
+    // Fortune Assessment specific
+    keywordSeparator: '、',
+    trigramRelationPattern: '{0}在{1}上',
+    changingLinesPattern: '{0}个变爻',
+
     // Fortune Levels
     extremelyAuspicious: '大吉',
     veryAuspicious: '吉',

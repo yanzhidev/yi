@@ -155,7 +155,7 @@ export function FortuneAssessmentDisplay({
             weight="40%"
             icon={ScrollIcon}
             color="#dc2626"
-            description={hexagramTextScore.keywords.join('、')}
+            description={hexagramTextScore.keywords.join(t.keywordSeparator)}
           />
 
           {/* 上下卦关系评分 */}
@@ -165,7 +165,7 @@ export function FortuneAssessmentDisplay({
             weight="30%"
             icon={Target}
             color="#ea580c"
-            description={`${trigramRelationScore.upperTrigram}在${trigramRelationScore.lowerTrigram}上`}
+            description={t.trigramRelationPattern.replace('{0}', trigramRelationScore.upperTrigram).replace('{1}', trigramRelationScore.lowerTrigram)}
           />
 
           {/* 爻位综合评分 */}
@@ -175,7 +175,7 @@ export function FortuneAssessmentDisplay({
             weight="30%"
             icon={Shield}
             color="#d97706"
-            description={`${linesPositionScore.changingLinesCount}个变爻`}
+            description={t.changingLinesPattern.replace('{0}', linesPositionScore.changingLinesCount.toString())}
           />
 
           {/* 变爻调整 */}

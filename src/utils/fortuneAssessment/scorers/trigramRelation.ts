@@ -99,7 +99,7 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   // 确保分数在合理范围内
   score = Math.max(0, Math.min(100, score));
   
-  const relationship = `${getTranslation(language, upperTrigram.nameKey as keyof Translation)}${getTranslation(language, lowerTrigram.nameKey as keyof Translation)}（${getTranslation(language, upperTrigram.natureKey as keyof Translation)}在${getTranslation(language, lowerTrigram.natureKey as keyof Translation)}上）`;
+  const relationship = `${getTranslation(language, upperTrigram.nameKey as keyof Translation)}${getTranslation(language, lowerTrigram.nameKey as keyof Translation)}（${getTranslation(language, 'trigramRelationPattern' as keyof Translation).replace('{0}', getTranslation(language, upperTrigram.natureKey as keyof Translation)).replace('{1}', getTranslation(language, lowerTrigram.natureKey as keyof Translation))}）`;
   reasoning += `\n${getTranslation(language, 'relationshipSummary')}${relationship}`;
   reasoning += `\n${getTranslation(language, 'finalScoreLabel')}${score.toFixed(1)}`;
   

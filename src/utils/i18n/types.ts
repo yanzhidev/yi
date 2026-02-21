@@ -102,6 +102,11 @@ export interface Translation {
   changingLinesAnalysis: string;
   none: string;
 
+  // Fortune Assessment specific
+  keywordSeparator: string; // 关键词分隔符（中文：、英文：, ）
+  trigramRelationPattern: string; // 上卦在下卦上模式（{0}在{1}上 / {0} on {1}）
+  changingLinesPattern: string; // 变爻数量模式（{0}个变爻 / {0} changing lines）
+
   // Fortune Levels
   extremelyAuspicious: string;
   veryAuspicious: string;

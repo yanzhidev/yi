@@ -55,6 +55,7 @@ export function HexagramCard({
         changingLinesCountLabel={changingLinesCountLabel}
         isKeyHexagram={isKeyHexagram}
         variant={variant}
+        translations={translations}
       />
 
       <HexagramText

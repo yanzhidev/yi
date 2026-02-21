@@ -231,7 +231,8 @@ export function getLinePositionAdvice(position: number, lineValue: 0 | 1, hexagr
   const advice = baseAdvices[position]?.[isYangLine ? 'yang' : 'yin'] || "";
   
   // 根据卦名特点调整建议
-  const hexagramContext = `${translations.inContextOf} ${hexagramName}的背景下，`;
+  const contextSuffix = language === 'zh-CN' || language === 'zh-TW' ? '的背景下，' : ',';
+  const hexagramContext = `${translations.inContextOf} ${hexagramName}${contextSuffix}`;
   
   return hexagramContext + advice;
 }

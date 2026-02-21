@@ -21,6 +21,7 @@ interface HexagramBasicInfoProps {
   changingLinesCountLabel?: string;
   isKeyHexagram?: boolean;
   variant?: 'original' | 'changed';
+  translations: any;
 }
 
 export function HexagramBasicInfo({ 
@@ -30,7 +31,8 @@ export function HexagramBasicInfo({
   changingLinesCount,
   changingLinesCountLabel,
   isKeyHexagram = false,
-  variant = 'original'
+  variant = 'original',
+  translations
 }: HexagramBasicInfoProps) {
   if (!hexagram) return null;
 
@@ -52,7 +54,7 @@ export function HexagramBasicInfo({
           
           {isKeyHexagram && (
             <span className="text-xs font-medium text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
-              重点解读
+              {translations.keyInterpretation}
             </span>
           )}
         </div>
@@ -72,7 +74,7 @@ export function HexagramBasicInfo({
               {hexagram.name}
             </h3>
             <p className={cn("text-sm mt-1 font-medium", isChangedVariant ? "text-amber-800" : "text-stone-600")}>
-              第{hexagram.id}卦 · {hexagram.pinyin}
+              {translations.hexagramNumber.replace('{0}', hexagram.id)} · {hexagram.pinyin}
             </p>
           </div>
           <p className={cn("text-base leading-relaxed", isChangedVariant ? "text-amber-900" : "text-stone-700")}>

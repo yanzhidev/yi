@@ -89,6 +89,11 @@ export const zhTW: Translation = {
     changingLinesAnalysis: '變爻規則分析',
     none: '無',
 
+    // Fortune Assessment specific
+    keywordSeparator: '、',
+    trigramRelationPattern: '{0}在{1}上',
+    changingLinesPattern: '{0}個變爻',
+
     // Fortune Levels
     extremelyAuspicious: '大吉',
     veryAuspicious: '吉',

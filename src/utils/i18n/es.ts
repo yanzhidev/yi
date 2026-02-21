@@ -89,6 +89,11 @@ export const es: Translation = {
     changingLinesAnalysis: 'Análisis Líneas Cambiantes',
     none: 'Ninguno',
 
+    // Fortune Assessment specific
+    keywordSeparator: ', ',
+    trigramRelationPattern: '{0} en {1}',
+    changingLinesPattern: '{0} líneas cambiantes',
+
     // Fortune Levels
     extremelyAuspicious: 'Extremadamente Auspicioso',
     veryAuspicious: 'Muy Auspicioso',
