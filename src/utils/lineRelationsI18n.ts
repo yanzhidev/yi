@@ -15,8 +15,16 @@ export interface LineRelationsTranslations {
   noExternalResponseButDangWei: string; // 虽无外应，但自身得位得正，可稳中求进
   
   // 承乘关系文本
-  yinSupportsYang: string;         // 阴爻承阳爻
-  yinRidesYang: string;            // 阴爻乘阳爻
+  yinSupportsYang: string;         // 阴承阳：柔承刚，柔顺承托刚健
+  yangSupportsYin: string;         // 阳承阴：刚承柔，刚强承托柔弱
+  yangSupportsYang: string;        // 阳承阳：刚承刚，以刚承刚
+  yinSupportsYin: string;          // 阴承阴：柔承柔，以柔承柔
+  
+  yinRidesYang: string;            // 阴乘阳：柔乘刚，阴柔乘凌阳刚
+  yangRidesYin: string;            // 阳乘阴：刚乘柔，阳刚驾御阴柔
+  yangRidesYang: string;           // 阳乘阳：刚乘刚，以刚驾刚
+  yinRidesYin: string;             // 阴乘阴：柔乘柔，以柔驾柔
+  
   noSpecialRelation: string;       // 无特殊承乘关系
   
   // 爻位现代解读
@@ -54,8 +62,18 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     sameGenderRepulsion: 'Same gender repels each other, lacks response, need to actively seek support',
     noExternalResponseButDangWei: 'Although no external response, but properly positioned, can advance steadily',
     
-    yinSupportsYang: 'supports the yang line above, with gentle support bringing benefit',
-    yinRidesYang: 'rides the yang line below, with gentility over firmness suggesting overstepping',
+    // 承
+    yinSupportsYang: '⚖️ Yin supports Yang: gentleness supports strength - harmonious support, auspicious',
+    yangSupportsYin: '⚠️ Yang supports Yin: strength supports gentleness - subordinate position, improper',
+    yangSupportsYang: '⚔️ Yang supports Yang: strength supports strength - two forces confront, competitive',
+    yinSupportsYin: '🌱 Yin supports Yin: gentleness supports gentleness - mutual weakness, insufficient',
+    
+    // 乘
+    yinRidesYang: '❗ Yin rides Yang: gentleness rides strength - overstepping, most inauspicious',
+    yangRidesYin: '✓ Yang rides Yin: strength rides gentleness - proper control, auspicious',
+    yangRidesYang: '⚡ Yang rides Yang: strength rides strength - two forces clash, conflicts',
+    yinRidesYin: '💧 Yin rides Yin: gentleness rides gentleness - weak authority, insufficient',
+    
     noSpecialRelation: 'No special support-riding relationship',
     
     position1Yang: 'represents the initial stage of matters, like the rising sun. At this time, one should seize opportunities, act actively, and lay the foundation for future development',
@@ -88,8 +106,17 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     sameGenderRepulsion: '同性相斥，缺乏呼应，需主动寻求支援',
     noExternalResponseButDangWei: '虽无外应，但自身得位得正，可稳中求进',
     
-    yinSupportsYang: '柔顺承刚，得助之象',
-    yinRidesYang: '柔乘刚上，有僭越之嫌',
+    // 承
+    yinSupportsYang: '⚖️ 阴承阳：柔承刚 - 顺承得助，吉',
+    yangSupportsYin: '⚠️ 阳承阴：刚承柔 - 屈居其下，位不当',
+    yangSupportsYang: '⚔️ 阳承阳：刚承刚 - 两刚相峙，多竞争',
+    yinSupportsYin: '🌱 阴承阴：柔承柔 - 两柔相扶，力不足',
+    
+    // 乘
+    yinRidesYang: '❗ 阴乘阳：柔乘刚 - 僭越不顺，最凶',
+    yangRidesYin: '✓ 阳乘阴：刚乘柔 - 统御得宜，吉',
+    yangRidesYang: '⚡ 阳乘阳：刚乘刚 - 两刚相敌，多冲突',
+    yinRidesYin: '💧 阴乘阴：柔乘柔 - 柔弱相凌，威权不足',
     noSpecialRelation: '无特殊承乘关系',
     
     position1Yang: '初爻为事物初始阶段，如朝阳初升。此时应把握机遇，积极行动，为后续发展奠定基础',
@@ -122,8 +149,17 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     sameGenderRepulsion: '同性相斥，缺乏呼應，需主動尋求支援',
     noExternalResponseButDangWei: '雖無外應，但自身得位得正，可穩中求進',
     
-    yinSupportsYang: '柔順承剛，得助之象',
-    yinRidesYang: '柔乘剛上，有僭越之嫌',
+    // 承
+    yinSupportsYang: '⚖️ 陰承陽：柔承剛 - 順承得助，吉',
+    yangSupportsYin: '⚠️ 陽承陰：剛承柔 - 屈居其下，位不當',
+    yangSupportsYang: '⚔️ 陽承陽：剛承剛 - 兩剛相峙，多競爭',
+    yinSupportsYin: '🌱 陰承陰：柔承柔 - 兩柔相扶，力不足',
+    
+    // 乘
+    yinRidesYang: '❗ 陰乘陽：柔乘剛 - 僭越不順，最凶',
+    yangRidesYin: '✓ 陽乘陰：剛乘柔 - 統御得宜，吉',
+    yangRidesYang: '⚡ 陽乘陽：剛乘剛 - 兩剛相敵，多衝突',
+    yinRidesYin: '💧 陰乘陰：柔乘柔 - 柔弱相凌，威權不足',
     noSpecialRelation: '無特殊承乘關係',
     
     position1Yang: '初爻為事物初始階段，如朝陽初升。此時應把握機遇，積極行動，為後續發展奠定基礎',
@@ -156,8 +192,17 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     sameGenderRepulsion: 'se repelen debido al mismo género, careciendo de resonancia, requiriendo búsqueda activa de apoyo',
     noExternalResponseButDangWei: 'Aunque sin respuesta externa, pero correctamente posicionado, puede avanzar steady',
     
-    yinSupportsYang: 'apoya la línea yang arriba, con apoyo suave trayendo beneficio',
-    yinRidesYang: 'monta la línea yang abajo, con suavidad sobre firmeza sugiriendo sobrepasación',
+    // 承
+    yinSupportsYang: '⚖️ Yin apoya Yang: suavidad apoya fuerza - apoyo armonioso, auspicioso',
+    yangSupportsYin: '⚠️ Yang apoya Yin: fuerza apoya suavidad - posición subordinada, inapropiado',
+    yangSupportsYang: '⚔️ Yang apoya Yang: fuerza apoya fuerza - dos fuerzas confrontan, competitivo',
+    yinSupportsYin: '🌱 Yin apoya Yin: suavidad apoya suavidad - debilidad mutua, insuficiente',
+    
+    // 乘
+    yinRidesYang: '❗ Yin monta Yang: suavidad monta fuerza - sobrepasamiento, muy inauspicioso',
+    yangRidesYin: '✓ Yang monta Yin: fuerza monta suavidad - control apropiado, auspicioso',
+    yangRidesYang: '⚡ Yang monta Yang: fuerza monta fuerza - dos fuerzas chocan, conflictos',
+    yinRidesYin: '💧 Yin monta Yin: suavidad monta suavidad - autoridad débil, insuficiente',
     noSpecialRelation: 'Sin relación especial de soporte-montura',
     
     position1Yang: 'representa la etapa inicial de los asuntos, como el sol naciente. En este momento, uno debe aprovechar oportunidades, actuar activamente, y sentar las bases para el desarrollo futuro',

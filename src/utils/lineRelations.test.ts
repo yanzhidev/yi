@@ -92,11 +92,39 @@ describe('lineRelations', () => {
 
   describe('getChengChengRelation', () => {
     it('应该正确分析承乘关系', () => {
-      // 六四承九五（阴爻承阳爻）
-      expect(getChengChengRelation(4, testLines, 'zh-CN')).toContain("四爻承五爻，柔顺承刚");
+      // 使用原来的测试数据：[1,0,1,0,1,0]
+      // 六四（第4位阴爻）：承九五（第5位阳爻）+ 乘九三（第3位阳爻）
+      const result = getChengChengRelation(4, testLines, 'zh-CN');
+      expect(result).toContain("四爻承五爻，⚖️ 阴承阳：柔承刚 - 顺承得助，吉");
+      expect(result).toContain("四爻乘三爻，❗ 阴乘阳：柔乘刚 - 僭越不顺，最凶");
+    });
+    
+    it('应该正确分析所有承乘关系类型', () => {
+      // 创建包含各种关系的测试数据
+      const comprehensiveLines: LineResult[] = [
+        { value: 1, isChanging: false, lineType: 'youngYang' },  // 初九
+        { value: 0, isChanging: false, lineType: 'youngYin' },  // 六二
+        { value: 1, isChanging: false, lineType: 'youngYang' },  // 九三
+        { value: 1, isChanging: false, lineType: 'youngYang' },  // 九四
+        { value: 0, isChanging: false, lineType: 'youngYin' },  // 六五
+        { value: 0, isChanging: false, lineType: 'youngYin' }   // 上六
+      ];
       
-      // 六四乘九三（阴爻乘阳爻）
-      expect(getChengChengRelation(4, testLines, 'zh-CN')).toContain("四爻乘三爻，柔乘刚上");
+      // 六二承九三：阴承阳（最吉）
+      expect(getChengChengRelation(2, comprehensiveLines, 'zh-CN'))
+        .toContain("二爻承三爻，⚖️ 阴承阳：柔承刚 - 顺承得助，吉");
+      
+      // 九四承六五：阳承阴（凶）
+      expect(getChengChengRelation(4, comprehensiveLines, 'zh-CN'))
+        .toContain("四爻承五爻，⚠️ 阳承阴：刚承柔 - 屈居其下，位不当");
+      
+      // 九四乘九三：阳乘阳（凶）
+      expect(getChengChengRelation(4, comprehensiveLines, 'zh-CN'))
+        .toContain("四爻乘三爻，⚡ 阳乘阳：刚乘刚 - 两刚相敌，多冲突");
+      
+      // 六五乘九四：阴乘阳（最凶）
+      expect(getChengChengRelation(5, comprehensiveLines, 'zh-CN'))
+        .toContain("五爻乘四爻，❗ 阴乘阳：柔乘刚 - 僭越不顺，最凶");
     });
   });
 

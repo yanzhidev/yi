@@ -1,6 +1,6 @@
 import type { LineResult } from './iching';
 import type { Language } from './i18n';
-import { getLineRelationsTranslations } from './lineRelationsI18n';
+import { getLineRelationsTranslations, type LineRelationsTranslations } from './lineRelationsI18n';
 
 // ==================== 类型定义 ====================
 
@@ -104,8 +104,8 @@ export function getYingRelation(position: number, lines: LineResult[], language:
 
 /**
  * 获取承乘关系分析
- * 承：阴爻承阳爻（在下）
- * 乘：阴爻乘阳爻（在上）
+ * 承：下爻承上爻（检查上爻关系）
+ * 乘：上爻乘下爻（检查下爻关系）
  * @param position 爻位
  * @param lines 六爻数组
  * @param language 语言
@@ -121,22 +121,70 @@ export function getChengChengRelation(position: number, lines: LineResult[], lan
   // 检查承的关系（当前爻承上爻）
   if (position < 6) {
     const upperLine = lines[position];
-    if (currentLine.value === 0 && upperLine.value === 1) {
-      // 阴爻承阳爻
-      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}承${positionNames[position]}${translations.lineCharacter}，${translations.yinSupportsYang}`);
+    const supportRelation = getSupportRelation(currentLine.value, upperLine.value, translations);
+    if (supportRelation) {
+      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}承${positionNames[position]}${translations.lineCharacter}，${supportRelation}`);
     }
   }
   
   // 检查乘的关系（当前爻乘下爻）
   if (position > 1) {
     const lowerLine = lines[position - 2];
-    if (currentLine.value === 0 && lowerLine.value === 1) {
-      // 阴爻乘阳爻
-      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}乘${positionNames[position - 2]}${translations.lineCharacter}，${translations.yinRidesYang}`);
+    const rideRelation = getRideRelation(currentLine.value, lowerLine.value, translations);
+    if (rideRelation) {
+      relations.push(`${positionNames[position - 1]}${translations.lineCharacter}乘${positionNames[position - 2]}${translations.lineCharacter}，${rideRelation}`);
     }
   }
   
   return relations.length > 0 ? relations.join("；") : translations.noSpecialRelation;
+}
+
+/**
+ * 获取承关系文本
+ * @param currentLineValue 当前爻值
+ * @param upperLineValue 上爻值
+ * @param translations 翻译文本
+ * @returns 承关系文本
+ */
+function getSupportRelation(currentLineValue: 0 | 1, upperLineValue: 0 | 1, translations: LineRelationsTranslations): string {
+  if (currentLineValue === 0 && upperLineValue === 1) {
+    // 阴承阳：柔承刚，柔顺承托刚健（最吉）
+    return translations.yinSupportsYang;
+  } else if (currentLineValue === 1 && upperLineValue === 0) {
+    // 阳承阴：刚承柔，刚强承托柔弱（凶）
+    return translations.yangSupportsYin;
+  } else if (currentLineValue === 1 && upperLineValue === 1) {
+    // 阳承阳：刚承刚，以刚承刚（中）
+    return translations.yangSupportsYang;
+  } else if (currentLineValue === 0 && upperLineValue === 0) {
+    // 阴承阴：柔承柔，以柔承柔（中）
+    return translations.yinSupportsYin;
+  }
+  return '';
+}
+
+/**
+ * 获取乘关系文本
+ * @param currentLineValue 当前爻值
+ * @param lowerLineValue 下爻值
+ * @param translations 翻译文本
+ * @returns 乘关系文本
+ */
+function getRideRelation(currentLineValue: 0 | 1, lowerLineValue: 0 | 1, translations: LineRelationsTranslations): string {
+  if (currentLineValue === 0 && lowerLineValue === 1) {
+    // 阴乘阳：柔乘刚，阴柔乘凌阳刚（最凶）
+    return translations.yinRidesYang;
+  } else if (currentLineValue === 1 && lowerLineValue === 0) {
+    // 阳乘阴：刚乘柔，阳刚驾御阴柔（吉）
+    return translations.yangRidesYin;
+  } else if (currentLineValue === 1 && lowerLineValue === 1) {
+    // 阳乘阳：刚乘刚，以刚驾刚（凶）
+    return translations.yangRidesYang;
+  } else if (currentLineValue === 0 && lowerLineValue === 0) {
+    // 阴乘阴：柔乘柔，以柔驾柔（中）
+    return translations.yinRidesYin;
+  }
+  return '';
 }
 
 // ==================== 爻位现代解读 ====================
