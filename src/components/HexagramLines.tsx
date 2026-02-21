@@ -1,9 +1,5 @@
-import { clsx, type ClassValue } from 'clsx';
+import { cn } from '../utils/styles';
 import type { LineResult } from '../utils/iching';
-
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
 
 // 阴爻符号（断开的横线）
 export const YinYao = ({ isChanging, className }: { isChanging?: boolean; className?: string }) => (

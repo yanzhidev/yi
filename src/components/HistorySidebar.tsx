@@ -4,11 +4,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import { getUserHistory, deleteHexagramHistory, type HexagramHistory } from '../lib/firebase'
 import { getHexagramName } from '../data/hexagramNames'
-import { clsx, type ClassValue } from 'clsx'
-
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
+import { cn } from '../utils/styles'
 
 interface HistorySidebarProps {
   isOpen: boolean
@@ -144,9 +140,8 @@ export function HistorySidebar({ isOpen, onClose, onSelectHistory }: HistorySide
                         <p className="text-sm font-medium text-stone-800 truncate">
                           {getHexagramName(item.originalHexagram.number, language)}
                         </p>
-                        <p className="text-xs text-stone-500">
-                          {formatDate(item.timestamp)}
-                        </p>
+                        <p className="text-xs text-stone-500 mb-2">{t.yourQuestionLabel}</p>
+                        <p className="text-xs text-stone-500">{formatDate(item.timestamp)}</p>
                       </div>
                       {item.changedHexagram && (
                         <span className="text-xs text-stone-400">→ {getHexagramName(item.changedHexagram.number, language)}</span>

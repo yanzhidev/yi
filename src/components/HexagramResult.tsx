@@ -1,5 +1,5 @@
 import { Mountain, Scroll, Wind, Cloud, ChevronDown, Scale, Users, Target } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
+import { cn } from '../utils/styles';
 import { 
   getHexagramById, 
   type HexagramCastResult, 
@@ -17,9 +17,6 @@ import { assessFortune } from '../utils/fortuneAssessment';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useHexagramInterpretation } from '../hooks/useHexagramInterpretation';
 
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
 
 interface HexagramDisplayProps {
   result: HexagramCastResult;

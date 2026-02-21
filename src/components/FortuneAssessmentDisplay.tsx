@@ -1,8 +1,8 @@
 import { TrendingUp, TrendingDown, Minus, AlertTriangle, CheckCircle, Info, BarChart3, Target, Shield, Zap, ChevronDown } from 'lucide-react';
 import { Scroll as ScrollIcon } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { cn } from '../utils/styles';
 import { 
   getFortuneLevels
 } from '../utils/fortuneAssessment';
@@ -10,10 +10,6 @@ import type {
   FortuneAssessment, 
   FortuneLevel
 } from '../utils/fortuneAssessment';
-
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
 
 interface FortuneAssessmentDisplayProps {
   assessment: FortuneAssessment;

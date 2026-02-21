@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { RotateCcw, Menu } from 'lucide-react'
-import { clsx, type ClassValue } from 'clsx'
+import { cn } from './utils/styles'
 import { 
   castHexagram, 
   type HexagramCastResult,
@@ -13,11 +13,8 @@ import { AuthButton } from './components/AuthButton'
 import { ManualInput } from './components/ManualInput'
 import { HexagramResult } from './components/HexagramResult'
 import { HistorySidebar } from './components/HistorySidebar'
-import { saveHexagramHistory, type HexagramHistory } from './lib/firebase'
-
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
+import { saveHexagramToHistory, convertHistoryToCastResult } from './utils/historyManager'
+import type { HexagramHistory } from './lib/firebase'
 
 function AppContent() {
   const [question, setQuestion] = useState('')
@@ -47,56 +44,10 @@ function AppContent() {
       setResult(castResult)
       setIsCasting(false)
       
-      // 如果用户已登录，保存历史记录
-      if (user) {
-        console.log('用户已登录，开始保存历史记录...')
-        try {
-          // 获取卦象信息
-          const hexagramData = await import('./data/hexagrams.json')
-          const hexagrams = hexagramData.default
-          const originalHexagram = hexagrams.find(h => h.id === castResult.hexagramId)
-          const changedHexagram = castResult.changedHexagramId ? hexagrams.find(h => h.id === castResult.changedHexagramId) : undefined
-          
-          console.log('卦象信息:', { originalHexagram, changedHexagram })
-          
-          if (!originalHexagram) {
-            console.error('找不到本卦信息:', castResult.hexagramId)
-            return
-          }
-          
-          const historyData: Omit<HexagramHistory, 'id' | 'timestamp'> = {
-            userId: user.uid,
-            question: question.trim(),
-            originalHexagram: {
-              number: castResult.hexagramId,
-              name: originalHexagram.name || `第${castResult.hexagramId}卦`,
-              lines: castResult.lines.map(line => {
-                if (line.lineType === 'oldYin') return 6
-                if (line.lineType === 'youngYang') return 7
-                if (line.lineType === 'youngYin') return 8
-                return 9 // oldYang
-              })
-            },
-            changedHexagram: changedHexagram ? {
-              number: castResult.changedHexagramId!,
-              name: changedHexagram.name || `第${castResult.changedHexagramId}卦`,
-              lines: [] // 这里可以计算变卦的爻值，但暂时留空
-            } : null, // 使用 null 而不是 undefined
-            changingLines: castResult.changingLines
-          }
-          
-          console.log('准备保存的历史数据:', historyData)
-          
-          await saveHexagramHistory(historyData)
-          console.log('历史记录保存成功!')
-        } catch (error) {
-          console.error('Error saving history:', error)
-        }
-      } else {
-        console.log('用户未登录，跳过历史记录保存')
-      }
+      // 保存历史记录
+      await saveHexagramToHistory(castResult, question, user, t)
     }, 1200)
-  }, [user, question])
+  }, [user, question, t])
 
   const handleReset = useCallback(() => {
     setResult(null)
@@ -116,83 +67,15 @@ function AppContent() {
     setResult(manualResult)
     setShowManualInput(false)
     
-    // 如果用户已登录，保存历史记录
-    if (user) {
-      console.log('手动输入：用户已登录，开始保存历史记录...')
-      try {
-        // 获取卦象信息
-        const hexagramData = await import('./data/hexagrams.json')
-        const hexagrams = hexagramData.default
-        const originalHexagram = hexagrams.find(h => h.id === manualResult.hexagramId)
-        const changedHexagram = manualResult.changedHexagramId ? hexagrams.find(h => h.id === manualResult.changedHexagramId) : undefined
-        
-        console.log('手动输入卦象信息:', { originalHexagram, changedHexagram })
-        
-        if (!originalHexagram) {
-          console.error('手动输入：找不到本卦信息:', manualResult.hexagramId)
-          return
-        }
-        
-        const historyData: Omit<HexagramHistory, 'id' | 'timestamp'> = {
-          userId: user.uid,
-          question: question.trim(),
-          originalHexagram: {
-            number: manualResult.hexagramId,
-            name: originalHexagram.name || `第${manualResult.hexagramId}卦`,
-            lines: manualResult.lines.map(line => {
-              if (line.lineType === 'oldYin') return 6
-              if (line.lineType === 'youngYang') return 7
-              if (line.lineType === 'youngYin') return 8
-              return 9 // oldYang
-            })
-          },
-          changedHexagram: changedHexagram ? {
-            number: manualResult.changedHexagramId!,
-            name: changedHexagram.name || `第${manualResult.changedHexagramId}卦`,
-            lines: [] // 这里可以计算变卦的爻值，但暂时留空
-          } : null, // 使用 null 而不是 undefined
-          changingLines: manualResult.changingLines
-        }
-        
-        console.log('手动输入准备保存的历史数据:', historyData)
-        
-        await saveHexagramHistory(historyData)
-        console.log('手动输入历史记录保存成功!')
-      } catch (error) {
-        console.error('手动输入保存历史记录错误:', error)
-      }
-    } else {
-      console.log('手动输入：用户未登录，跳过历史记录保存')
-    }
-  }, [user, question])
+    // 保存历史记录
+    await saveHexagramToHistory(manualResult, question, user, t)
+  }, [user, question, t])
 
   // 处理历史记录选择
   const handleSelectHistory = useCallback((history: HexagramHistory) => {
     setQuestion(history.question)
     // 将历史记录转换为 HexagramCastResult 格式
-    const castResult: HexagramCastResult = {
-      lines: history.originalHexagram.lines.map((line, index) => {
-        const isChanging = history.changingLines.includes(index + 1);
-        const isYang = line === 7 || line === 9; // 7,9 are yang; 6,8 are yin
-        
-        let lineType: 'oldYin' | 'youngYang' | 'youngYin' | 'oldYang'
-        if (isYang) {
-          lineType = isChanging ? 'oldYang' : 'youngYang'
-        } else {
-          lineType = isChanging ? 'oldYin' : 'youngYin'
-        }
-        
-        return {
-          value: isYang ? 1 : 0,
-          isChanging,
-          lineType
-        }
-      }),
-      changingLines: history.changingLines,
-      hexagramId: history.originalHexagram.number,
-      changedHexagramId: history.changedHexagram?.number || null,
-      binary: history.originalHexagram.lines.map(line => line >= 7 ? '1' : '0').join('')
-    }
+    const castResult = convertHistoryToCastResult(history)
     setResult(castResult)
     setShowInterpretation(true)
     setShowChangedInterpretation(true)

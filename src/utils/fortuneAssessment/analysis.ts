@@ -1,16 +1,14 @@
-import { getTranslation } from '../../i18n';
-import type { Language, Translation } from '../../i18n';
+import { getTranslation } from '../i18n';
+import type { Language } from '../i18n';
 import type { 
   ChangingLinesAdjustment, 
   FortuneAssessment, 
-  FortuneAssessmentConfig,
   HexagramTextScore,
   TrigramRelationScore,
   LinesPositionScore,
   HexagramWeights,
   BaseScore
 } from './types';
-import { getHexagramById } from '../../iching';
 
 /**
  * 变爻规则调整函数 - 使用中文进行计算
@@ -289,7 +287,6 @@ export function getFortuneLevel(score: number): FortuneAssessment['fortuneLevel'
 
 /**
  * 生成总体建议
- * @param fortuneLevel 吉凶等级
  * @param textScore 卦辞评分
  * @param trigramScore 上下卦评分
  * @param linesScore 爻位评分
@@ -297,14 +294,13 @@ export function getFortuneLevel(score: number): FortuneAssessment['fortuneLevel'
  * @returns 总体建议
  */
 export function generateOverallAdvice(
-  fortuneLevel: FortuneAssessment['fortuneLevel'],
   textScore: HexagramTextScore,
   trigramScore: TrigramRelationScore,
   linesScore: LinesPositionScore,
   language: Language = 'zh-CN'
 ): string {
-  const levelConfig = getFortuneLevels(language)[fortuneLevel];
-  let advice = levelConfig.description;
+  // 根据吉凶等级生成基础建议
+  let advice = getTranslation(language, 'decisionAdvice');
   
   // 根据各维度评分添加具体建议
   if (textScore.score >= 70) {
@@ -403,8 +399,4 @@ export function generateDetailedAnalysis(
   return { strengths, weaknesses, opportunities, threats };
 }
 
-// 需要从 config.ts 导入的函数
-function getFortuneLevels(language: Language = 'zh-CN'): Record<FortuneAssessment['fortuneLevel'], FortuneAssessment['detailedAnalysis']> {
-  // 这里会在 config.ts 中实现
-  return {} as any;
-}
+

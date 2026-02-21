@@ -1,22 +1,18 @@
-import { clsx, type ClassValue } from 'clsx';
 import { useLanguage } from '../contexts/LanguageContext';
 import { getHexagramName } from '../data/hexagramNames';
-
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs);
-}
-
-// 阴爻符号（断开的横线）
-const YinYao = ({ className }: { className?: string }) => (
-  <div className={cn("flex items-center justify-center gap-1 w-16", className)}>
-    <div className="h-1.5 w-[30px] bg-stone-700 rounded-full" />
-    <div className="h-1.5 w-[30px] bg-stone-700 rounded-full" />
-  </div>
-);
+import { cn } from '../utils/styles';
 
 // 阳爻符号（完整的横线）
 const YangYao = ({ className }: { className?: string }) => (
   <div className={cn("h-1.5 w-16 bg-stone-700 rounded-full", className)} />
+);
+
+// 阴爻符号（断开的横线）
+const YinYao = ({ className }: { className?: string }) => (
+  <div className={cn("flex gap-2", className)}>
+    <div className="h-1.5 w-7 bg-stone-700 rounded-full" />
+    <div className="h-1.5 w-7 bg-stone-700 rounded-full" />
+  </div>
 );
 
 interface HexagramDisplayProps {

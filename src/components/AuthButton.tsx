@@ -1,12 +1,9 @@
 import { useState } from 'react'
 import { User, LogOut, ChevronDown } from 'lucide-react'
+import { cn } from '../utils/styles'
 import { useAuth } from '../contexts/AuthContext'
 import { useLanguage } from '../contexts/LanguageContext'
-import { clsx, type ClassValue } from 'clsx'
 
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
 
 export function AuthButton() {
   const { user, signIn, logout, loading } = useAuth()

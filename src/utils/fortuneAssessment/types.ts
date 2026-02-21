@@ -1,5 +1,3 @@
-import type { Language } from '../i18n';
-
 /**
  * 吉凶等级枚举
  */

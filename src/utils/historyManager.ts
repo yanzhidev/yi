@@ -1,6 +1,6 @@
 import { saveHexagramHistory, type HexagramHistory } from '../lib/firebase'
 import type { HexagramCastResult } from './iching'
-import type { Translation } from './i18n'
+import type { Translation } from './i18n';
 
 /**
  * 将 HexagramCastResult 转换为历史记录格式
@@ -86,7 +86,7 @@ export async function saveHexagramToHistory(
  */
 export function convertHistoryToCastResult(history: HexagramHistory): HexagramCastResult {
   return {
-    lines: history.originalHexagram.lines.map((line, index) => {
+    lines: history.originalHexagram.lines.map((line: number, index: number) => {
       const isChanging = history.changingLines.includes(index + 1)
       const isYang = line === 7 || line === 9 // 7,9 are yang; 6,8 are yin
       
@@ -106,6 +106,6 @@ export function convertHistoryToCastResult(history: HexagramHistory): HexagramCa
     changingLines: history.changingLines,
     hexagramId: history.originalHexagram.number,
     changedHexagramId: history.changedHexagram?.number || null,
-    binary: history.originalHexagram.lines.map(line => line >= 7 ? '1' : '0').join('')
+    binary: history.originalHexagram.lines.map((line: number) => line >= 7 ? '1' : '0').join('')
   }
 }

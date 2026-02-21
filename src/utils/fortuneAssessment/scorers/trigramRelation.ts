@@ -1,5 +1,5 @@
-import { getTranslation } from '../../i18n';
-import type { Language, Translation } from '../../i18n';
+import { getTranslation } from '../../i18n/index';
+import type { Translation, Language } from '../../i18n/index';
 import type { TrigramRelationScore, TrigramAttributes, HeavenEarthRelation } from '../types';
 
 /**
@@ -21,7 +21,7 @@ const TRIGRAM_ATTRIBUTES: Record<string, TrigramAttributes> = {
  * @param language 语言（仅用于显示）
  * @returns 五行关系映射
  */
-function getFiveElementsRelations(language: Language = 'zh-CN') {
+function getFiveElementsRelations() {
   // 始终返回中文映射，用于计算
   return {
     generate: { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' },
@@ -62,7 +62,7 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
   const chineseUpperNature = getTranslation('zh-CN', upperTrigram.natureKey as keyof Translation);
   const chineseLowerNature = getTranslation('zh-CN', lowerTrigram.natureKey as keyof Translation);
   const heavenEarthKey = `${chineseUpperNature}-${chineseLowerNature}`;
-  const heavenEarthRelations = getHeavenEarthRelations('zh-CN'); // 始终使用中文映射
+  const heavenEarthRelations = getHeavenEarthRelations(); // 始终使用中文映射
   const heavenEarthRelation = heavenEarthRelations[heavenEarthKey];
   
   // 调试信息
@@ -82,7 +82,7 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
     } else if (heavenEarthRelation.description.includes('柔顺有余')) {
       descKey = 'earthEarthRelation';
     }
-    reasoning += getTranslation(language, 'heavenEarthRelationLabel') + getTranslation(language, descKey as keyof Translation) + ` (+${heavenEarthRelation.score}${getTranslation(language, 'pointsText')})\n`;
+    reasoning += getTranslation(language, 'heavenEarthRelationLabel' as keyof Translation) + getTranslation(language, descKey as keyof Translation) + ` (+${heavenEarthRelation.score}${getTranslation(language, 'pointsText')})\n`;
   }
   
   // 2. 五行关系评分 - 使用中文键值进行计算
@@ -123,7 +123,7 @@ export function analyzeTrigramRelation(binary: string, language: Language = 'zh-
  * @param language 语言（仅用于显示）
  * @returns 天地关系评分配置
  */
-function getHeavenEarthRelations(language: Language = 'zh-CN'): Record<string, HeavenEarthRelation> {
+function getHeavenEarthRelations(): Record<string, HeavenEarthRelation> {
   // 始终返回中文映射，用于计算
   return {
     '天-地': { score: 25, description: '天地交泰，阴阳调和' },
@@ -152,7 +152,7 @@ function getHeavenEarthRelations(language: Language = 'zh-CN'): Record<string, H
  * @returns 五行关系评分
  */
 function getElementRelationScore(upperElement: string, lowerElement: string, language: Language = 'zh-CN'): { score: number; description: string } {
-  const relations = getFiveElementsRelations(language);
+  const relations = getFiveElementsRelations();
   
   // 上生下（上卦生下卦）- 吉
   if (relations.generate[upperElement as keyof typeof relations.generate] === lowerElement) {

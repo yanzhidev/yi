@@ -1,13 +1,10 @@
 import { useState } from 'react'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
-import { clsx, type ClassValue } from 'clsx'
+import { cn } from '../utils/styles'
 import { useLanguage } from '../contexts/LanguageContext'
 import { getHexagramByBinary } from '../utils/iching'
 import type { LineResult, HexagramCastResult } from '../utils/iching'
 
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs)
-}
 
 // 爻的类型定义
 type YaoType = 'oldYang' | 'youngYang' | 'youngYin' | 'oldYin' | null

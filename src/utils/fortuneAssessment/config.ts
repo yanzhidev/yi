@@ -1,5 +1,5 @@
-import { getTranslation } from '../../i18n';
-import type { Language } from '../../i18n';
+import { getTranslation } from '../i18n';
+import type { Language } from '../i18n';
 import type { FortuneAssessmentConfig, FortuneLevel, FortuneLevelConfig } from './types';
 
 /**

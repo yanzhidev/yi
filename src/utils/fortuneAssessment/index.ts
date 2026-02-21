@@ -69,7 +69,7 @@ import type {
   TrigramRelationScore,
   LinesPositionScore
 } from './types';
-import type { Language } from '../i18n';
+import type { Language } from '../i18n/index';
 
 /**
  * 综合吉凶判断主函数
@@ -138,7 +138,7 @@ export function assessFortune(
   const fortuneLevel = getFortuneLevel(totalScore);
   
   // 7. 生成总体建议
-  const overallAdvice = generateOverallAdvice(fortuneLevel, hexagramTextScore, trigramRelationScore, linesPositionScore, language);
+  const overallAdvice = generateOverallAdvice(hexagramTextScore, trigramRelationScore, linesPositionScore, language);
   
   // 8. 计算置信度
   const confidence = calculateConfidence(hexagramTextScore, trigramRelationScore, linesPositionScore);

@@ -1,5 +1,5 @@
-import { getTranslation } from '../../i18n';
-import type { Language, Translation } from '../../i18n';
+import { getTranslation } from '../../i18n/index';
+import type { Language, Translation } from '../../i18n/index';
 import type { HexagramTextScore, KeywordGroup } from '../types';
 import { getHexagramById } from '../../iching';
 

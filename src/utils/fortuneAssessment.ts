@@ -1,6 +1,6 @@
 import { getHexagramById } from './iching';
-import { getTranslation } from './i18n';
 import type { Language, Translation } from './i18n';
+import { getTranslation } from './i18n';
 
 // ==================== 吉凶判断类型定义 ====================
 

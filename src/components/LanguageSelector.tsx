@@ -1,12 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { Globe, Check } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
+import { Globe, Check } from 'lucide-react'
+import { cn } from '../utils/styles'
 import { useLanguage } from '../contexts/LanguageContext';
-import { type Language, languages } from '../utils/i18n';
-
-function cn(...inputs: ClassValue[]) {
-  return clsx(inputs);
-}
+import { type Language, languages } from '../utils/i18n/index';
 
 export function LanguageSelector() {
   const { language, setLanguage, t } = useLanguage();
