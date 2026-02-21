@@ -25,6 +25,7 @@ function AppContent() {
   const [isCasting, setIsCasting] = useState(false)
   const [showInterpretation, setShowInterpretation] = useState(false) // 展开/隐藏通俗解读
   const [showChangedInterpretation, setShowChangedInterpretation] = useState(false) // 展开/隐藏变卦通俗解读
+  const [showLineRelations, setShowLineRelations] = useState(false) // 展开/隐藏爻位关系解读
   const [showManualInput, setShowManualInput] = useState(false) // 显示手动输入界面
   const [dataKey, setDataKey] = useState(0) // Used to force re-render when language changes
   const [sidebarOpen, setSidebarOpen] = useState(false) // 侧边栏开关
@@ -296,8 +297,10 @@ function AppContent() {
                   question={question}
                   showInterpretation={showInterpretation}
                   showChangedInterpretation={showChangedInterpretation}
+                  showLineRelations={showLineRelations}
                   onToggleInterpretation={() => setShowInterpretation(!showInterpretation)}
                   onToggleChangedInterpretation={() => setShowChangedInterpretation(!showChangedInterpretation)}
+                  onToggleLineRelations={() => setShowLineRelations(!showLineRelations)}
                 />
               ) : null}
             </>

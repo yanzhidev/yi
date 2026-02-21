@@ -67,6 +67,18 @@ export interface Translation {
   decisionAdvice: string;
   keyInterpretation: string; // 重点解读
 
+  // Line Relations Interpretation
+  lineRelationsInterpretation: string;
+  changingLine: string;
+  dangWei: string;
+  notDangWei: string;
+  dangWeiAnalysis: string;
+  yingRelation: string;
+  chengChengRelation: string;
+  modernInterpretation: string;
+  lineCharacter: string; // 爻字
+  inContextOf: string; // 的背景下
+
   // Footer
   footer: string;
 
@@ -158,6 +170,18 @@ export const translations: Record<Language, Translation> = {
     lifeInspiration: 'Life Inspiration',
     decisionAdvice: 'Decision Advice',
     keyInterpretation: 'Key Interpretation',
+
+    // Line Relations Interpretation
+    lineRelationsInterpretation: 'Line Relations Interpretation',
+    changingLine: 'Changing Line',
+    dangWei: 'Proper Position',
+    notDangWei: 'Improper Position',
+    dangWeiAnalysis: 'Position Analysis',
+    yingRelation: 'Correspondence Relation',
+    chengChengRelation: 'Support-Riding Relation',
+    modernInterpretation: 'Modern Interpretation',
+    lineCharacter: 'Line',
+    inContextOf: 'in the context of',
     footer: 'Sincerity brings clarity · Follow the natural way',
     selectLanguage: 'Language',
     signIn: 'Sign in with Google',
@@ -241,6 +265,18 @@ export const translations: Record<Language, Translation> = {
     lifeInspiration: '人生启示',
     decisionAdvice: '决策建议',
     keyInterpretation: '重点解读',
+
+    // Line Relations Interpretation
+    lineRelationsInterpretation: '爻位关系解读',
+    changingLine: '变爻',
+    dangWei: '当位',
+    notDangWei: '不当位',
+    dangWeiAnalysis: '当位分析',
+    yingRelation: '相应关系',
+    chengChengRelation: '承乘关系',
+    modernInterpretation: '现代解读',
+    lineCharacter: '爻',
+    inContextOf: '在',
     footer: '心诚则灵 · 道法自然',
     selectLanguage: '语言',
     signIn: '使用 Google 登录',
@@ -324,6 +360,18 @@ export const translations: Record<Language, Translation> = {
     lifeInspiration: '人生啟示',
     decisionAdvice: '決策建議',
     keyInterpretation: '重點解讀',
+
+    // Line Relations Interpretation
+    lineRelationsInterpretation: '爻位關係解讀',
+    changingLine: '變爻',
+    dangWei: '當位',
+    notDangWei: '不當位',
+    dangWeiAnalysis: '當位分析',
+    yingRelation: '相應關係',
+    chengChengRelation: '承乘關係',
+    modernInterpretation: '現代解讀',
+    lineCharacter: '爻',
+    inContextOf: '在',
     footer: '心誠則靈 · 道法自然',
     selectLanguage: '語言',
     signIn: '使用 Google 登入',
@@ -406,6 +454,18 @@ export const translations: Record<Language, Translation> = {
     lifeInspiration: 'Inspiración para la Vida',
     decisionAdvice: 'Consejo de Decisión',
     keyInterpretation: 'Interpretación Clave',
+
+    // Line Relations Interpretation
+    lineRelationsInterpretation: 'Interpretación de Relaciones de Líneas',
+    changingLine: 'Línea Cambiante',
+    dangWei: 'Posición Apropiada',
+    notDangWei: 'Posición Inapropiada',
+    dangWeiAnalysis: 'Análisis de Posición',
+    yingRelation: 'Relación de Correspondencia',
+    chengChengRelation: 'Relación de Soporte-Montura',
+    modernInterpretation: 'Interpretación Moderna',
+    lineCharacter: 'Línea',
+    inContextOf: 'en el contexto de',
     footer: 'La sinceridad trae claridad · Sigue el camino natural',
     selectLanguage: 'Idioma',
     signIn: 'Iniciar sesión con Google',

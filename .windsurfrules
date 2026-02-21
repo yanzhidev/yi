@@ -1,0 +1,16 @@
+# 易经 Web App 开发规则
+
+## 技术栈规范
+- 使用 React (Vite)、TypeScript、Tailwind CSS。
+- 组件采用函数式组件 (Functional Components) 和 Hooks。
+- 优先使用 Lucide-react 作为图标库。
+- 逻辑与 UI 分离：将卦象计算算法放在 `src/utils` 中，UI 组件放在 `src/components`。
+
+## 业务逻辑
+- 卦象表示：统一使用 0 表示阴爻，1 表示阳爻。
+- 顺序：从下往上（初爻到上爻）存储在数组中。
+- 状态管理：使用 React Context 或简单的 useState 管理起卦状态。
+
+## 代码风格
+- 保持简洁的“禅意”风格（Zen style），使用中性色调和大量留白。
+- 所有变量和函数名使用英文，但 UI 文本和注释使用中文。
