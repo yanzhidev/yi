@@ -25,6 +25,10 @@ export interface LineRelationsTranslations {
   yangRidesYang: string;           // 阳乘阳：刚乘刚，以刚驾刚
   yinRidesYin: string;             // 阴乘阴：柔乘柔，以柔驾柔
   
+  // 承乘关系详细解释
+  yinSupportsYangDesc: string;     // 阴承阳详细解释
+  yinRidesYangDesc: string;       // 阴乘阳详细解释
+  
   noSpecialRelation: string;       // 无特殊承乘关系
   
   // 爻位现代解读
@@ -74,6 +78,10 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     yangRidesYang: '⚡ Yang rides Yang: strength rides strength - two forces clash, conflicts',
     yinRidesYin: '💧 Yin rides Yin: gentleness rides gentleness - weak authority, insufficient',
     
+    // 承乘关系详细解释
+    yinSupportsYangDesc: 'Yin line below supports Yang line above, like minister assisting ruler, wife helping husband, harmonious submission',
+    yinRidesYangDesc: 'Yin line above rides Yang line below, like wife controlling husband, minister deceiving ruler, overstepping inauspicious',
+    
     noSpecialRelation: 'No special support-riding relationship',
     
     position1Yang: 'represents the initial stage of matters, like the rising sun. At this time, one should seize opportunities, act actively, and lay the foundation for future development',
@@ -117,6 +125,10 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     yangRidesYin: '✓ 阳乘阴：刚乘柔 - 统御得宜，吉',
     yangRidesYang: '⚡ 阳乘阳：刚乘刚 - 两刚相敌，多冲突',
     yinRidesYin: '💧 阴乘阴：柔乘柔 - 柔弱相凌，威权不足',
+    
+    // 承乘关系详细解释
+    yinSupportsYangDesc: '阴爻在下承托阳爻，如臣辅君、妻助夫，柔顺得宜之象',
+    yinRidesYangDesc: '阴爻在上乘凌阳爻，如妇制夫、臣欺君，僭越不顺之象',
     noSpecialRelation: '无特殊承乘关系',
     
     position1Yang: '初爻为事物初始阶段，如朝阳初升。此时应把握机遇，积极行动，为后续发展奠定基础',
@@ -160,6 +172,10 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     yangRidesYin: '✓ 陽乘陰：剛乘柔 - 統御得宜，吉',
     yangRidesYang: '⚡ 陽乘陽：剛乘剛 - 兩剛相敵，多衝突',
     yinRidesYin: '💧 陰乘陰：柔乘柔 - 柔弱相凌，威權不足',
+    
+    // 承乘关系详细解释
+    yinSupportsYangDesc: '陰爻在下承托陽爻，如臣輔君、妻助夫，柔順得宜之象',
+    yinRidesYangDesc: '陰爻在上乘凌陽爻，如婦制夫、臣欺君，僭越不順之象',
     noSpecialRelation: '無特殊承乘關係',
     
     position1Yang: '初爻為事物初始階段，如朝陽初升。此時應把握機遇，積極行動，為後續發展奠定基礎',
@@ -203,6 +219,10 @@ export const lineRelationsTranslations: Record<Language, LineRelationsTranslatio
     yangRidesYin: '✓ Yang monta Yin: fuerza monta suavidad - control apropiado, auspicioso',
     yangRidesYang: '⚡ Yang monta Yang: fuerza monta fuerza - dos fuerzas chocan, conflictos',
     yinRidesYin: '💧 Yin monta Yin: suavidad monta suavidad - autoridad débil, insuficiente',
+    
+    // 承乘关系详细解释
+    yinSupportsYangDesc: 'Línea Yin abajo apoya línea Yang arriba, como ministro asistiendo gobernante, esposa ayudando esposo, sumisión armoniosa',
+    yinRidesYangDesc: 'Línea Yin arriba monta línea Yang abajo, como esposa controlando esposo, ministro engañando gobernante, sobrepasamiento inauspicioso',
     noSpecialRelation: 'Sin relación especial de soporte-montura',
     
     position1Yang: 'representa la etapa inicial de los asuntos, como el sol naciente. En este momento, uno debe aprovechar oportunidades, actuar activamente, y sentar las bases para el desarrollo futuro',

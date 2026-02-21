@@ -149,7 +149,7 @@ export function getChengChengRelation(position: number, lines: LineResult[], lan
 function getSupportRelation(currentLineValue: 0 | 1, upperLineValue: 0 | 1, translations: LineRelationsTranslations): string {
   if (currentLineValue === 0 && upperLineValue === 1) {
     // 阴承阳：柔承刚，柔顺承托刚健（最吉）
-    return translations.yinSupportsYang;
+    return `${translations.yinSupportsYang}。${translations.yinSupportsYangDesc}`;
   } else if (currentLineValue === 1 && upperLineValue === 0) {
     // 阳承阴：刚承柔，刚强承托柔弱（凶）
     return translations.yangSupportsYin;
@@ -173,7 +173,7 @@ function getSupportRelation(currentLineValue: 0 | 1, upperLineValue: 0 | 1, tran
 function getRideRelation(currentLineValue: 0 | 1, lowerLineValue: 0 | 1, translations: LineRelationsTranslations): string {
   if (currentLineValue === 0 && lowerLineValue === 1) {
     // 阴乘阳：柔乘刚，阴柔乘凌阳刚（最凶）
-    return translations.yinRidesYang;
+    return `${translations.yinRidesYang}。${translations.yinRidesYangDesc}`;
   } else if (currentLineValue === 1 && lowerLineValue === 0) {
     // 阳乘阴：刚乘柔，阳刚驾御阴柔（吉）
     return translations.yangRidesYin;
