@@ -317,9 +317,9 @@ export function mapLinesToHexagram(linesArray: number[]): HexagramData | null {
   }
 
   const binary = linesArray.join('');
-  const hexagramId = parseInt(binary, 2) + 1; // 转为1-64
-
-  return getHexagramById(hexagramId);
+  
+  // 直接通过二进制字符串查找对应的卦象
+  return getHexagramByBinary(binary);
 }
 
 /**

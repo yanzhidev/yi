@@ -78,7 +78,7 @@ export function HexagramDisplay({
         )}
         {showNumber && (
           <p className="text-sm text-stone-400 tracking-widest">
-            第 {hexagramNumber} 卦
+            第 {hexagramNumber + 1} 卦
           </p>
         )}
       </div>

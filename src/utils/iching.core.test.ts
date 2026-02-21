@@ -115,8 +115,8 @@ describe('iching.ts - 核心功能测试', () => {
       const hexagram = mapLinesToHexagram(lines);
       
       expect(hexagram).toBeDefined();
-      expect(hexagram?.id).toBe(64); // 111111 = 63 + 1 = 64，但实际乾卦是ID=1
-      // 这里反映了旧的错误逻辑，我们需要用实际的函数行为来测试
+      expect(hexagram?.id).toBe(1); // 乾卦是ID=1，二进制是111111
+      expect(hexagram?.name).toBe('乾为天');
     });
 
     it('应该正确映射坤卦', () => {
@@ -124,17 +124,17 @@ describe('iching.ts - 核心功能测试', () => {
       const hexagram = mapLinesToHexagram(lines);
       
       expect(hexagram).toBeDefined();
-      expect(hexagram?.id).toBe(1); // 000000 = 0 + 1 = 1，但实际坤卦是ID=2
-      // 这里反映了旧的错误逻辑
+      expect(hexagram?.id).toBe(2); // 坤卦是ID=2，二进制是000000
+      expect(hexagram?.name).toBe('坤为地');
     });
 
-    it('应该正确映射屯卦', () => {
-      const lines = [1, 0, 0, 0, 1, 0]; // 从下到上：100010 = 34 + 1 = 35
+    it('应该正确映射蒙卦', () => {
+      const lines = [1, 0, 0, 0, 1, 0]; // 从下到上：100010
       const hexagram = mapLinesToHexagram(lines);
       
       expect(hexagram).toBeDefined();
-      expect(hexagram?.id).toBe(35); // 实际屯卦是ID=3，但旧逻辑会得到35
-      // 这里反映了旧的错误逻辑
+      expect(hexagram?.id).toBe(4); // 蒙卦是ID=4，二进制是100010
+      expect(hexagram?.name).toBe('山水蒙');
     });
 
     it('无效数组长度应该返回null', () => {
