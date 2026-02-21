@@ -40,20 +40,37 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
 
   // 计算本卦二进制（从下往上，阳=1，阴=0）
   const calculateOriginalBinary = (): string => {
-    return selectedYaos.map(yao => {
+    const binary = selectedYaos.map(yao => {
       if (!yao) return '0'
       return (yao === 'oldYang' || yao === 'youngYang') ? '1' : '0'
     }).reverse().join('')
+    
+    // 调试信息
+    console.log('=== 本卦计算调试 ===');
+    console.log('selectedYaos (从初爻到上爻):', selectedYaos);
+    console.log('selectedYaos.reverse() (反转后):', [...selectedYaos].reverse());
+    console.log('生成的二进制:', binary);
+    
+    return binary
   }
 
   // 计算变卦二进制（老阳变阴，老阴变阳）
   const calculateChangedBinary = (): string => {
-    return selectedYaos.map(yao => {
+    const binary = selectedYaos.map(yao => {
       if (!yao) return '0'
       if (yao === 'oldYang') return '0'  // 老阳变阴
       if (yao === 'oldYin') return '1'   // 老阴变阳
       return (yao === 'youngYang') ? '1' : '0'  // 少阳少阴不变
     }).reverse().join('')
+    
+    // 调试信息
+    console.log('=== 变卦计算调试 ===');
+    console.log('selectedYaos (从初爻到上爻):', selectedYaos);
+    console.log('变爻转换规则: 老阳→阴(0), 老阴→阳(1), 少阳→阳(1), 少阴→阴(0)');
+    console.log('selectedYaos.reverse() (反转后):', [...selectedYaos].reverse());
+    console.log('生成的变卦二进制:', binary);
+    
+    return binary
   }
 
   // 获取变爻位置列表
@@ -91,7 +108,16 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
   // 二进制转卦ID
   const binaryToHexagramId = (binary: string): number => {
     const hexagram = getHexagramByBinary(binary)
-    return hexagram ? hexagram.id : 0
+    const id = hexagram ? hexagram.id : 0
+    
+    // 调试信息
+    console.log('=== 卦象查找调试 ===');
+    console.log('查找的二进制:', binary);
+    console.log('找到的卦象:', hexagram);
+    console.log('卦象ID:', id);
+    console.log('卦象名称:', hexagram?.name);
+    
+    return id
   }
 
   // 检查是否可以查看结果
