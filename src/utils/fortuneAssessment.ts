@@ -1,4 +1,4 @@
-import type { HexagramCastResult, HexagramData } from './iching';
+import type { HexagramData } from './iching';
 import { getHexagramById } from './iching';
 
 // ==================== 吉凶判断类型定义 ====================
@@ -663,8 +663,8 @@ function getSpecialLineCombinations(lines: any[], changingLines: number[]): { sc
   const descriptions: string[] = [];
   
   // 检查纯阳纯阴
-  const allYang = lines.every(line => line.value === 1);
-  const allYin = lines.every(line => line.value === 0);
+  const allYang = lines.every((line: any) => line.value === 1);
+  const allYin = lines.every((line: any) => line.value === 0);
   
   if (allYang) {
     totalScore += SPECIAL_LINE_COMBINATIONS['all-yang'].score;
@@ -676,29 +676,23 @@ function getSpecialLineCombinations(lines: any[], changingLines: number[]): { sc
     descriptions.push(SPECIAL_LINE_COMBINATIONS['all-yin'].description);
   }
   
-  // 检查二五爻中正
-  const line2 = lines[1]; // 二爻
-  const line5 = lines[4]; // 五爻
-  
-  if (line2 && line5) {
-    const line2Proper = (line2.value === 0 && 2 % 2 === 0); // 阴爻居阴位
-    const line5Proper = (line5.value === 1 && 5 % 2 === 1); // 阳爻居阳位
-    
-    if (line2Proper && line5Proper) {
-      totalScore += SPECIAL_LINE_COMBINATIONS['2-5'].score;
-      descriptions.push(SPECIAL_LINE_COMBINATIONS['2-5'].description);
+  // 检查特殊爻位组合
+  for (const position of changingLines) {
+    const line = lines[position - 1];
+    if (line?.isChanging) {
+      if (position === 2 || position === 5) {
+        totalScore += SPECIAL_LINE_COMBINATIONS['2-5'].score;
+        descriptions.push(SPECIAL_LINE_COMBINATIONS['2-5'].description);
+      }
     }
   }
   
-  // 检查当位失位比例
+  // 检查爻位得当性
   let properCount = 0;
   let improperCount = 0;
-  
-  lines.forEach((line, index) => {
+  lines.forEach((line: any, index: number) => {
     const position = index + 1;
-    const isProper = (line.value === 1 && position % 2 === 1) || 
-                    (line.value === 0 && position % 2 === 0);
-    
+    const isProper = (line.value === 1 && position % 2 === 1) || (line.value === 0 && position % 2 === 0);
     if (isProper) {
       properCount++;
     } else {
@@ -720,13 +714,15 @@ function getSpecialLineCombinations(lines: any[], changingLines: number[]): { sc
   };
 }
 
+// ...
+
 /**
  * 分析变爻
  * @param lines 六爻数组
  * @param changingLines 变爻位置数组
  * @returns 变爻分析结果
  */
-function analyzeChangingLines(lines: any[], changingLines: number[]): { score: number; description: string } {
+function analyzeChangingLines(_lines: any[], changingLines: number[]): { score: number; description: string } {
   const changingCount = changingLines.length;
   
   if (changingCount === 0) {
@@ -1271,7 +1267,7 @@ function calculateConfidence(
  * @returns 详细分析
  */
 function generateDetailedAnalysis(
-  fortuneLevel: FortuneLevel,
+  _fortuneLevel: FortuneLevel,
   textScore: HexagramTextScore,
   trigramScore: TrigramRelationScore,
   linesScore: LinesPositionScore
