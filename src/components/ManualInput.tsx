@@ -45,11 +45,6 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
       return (yao === 'oldYang' || yao === 'youngYang') ? '1' : '0'
     }).reverse().join('')
     
-    // 调试信息
-    console.log('=== 本卦计算调试 ===');
-    console.log('selectedYaos (从初爻到上爻):', selectedYaos);
-    console.log('selectedYaos.reverse() (反转后):', [...selectedYaos].reverse());
-    console.log('生成的二进制:', binary);
     
     return binary
   }
@@ -63,12 +58,6 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
       return (yao === 'youngYang') ? '1' : '0'  // 少阳少阴不变
     }).reverse().join('')
     
-    // 调试信息
-    console.log('=== 变卦计算调试 ===');
-    console.log('selectedYaos (从初爻到上爻):', selectedYaos);
-    console.log('变爻转换规则: 老阳→阴(0), 老阴→阳(1), 少阳→阳(1), 少阴→阴(0)');
-    console.log('selectedYaos.reverse() (反转后):', [...selectedYaos].reverse());
-    console.log('生成的变卦二进制:', binary);
     
     return binary
   }
@@ -110,12 +99,6 @@ export function ManualInput({ question, onBack, onResult }: ManualInputProps) {
     const hexagram = getHexagramByBinary(binary)
     const id = hexagram ? hexagram.id : 0
     
-    // 调试信息
-    console.log('=== 卦象查找调试 ===');
-    console.log('查找的二进制:', binary);
-    console.log('找到的卦象:', hexagram);
-    console.log('卦象ID:', id);
-    console.log('卦象名称:', hexagram?.name);
     
     return id
   }
