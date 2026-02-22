@@ -5,7 +5,9 @@ import linesDataEn from '../data/lines_en.json';
 import hexagramsDataEs from '../data/hexagrams_es.json';
 import linesDataEs from '../data/lines_es.json';
 import hexagramsDataJa from '../data/hexagrams_ja.json';
+import linesDataJa from '../data/lines_ja.json';
 import hexagramsDataKo from '../data/hexagrams_ko.json';
+import linesDataKo from '../data/lines_ko.json';
 import type { Language } from './i18n';
 
 // ==================== 类型定义 ====================
@@ -99,8 +101,8 @@ const linesDataMap: Record<Language, Record<string, { name: string; lines: LineI
   'zh-TW': linesData as Record<string, { name: string; lines: LineInterpretation[] }>,
   'en': linesDataEn as Record<string, { name: string; lines: LineInterpretation[] }>,
   'es': linesDataEs as Record<string, { name: string; lines: LineInterpretation[] }>,
-  'ja': linesData as Record<string, { name: string; lines: LineInterpretation[] }>, // Use Chinese data for Japanese
-  'ko': linesData as Record<string, { name: string; lines: LineInterpretation[] }>, // Use Chinese data for Korean
+  'ja': linesDataJa as Record<string, { name: string; lines: LineInterpretation[] }>,
+  'ko': linesDataKo as Record<string, { name: string; lines: LineInterpretation[] }>,
 };
 
 let currentLanguage: Language = 'zh-CN';
