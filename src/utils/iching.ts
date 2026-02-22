@@ -4,6 +4,8 @@ import hexagramsDataEn from '../data/hexagrams_en.json';
 import linesDataEn from '../data/lines_en.json';
 import hexagramsDataEs from '../data/hexagrams_es.json';
 import linesDataEs from '../data/lines_es.json';
+import hexagramsDataJa from '../data/hexagrams_ja.json';
+import hexagramsDataKo from '../data/hexagrams_ko.json';
 import type { Language } from './i18n';
 
 // ==================== 类型定义 ====================
@@ -34,6 +36,11 @@ export interface HexagramData {
   daxiang: string;
   yongjiu?: string; // 用九（乾卦六爻全变时使用）
   yongliu?: string; // 用六（坤卦六爻全变时使用）
+  interpretation?: {
+    plainTranslation: string;
+    lifeInspiration: string;
+    decisionAdvice: string;
+  };
 }
 
 /**
@@ -83,8 +90,8 @@ const hexagramsDataMap: Record<Language, HexagramData[]> = {
   'zh-TW': hexagramsData as HexagramData[],
   'en': hexagramsDataEn as HexagramData[],
   'es': hexagramsDataEs as HexagramData[],
-  'ja': hexagramsData as HexagramData[], // Use Chinese data for Japanese
-  'ko': hexagramsData as HexagramData[], // Use Chinese data for Korean
+  'ja': hexagramsDataJa as HexagramData[],
+  'ko': hexagramsDataKo as HexagramData[],
 };
 
 const linesDataMap: Record<Language, Record<string, { name: string; lines: LineInterpretation[] }>> = {
